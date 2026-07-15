@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्वयंसेवक नोंदणी व नियुक्ती पत्र | Raktdata.in</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            margin: 0 auto 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 { color: #c62828; text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="tel"] {
+            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
+        }
+        .btn {
+            width: 100%; padding: 12px; background: #2e7d32; color: white; border: none;
+            border-radius: 4px; font-size: 1.1rem; cursor: pointer; font-weight: bold;
+        }
+        .btn:hover { background: #1b5e20; }
+
+        #letter-template {
+            display: none;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            background: white;
+            box-sizing: border-box;
+            position: relative;
+            color: #333;
+        }
+        .letter-header { text-align: center; border-bottom: 3px solid #c62828; padding-bottom: 15px; }
+        .letter-title { font-size: 24px; color: #c62828; font-weight: bold; margin: 0; }
+        .letter-body { margin-top: 40px; font-size: 16px; line-height: 1.8; text-align: justify; }
+        .signature-section { margin-top: 50px; text-align: right; }
+        
+        .id-card {
+            width: 85mm; height: 125mm; border: 2px solid #c62828; border-radius: 10px;
+            margin: 30px auto 0 auto; padding: 15px; text-align: center; background: #fff5f5;
+        }
+        .id-card h3 { color: #c62828; margin: 5px 0; font-size: 18px; }
+        .id-details { text-align: left; margin-top: 15px; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <div class="form-container" id="form-section">
+        <h2>🤝 राष्ट्रीय स्वयंसेवक नोंदणी</h2>
+        <div class="form-group">
+            <label>पूर्ण नाव:</label>
+            <input type="text" id="fullName" placeholder="तुमचे नाव टाका" required>
+        </div>
+        <div class="form-group">
+            <label>शहर / जिल्हा:</label>
+            <input type="text" id="city" placeholder="उदा. पुणे, मुंबई" required>
+        </div>
+        <div class="form-group">
+            <label>मोबाईल नंबर:</label>
+            <input type="tel" id="mobile" placeholder="१० अंकी नंबर" required>
+        </div>
+        <button class="btn" onclick="generateLetter()">माहिती सबमिट करा व पत्र मिळवा</button>
+    </div>
+
+    <div id="letter-template">
+        <div class="letter-header">
+            <p class="letter-title">RAKTDATA.IN</p>
+            <p style="margin: 5px 0 0 0; font-style: italic;">"रक्तदानासाठी एकत्र – संस्था स्वतंत्र."</p>
+        </div>
+        
+        <div class="letter-body">
+            <p><strong>दिनांक:</strong> <span id="current-date"></span></p>
+            <p><strong>प्रति,</strong><br><span id="lbl-name" style="font-weight: bold;"></span><br>निवासस्थान: <span id="lbl-city"></span></p>
+            
+            <p style="font-weight: bold; color: #c62828; margin-top: 20px;">विषय: Raktdata.in राष्ट्रीय चळवळीमध्ये 'डिजिटल स्वयंसेवक' म्हणून नियुक्ती बाबत.</p>
+            
+            <p>महोदय/महोदया,</p>
+            <p>आपणास कळवण्यास अत्यंत आनंद होत आहे की, भारतातील रक्तदान जनजागृती, समन्वय आणि सहकार्याच्या या राष्ट्रीय डिजिटल व्यासपीठावर आपली <strong>'स्वयंसेवक'</strong> म्हणून यशस्वी नोंदणी झाली आहे. मानवतेच्या या पवित्र कार्यात सहभागी झाल्याबद्दल तुमचे मनःपूर्वक स्वागत.</p>
+            <p>आपण आपल्या भागात रक्तदान शिबिरांचे नियोजन करणे, सोशल मीडियाच्या माध्यमातून जनजागृती करणे आणि गरजू रुग्णांना मदत करणे या कार्यात सक्रिय सहभाग नोंदवाल, अशी आम्हाला खात्री आहे. आपली ही नियुक्ती पूर्णपणे सामाजिक आणि निरपेक्ष स्वरूपाची आहे.</p>
+            
+            <div class="signature-section">
+                <p>आपला नम्र,</p>
+                <br>
+                <p><strong>दिलीप म. गायकवाड</strong><br>संस्थापक, Raktdata.in</p>
+            </div>
+        </div>
+
+        <div class="id-card">
+            <h3>RAKTDATA.IN</h3>
+            <p style="font-size: 10px; margin: 0; font-style: italic;">राष्ट्रीय स्वयंसेवक</p>
+            <div style="width: 80px; height: 80px; border: 1px dashed #ccc; margin: 15px auto; background: #eee; line-height: 80px; font-size: 12px; color: #666;">PHOTO</div>
+            <div class="id-details">
+                <strong>नाव:</strong> <span id="id-name"></span><br>
+                <strong>जिल्हा:</strong> <span id="id-city"></span><br>
+                <strong>पद:</strong> डिजिटल स्वयंसेवक<br>
+                <strong>मोबाईल:</strong> <span id="id-phone"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateLetter() {
+            const name = document.getElementById('fullName').value;
+            const city = document.getElementById('city').value;
+            const mobile = document.getElementById('mobile').value;
+
+            if(!name || !city || !mobile) {
+                alert("कृपया सर्व माहिती अचूक भरा!");
+                return;
+            }
+
+            document.getElementById('lbl-name').innerText = name;
+            document.getElementById('id-name').innerText = name;
+            document.getElementById('lbl-city').innerText = city;
+            document.getElementById('id-city').innerText = city;
+            document.getElementById('id-phone').innerText = mobile;
+            document.getElementById('current-date').innerText = new Date().toLocaleDateString('mr-IN');
+
+            const element = document.getElementById('letter-template');
+            element.style.display = 'block';
+
+            const opt = {
+                margin:       10,
+                filename:     'Raktdata_Appointment_Letter.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.style.display = 'none';
+                alert("तुमचे नियुक्ती पत्र आणि आयडी कार्ड यशस्वीरित्या डाउनलोड झाले आहे!");
+            });
+        }
+    </script>
+</body>
+</html>

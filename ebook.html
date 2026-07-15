@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ई-बुक: रक्तदाता मानवतेचा संदेश | Raktdata.in</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .book-section { display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px; }
+        .book-cover { width: 250px; height: 350px; background: #c62828; color: white; display: flex; align-items: center; justify-content: center; text-align: center; border-radius: 6px; font-size: 20px; font-weight: bold; box-shadow: 3px 3px 10px rgba(0,0,0,0.2); }
+        .book-details { flex: 1; min-width: 300px; }
+        h1 { color: #c62828; margin-top: 0; }
+        .price { font-size: 24px; color: #2e7d32; font-weight: bold; margin: 15px 0; }
+        .btn-buy { background: #c62828; color: white; border: none; padding: 12px 25px; font-size: 1.2rem; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; transition: 0.3s; }
+        .btn-buy:hover { background: #b71c1c; }
+        
+        #reader-container { display: none; margin-top: 30px; border-top: 2px solid #ccc; padding-top: 20px; }
+        .reader-screen { width: 100%; height: 500px; background: #333; color: white; display: flex; align-items: center; justify-content: center; border-radius: 6px; position: relative; }
+        .security-notice { font-size: 12px; color: #d84315; font-weight: bold; margin-top: 10px; text-align: center; }
+    </style>
+</head>
+<body oncontextmenu="return false;" onkeydown="return disableShortcuts(event);">
+
+    <div class="container">
+        <div class="book-section" id="purchase-section">
+            <div class="book-cover">
+                रक्तदाता<br>मानवतेचा संदेश<br><span style="font-size: 12px; font-weight: normal;"><br>लेखक: दिलीप म. गायकवाड</span>
+            </div>
+            
+            <div class="book-details">
+                <h1>📚 ई-बुक: "रक्तदाता मानवतेचा संदेश"</h1>
+                <p><strong>लेखक:</strong> मा. दिलीप म. गायकवाड</p>
+                <p>हे ई-बुक केवळ माहिती देत नाही, तर समाजात रक्तदानाविषयी वैज्ञानिक दृष्टिकोन आणि माणुसकीचा जागर घडवून आणते. अंधश्रद्धा आणि भीती दूर सारून प्रत्येकाला सामाजिक बांधिलकीची प्रेरणा देणारे हे अभ्यासपूर्ण लेखन आहे.</p>
+                
+                <div class="price">किंमत: ₹९९/- मात्र</div>
+                <button class="btn-buy" onclick="simulatePayment()">💳 आताच खरेदी करा आणि वाचन सुरू करा</button>
+                <p class="security-notice">🛡️ सुरक्षा सूचना: हे पुस्तक डिजिटल स्वरूपात असून खरेदीनंतर फक्त याच वेबसाइटवर वाचता येईल. डाऊनलोड किंवा प्रिंट करता येणार नाही.[cite: 2]</p>
+            </div>
+        </div>
+
+        <div id="reader-container">
+            <h2>📖 तुमचे ई-बुक: वाचन कक्ष</h2>
+            <div class="reader-screen">
+                <div style="text-align: center; padding: 20px;">
+                    <p style="font-size: 24px; color: #4caf50;">✔️ पेमेंट यशस्वी!</p>
+                    <p>[ येथे तुमचे पुस्तक सुरक्षित 'Flipbook' स्वरूपात उघडले आहे ]</p>
+                    <p style="font-size: 14px; color: #aaa;">पान १ पैकी ५० • मजकूर सुरक्षित आणि कॉपी-प्रोटेक्टेड आहे.[cite: 2]</p>
+                </div>
+            </div>
+            <p class="security-notice">⚠️ कॉपी करणे, राईट-क्लिक करणे किंवा स्क्रीनशॉट निकालना कायद्याने प्रतिबंधित आहे.[cite: 2]</p>
+        </div>
+    </div>
+
+    <script>
+        function simulatePayment() {
+            alert("पेमेंट गेटवे सुरू होत आहे... (₹९९/- यशस्विरित्या प्राप्त झाले)");
+            document.getElementById('purchase-section').style.display = 'none';
+            document.getElementById('reader-container').style.display = 'block';
+        }
+
+        function disableShortcuts(e) {
+            if (e.ctrlKey && (e.keyCode === 83 || e.keyCode === 80 || e.keyCode === 67)) {
+                alert("सुरक्षिततेच्या कारणास्तव डाउनलोड, प्रिंट आणि कॉपी करणे बंद केले आहे.");
+                return false;
+            }
+            if (e.keyCode === 123) {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
