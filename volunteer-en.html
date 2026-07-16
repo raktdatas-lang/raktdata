@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Registration & Appointment Letter | Raktdata.in</title>
+    <!-- FontAwesome & html2pdf Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        :root { --primary-color: #c62828; --secondary-color: #b71c1c; --text-color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; margin: 0; padding: 20px; background-color: #f5f5f5; color: var(--text-color); }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: var(--primary-color); margin-bottom: 25px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 1rem; }
+        .btn-submit { background-color: var(--primary-color); color: white; border: none; width: 100%; padding: 12px; font-size: 1.1rem; font-weight: bold; border-radius: 4px; cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { background-color: var(--secondary-color); }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #555; text-decoration: none; font-weight: 600; }
+        
+        /* Hidden Letter Template (Will be generated as PDF) */
+        #letter-template { display: none; background: white; padding: 40px; border: 10px double var(--primary-color); position: relative; color: #222; }
+        .letter-header { text-align: center; border-bottom: 3px solid var(--primary-color); padding-bottom: 15px; margin-bottom: 30px; }
+        .letter-logo { font-size: 2.2rem; font-weight: bold; color: var(--primary-color); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .letter-subtitle { font-size: 1.1rem; color: #555; margin-top: 5px; font-weight: bold; }
+        .letter-meta { display: flex; justify-content: space-between; margin-bottom: 30px; font-weight: bold; color: #444; }
+        .letter-body { text-align: justify; line-height: 1.8; font-size: 1.1rem; }
+        .letter-footer { margin-top: 60px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .seal-box { border: 2px dashed #999; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #777; border-radius: 50%; text-align: center; }
+        .signature-box { text-align: center; font-weight: bold; }
+        .watermark { position: absolute; top: 35%; left: 25%; font-size: 5.5rem; color: rgba(198, 40, 40, 0.05); transform: rotate(-30deg); font-weight: bold; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2><i class="fa-solid fa-id-card"></i> National Volunteer Registration</h2>
+        
+        <!-- Registration Form -->
+        <form id="volunteerForm">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" placeholder="e.g. Amol Ramesh Patil" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" id="mobile" placeholder="e.g. 98xxxxxxxx" pattern="[0-9]{10}" required>
+            </div>
+            <div class="form-group">
+                <label for="bloodGroup">Blood Group:</label>
+                <select id="bloodGroup" required>
+                    <option value="">Select...</option>
+                    <option value="A+">A +ve</option>
+                    <option value="A-">A -ve</option>
+                    <option value="B+">B +ve</option>
+                    <option value="B-">B -ve</option>
+                    <option value="O+">O +ve</option>
+                    <option value="O-">O -ve</option>
+                    <option value="AB+">AB +ve</option>
+                    <option value="AB-">AB -ve</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city">City / District:</label>
+                <input type="text" id="city" placeholder="e.g. Pune / Mumbai" required>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fa-solid fa-file-pdf"></i> Register & Download Appointment Letter</button>
+        </form>
+
+        <a href="index-en.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Home Page</a>
+    </div>
+
+    <!-- PREVIEW TEMPLATE FOR PDF GENERATION -->
+    <div id="letter-template">
+        <div class="watermark">RAKTDATA</div>
+        <div class="letter-header">
+            <div class="letter-logo"><img src="logo.png" alt="Logo" style="height:50px; vertical-align:middle; margin-right:10px;"> RAKTDATA.IN</div>
+            <div class="letter-subtitle">National Digital Platform for Blood Donation Awareness & Coordination</div>
+            <div style="font-size: 0.9rem; color: #666; margin-top:5px;">"United for Blood Donation – Independent Organizations."</div>
+        </div>
+
+        <div class="letter-meta">
+            <div>Letter No: RD/VOL/2026/<span id="pdfRand">8492</span></div>
+            <div>Date: <span id="pdfDate"></span></div>
+        </div>
+
+        <div class="letter-body">
+            <p>To,</p>
+            <p><strong>Mr./Ms.:</strong> <span id="pdfName" style="border-bottom: 1px dotted #000; font-weight: bold; font-size: 1.2rem;"></span><br>
+            <strong>Resident of:</strong> <span id="pdfCity" style="border-bottom: 1px dotted #000; font-weight: bold;"></span><br>
+            <strong>Blood Group:</strong> <span id="pdfBlood" style="color: var(--primary-color); font-weight: bold;"></span></p>
+
+            <p style="margin-top: 30px; text-indent: 50px;"><strong>Subject: Appointment as 'Official National Digital Volunteer' in RAKTDATA.IN Movement.</strong></p>
+
+            <p>Dear Sir/Madam,</p>
+            <p>We are immensely pleased to inform you that, in recognition of your patriotic spirit and dedication to social service, you are hereby appointed as an <strong>'Official National Digital Volunteer'</strong> under the <strong>RAKTDATA.IN (National Blood Donation Network)</strong> to promote blood donation awareness in your region.</p>
+            
+            <p>Keeping in mind our core motto "United for Blood Donation – Independent Organizations", your primary responsibility will be to coordinate between blood donors, local social organizations, and blood banks in your area, assist patients in need to get blood timely, and spread this noble movement through digital means.</p>
+            
+            <p>We firmly believe that your selfless social contribution will help save thousands of lives across the nation. We formally welcome you to the movement and wish you the very best for your future social endeavors!</p>
+        </div>
+
+        <div class="letter-footer">
+            <div class="seal-box">
+                RAKTDATA<br>OFFICIAL<br>SEAL
+            </div>
+            <div class="signature-box">
+                <div style="height: 40px; font-family:'Courier New', monospace; font-style:italic; color:#777;">D. M. Gaikwad</div>
+                <div style="border-top: 1px solid #000; padding-top: 5px;">Dilip M. Gaikwad</div>
+                <div style="font-size: 0.85rem; color: #555; font-weight: normal;">Founder & National Coordinator</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to Handle Form Submission and PDF Generation -->
+    <script>
+        const today = new Date();
+        document.getElementById('pdfDate').innerText = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+        document.getElementById('pdfRand').innerText = Math.floor(1000 + Math.random() * 9000);
+
+        document.getElementById('volunteerForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            const name = document.getElementById('fullName').value;
+            const city = document.getElementById('city').value;
+            const blood = document.getElementById('bloodGroup').value;
+
+            document.getElementById('pdfName').innerText = name;
+            document.getElementById('pdfCity').innerText = city;
+            document.getElementById('pdfBlood').innerText = blood;
+
+            const element = document.getElementById('letter-template');
+            element.style.display = 'block'; 
+
+            const opt = {
+                margin:       10,
+                filename:     'Raktdata_Appointment_Letter_En.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.style.display = 'none'; 
+                alert('Congratulations! Your registration is successful and your Appointment Letter has been downloaded as a PDF.');
+            });
+        });
+    </script>
+
+</body>
+</html>
