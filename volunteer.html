@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>स्वयंसेवक नोंदणी व नियुक्ती पत्र | Raktdata.in</title>
-    <!-- FontAwesome & html2pdf Library -->
+    <!-- FontAwesome, QR Code Generator & html2pdf Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
-        :root { --primary-color: #c62828; --secondary-color: #b71c1c; --text-color: #333; }
+        :root { --primary-color: #c62828; --secondary-color: #b71c1c; --navy-color: #0d1b3e; --text-color: #333; }
         body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; margin: 0; padding: 20px; background-color: #f5f5f5; color: var(--text-color); }
         .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         h2 { text-align: center; color: var(--primary-color); margin-bottom: 25px; }
@@ -19,23 +20,64 @@
         .btn-submit:hover { background-color: var(--secondary-color); }
         .back-link { display: block; text-align: center; margin-top: 20px; color: #555; text-decoration: none; font-weight: 600; }
         
-        /* Premium PDF Certificate Border & Styling */
-        #letter-template { display: none; background: white; padding: 40px; border: 12px double var(--primary-color); position: relative; color: #222; box-sizing: border-box; }
-        .letter-header { text-align: center; border-bottom: 3px solid var(--primary-color); padding-bottom: 15px; margin-bottom: 25px; }
-        .letter-logo { font-size: 2.4rem; font-weight: bold; color: var(--primary-color); display: flex; align-items: center; justify-content: center; gap: 10px; letter-spacing: 1px; }
-        .letter-subtitle { font-size: 1.1rem; color: #444; margin-top: 5px; font-weight: bold; }
+        /* Premium PDF Custom Layout */
+        #letter-template { display: none; background: white; padding: 10mm; position: relative; color: #222; box-sizing: border-box; width: 210mm; height: 297mm; border: 2px solid var(--navy-color); }
         
-        /* Table Style for Structured Details */
-        .details-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; font-size: 1.05rem; }
-        .details-table td { padding: 8px 12px; border: 1px solid #ddd; }
-        .details-table td.label { font-weight: bold; background-color: #fff8f8; color: #555; width: 30%; }
-        .details-table td.value { font-weight: bold; color: #111; }
-
-        .letter-body { text-align: justify; line-height: 1.8; font-size: 1.1rem; }
-        .letter-footer { margin-top: 50px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .seal-box { border: 2px dashed #999; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #777; border-radius: 50%; text-align: center; font-weight: bold; }
-        .signature-box { text-align: center; font-weight: bold; }
-        .watermark { position: absolute; top: 40%; left: 20%; font-size: 6rem; color: rgba(198, 40, 40, 0.03); transform: rotate(-30deg); font-weight: bold; pointer-events: none; letter-spacing: 5px; }
+        /* Header Section */
+        .header-table { width: 100%; border-collapse: collapse; margin-bottom: 5px; }
+        .logo-left { width: 15%; text-align: left; vertical-align: middle; }
+        .logo-left img { height: 85px; }
+        .header-center { width: 70%; text-align: center; vertical-align: middle; }
+        .header-center h1 { color: var(--primary-color); font-size: 24pt; margin: 0; font-weight: bold; letter-spacing: 1px; }
+        .header-center .sub-title { color: var(--navy-color); font-size: 10pt; font-weight: bold; margin-top: 2px; }
+        .header-center .slogan { color: var(--primary-color); font-size: 11pt; font-weight: bold; margin-top: 6px; }
+        .logo-right { width: 15%; text-align: right; vertical-align: middle; }
+        .logo-right img { height: 80px; }
+        
+        /* Blue Ribbon Title */
+        .title-ribbon { background: linear-gradient(135deg, #101c42 0%, #1a295c 100%); color: #ffffff; text-align: center; padding: 8px 0; font-size: 16pt; font-weight: bold; margin: 10px auto; width: 100%; border-radius: 4px; border-left: 15px solid #d4af37; border-right: 15px solid #d4af37; }
+        
+        /* Two Column Layout */
+        .content-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .sidebar { width: 28%; vertical-align: top; background-color: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 10px; text-align: center; }
+        .main-body { width: 72%; vertical-align: top; padding-left: 18px; }
+        
+        /* Sidebar Elements */
+        .sidebar-title { background-color: var(--navy-color); color: #ffffff; font-size: 11pt; font-weight: bold; padding: 5px 0; border-radius: 4px; margin-bottom: 10px; }
+        .vol-id-box { margin-bottom: 12px; }
+        .vol-id-title { font-size: 9pt; color: #555; margin: 3px 0; }
+        .vol-id-value { font-size: 11pt; font-weight: bold; color: var(--primary-color); }
+        .qr-placeholder { margin: 8px auto; width: 90px; height: 90px; padding: 5px; background: #fff; display: flex; align-items: center; justify-content: center; border: 1px solid #ccc; }
+        .sidebar-meta-item { text-align: left; margin-top: 10px; font-size: 8.5pt; border-bottom: 1px dashed #ddd; padding-bottom: 4px; }
+        .sidebar-meta-item strong { color: var(--navy-color); display: block; margin-bottom: 2px; }
+        .sidebar-bottom-logo { margin-top: 20px; font-size: 11pt; font-weight: bold; color: var(--primary-color); }
+        
+        /* Main Body Elements */
+        .meta-info-table { width: 100%; font-size: 9.5pt; margin-bottom: 10px; }
+        .to-section { font-size: 11pt; margin-bottom: 10px; line-height: 1.5; }
+        .to-section .name { color: var(--primary-color); font-size: 13pt; font-weight: bold; }
+        .subject-line { font-size: 11pt; font-weight: bold; margin-bottom: 12px; line-height: 1.4; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        .subject-line span { color: var(--primary-color); }
+        .intro-text { font-size: 9.5pt; line-height: 1.5; text-align: justify; margin-bottom: 12px; }
+        
+        .section-header { background-color: var(--navy-color); color: #ffffff; font-size: 9.5pt; font-weight: bold; padding: 3px 10px; display: inline-block; border-radius: 3px; margin-bottom: 6px; }
+        
+        .resp-list, .terms-list { margin: 0; padding-left: 15px; font-size: 8.5pt; line-height: 1.4; }
+        .resp-list li, .terms-list li { margin-bottom: 4px; text-align: justify; list-style-type: none; }
+        .terms-list li::before { content: "• "; color: var(--primary-color); font-weight: bold; }
+        
+        .closing-text { font-size: 9pt; line-height: 1.4; margin-top: 10px; font-weight: bold; color: var(--navy-color); }
+        
+        /* Signatures & Seal */
+        .signature-table { width: 100%; margin-top: 15px; }
+        .signature-table td { vertical-align: bottom; }
+        .sig-left { width: 60%; font-size: 9.5pt; }
+        .sig-right { width: 40%; text-align: right; }
+        .seal-box { border: 2px double var(--navy-color); width: 80px; height: 80px; border-radius: 50%; display: inline-block; text-align: center; font-size: 7pt; color: var(--navy-color); font-weight: bold; padding-top: 18px; line-height: 1.2; }
+        
+        /* Absolute Bottom Footer */
+        .bottom-banner { position: absolute; bottom: 0; left: 0; width: 100%; background-color: var(--navy-color); color: #ffffff; padding: 8px 15px; font-size: 9pt; display: flex; justify-content: space-around; }
+        .bottom-banner span { display: flex; align-items: center; gap: 5px; }
     </style>
 </head>
 <body>
@@ -43,11 +85,10 @@
     <div class="container">
         <h2><i class="fa-solid fa-id-card"></i> राष्ट्रीय स्वयंसेवक नोंदणी फॉर्म</h2>
         
-        <!-- Registration Form -->
         <form id="volunteerForm">
             <div class="form-group">
                 <label for="fullName">पूर्ण नाव (Full Name):</label>
-                <input type="text" id="fullName" placeholder="उदा. अमोल रमेश पाटील" required>
+                <input type="text" id="fullName" placeholder="उदा. संजय रामभाऊ गांगुर्डे" required>
             </div>
             <div class="form-group">
                 <label for="mobile">मोबाईल नंबर (Mobile Number):</label>
@@ -69,7 +110,18 @@
             </div>
             <div class="form-group">
                 <label for="city">शहर / जिल्हा (City / Location):</label>
-                <input type="text" id="city" placeholder="उदा. पुणे / मुंबई / ठाणे" required>
+                <input type="text" id="city" placeholder="उदा. मुंबई, महाराष्ट्र" required>
+            </div>
+            <div class="form-group">
+                <label for="division">विभाग (Division):</label>
+                <select id="division" required>
+                    <option value="कोकण विभाग">कोकण विभाग</option>
+                    <option value="पुणे विभाग">पुणे विभाग</option>
+                    <option value="नाशिक विभाग">नाशिक विभाग</option>
+                    <option value="छत्रपती संभाजीनगर विभाग">छत्रपती संभाजीनगर विभाग</option>
+                    <option value="अमरावती विभाग">अमरावती विभाग</option>
+                    <option value="नागपूर विभाग">नागपूर विभाग</option>
+                </select>
             </div>
             <button type="submit" class="btn-submit"><i class="fa-solid fa-file-pdf"></i> नोंदणी करा आणि नियुक्ती पत्र डाऊनलोड करा</button>
         </form>
@@ -77,81 +129,143 @@
         <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> मुख्य पानावर जा</a>
     </div>
 
-    <!-- PREVIEW TEMPLATE FOR PDF GENERATION -->
+    <!-- PREVIEW TEMPLATE FOR PDF GENERATION (A4 Exact Layout) -->
     <div id="letter-template">
-        <div class="watermark">RAKTDATA</div>
-        <div class="letter-header">
-            <div class="letter-logo">
-                <img src="logo.png" alt="Logo" style="height:55px; vertical-align:middle; margin-right:10px;"> RAKTDATA.IN
-            </div>
-            <div class="letter-subtitle">राष्ट्रीय रक्तदान जागरूकता, समन्वय आणि सहकार्य डिजिटल मंच</div>
-            <div style="font-size: 0.9rem; color: #666; margin-top:5px; font-weight: bold;">"रक्तदानासाठी एकत्र – संस्था स्वतंत्र."</div>
-        </div>
-
-        <!-- Appointment Details Table -->
-        <table class="details-table">
+        <table class="header-table">
             <tr>
-                <td class="label">दिनांक (Date)</td>
-                <td class="value" id="pdfDate"></td>
-                <td class="label">स्वयंसेवक क्र. (ID)</td>
-                <td class="value" id="pdfRandId" style="color: var(--primary-color);"></td>
-            </tr>
-            <tr>
-                <td class="label">पूर्ण नाव (Name)</td>
-                <td class="value" id="pdfName" colspan="3" style="font-size: 1.15rem; color: var(--secondary-color);"></td>
-            </tr>
-            <tr>
-                <td class="label">ठिकाण (Location)</td>
-                <td class="value" id="pdfCity"></td>
-                <td class="label">रक्तगट (Blood)</td>
-                <td class="value" id="pdfBlood" style="color: var(--primary-color);"></td>
-            </tr>
-            <tr>
-                <td class="label">पद (Designation)</td>
-                <td class="value">अधिकृत राष्ट्रीय डिजिटल स्वयंसेवक</td>
-                <td class="label">वैधता (Validity)</td>
-                <td class="value" id="pdfValidity" style="font-size: 0.9rem;"></td>
+                <td class="logo-left">
+                    <img src="logo.png" alt="Raktdata Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/807/807351.png'">
+                </td>
+                <td class="header-center">
+                    <h1>RAKTDATA.IN</h1>
+                    <div class="sub-title">NATIONAL BLOOD DONATION MOVEMENT</div>
+                    <div class="slogan">❤️ रक्तदानासाठी एकत्र – संस्था स्वतंत्र ❤️</div>
+                </td>
+                <td class="logo-right">
+                    <!-- Standard Ribbon Image or Fallback CSS design -->
+                    <div style="width: 70px; height: 70px; border-radius: 50%; border: 4px double #d4af37; background-color: #c62828; color: white; display: flex; align-items: center; justify-content: center; font-size: 8pt; font-weight: bold; text-align: center; margin: auto; line-height: 1.1;">BLOOD DONATION<br>SAVE LIFE</div>
+                </td>
             </tr>
         </table>
-
-        <div class="letter-body">
-            <p>प्रति,</p>
-            <p><strong>महोदय / महोदया,</strong></p>
-            <p style="text-indent: 50px;">आपल्या राष्ट्रप्रेमी भावनेची आणि सामाजिक सेवेची दखल घेऊन, <strong>RAKTDATA.IN (राष्ट्रीय रक्तदान नेटवर्क)</strong> अंतर्गत आपल्या भागात रक्तदानाविषयी जागरूकता वाढवण्यासाठी आणि आपत्कालीन रक्त पुरवठ्यात मदत करण्यासाठी आपली <strong>'अधिकृत राष्ट्रीय डिजिटल स्वयंसेवक'</strong> या पदावर नियुक्ती करण्यात येत आहे.</p>
-            
-            <p>आपल्याला दिलेला हा अधिकार आणि ओळख संपूर्णपणे डिजिटल स्वरूपात असणार आहे. आपल्या भागातील रक्तदाते, सामाजिक संस्था आणि रक्तपेढ्या यांच्यामध्ये समन्वय साधणे, तसेच डिजिटल माध्यमांद्वारे गरजूंना मदत करणे ही आपली मुख्य जबाबदारी असेल.</p>
-            
-            <p>आपल्या या निःस्वार्थ सामाजिक योगदानामुळे अनेक निष्पाप जीव वाचण्यास मदत होईल, अशी आम्हाला खात्री आहे. या राष्ट्रीय चळवळीत आपले सहर्ष स्वागत असून पुढील सामाजिक कार्यासाठी मनःपूर्वक शुभेच्छा!</p>
-        </div>
-
-        <div class="letter-footer">
-            <div class="seal-box">
-                RAKTDATA<br>OFFICIAL<br>SEAL
-            </div>
-            <div class="signature-box">
-                <div style="height: 40px; font-family:'Courier New', monospace; font-style:italic; color:#777; font-size: 1.1rem;">D. M. Gaikwad</div>
-                <div style="border-top: 1px solid #000; padding-top: 5px;">दिलीप म. गायकवाड</div>
-                <div style="font-size: 0.85rem; color: #555; font-weight: normal;">संस्थापक व राष्ट्रीय समन्वयक</div>
-            </div>
+        
+        <div class="title-ribbon">स्वयंसेवी नियुक्तीपत्र</div>
+        
+        <table class="content-table">
+            <tr>
+                <!-- Left Sidebar Details Column -->
+                <td class="sidebar">
+                    <div class="sidebar-title">नियुक्ती तपशील</div>
+                    
+                    <div class="vol-id-box">
+                        <div style="font-size: 26pt; color: var(--navy-color); line-height: 1; margin-bottom: 5px;">👤</div>
+                        <div class="vol-id-title">Volunteer ID</div>
+                        <div class="vol-id-value" id="pdfRandId">RDN-KON-0001</div>
+                    </div>
+                    
+                    <!-- Dynamic QR Code Container -->
+                    <div class="qr-placeholder" id="qrcode"></div>
+                    <div style="font-size: 7.5pt; color: #666; margin-bottom: 12px; font-weight: bold; line-height: 1.2;">पडताळणीसाठी स्कॅन करा<br>किंवा भेट द्या<br><span style="color:#1a237e;">www.raktdata.in/verify</span></div>
+                    
+                    <div class="sidebar-meta-item">
+                        <strong>📅 नियुक्ती दिनांक</strong>
+                        <span id="pdfDateLeft">05 जुलै 2026</span>
+                    </div>
+                    <div class="sidebar-meta-item">
+                        <strong>⏳ वैधता कालावधी</strong>
+                        <span id="pdfValidity">05 जुलै 2026 ते 04 जुलै 2027</span>
+                    </div>
+                    <div class="sidebar-meta-item">
+                        <strong>📍 विभाग</strong>
+                        <span id="pdfDivision">कोकण विभाग</span>
+                    </div>
+                    <div class="sidebar-meta-item">
+                        <strong>👥 भूमिका</strong>
+                        समन्वय, जनजागृती आणि नेटवर्क विस्तार
+                    </div>
+                    
+                    <div class="sidebar-bottom-logo">
+                        RAKTDATA.IN
+                    </div>
+                </td>
+                
+                <!-- Right Main Content Column -->
+                <td class="main-body">
+                    <table class="meta-info-table">
+                        <tr>
+                            <td></td>
+                            <td style="text-align: right; line-height: 1.4;">
+                                <strong>पत्र क्रमांक:</strong> <span id="pdfLetterNo">RDN/2026/KONKAN/001</span><br>
+                                <strong>दिनांक:</strong> <span id="pdfDateRight">05 जुलै 2026</span>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <div class="to-section">
+                        प्रति,<br>
+                        <span class="name" id="pdfName">श्री. संजय रामभाऊ गांगुर्डे</span><br>
+                        <span id="pdfLocation">मुंबई, महाराष्ट्र</span>
+                    </div>
+                    
+                    <div class="subject-line">
+                        विषय: <span id="pdfSubject">कोकण विभाग समन्वयक (Konkan Division Coordinator)</span> म्हणून स्वयंसेवी नियुक्ती
+                    </div>
+                    
+                    <div class="intro-text">
+                        रक्तदान जनजागृती, सामाजिक बांधिलकी आणि मानवसेवेबद्दलची आपली निष्ठा लक्षात घेऊन, आपणास <strong>RAKTDATA.IN – National Blood Donation Movement</strong> या राष्ट्रीय रक्तदान जनजागृती उपक्रमात <span id="pdfBodyRole"><strong>"कोकण विभाग समन्वयक" (Konkan Division Coordinator)</strong></span> म्हणून स्वयंसेवी स्वरूपात नियुक्त करण्यात येत आहे.
+                    </div>
+                    
+                    <div class="section-header">प्रमुख जबाबदाऱ्या</div>
+                    <ul class="resp-list">
+                        <li>1. <span id="pdfRespCity">कोकण</span> विभागातील रक्तदान जनजागृतीसाठी समन्वय साधणे.</li>
+                        <li>2. रक्तदान क्षेत्रात कार्यरत संस्था, ब्लड बँका, रुग्णालये व स्वयंसेवक यांच्याशी संवाद वाढवणे.</li>
+                        <li>3. रक्तदान शिबिरांची माहिती Raktdata.in वर पोहोचविणे.</li>
+                        <li>4. नवीन स्वयंसेवक व संस्थांना नेटवर्कशी जोडण्यासाठी सहकार्य करणे.</li>
+                        <li>5. रक्तदानाविषयी अचूक, विश्वासार्ह व सकारात्मक माहितीचा प्रसार करणे.</li>
+                        <li>6. Raktdata.in च्या आचारसंहितेचे पालन करणे.</li>
+                    </ul>
+                    
+                    <div class="section-header" style="margin-top: 10px;">अटी व शर्ती</div>
+                    <ul class="terms-list">
+                        <li>ही नियुक्ती पूर्णपणे स्वयंसेवी स्वरूपाची आहे.</li>
+                        <li>या नियुक्तीमुळे रोजगार, वेतन, मानधन किंवा मालकी हक्क निर्माण होत नाही.</li>
+                        <li>संबंधित व्यक्ती स्वतःच्या इतर संस्था किंवा सामाजिक कार्यक्षेत्रात भूमिका पार पाडू शकतात.</li>
+                        <li>Raktdata.in हे सर्व संस्था आणि रक्तदान क्षेत्रातील घटकांना जोडणारे स्वतंत्र डिजिटल व्यासपीठ आहे.</li>
+                    </ul>
+                    
+                    <div class="closing-text">
+                        आपल्या सहकार्यामुळे रक्तदान चळवळीला नवी दिशा मिळेल, असा आम्हाला विश्वास आहे. आपल्या कार्यासाठी मनःपूर्वक शुभेच्छा.
+                    </div>
+                    
+                    <table class="signature-table">
+                        <tr>
+                            <td class="sig-left">
+                                <div style="color: var(--primary-color); font-weight: bold; font-size: 9pt; margin-bottom: 5px;">❤️ रक्तदानासाठी एकत्र – संस्था स्वतंत्र ❤️</div>
+                                <div style="height: 35px; font-family:'Courier New', monospace; font-style:italic; color:#555; font-size:13pt; font-weight:bold; padding-left: 10px;">D. M. Gaikwad</div>
+                                <strong>दिलीप म. गायकवाड</strong><br>
+                                <span style="font-size: 8.5pt; color: #555;">संस्थापक (Founder)</span>
+                            </td>
+                            <td class="sig-right">
+                                <div class="seal-box">
+                                    RAKTDATA.IN<br>NATIONAL<br>BLOOD<br>MOVEMENT
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+        <!-- Bottom Banner -->
+        <div class="bottom-banner">
+            <span>🌐 www.raktdata.in</span>
+            <span>✉️ raktdatas@gmail.com</span>
+            <span>📞 +91 93214 30535</span>
         </div>
     </div>
 
-    <!-- JavaScript for Data & PDF Generation -->
+    <!-- JavaScript for Dynamic Handling -->
     <script>
-        const today = new Date();
-        const day = String(today.getDate()).padStart(2, '0');
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const year = today.getFullYear();
-        
-        document.getElementById('pdfDate').innerText = `${day}/${month}/${year}`;
-        
-        // वैधता कालावधी (पुढील १ वर्ष)
-        const nextYear = year + 1;
-        document.getElementById('pdfValidity').innerText = `${day}/${month}/${year} ते ${day}/${month}/${nextYear}`;
-
-        // रँडम व्हॉलंटियर आयडी (Volunteer ID)
-        const randNum = Math.floor(1000 + Math.random() * 9000);
-        document.getElementById('pdfRandId').innerText = `RD/VOL/${year}/${randNum}`;
+        const monthNamesMarathi = ["जानेवारी", "फेब्रुवारी", "मार्च", "एप्रिल", "मे", "जून", "जुलै", "ऑगस्ट", "सप्टेंबर", "ऑक्टोबर", "नोव्हेंबर", "डिसेंबर"];
 
         document.getElementById('volunteerForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
@@ -160,39 +274,68 @@
             const mobile = document.getElementById('mobile').value;
             const blood = document.getElementById('bloodGroup').value;
             const city = document.getElementById('city').value;
+            const division = document.getElementById('division').value;
 
-            document.getElementById('pdfName').innerText = name;
-            document.getElementById('pdfCity').innerText = city;
-            document.getElementById('pdfBlood').innerText = blood;
+            // Date processing
+            const today = new Date();
+            const day = String(today.getDate()).padStart(2, '0');
+            const monthText = monthNamesMarathi[today.getMonth()];
+            const year = today.getFullYear();
+            const dateStr = `${day} ${monthText} ${year}`;
+            
+            const nextYearDate = `${day} ${monthText} ${year + 1}`;
 
-            // (पर्यायी) गुगल शीट लिंक जोडायची असल्यास खालील रिकाम्या डबल कोटमध्ये टाकावी:
+            // Generate unique numbers
+            const randNum = Math.floor(1000 + Math.random() * 9000);
+            const volId = `RDN-KON-${randNum}`;
+            const letterNo = `RDN/${year}/KONKAN/${randNum}`;
+
+            // Push values to PDF
+            document.getElementById('pdfDateLeft').innerText = dateStr;
+            document.getElementById('pdfDateRight').innerText = dateStr;
+            document.getElementById('pdfValidity').innerText = `${dateStr} ते ${nextYearDate}`;
+            document.getElementById('pdfRandId').innerText = volId;
+            document.getElementById('pdfLetterNo').innerText = letterNo;
+            
+            document.getElementById('pdfName').innerText = `श्री. ${name}`;
+            document.getElementById('pdfLocation').innerText = city;
+            document.getElementById('pdfDivision').innerText = division;
+            
+            // Adjust Roles based on selection
+            const englishDivisionName = division.replace(" विभाग", "") + " Division Coordinator";
+            document.getElementById('pdfSubject').innerText = `${division} समन्वयक (${englishDivisionName})`;
+            document.getElementById('pdfBodyRole').innerHTML = `<strong>"${division} समन्वयक" (${englishDivisionName})</strong>`;
+            document.getElementById('pdfRespCity').innerText = division.replace(" विभाग", "");
+
+            // Generate QR Code dynamically
+            document.getElementById('qrcode').innerHTML = "";
+            new QRCode(document.getElementById("qrcode"), {
+                text: `https://raktdata.in/verify?id=${volId}`,
+                width: 80,
+                height: 80
+            });
+
+            // Trigger Google Sheet if URL exists
             const googleSheetUrl = ""; 
-
             if(googleSheetUrl !== "") {
                 fetch(googleSheetUrl, {
                     method: 'POST',
                     mode: 'no-cors',
                     cache: 'no-cache',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        name: name, 
-                        mobile: mobile, 
-                        blood: blood, 
-                        city: city, 
-                        id: document.getElementById('pdfRandId').innerText 
-                    })
+                    body: JSON.stringify({ name: name, mobile: mobile, blood: blood, city: city, division: division, id: volId })
                 });
             }
 
-            // पीडीएफ जनरेशन सुरू करणे
+            // PDF Download
             const element = document.getElementById('letter-template');
             element.style.display = 'block'; 
 
             const opt = {
-                margin:       10,
-                filename:     'Raktdata_Appointment_Letter_' + name.replace(/\s+/g, '_') + '.pdf',
+                margin:       0,
+                filename:     'Raktdata_Niyukti_Patra_' + name.replace(/\s+/g, '_') + '.pdf',
                 image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
+                html2canvas:  { scale: 2, useCORS: true },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
 
