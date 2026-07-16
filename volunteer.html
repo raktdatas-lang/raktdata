@@ -9,75 +9,338 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
-        :root { --primary-color: #c62828; --secondary-color: #b71c1c; --navy-color: #0d1b3e; --text-color: #333; }
-        body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; margin: 0; padding: 20px; background-color: #f5f5f5; color: var(--text-color); }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h2 { text-align: center; color: var(--primary-color); margin-bottom: 25px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; }
-        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 1rem; }
-        .btn-submit { background-color: var(--primary-color); color: white; border: none; width: 100%; padding: 12px; font-size: 1.1rem; font-weight: bold; border-radius: 4px; cursor: pointer; transition: 0.3s; }
-        .btn-submit:hover { background-color: var(--secondary-color); }
-        .back-link { display: block; text-align: center; margin-top: 20px; color: #555; text-decoration: none; font-weight: 600; }
+        :root { 
+            --primary-color: #c62828; 
+            --navy-color: #0d1b3e; 
+            --text-color: #333; 
+        }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background-color: #f5f5f5; 
+            color: var(--text-color); 
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        h2 { 
+            text-align: center; 
+            color: var(--primary-color); 
+            margin-bottom: 25px; 
+        }
+        .form-group { 
+            margin-bottom: 20px; 
+        }
+        .form-group label { 
+            display: block; 
+            font-weight: bold; 
+            margin-bottom: 8px; 
+        }
+        .form-group input, .form-group select { 
+            width: 100%; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+            font-size: 1rem; 
+        }
+        .btn-submit { 
+            background-color: var(--primary-color); 
+            color: white; 
+            border: none; 
+            width: 100%; 
+            padding: 12px; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        .btn-submit:hover { 
+            background-color: #b71c1c; 
+        }
+        .back-link { 
+            display: block; 
+            text-align: center; 
+            margin-top: 20px; 
+            color: #555; 
+            text-decoration: none; 
+            font-weight: 600; 
+        }
         
-        /* Premium PDF Custom Layout */
-        #letter-template { display: none; background: white; padding: 10mm; position: relative; color: #222; box-sizing: border-box; width: 210mm; height: 297mm; border: 2px solid var(--navy-color); }
+        /* Premium A4 Layout Structure */
+        #letter-template { 
+            display: none; 
+            background: white; 
+            padding: 12mm 10mm 10mm 10mm; 
+            position: relative; 
+            color: #222; 
+            box-sizing: border-box; 
+            width: 210mm; 
+            height: 297mm; 
+            border: 1px solid #ccc;
+        }
         
         /* Header Section */
-        .header-table { width: 100%; border-collapse: collapse; margin-bottom: 5px; }
-        .logo-left { width: 15%; text-align: left; vertical-align: middle; }
-        .logo-left img { height: 85px; }
-        .header-center { width: 70%; text-align: center; vertical-align: middle; }
-        .header-center h1 { color: var(--primary-color); font-size: 24pt; margin: 0; font-weight: bold; letter-spacing: 1px; }
-        .header-center .sub-title { color: var(--navy-color); font-size: 10pt; font-weight: bold; margin-top: 2px; }
-        .header-center .slogan { color: var(--primary-color); font-size: 11pt; font-weight: bold; margin-top: 6px; }
-        .logo-right { width: 15%; text-align: right; vertical-align: middle; }
-        .logo-right img { height: 80px; }
+        .header-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-bottom: 5px; 
+        }
+        .logo-left { 
+            width: 15%; 
+            text-align: left; 
+            vertical-align: middle; 
+        }
+        .logo-left img { 
+            height: 85px; 
+        }
+        .header-center { 
+            width: 70%; 
+            text-align: center; 
+            vertical-align: middle; 
+        }
+        .header-center h1 { 
+            color: var(--primary-color); 
+            font-size: 26pt; 
+            margin: 0; 
+            font-weight: bold; 
+            letter-spacing: 1.5px; 
+        }
+        .header-center .sub-title { 
+            color: var(--navy-color); 
+            font-size: 10.5pt; 
+            font-weight: bold; 
+            margin-top: 2px; 
+            letter-spacing: 0.5px;
+        }
+        .header-center .slogan { 
+            color: var(--primary-color); 
+            font-size: 11pt; 
+            font-weight: bold; 
+            margin-top: 6px; 
+        }
+        .logo-right { 
+            width: 15%; 
+            text-align: right; 
+            vertical-align: middle; 
+        }
+        .logo-right img { 
+            height: 80px; 
+        }
         
-        /* Blue Ribbon Title */
-        .title-ribbon { background: linear-gradient(135deg, #101c42 0%, #1a295c 100%); color: #ffffff; text-align: center; padding: 8px 0; font-size: 16pt; font-weight: bold; margin: 10px auto; width: 100%; border-radius: 4px; border-left: 15px solid #d4af37; border-right: 15px solid #d4af37; }
+        /* Ribbon Title */
+        .title-ribbon { 
+            background: linear-gradient(135deg, #101c42 0%, #1a295c 100%); 
+            color: #ffffff; 
+            text-align: center; 
+            padding: 8px 0; 
+            font-size: 18pt; 
+            font-weight: bold; 
+            margin: 12px auto; 
+            width: 100%; 
+            border-radius: 4px; 
+            border-left: 15px solid #d4af37; 
+            border-right: 15px solid #d4af37; 
+        }
         
         /* Two Column Layout */
-        .content-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .sidebar { width: 28%; vertical-align: top; background-color: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 10px; text-align: center; }
-        .main-body { width: 72%; vertical-align: top; padding-left: 18px; }
+        .content-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 15px; 
+        }
+        .sidebar { 
+            width: 28%; 
+            vertical-align: top; 
+            background-color: #fcfcfc; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 6px; 
+            padding: 12px 10px; 
+            text-align: center; 
+        }
+        .main-body { 
+            width: 72%; 
+            vertical-align: top; 
+            padding-left: 22px; 
+        }
         
         /* Sidebar Elements */
-        .sidebar-title { background-color: var(--navy-color); color: #ffffff; font-size: 11pt; font-weight: bold; padding: 5px 0; border-radius: 4px; margin-bottom: 10px; }
-        .vol-id-box { margin-bottom: 12px; }
-        .vol-id-title { font-size: 9pt; color: #555; margin: 3px 0; }
-        .vol-id-value { font-size: 11pt; font-weight: bold; color: var(--primary-color); }
-        .qr-placeholder { margin: 8px auto; width: 90px; height: 90px; padding: 5px; background: #fff; display: flex; align-items: center; justify-content: center; border: 1px solid #ccc; }
-        .sidebar-meta-item { text-align: left; margin-top: 10px; font-size: 8.5pt; border-bottom: 1px dashed #ddd; padding-bottom: 4px; }
-        .sidebar-meta-item strong { color: var(--navy-color); display: block; margin-bottom: 2px; }
-        .sidebar-bottom-logo { margin-top: 20px; font-size: 11pt; font-weight: bold; color: var(--primary-color); }
+        .sidebar-title { 
+            background-color: var(--navy-color); 
+            color: #ffffff; 
+            font-size: 11pt; 
+            font-weight: bold; 
+            padding: 5px 0; 
+            border-radius: 4px; 
+            margin-bottom: 12px; 
+        }
+        .vol-id-box { 
+            margin-bottom: 15px; 
+        }
+        .vol-id-title { 
+            font-size: 8.5pt; 
+            color: #777; 
+            margin: 2px 0; 
+        }
+        .vol-id-value { 
+            font-size: 11pt; 
+            font-weight: bold; 
+            color: var(--primary-color); 
+        }
+        .qr-placeholder { 
+            margin: 8px auto; 
+            width: 90px; 
+            height: 90px; 
+            padding: 3px; 
+            background: #fff; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border: 1px dashed #bbb; 
+        }
+        .sidebar-meta-item { 
+            text-align: left; 
+            margin-top: 12px; 
+            font-size: 8.5pt; 
+            border-bottom: 1px dashed #ddd; 
+            padding-bottom: 5px; 
+        }
+        .sidebar-meta-item strong { 
+            color: var(--navy-color); 
+            display: block; 
+            margin-bottom: 3px; 
+        }
+        .sidebar-bottom-logo { 
+            margin-top: 25px; 
+            font-size: 11pt; 
+            font-weight: bold; 
+            color: var(--primary-color); 
+            letter-spacing: 0.5px;
+        }
         
         /* Main Body Elements */
-        .meta-info-table { width: 100%; font-size: 9.5pt; margin-bottom: 10px; }
-        .to-section { font-size: 11pt; margin-bottom: 10px; line-height: 1.5; }
-        .to-section .name { color: var(--primary-color); font-size: 13pt; font-weight: bold; }
-        .subject-line { font-size: 11pt; font-weight: bold; margin-bottom: 12px; line-height: 1.4; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
-        .subject-line span { color: var(--primary-color); }
-        .intro-text { font-size: 9.5pt; line-height: 1.5; text-align: justify; margin-bottom: 12px; }
+        .meta-info-table { 
+            width: 100%; 
+            font-size: 9.5pt; 
+            margin-bottom: 15px; 
+        }
+        .to-section { 
+            font-size: 11pt; 
+            margin-bottom: 12px; 
+            line-height: 1.5; 
+        }
+        .to-section .name { 
+            color: var(--primary-color); 
+            font-size: 13pt; 
+            font-weight: bold; 
+        }
+        .subject-line { 
+            font-size: 11pt; 
+            font-weight: bold; 
+            margin-bottom: 15px; 
+            line-height: 1.5; 
+        }
+        .subject-line span { 
+            color: var(--primary-color); 
+        }
+        .intro-text { 
+            font-size: 9.5pt; 
+            line-height: 1.6; 
+            text-align: justify; 
+            margin-bottom: 15px; 
+        }
         
-        .section-header { background-color: var(--navy-color); color: #ffffff; font-size: 9.5pt; font-weight: bold; padding: 3px 10px; display: inline-block; border-radius: 3px; margin-bottom: 6px; }
+        .section-header { 
+            background-color: var(--navy-color); 
+            color: #ffffff; 
+            font-size: 10pt; 
+            font-weight: bold; 
+            padding: 3px 10px; 
+            display: inline-block; 
+            border-radius: 3px; 
+            margin-bottom: 8px; 
+        }
         
-        .resp-list, .terms-list { margin: 0; padding-left: 15px; font-size: 8.5pt; line-height: 1.4; }
-        .resp-list li, .terms-list li { margin-bottom: 4px; text-align: justify; list-style-type: none; }
-        .terms-list li::before { content: "• "; color: var(--primary-color); font-weight: bold; }
+        .resp-list, .terms-list { 
+            margin: 0 0 15px 0; 
+            padding-left: 15px; 
+            font-size: 9pt; 
+            line-height: 1.5; 
+        }
+        .resp-list li, .terms-list li { 
+            margin-bottom: 5px; 
+            text-align: justify; 
+            list-style-type: none; 
+        }
+        .terms-list li::before { 
+            content: "• "; 
+            color: var(--primary-color); 
+            font-weight: bold; 
+        }
         
-        .closing-text { font-size: 9pt; line-height: 1.4; margin-top: 10px; font-weight: bold; color: var(--navy-color); }
+        .closing-text { 
+            font-size: 9.5pt; 
+            line-height: 1.5; 
+            margin-top: 10px; 
+            font-weight: bold; 
+            color: var(--navy-color); 
+        }
         
         /* Signatures & Seal */
-        .signature-table { width: 100%; margin-top: 15px; }
-        .signature-table td { vertical-align: bottom; }
-        .sig-left { width: 60%; font-size: 9.5pt; }
-        .sig-right { width: 40%; text-align: right; }
-        .seal-box { border: 2px double var(--navy-color); width: 80px; height: 80px; border-radius: 50%; display: inline-block; text-align: center; font-size: 7pt; color: var(--navy-color); font-weight: bold; padding-top: 18px; line-height: 1.2; }
+        .signature-table { 
+            width: 100%; 
+            margin-top: 15px; 
+        }
+        .signature-table td { 
+            vertical-align: bottom; 
+        }
+        .sig-left { 
+            width: 60%; 
+            font-size: 9.5pt; 
+        }
+        .sig-right { 
+            width: 40%; 
+            text-align: right; 
+        }
+        .seal-box { 
+            border: 2px double var(--navy-color); 
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%; 
+            display: inline-block; 
+            text-align: center; 
+            font-size: 7.5pt; 
+            color: var(--navy-color); 
+            font-weight: bold; 
+            padding-top: 18px; 
+            line-height: 1.2; 
+        }
         
-        /* Absolute Bottom Footer */
-        .bottom-banner { position: absolute; bottom: 0; left: 0; width: 100%; background-color: var(--navy-color); color: #ffffff; padding: 8px 15px; font-size: 9pt; display: flex; justify-content: space-around; }
-        .bottom-banner span { display: flex; align-items: center; gap: 5px; }
+        /* Bottom Banner (Footer Contact Bar) */
+        .bottom-banner { 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            background-color: var(--navy-color); 
+            color: #ffffff; 
+            padding: 8px 15px; 
+            font-size: 9pt; 
+            display: flex; 
+            justify-content: space-around; 
+        }
+        .bottom-banner span { 
+            display: flex; 
+            align-items: center; 
+            gap: 5px; 
+        }
     </style>
 </head>
 <body>
@@ -88,7 +351,7 @@
         <form id="volunteerForm">
             <div class="form-group">
                 <label for="fullName">पूर्ण नाव (Full Name):</label>
-                <input type="text" id="fullName" placeholder="उदा. संजय रामभाऊ गांगुर्डे" required>
+                <input type="text" id="fullName" placeholder="उदा. दिलीप मच्छिंद्रनाथ गायकवाड" required>
             </div>
             <div class="form-group">
                 <label for="mobile">मोबाईल नंबर (Mobile Number):</label>
@@ -110,7 +373,7 @@
             </div>
             <div class="form-group">
                 <label for="city">शहर / जिल्हा (City / Location):</label>
-                <input type="text" id="city" placeholder="उदा. मुंबई, महाराष्ट्र" required>
+                <input type="text" id="city" placeholder="उदा. मुंबई" required>
             </div>
             <div class="form-group">
                 <label for="division">विभाग (Division):</label>
@@ -142,7 +405,6 @@
                     <div class="slogan">❤️ रक्तदानासाठी एकत्र – संस्था स्वतंत्र ❤️</div>
                 </td>
                 <td class="logo-right">
-                    <!-- Standard Ribbon Image or Fallback CSS design -->
                     <div style="width: 70px; height: 70px; border-radius: 50%; border: 4px double #d4af37; background-color: #c62828; color: white; display: flex; align-items: center; justify-content: center; font-size: 8pt; font-weight: bold; text-align: center; margin: auto; line-height: 1.1;">BLOOD DONATION<br>SAVE LIFE</div>
                 </td>
             </tr>
@@ -159,7 +421,7 @@
                     <div class="vol-id-box">
                         <div style="font-size: 26pt; color: var(--navy-color); line-height: 1; margin-bottom: 5px;">👤</div>
                         <div class="vol-id-title">Volunteer ID</div>
-                        <div class="vol-id-value" id="pdfRandId">RDN-KON-0001</div>
+                        <div class="vol-id-value" id="pdfRandId">RDN-KON-2191</div>
                     </div>
                     
                     <!-- Dynamic QR Code Container -->
@@ -168,11 +430,11 @@
                     
                     <div class="sidebar-meta-item">
                         <strong>📅 नियुक्ती दिनांक</strong>
-                        <span id="pdfDateLeft">05 जुलै 2026</span>
+                        <span id="pdfDateLeft">16 जुलै 2026</span>
                     </div>
                     <div class="sidebar-meta-item">
                         <strong>⏳ वैधता कालावधी</strong>
-                        <span id="pdfValidity">05 जुलै 2026 ते 04 जुलै 2027</span>
+                        <span id="pdfValidity">16 जुलै 2026 ते 16 जुलै 2027</span>
                     </div>
                     <div class="sidebar-meta-item">
                         <strong>📍 विभाग</strong>
@@ -194,24 +456,24 @@
                         <tr>
                             <td></td>
                             <td style="text-align: right; line-height: 1.4;">
-                                <strong>पत्र क्रमांक:</strong> <span id="pdfLetterNo">RDN/2026/KONKAN/001</span><br>
-                                <strong>दिनांक:</strong> <span id="pdfDateRight">05 जुलै 2026</span>
+                                <strong>पत्र क्रमांक:</strong> <span id="pdfLetterNo">RDN/2026/KONKAN/2191</span><br>
+                                <strong>दिनांक:</strong> <span id="pdfDateRight">16 जुलै 2026</span>
                             </td>
                         </tr>
                     </table>
                     
                     <div class="to-section">
                         प्रति,<br>
-                        <span class="name" id="pdfName">श्री. संजय रामभाऊ गांगुर्डे</span><br>
-                        <span id="pdfLocation">मुंबई, महाराष्ट्र</span>
+                        <span class="name" id="pdfName">श्री. दिलीप मच्छिंद्रनाथ गायकवाड</span><br>
+                        <span id="pdfLocation">मुंबई</span>
                     </div>
                     
                     <div class="subject-line">
-                        विषय: <span id="pdfSubject">कोकण विभाग समन्वयक (Konkan Division Coordinator)</span> म्हणून स्वयंसेवी नियुक्ती
+                        विषय: <span id="pdfSubject">कोकण विभाग समन्वयक (कोकण Division Coordinator)</span> म्हणून स्वयंसेवी नियुक्ती
                     </div>
                     
                     <div class="intro-text">
-                        रक्तदान जनजागृती, सामाजिक बांधिलकी आणि मानवसेवेबद्दलची आपली निष्ठा लक्षात घेऊन, आपणास <strong>RAKTDATA.IN – National Blood Donation Movement</strong> या राष्ट्रीय रक्तदान जनजागृती उपक्रमात <span id="pdfBodyRole"><strong>"कोकण विभाग समन्वयक" (Konkan Division Coordinator)</strong></span> म्हणून स्वयंसेवी स्वरूपात नियुक्त करण्यात येत आहे.
+                        रक्तदान जनजागृती, सामाजिक बांधिलकी आणि मानवसेवेबद्दलची आपली निष्ठा लक्षात घेऊन, आपणास <strong>RAKTDATA.IN – National Blood Donation Movement</strong> या राष्ट्रीय रक्तदान जनजागृती उपक्रमात <span id="pdfBodyRole"><strong>"कोकण विभाग समन्वयक" (कोकण Division Coordinator)</strong></span> म्हणून स्वयंसेवी स्वरूपात नियुक्त करण्यात येत आहे.
                     </div>
                     
                     <div class="section-header">प्रमुख जबाबदाऱ्या</div>
@@ -224,7 +486,7 @@
                         <li>6. Raktdata.in च्या आचारसंहितेचे पालन करणे.</li>
                     </ul>
                     
-                    <div class="section-header" style="margin-top: 10px;">अटी व शर्ती</div>
+                    <div class="section-header" style="margin-top: 5px;">अटी व शर्ती</div>
                     <ul class="terms-list">
                         <li>ही नियुक्ती पूर्णपणे स्वयंसेवी स्वरूपाची आहे.</li>
                         <li>या नियुक्तीमुळे रोजगार, वेतन, मानधन किंवा मालकी हक्क निर्माण होत नाही.</li>
@@ -240,7 +502,7 @@
                         <tr>
                             <td class="sig-left">
                                 <div style="color: var(--primary-color); font-weight: bold; font-size: 9pt; margin-bottom: 5px;">❤️ रक्तदानासाठी एकत्र – संस्था स्वतंत्र ❤️</div>
-                                <div style="height: 35px; font-family:'Courier New', monospace; font-style:italic; color:#555; font-size:13pt; font-weight:bold; padding-left: 10px;">D. M. Gaikwad</div>
+                                <div style="height: 35px; font-family:'Courier New', monospace; font-style:italic; color:#333; font-size:13pt; font-weight:bold; padding-left: 10px;">D. M. Gaikwad</div>
                                 <strong>दिलीप म. गायकवाड</strong><br>
                                 <span style="font-size: 8.5pt; color: #555;">संस्थापक (Founder)</span>
                             </td>
@@ -287,8 +549,9 @@
 
             // Generate unique numbers
             const randNum = Math.floor(1000 + Math.random() * 9000);
-            const volId = `RDN-KON-${randNum}`;
-            const letterNo = `RDN/${year}/KONKAN/${randNum}`;
+            const shortDiv = division.replace(" विभाग", "").substring(0,3).toUpperCase();
+            const volId = `RDN-${shortDiv}-${randNum}`;
+            const letterNo = `RDN/${year}/${shortDiv}/${randNum}`;
 
             // Push values to PDF
             document.getElementById('pdfDateLeft').innerText = dateStr;
@@ -302,10 +565,10 @@
             document.getElementById('pdfDivision').innerText = division;
             
             // Adjust Roles based on selection
-            const englishDivisionName = division.replace(" विभाग", "") + " Division Coordinator";
-            document.getElementById('pdfSubject').innerText = `${division} समन्वयक (${englishDivisionName})`;
-            document.getElementById('pdfBodyRole').innerHTML = `<strong>"${division} समन्वयक" (${englishDivisionName})</strong>`;
-            document.getElementById('pdfRespCity').innerText = division.replace(" विभाग", "");
+            const divisionNameOnly = division.replace(" विभाग", "");
+            document.getElementById('pdfSubject').innerHTML = `<span>${divisionNameOnly} विभाग समन्वयक (${divisionNameOnly} Division Coordinator)</span> म्हणून स्वयंसेवी नियुक्ती`;
+            document.getElementById('pdfBodyRole').innerHTML = `<strong>"${divisionNameOnly} विभाग समन्वयक" (${divisionNameOnly} Division Coordinator)</strong>`;
+            document.getElementById('pdfRespCity').innerText = divisionNameOnly;
 
             // Generate QR Code dynamically
             document.getElementById('qrcode').innerHTML = "";
@@ -314,18 +577,6 @@
                 width: 80,
                 height: 80
             });
-
-            // Trigger Google Sheet if URL exists
-            const googleSheetUrl = ""; 
-            if(googleSheetUrl !== "") {
-                fetch(googleSheetUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    cache: 'no-cache',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: name, mobile: mobile, blood: blood, city: city, division: division, id: volId })
-                });
-            }
 
             // PDF Download
             const element = document.getElementById('letter-template');
