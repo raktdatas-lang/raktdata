@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <title>ॲडमिन पॅनल | Raktdata.in</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background: #eceff1; margin: 0; padding: 20px; }
+        .admin-container { max-width: 1000px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h2 { color: #0d1b3e; border-bottom: 2px solid #c62828; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #0d1b3e; color: white; }
+        .btn-approve { background: #2e7d32; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-reject { background: #c62828; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+        
+        /* नियुक्ती पत्राचे हिडन डिझाईन (A4 साइज) */
+        #letter-template { display: none; background: white; padding: 12mm 10mm; width: 210mm; height: 297mm; position: relative; box-sizing: border-box; }
+        .header-table { width: 100%; border-collapse: collapse; }
+        .title-ribbon { background: #101c42; color: white; text-align: center; padding: 8px 0; font-size: 18pt; font-weight: bold; margin: 12px 0; border-left: 15px solid #d4af37; }
+        .content-table { width: 100%; border-collapse: collapse; }
+        .sidebar { width: 28%; vertical-align: top; background: #fcfcfc; border: 1px solid #e0e0e0; padding: 10px; text-align: center; font-size: 9pt; }
+        .main-body { width: 72%; vertical-align: top; padding-left: 20px; }
+        .sidebar-title { background: #0d1b3e; color: white; padding: 5px; font-weight: bold; margin-bottom: 10px; }
+        .qr-placeholder { margin: 10px auto; width: 80px; height: 80px; }
+        .bottom-banner { position: absolute; bottom: 0; left: 0; width: 100%; background: #0d1b3e; color: white; padding: 8px 0; text-align: center; font-size: 9pt; }
+    </style>
+</head>
+<body>
+
+<div class="admin-container">
+    <h2><i class="fa-solid fa-user-shield"></i> Raktdata.in - मुख्य ॲडमिन पॅनल (प्रलंबित अर्ज)</h2>
+    
+    <table id="applicantsTable">
+        <thead>
+            <tr>
+                <th>आयडी</th>
+                <th>नाव</th>
+                <th>मोबाईल</th>
+                <th>विभाग / शहर</th>
+                <th>दिनांक</th>
+                <th>ॲक्शन</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- प्रलंबित अर्ज इथे दिसतील -->
+        </tbody>
+    </table>
+</div>
+
+<!-- मूळ नियुक्ती पत्र टेम्पलेट (बैकग्राउंड मध्ये जनरेट होईल) -->
+<div id="letter-template">
+    <table class="header-table">
+        <tr>
+            <td style="width:15%"><img src="https://cdn-icons-png.flaticon.com/512/807/807351.png" style="height:70px;"></td>
+            <td style="text-align:center; width:70%;">
+                <h1 style="color:#c62828; margin:0; font-size:24pt;">RAKTDATA.IN</h1>
+                <div style="color:#0d1b3e; font-weight:bold; font-size:10pt;">NATIONAL BLOOD DONATION MOVEMENT</div>
+                <div style="color:#c62828; font-weight:bold; margin-top:5px;">❤️ रक्तदानासाठी एकत्र – संस्था स्वतंत्र ❤️</div>
+            </td>
+            <td style="width:15%; text-align:right;"><div style="width:65px; height:65px; border-radius:50%; background:#c62828; color:white; font-size:7pt; font-weight:bold; text-align:center; padding-top:15px; box-sizing:border-box;">BLOOD<br>DONATION</div></td>
+        </tr>
+    </table>
+    
+    <div class="title-ribbon">स्वयंसेवी नियुक्तीपत्र</div>
+    
+    <table class="content-table">
+        <tr>
+            <td class="sidebar">
+                <div class="sidebar-title">नियुक्ती तपशील</div>
+                <div style="font-size:8pt; color:#666;">Volunteer ID</div>
+                <div style="font-size:11pt; font-weight:bold; color:#c62828;" id="pdfVolId"></div>
+                <div class="qr-placeholder" id="qrcode"></div>
+                <div style="font-size:7pt; color:#666; margin-bottom:10px;">पडताळणीसाठी स्कॅन करा</div>
+                <div style="text-align:left; margin-top:10px;"><strong>📅 नियुक्ती दिनांक:</strong> <span id="pdfDateLeft"></span></div>
+                <div style="text-align:left; margin-top:10px;"><strong>📍 विभाग:</strong> <span id="pdfDivision"></span></div>
+            </td>
+            <td class="main-body">
+                <div style="text-align:right; font-size:9pt; margin-bottom:15px;">
+                    <strong>पत्र क्रमांक:</strong> <span id="pdfLetterNo"></span><br>
+                    <strong>दिनांक:</strong> <span id="pdfDateRight"></span>
+                </div>
+                <div style="font-size:11pt; margin-bottom:15px;">
+                    प्रति,<br>
+                    <span style="color:#c62828; font-weight:bold; font-size:13pt;" id="pdfName"></span><br>
+                    <span id="pdfLocation"></span>
+                </div>
+                <p style="font-size:9.5pt; line-height:1.6; text-align:justify;">
+                    रक्तदान जनजागृती, सामाजिक बांधिलकी आणि मानवसेवेबद्दलची आपली निष्ठा लक्षात घेऊन, आपणास <strong>RAKTDATA.IN</strong> या राष्ट्रीय उपक्रमात <strong id="pdfBodyRole"></strong> म्हणून स्वयंसेवी स्वरूपात नियुक्त करण्यात येत आहे.
+                </p>
+                <div style="background:#0d1b3e; color:white; padding:3px 8px; display:inline-block; font-size:9pt; font-weight:bold; margin-top:10px;">प्रमुख जबाबदाऱ्या</div>
+                <ul style="font-size:9pt; line-height:1.5; padding-left:15px;">
+                    <li>विभागातील रक्तदान जनजागृतीसाठी समन्वय साधणे.</li>
+                    <li>रक्तदान शिबिरांची माहिती Raktdata.in वर पोहोचविणे.</li>
+                    <li>Raktdata.in च्या आचारसंहितेचे पालन करणे.</li>
+                </ul>
+                
+                <table style="width:100%; margin-top:40px; border:none;">
+                    <tr style="border:none;"><td style="border:none; width:60%;">
+                        <div style="font-family:monospace; font-style:italic; font-weight:bold; font-size:12pt;">D. M. Gaikwad</div>
+                        <strong>दिलीप म. गायकवाड</strong><br><span style="font-size:8pt; color:#555;">संस्थापक (Founder)</span>
+                    </td><td style="border:none; text-align:right;">
+                        <div style="border:2px double #0d1b3e; width:70px; height:70px; border-radius:50%; display:inline-block; font-size:7pt; font-weight:bold; color:#0d1b3e; padding-top:15px; box-sizing:border-box; text-align:center;">RAKTDATA<br>SEAL</div>
+                    </td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div class="bottom-banner">🌐 www.raktdata.in | ✉️ raktdatas@gmail.com</div>
+</div>
+
+<script>
+    function loadApplicants() {
+        const applicants = JSON.parse(localStorage.getItem('applicants')) || [];
+        const tbody = document.getElementById('tableBody');
+        tbody.innerHTML = "";
+
+        applicants.forEach((app, index) => {
+            if(app.status === 'पेंडिंग') {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${app.id}</td>
+                        <td><strong>${app.name}</strong></td>
+                        <td>${app.mobile}</td>
+                        <td>${app.division} / ${app.city}</td>
+                        <td>${app.date}</td>
+                        <td>
+                            <button class="btn-approve" onclick="approveAndDownload(${index})"><i class="fa-solid fa-check"></i> मंजूर व डाउनलोड</button>
+                            <button class="btn-reject" onclick="rejectApplicant(${index})"><i class="fa-solid fa-trash"></i> नाकारा</button>
+                        </td>
+                    </tr>`;
+            }
+        });
+    }
+
+    function approveAndDownload(index) {
+        let applicants = JSON.parse(localStorage.getItem('applicants'));
+        let app = applicants[index];
+
+        // डेटा पत्रात भरणे
+        document.getElementById('pdfVolId').innerText = app.id;
+        document.getElementById('pdfLetterNo').innerText = `RDN/2026/KONKAN/${Math.floor(1000+Math.random()*9000)}`;
+        document.getElementById('pdfDateLeft').innerText = app.date;
+        document.getElementById('pdfDateRight').innerText = app.date;
+        document.getElementById('pdfName').innerText = `श्री. ${app.name}`;
+        document.getElementById('pdfLocation').innerText = app.city;
+        document.getElementById('pdfDivision').innerText = app.division;
+        document.getElementById('pdfBodyRole').innerText = `"${app.division} समन्वयक"`;
+
+        // QR कोड जनरेट करणे
+        document.getElementById('qrcode').innerHTML = "";
+        new QRCode(document.getElementById("qrcode"), { text: `https://raktdata.in/verify?id=${app.id}`, width: 75, height: 75 });
+
+        // PDF जनरेशन प्रोसेस
+        const element = document.getElementById('letter-template');
+        element.style.display = 'block';
+
+        const opt = {
+            margin: 0,
+            filename: `Raktdata_Niyukti_Patra_${app.name}.pdf`,
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opt).from(element).save().then(() => {
+            element.style.display = 'none';
+            // अर्जदाराचा स्टेटस बदलणे
+            applicants[index].status = 'मंजूर';
+            localStorage.setItem('applicants', JSON.stringify(applicants));
+            loadApplicants();
+            alert("पत्र यशस्वीरित्या मंजूर करून डाऊनलोड केले गेले आहे!");
+        });
+    }
+
+    function rejectApplicant(index) {
+        let applicants = JSON.parse(localStorage.getItem('applicants'));
+        applicants.splice(index, 1);
+        localStorage.setItem('applicants', JSON.stringify(applicants));
+        loadApplicants();
+    }
+
+    // पेज लोड झाल्यावर डेटा दाखवा
+    window.onload = loadApplicants;
+</script>
+</body>
+</html>
