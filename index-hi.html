@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raktdata.in | राष्ट्रीय रक्तदान नेटवर्क</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary-color: #c62828; --secondary-color: #b71c1c; --text-color: #333; --light-bg: #f9f9f9; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: var(--text-color); background-color: var(--light-bg); line-height: 1.6; }
+        .top-bar { background-color: #aa1c1c; color: white; padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; flex-wrap: wrap; }
+        .top-bar-info span { margin-right: 20px; }
+        .top-bar-lang a { color: white; text-decoration: none; margin-left: 10px; font-weight: bold; padding: 2px 8px; border: 1px solid white; border-radius: 3px; }
+        .top-bar-lang a.active { background-color: white; color: #aa1c1c; }
+        header { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 15px 20px; }
+        .logo { font-size: 1.8rem; font-weight: bold; color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .nav-links { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
+        .nav-links a { text-decoration: none; color: #555; font-weight: 600; font-size: 0.95rem; }
+        .hero { background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://images.unsplash.com/photo-1615461066841-6116e61058f4?q=80&w=1200') no-repeat center center/cover; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-size: 3.5rem; color: var(--primary-color); margin: 0; }
+        .hero h2 { font-size: 2rem; margin: 10px 0; color: #444; }
+        .hero p { font-size: 1.2rem; max-width: 800px; margin: 20px auto; color: #666; }
+        .cta-box { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
+        .btn { padding: 12px 25px; font-size: 1.1rem; font-weight: bold; text-decoration: none; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .btn-red { background-color: var(--primary-color); color: white; }
+        .btn-blue { background-color: #1565c0; color: white; }
+        .stats-container { display: flex; justify-content: space-around; max-width: 1200px; margin: -30px auto 40px auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); flex-wrap: wrap; gap: 20px; }
+        .stat-card { text-align: center; flex: 1; min-width: 200px; }
+        .stat-card i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 10px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { background: white; padding: 40px; border-radius: 8px; margin-bottom: 40px; }
+        .section-title { text-align: center; color: var(--primary-color); font-size: 2rem; }
+        .about-split { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
+        .quote-box { background-color: #fff5f5; border-left: 5px solid var(--primary-color); padding: 30px; margin-top: 30px; }
+        footer { background: #222; color: #aaa; padding: 40px 20px; }
+        .footer-cols { display: flex; justify-content: space-between; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 30px; }
+        .footer-col { flex: 1; min-width: 200px; }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-info">
+            <span><i class="fa-solid fa-envelope"></i> info@raktdata.in</span>
+            <span><i class="fa-solid fa-phone"></i> +91 9422 123 123</span>
+        </div>
+        <div class="top-bar-lang">
+            <a href="index.html">मराठी</a>
+            <a href="index-hi.html" class="active">हिंदी</a>
+            <a href="#">English</a>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Raktdata Logo" style="height: 50px; width: auto; border-radius: 4px;">
+                RAKTDATA.IN
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">मुख्यपृष्ठ</a></li>
+                <li><a href="#about">हमारे बारे में</a></li>
+                <li><a href="ebook.html">ई-बुक</a></li>
+                <li><a href="volunteer.html">स्वयंसेवक</a></li>
+                <li><a href="#contact">संपर्क</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>रक्तदान महादान</h1>
+        <h2>आपका एक कदम – किसी की नई जिंदगी!</h2>
+        <p>RAKTDATA.IN भारत में रक्तदाताओं, सामाजिक संगठनों, ब्लड बैंकों और स्वयंसेवकों को एक साथ जोड़ने वाला राष्ट्रीय डिजिटल मंच है।</p>
+        <p style="font-size: 1.4rem; font-weight: bold; color: #222;">"रक्तदान के लिए एक साथ – संस्था स्वतंत्र।"</p>
+        <div class="cta-box">
+            <a href="volunteer.html" class="btn btn-red"><i class="fa-solid fa-heart"></i> स्वयंसेवक बनें</a>
+            <a href="ebook.html" class="btn btn-blue"><i class="fa-solid fa-book"></i> ई-बुक खरीदें</a>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <i class="fa-solid fa-users"></i>
+            <h3>25,000+</h3>
+            <p>पंजीकृत रक्तदाता</p>
+        </div>
+        <div class="stat-card">
+            <i class="fa-solid fa-hospital"></i>
+            <h3>1,200+</h3>
+            <p>ब्लड बैंक</p>
+        </div>
+        <div class="stat-card">
+            <i class="fa-solid fa-handshake"></i>
+            <h3>850+</h3>
+            <p>संबद्ध संस्थाएं</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="section" id="about">
+            <h2 class="section-title">हमारा लक्ष्य और उद्देश्य</h2>
+            <div class="about-split">
+                <div class="about-text">
+                    <p>भारत के प्रत्येक रक्तदाता, अस्पताल और स्वयंसेवक को सुरक्षित तकनीक के माध्यम से जोड़ना हमारा मुख्य उद्देश्य है।</p>
+                    <p><strong>संस्थाओं के लिए विशेष संदेश:</strong> हमारा उद्देश्य किसी भी संस्था की जगह लेना नहीं है, बल्कि आपके सामाजिक कार्य को अधिक डिजिटल ताकत देना है। प्रत्येक संस्था इस आंदोलन में अपनी स्वतंत्र पहचान और नाम बनाए रखेगी।</p>
+                </div>
+            </div>
+
+            <!-- Founder Quote Box -->
+            <div class="quote-box">
+                <div class="quote-text">
+                    <p style="font-size: 1.2rem; font-style: italic; margin: 0 0 10px 0;">
+                        "रक्तदान केवल जीवन बचाने का माध्यम नहीं है, बल्कि इंसानों को आपस में जोड़ने वाला सबसे सुंदर मानवीय सेतु है।"
+                    </p>
+                    <strong style="color: var(--primary-color);">- दिलीप म. गायकवाड (संस्थापक एवं लेखक)</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>RAKTDATA.IN</h4>
+                <p>राष्ट्रीय रक्तदान जागरूकता और समन्वय नेटवर्क। मानवता का एक सच्चा संदेश।</p>
+            </div>
+            <div class="footer-col">
+                <h4>महत्वपूर्ण लिंक्स</h4>
+                <ul>
+                    <li><a href="#">मुख्यपृष्ठ</a></li>
+                    <li><a href="#about">हमारे बारे में</a></li>
+                    <li><a href="volunteer.html">स्वयंसेवक पंजीकरण</a></li>
+                    <li><a href="ebook.html">ई-बुक कक्ष</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>संपर्क करें</h4>
+                <p><i class="fa-solid fa-location-dot"></i> भारत (नेशनल नेटवर्क)</p>
+                <p><i class="fa-solid fa-envelope"></i> info@raktdata.in</p>
+                <p><i class="fa-solid fa-phone"></i> +91 9422 123 123</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Raktdata.in. सर्वाधिकार सुरक्षित। | Designed with ❤️ for Humanity</p>
+        </div>
+    </footer>
+
+</body>
+</html>
