@@ -4,132 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>स्वयंसेवक नोंदणी व नियुक्ती पत्र | Raktdata.in</title>
+    <!-- FontAwesome & html2pdf Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-        }
-        .form-container {
-            max-width: 500px;
-            background: white;
-            padding: 30px;
-            margin: 0 auto 30px auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        h2 { color: #c62828; text-align: center; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input[type="text"], input[type="tel"] {
-            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
-        }
-        .btn {
-            width: 100%; padding: 12px; background: #2e7d32; color: white; border: none;
-            border-radius: 4px; font-size: 1.1rem; cursor: pointer; font-weight: bold;
-        }
-        .btn:hover { background: #1b5e20; }
-
-        #letter-template {
-            display: none;
-            width: 210mm;
-            min-height: 297mm;
-            padding: 20mm;
-            background: white;
-            box-sizing: border-box;
-            position: relative;
-            color: #333;
-        }
-        .letter-header { text-align: center; border-bottom: 3px solid #c62828; padding-bottom: 15px; }
-        .letter-title { font-size: 24px; color: #c62828; font-weight: bold; margin: 0; }
-        .letter-body { margin-top: 40px; font-size: 16px; line-height: 1.8; text-align: justify; }
-        .signature-section { margin-top: 50px; text-align: right; }
+        :root { --primary-color: #c62828; --secondary-color: #b71c1c; --text-color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; margin: 0; padding: 20px; background-color: #f5f5f5; color: var(--text-color); }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: var(--primary-color); margin-bottom: 25px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 1rem; }
+        .btn-submit { background-color: var(--primary-color); color: white; border: none; width: 100%; padding: 12px; font-size: 1.1rem; font-weight: bold; border-radius: 4px; cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { background-color: var(--secondary-color); }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #555; text-decoration: none; font-weight: 600; }
         
-        .id-card {
-            width: 85mm; height: 125mm; border: 2px solid #c62828; border-radius: 10px;
-            margin: 30px auto 0 auto; padding: 15px; text-align: center; background: #fff5f5;
-        }
-        .id-card h3 { color: #c62828; margin: 5px 0; font-size: 18px; }
-        .id-details { text-align: left; margin-top: 15px; font-size: 14px; }
+        /* Hidden Letter Template (Will be generated as PDF) */
+        #letter-template { display: none; background: white; padding: 40px; border: 10px double var(--primary-color); position: relative; color: #222; }
+        .letter-header { text-align: center; border-bottom: 3px solid var(--primary-color); padding-bottom: 15px; margin-bottom: 30px; }
+        .letter-logo { font-size: 2.2rem; font-weight: bold; color: var(--primary-color); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .letter-subtitle { font-size: 1.1rem; color: #555; margin-top: 5px; font-weight: bold; }
+        .letter-meta { display: flex; justify-content: space-between; margin-bottom: 30px; font-weight: bold; color: #444; }
+        .letter-body { text-align: justify; line-height: 1.8; font-size: 1.1rem; }
+        .letter-footer { margin-top: 60px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .seal-box { border: 2px dashed #999; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #777; border-radius: 50%; text-align: center; }
+        .signature-box { text-align: center; font-weight: bold; }
+        .watermark { position: absolute; top: 35%; left: 25%; font-size: 5.5rem; color: rgba(198, 40, 40, 0.05); transform: rotate(-30deg); font-weight: bold; pointer-events: none; }
     </style>
 </head>
 <body>
 
-    <div class="form-container" id="form-section">
-        <h2>🤝 राष्ट्रीय स्वयंसेवक नोंदणी</h2>
-        <div class="form-group">
-            <label>पूर्ण नाव:</label>
-            <input type="text" id="fullName" placeholder="तुमचे नाव टाका" required>
-        </div>
-        <div class="form-group">
-            <label>शहर / जिल्हा:</label>
-            <input type="text" id="city" placeholder="उदा. पुणे, मुंबई" required>
-        </div>
-        <div class="form-group">
-            <label>मोबाईल नंबर:</label>
-            <input type="tel" id="mobile" placeholder="१० अंकी नंबर" required>
-        </div>
-        <button class="btn" onclick="generateLetter()">माहिती सबमिट करा व पत्र मिळवा</button>
-    </div>
-
-    <div id="letter-template">
-        <div class="letter-header">
-            <p class="letter-title">RAKTDATA.IN</p>
-            <p style="margin: 5px 0 0 0; font-style: italic;">"रक्तदानासाठी एकत्र – संस्था स्वतंत्र."</p>
-        </div>
+    <div class="container">
+        <h2><i class="fa-solid fa-id-card"></i> राष्ट्रीय स्वयंसेवक नोंदणी</h2>
         
-        <div class="letter-body">
-            <p><strong>दिनांक:</strong> <span id="current-date"></span></p>
-            <p><strong>प्रति,</strong><br><span id="lbl-name" style="font-weight: bold;"></span><br>निवासस्थान: <span id="lbl-city"></span></p>
-            
-            <p style="font-weight: bold; color: #c62828; margin-top: 20px;">विषय: Raktdata.in राष्ट्रीय चळवळीमध्ये 'डिजिटल स्वयंसेवक' म्हणून नियुक्ती बाबत.</p>
-            
-            <p>महोदय/महोदया,</p>
-            <p>आपणास कळवण्यास अत्यंत आनंद होत आहे की, भारतातील रक्तदान जनजागृती, समन्वय आणि सहकार्याच्या या राष्ट्रीय डिजिटल व्यासपीठावर आपली <strong>'स्वयंसेवक'</strong> म्हणून यशस्वी नोंदणी झाली आहे. मानवतेच्या या पवित्र कार्यात सहभागी झाल्याबद्दल तुमचे मनःपूर्वक स्वागत.</p>
-            <p>आपण आपल्या भागात रक्तदान शिबिरांचे नियोजन करणे, सोशल मीडियाच्या माध्यमातून जनजागृती करणे आणि गरजू रुग्णांना मदत करणे या कार्यात सक्रिय सहभाग नोंदवाल, अशी आम्हाला खात्री आहे. आपली ही नियुक्ती पूर्णपणे सामाजिक आणि निरपेक्ष स्वरूपाची आहे.</p>
-            
-            <div class="signature-section">
-                <p>आपला नम्र,</p>
-                <br>
-                <p><strong>दिलीप म. गायकवाड</strong><br>संस्थापक, Raktdata.in</p>
+        <!-- Registration Form -->
+        <form id="volunteerForm">
+            <div class="form-group">
+                <label for="fullName">पूर्ण नाव (Full Name):</label>
+                <input type="text" id="fullName" placeholder="उदा. अमोल रमेश पाटील" required>
             </div>
+            <div class="form-group">
+                <label for="mobile">मोबाईल क्रमांक:</label>
+                <input type="tel" id="mobile" placeholder="उदा. 98xxxxxxxx" pattern="[0-9]{10}" required>
+            </div>
+            <div class="form-group">
+                <label for="bloodGroup">रक्त गट (Blood Group):</label>
+                <select id="bloodGroup" required>
+                    <option value="">निवडा...</option>
+                    <option value="A+">A +ve</option>
+                    <option value="A-">A -ve</option>
+                    <option value="B+">B +ve</option>
+                    <option value="B-">B -ve</option>
+                    <option value="O+">O +ve</option>
+                    <option value="O-">O -ve</option>
+                    <option value="AB+">AB +ve</option>
+                    <option value="AB-">AB -ve</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city">शहर / जिल्हा:</label>
+                <input type="text" id="city" placeholder="उदा. पुणे / मुंबई" required>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fa-solid fa-file-pdf"></i> नोंदणी करा व नियुक्ती पत्र डाउनलोड करा</button>
+        </form>
+
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> मुख्य पृष्ठावर जा</a>
+    </div>
+
+    <!-- PREVIEW TEMPLATE FOR PDF GENERATION -->
+    <div id="letter-template">
+        <div class="watermark">RAKTDATA</div>
+        <div class="letter-header">
+            <div class="letter-logo"><img src="logo.png" alt="Logo" style="height:50px; vertical-align:middle; margin-right:10px;"> RAKTDATA.IN</div>
+            <div class="letter-subtitle">राष्ट्रीय रक्तदान जनजागृती, समन्वय आणि सहकार्याचे डिजिटल व्यासपीठ</div>
+            <div style="font-size: 0.9rem; color: #666; margin-top:5px;">"रक्तदानासाठी एकत्र – संस्था स्वतंत्र."</div>
         </div>
 
-        <div class="id-card">
-            <h3>RAKTDATA.IN</h3>
-            <p style="font-size: 10px; margin: 0; font-style: italic;">राष्ट्रीय स्वयंसेवक</p>
-            <div style="width: 80px; height: 80px; border: 1px dashed #ccc; margin: 15px auto; background: #eee; line-height: 80px; font-size: 12px; color: #666;">PHOTO</div>
-            <div class="id-details">
-                <strong>नाव:</strong> <span id="id-name"></span><br>
-                <strong>जिल्हा:</strong> <span id="id-city"></span><br>
-                <strong>पद:</strong> डिजिटल स्वयंसेवक<br>
-                <strong>मोबाईल:</strong> <span id="id-phone"></span>
+        <div class="letter-meta">
+            <div>पञ क्र: RD/VOL/2026/<span id="pdfRand">8492</span></div>
+            <div>दिनांक: <span id="pdfDate"></span></div>
+        </div>
+
+        <div class="letter-body">
+            <p>प्रति,</p>
+            <p><strong>श्री/श्रीमती:</strong> <span id="pdfName" style="border-bottom: 1px dotted #000; font-weight: bold; font-size: 1.2rem;"></span><br>
+            <strong>राहणार:</strong> <span id="pdfCity" style="border-bottom: 1px dotted #000; font-weight: bold;"></span><br>
+            <strong>रक्त गट:</strong> <span id="pdfBlood" style="color: var(--primary-color); font-weight: bold;"></span></p>
+
+            <p style="margin-top: 30px; text-indent: 50px;"><strong>विषय: RAKTDATA.IN राष्ट्रीय चळवळीत 'अधिकृत डिजिटल स्वयंसेवक' म्हणून नियुक्तीबाबत.</strong></p>
+
+            <p>महोदय/महोदया,</p>
+            <p>आपणास अत्यंत आनंदाने कळविण्यात येते की, आपल्या राष्ट्रप्रेमी भावनेची आणि सामाजिक सेवेची दखल घेऊन <strong>RAKTDATA.IN (राष्ट्रीय रक्तदान नेटवर्क)</strong> अंतर्गत आपल्या भागात रक्तदान जनजागृती करण्यासाठी आपली <strong>'अधिकृत राष्ट्रीय डिजिटल स्वयंसेवक'</strong> म्हणून नियुक्ती करण्यात येत आहे.</p>
+            
+            <p>तुमचे ब्रीदवाक्य "रक्तदानासाठी एकत्र – संस्था स्वतंत्र" लक्षात ठेवून, आपल्या भागातील रक्तदाते, स्थानिक सामाजिक संस्था आणि ब्लड बँक्स यांच्यात समन्वय साधणे, गरजू रुग्णांना वेळेवर रक्त मिळवून देण्यासाठी मदत करणे आणि डिजिटल स्वरूपात या चळवळीचा प्रसार करणे ही आपली मुख्य जबाबदारी असेल.</p>
+            
+            <p>आपल्या या निःस्वार्थ सामाजिक योगदानामुळे देशातील हजारो रुग्णांचे प्राण वाचण्यास मदत होईल, असा आम्हाला पूर्ण विश्वास आहे. चळवळीत सामील झाल्याबद्दल आपले मनःपूर्वक स्वागत आणि भावी सामाजिक कार्यास हार्दिक शुभेच्छा!</p>
+        </div>
+
+        <div class="letter-footer">
+            <div class="seal-box">
+                RAKTDATA<br>OFFICIAL<br>SEAL
+            </div>
+            <div class="signature-box">
+                <div style="height: 40px; font-family:'Courier New', monospace; font-style:italic; color:#777;">D. M. Gaikwad</div>
+                <div style="border-top: 1px solid #000; padding-top: 5px;">दिलीप म. गायकवाड</div>
+                <div style="font-size: 0.85rem; color: #555; font-weight: normal;">संस्थापक व राष्ट्रीय समन्वयक</div>
             </div>
         </div>
     </div>
 
+    <!-- JavaScript to Handle Form Submission and PDF Generation -->
     <script>
-        function generateLetter() {
+        // Set Current Date automatically
+        const today = new Date();
+        document.getElementById('pdfDate').innerText = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+        // Generate a random letter number
+        document.getElementById('pdfRand').innerText = Math.floor(1000 + Math.random() * 9000);
+
+        document.getElementById('volunteerForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Form submittion थाबवणे
+
+            // Form मधून डेटा गोळा करणे
             const name = document.getElementById('fullName').value;
             const city = document.getElementById('city').value;
-            const mobile = document.getElementById('mobile').value;
+            const blood = document.getElementById('bloodGroup').value;
 
-            if(!name || !city || !mobile) {
-                alert("कृपया सर्व माहिती अचूक भरा!");
-                return;
-            }
+            // नियुक्ती पत्रात डेटा भरणे
+            document.getElementById('pdfName').innerText = name;
+            document.getElementById('pdfCity').innerText = city;
+            document.getElementById('pdfBlood').innerText = blood;
 
-            document.getElementById('lbl-name').innerText = name;
-            document.getElementById('id-name').innerText = name;
-            document.getElementById('lbl-city').innerText = city;
-            document.getElementById('id-city').innerText = city;
-            document.getElementById('id-phone').innerText = mobile;
-            document.getElementById('current-date').innerText = new Date().toLocaleDateString('mr-IN');
-
+            // PDF चे स्वरूप सेट करणे
             const element = document.getElementById('letter-template');
-            element.style.display = 'block';
+            element.style.display = 'block'; // PDF बनवण्यासाठी टेम्पलेट चालू करणे
 
             const opt = {
                 margin:       10,
@@ -139,11 +146,13 @@
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
 
+            // HTML चे रूपांतर PDF मध्ये करून डाउनलोड सुरू करणे
             html2pdf().set(opt).from(element).save().then(() => {
-                element.style.display = 'none';
-                alert("तुमचे नियुक्ती पत्र आणि आयडी कार्ड यशस्वीरित्या डाउनलोड झाले आहे!");
+                element.style.display = 'none'; // डाउनलोड झाल्यावर टेम्पलेट पुन्हा लपवणे
+                alert('अभिनंदन साहेब! तुमची नोंदणी झाली आहे आणि नियुक्ती पत्र PDF डाउनलोड झाली आहे.');
             });
-        }
+        });
     </script>
+
 </body>
 </html>
