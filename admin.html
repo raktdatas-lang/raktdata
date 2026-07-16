@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <!-- Firebase SDK (ऑनलाईन डेटाबेससाठी आवश्यक) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    
     <style>
         :root { --primary-color: #c62828; --navy-color: #0d1b3e; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: #eceff1; margin: 0; padding: 0; }
         
-        /* Navigation Tabs */
         .tabs { display: flex; background: var(--navy-color); justify-content: center; }
         .tab-btn { background: none; border: none; color: white; padding: 15px 30px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
         .tab-btn.active { background: var(--primary-color); }
@@ -19,7 +23,6 @@
         .tab-content { display: none; padding: 20px; }
         .tab-content.active { display: block; }
 
-        /* Form Styling */
         .box { max-width: 500px; margin: 30px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         h2 { color: var(--primary-color); text-align: center; margin-top: 0; }
         .form-group { margin-bottom: 15px; }
@@ -28,15 +31,12 @@
         .btn { width: 100%; padding: 12px; background: var(--primary-color); color: white; border: none; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; }
         .success-msg { display: none; color: green; font-weight: bold; text-align: center; background: #e8f5e9; padding: 15px; border-radius: 4px; }
 
-        /* Admin Table Styling */
         .admin-box { max-width: 1000px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         th { background-color: var(--navy-color); color: white; }
         .btn-approve { background: #2e7d32; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
         .btn-reject { background: var(--primary-color); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
-
-        /* Password Form */
         .pass-box { text-align: center; padding: 40px 20px; }
 
         /* PDF Hidden Template Layout */
@@ -46,14 +46,13 @@
         .content-table { width: 100%; border-collapse: collapse; }
         .sidebar { width: 28%; vertical-align: top; background: #fcfcfc; border: 1px solid #e0e0e0; padding: 10px; text-align: center; font-size: 9pt; }
         .main-body { width: 72%; vertical-align: top; padding-left: 20px; }
-        .sidebar-title { background: #0d1b3e; color: white; padding: 5px; font-weight: bold; margin-bottom: 10px; }
         .qr-placeholder { margin: 10px auto; width: 80px; height: 80px; }
         .bottom-banner { position: absolute; bottom: 0; left: 0; width: 100%; background: #0d1b3e; color: white; padding: 8px 0; text-align: center; font-size: 9pt; }
     </style>
 </head>
 <body>
 
-    <!-- Tabs Header -->
+    <!-- Navigation Tabs -->
     <div class="tabs">
         <button class="tab-btn active" onclick="switchTab('apply-tab')"><i class="fa-solid fa-user-plus"></i> १. स्वयंसेवक नोंदणी अर्ज</button>
         <button class="tab-btn" onclick="switchTab('admin-tab')"><i class="fa-solid fa-lock"></i> २. मुख्य ॲडमिन पॅनल</button>
@@ -66,7 +65,7 @@
             <hr><br>
             
             <div id="successMessage" class="success-msg">
-                🎉 तुमचा अर्ज यशस्वीरित्या सादर झाला आहे! ॲडमिनद्वारे मंजुरी मिळाल्यानंतर तुम्हाला तुमचे नियुक्ती पत्र दिले जाईल.
+                🎉 तुमचा अर्ज ऑनलाईन सबमिट झाला आहे! ॲडमिन मंजुरीनंतर नियुक्ती पत्र डाऊनलोड करता येईल.
             </div>
 
             <form id="applyForm">
@@ -97,7 +96,6 @@
 
     <!-- TAB 2: ADMIN PANEL -->
     <div id="admin-tab" class="tab-content">
-        <!-- Password Gateway -->
         <div id="adminAuth" class="box pass-box">
             <h2><i class="fa-solid fa-key"></i> ॲडमिन प्रवेश द्वार</h2>
             <p>सुरक्षेसाठी कृपया पासवर्ड टाका:</p>
@@ -105,10 +103,9 @@
             <button class="btn" onclick="checkPassword()">लॉगइन करा</button>
         </div>
 
-        <!-- Real Admin Panel (Initially Hidden) -->
         <div id="adminPanel" class="admin-box" style="display:none;">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2><i class="fa-solid fa-user-shield"></i> Raktdata.in - प्रलंबित अर्ज यादी</h2>
+                <h2><i class="fa-solid fa-user-shield"></i> Raktdata.in - ऑनलाईन प्रलंबित अर्ज</h2>
                 <button class="btn" onclick="logoutAdmin()" style="width:auto; padding:8px 15px; background:#555;">लॉगआऊट</button>
             </div>
             
@@ -123,9 +120,7 @@
                         <th>ॲक्शन</th>
                     </tr>
                 </thead>
-                <tbody id="tableBody">
-                    <!-- JavaScript Dynamic Rows -->
-                </tbody>
+                <tbody id="tableBody"></tbody>
             </table>
         </div>
     </div>
@@ -143,77 +138,65 @@
                 <td style="width:15%; text-align:right;"><div style="width:65px; height:65px; border-radius:50%; background:#c62828; color:white; font-size:7pt; font-weight:bold; text-align:center; padding-top:15px; box-sizing:border-box;">BLOOD<br>DONATION</div></td>
             </tr>
         </table>
-        
         <div class="title-ribbon">स्वयंसेवी नियुक्तीपत्र</div>
-        
         <table class="content-table">
             <tr>
                 <td class="sidebar">
-                    <div class="sidebar-title">नियुक्ती तपशील</div>
+                    <div style="background: #0d1b3e; color: white; padding: 5px; font-weight: bold; margin-bottom: 10px;">नियुक्ती तपशील</div>
                     <div style="font-size:8pt; color:#666;">Volunteer ID</div>
                     <div style="font-size:11pt; font-weight:bold; color:#c62828;" id="pdfVolId"></div>
                     <div class="qr-placeholder" id="qrcode"></div>
-                    <div style="font-size:7pt; color:#666; margin-bottom:10px;">पडताळणीसाठी स्कॅन करा</div>
-                    <div style="text-align:left; margin-top:10px;"><strong>📅 नियुक्ती दिनांक:</strong> <span id="pdfDateLeft"></span></div>
+                    <div style="text-align:left; margin-top:10px;"><strong>📅 दिनांक:</strong> <span id="pdfDateLeft"></span></div>
                     <div style="text-align:left; margin-top:10px;"><strong>📍 विभाग:</strong> <span id="pdfDivision"></span></div>
                 </td>
                 <td class="main-body">
-                    <div style="text-align:right; font-size:9pt; margin-bottom:15px;">
-                        <strong>पत्र क्रमांक:</strong> <span id="pdfLetterNo"></span><br>
-                        <strong>दिनांक:</strong> <span id="pdfDateRight"></span>
-                    </div>
-                    <div style="font-size:11pt; margin-bottom:15px;">
-                        प्रति,<br>
-                        <span style="color:#c62828; font-weight:bold; font-size:13pt;" id="pdfName"></span><br>
-                        <span id="pdfLocation"></span>
-                    </div>
+                    <div style="text-align:right; font-size:9pt; margin-bottom:15px;"><strong>पत्र क्रमांक:</strong> <span id="pdfLetterNo"></span></div>
+                    <div style="font-size:11pt; margin-bottom:15px;">प्रति,<br><span style="color:#c62828; font-weight:bold; font-size:13pt;" id="pdfName"></span><br><span id="pdfLocation"></span></div>
                     <p style="font-size:9.5pt; line-height:1.6; text-align:justify;">
-                        रक्तदान जनजागृती, सामाजिक बांधिलकी आणि मानवसेवेबद्दलची आपली निष्ठा लक्षात घेऊन, आपणास <strong>RAKTDATA.IN</strong> या राष्ट्रीय उपक्रमात <strong id="pdfBodyRole"></strong> म्हणून स्वयंसेवी स्वरूपात नियुक्त करण्यात येत आहे.
+                        आपणास <strong>RAKTDATA.IN</strong> या राष्ट्रीय उपक्रमात <strong id="pdfBodyRole"></strong> म्हणून स्वयंसेवी स्वरूपात नियुक्त करण्यात येत आहे.
                     </p>
-                    <div style="background:#0d1b3e; color:white; padding:3px 8px; display:inline-block; font-size:9pt; font-weight:bold; margin-top:10px;">प्रमुख जबाबदाऱ्या</div>
-                    <ul style="font-size:9pt; line-height:1.5; padding-left:15px;">
-                        <li>विभागातील रक्तदान जनजागृतीसाठी समन्वय साधणे.</li>
-                        <li>रक्तदान शिबिरांची माहिती Raktdata.in वर पोहोचविणे.</li>
-                        <li>Raktdata.in च्या आचारसंहितेचे पालन करणे.</li>
-                    </ul>
-                    
-                    <table style="width:100%; margin-top:40px; border:none;">
-                        <tr style="border:none;"><td style="border:none; width:60%;">
+                    <table style="width:100%; margin-top:50px; border:none;">
+                        <tr style="border:none;"><td style="border:none;">
                             <div style="font-family:monospace; font-style:italic; font-weight:bold; font-size:12pt;">D. M. Gaikwad</div>
-                            <strong>दिलीप म. गायकवाड</strong><br><span style="font-size:8pt; color:#555;">संस्थापक (Founder)</span>
-                        </td><td style="border:none; text-align:right;">
-                            <div style="border:2px double #0d1b3e; width:70px; height:70px; border-radius:50%; display:inline-block; font-size:7pt; font-weight:bold; color:#0d1b3e; padding-top:15px; box-sizing:border-box; text-align:center;">RAKTDATA<br>SEAL</div>
+                            <strong>दिलीप म. गायकवाड</strong><br>संस्थापक (Founder)
                         </td></tr>
                     </table>
                 </td>
             </tr>
         </table>
-        <div class="bottom-banner">🌐 www.raktdata.in | ✉️ raktdatas@gmail.com</div>
+        <div class="bottom-banner">🌐 www.raktdata.in</div>
     </div>
 
-    <!-- JavaScript Handling -->
     <script>
-        // Tab Switch Logic
+        // 🚀 तुमचा लाइव्ह फायरबेस कॉन्फिगरेशन कोड जोडला आहे
+        const firebaseConfig = {
+            apiKey: "AIzaSyC8NAwn6GGQo0UCXjaUhy_h-EqqigxCGIU",
+            authDomain: "raktdata-d13f6.firebaseapp.com",
+            databaseURL: "https://raktdata-d13f6-default-rtdb.firebaseio.com",
+            projectId: "raktdata-d13f6",
+            storageBucket: "raktdata-d13f6.firebasestorage.app",
+            messagingSenderId: "1069694803367",
+            appId: "1:1069694803367:web:d2f6f3d8360d69ef462a82",
+            measurementId: "G-1TXP899M62"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
-            
-            if(tabId === 'admin-tab') {
-                loadApplicants();
-            }
         }
 
-        // Admin Security Login
         function checkPassword() {
             const pass = document.getElementById('adminPassword').value;
-            if(pass === "raktdata@123") { // तुमचा पासवर्ड
+            if(pass === "raktdata@2026") { // तुमचा पासवर्ड
                 document.getElementById('adminAuth').style.display = 'none';
                 document.getElementById('adminPanel').style.display = 'block';
-                loadApplicants();
+                listenLiveRequests();
             } else {
-                alert("चुकीचा पासवर्ड! कृपया पुन्हा प्रयत्न करा.");
+                alert("चुकीचा पासवर्ड!");
             }
         }
 
@@ -223,12 +206,12 @@
             document.getElementById('adminPanel').style.display = 'none';
         }
 
-        // Apply Form Submission
+        // अर्ज डेटाबेसमध्ये पाठवणे
         document.getElementById('applyForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const applicant = {
-                id: 'RDN-' + Math.floor(1000 + Math.random() * 9000),
+            const newId = 'RDN-' + Math.floor(1000 + Math.random() * 9000);
+            const applicantData = {
+                id: newId,
                 name: document.getElementById('fullName').value,
                 mobile: document.getElementById('mobile').value,
                 division: document.getElementById('division').value,
@@ -237,90 +220,82 @@
                 date: new Date().toLocaleDateString('mr-IN')
             };
 
-            let applicants = JSON.parse(localStorage.getItem('applicants')) || [];
-            applicants.push(applicant);
-            localStorage.setItem('applicants', JSON.stringify(applicants));
-
-            document.getElementById('applyForm').reset();
-            document.getElementById('successMessage').style.display = 'block';
-            setTimeout(() => { document.getElementById('successMessage').style.display = 'none'; }, 5000);
-        });
-
-        // Load Applicants to Table
-        function loadApplicants() {
-            const applicants = JSON.parse(localStorage.getItem('applicants')) || [];
-            const tbody = document.getElementById('tableBody');
-            tbody.innerHTML = "";
-
-            let pendingCount = 0;
-            applicants.forEach((app, index) => {
-                if(app.status === 'पेंडिंग') {
-                    pendingCount++;
-                    tbody.innerHTML += `
-                        <tr>
-                            <td>${app.id}</td>
-                            <td><strong>${app.name}</strong></td>
-                            <td>${app.mobile}</td>
-                            <td>${app.division} / ${app.city}</td>
-                            <td>${app.date}</td>
-                            <td>
-                                <button class="btn-approve" onclick="approveAndDownload(${index})"><i class="fa-solid fa-check"></i> मंजूर व डाउनलोड</button>
-                                <button class="btn-reject" onclick="rejectApplicant(${index})"><i class="fa-solid fa-trash"></i> नाकारा</button>
-                            </td>
-                        </tr>`;
+            database.ref('applicants/' + newId).set(applicantData, function(error) {
+                if (!error) {
+                    document.getElementById('applyForm').reset();
+                    document.getElementById('successMessage').style.display = 'block';
+                    setTimeout(() => { document.getElementById('successMessage').style.display = 'none'; }, 5000);
                 }
             });
+        });
 
-            if(pendingCount === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color: #888;">कोणतेही नवीन अर्ज उपलब्ध नाहीत.</td></tr>`;
-            }
-        }
+        // ऑनलाईन प्रलंबित अर्ज यादी ऐकणे (Live Listen)
+        function listenLiveRequests() {
+            database.ref('applicants').on('value', function(snapshot) {
+                const tbody = document.getElementById('tableBody');
+                tbody.innerHTML = "";
+                let hasData = false;
 
-        // Approve and Download PDF
-        function approveAndDownload(index) {
-            let applicants = JSON.parse(localStorage.getItem('applicants'));
-            let app = applicants[index];
+                snapshot.forEach(function(childSnapshot) {
+                    const app = childSnapshot.val();
+                    if(app.status === 'पेंडिंग') {
+                        hasData = true;
+                        tbody.innerHTML += `
+                            <tr>
+                                <td>${app.id}</td>
+                                <td><strong>${app.name}</strong></td>
+                                <td>${app.mobile}</td>
+                                <td>${app.division} / ${app.city}</td>
+                                <td>${app.date}</td>
+                                <td>
+                                    <button class="btn-approve" onclick="approveAndDownload('${app.id}')"><i class="fa-solid fa-check"></i> मंजूर व डाउनलोड</button>
+                                    <button class="btn-reject" onclick="deleteRequest('${app.id}')"><i class="fa-solid fa-trash"></i> नाकारा</button>
+                                </td>
+                            </tr>`;
+                    }
+                });
 
-            document.getElementById('pdfVolId').innerText = app.id;
-            document.getElementById('pdfLetterNo').innerText = `RDN/2026/KONKAN/${Math.floor(1000+Math.random()*9000)}`;
-            document.getElementById('pdfDateLeft').innerText = app.date;
-            document.getElementById('pdfDateRight').innerText = app.date;
-            document.getElementById('pdfName').innerText = `श्री. ${app.name}`;
-            document.getElementById('pdfLocation').innerText = app.city;
-            document.getElementById('pdfDivision').innerText = app.division;
-            document.getElementById('pdfBodyRole').innerText = `"${app.division} समन्वयक"`;
-
-            // Clear old and generate new QR Code
-            document.getElementById('qrcode').innerHTML = "";
-            new QRCode(document.getElementById("qrcode"), { text: `https://raktdata.in/verify?id=${app.id}`, width: 75, height: 75 });
-
-            const element = document.getElementById('letter-template');
-            element.style.display = 'block';
-
-            const opt = {
-                margin: 0,
-                filename: `Raktdata_Niyukti_Patra_${app.name}.pdf`,
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-
-            html2pdf().set(opt).from(element).save().then(() => {
-                element.style.display = 'none';
-                // Change status to Approved
-                applicants[index].status = 'मंजूर';
-                localStorage.setItem('applicants', JSON.stringify(applicants));
-                loadApplicants();
-                alert("अभिनंदन साहेब! नियुक्ती पत्र डाऊनलोड झाले आहे.");
+                if(!hasData) {
+                    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#888;">सध्या कोणतेही नवीन अर्ज आलेले नाहीत.</td></tr>`;
+                }
             });
         }
 
-        // Reject Applicant
-        function rejectApplicant(index) {
+        function approveAndDownload(id) {
+            database.ref('applicants/' + id).once('value').then(function(snapshot) {
+                const app = snapshot.val();
+                document.getElementById('pdfVolId').innerText = app.id;
+                document.getElementById('pdfLetterNo').innerText = `RDN/2026/${app.id}`;
+                document.getElementById('pdfDateLeft').innerText = app.date;
+                document.getElementById('pdfName').innerText = `श्री. ${app.name}`;
+                document.getElementById('pdfLocation').innerText = app.city;
+                document.getElementById('pdfDivision').innerText = app.division;
+                document.getElementById('pdfBodyRole').innerText = `"${app.division} समन्वयक"`;
+
+                document.getElementById('qrcode').innerHTML = "";
+                new QRCode(document.getElementById("qrcode"), { text: `https://raktdata.in/verify?id=${app.id}`, width: 75, height: 75 });
+
+                const element = document.getElementById('letter-template');
+                element.style.display = 'block';
+
+                const opt = {
+                    margin: 0,
+                    filename: `Raktdata_Niyukti_Patra_${app.name}.pdf`,
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+
+                html2pdf().set(opt).from(element).save().then(() => {
+                    element.style.display = 'none';
+                    database.ref('applicants/' + id).update({ status: 'मंजूर' });
+                    alert("नियुक्ती पत्र डाऊनलोड झाले आहे आणि डेटाबेस अपडेट झाला आहे!");
+                });
+            });
+        }
+
+        function deleteRequest(id) {
             if(confirm("तुम्हाला नक्की हा अर्ज नाकारायचा आहे का?")) {
-                let applicants = JSON.parse(localStorage.getItem('applicants'));
-                applicants.splice(index, 1);
-                localStorage.setItem('applicants', JSON.stringify(applicants));
-                loadApplicants();
+                database.ref('applicants/' + id).remove();
             }
         }
     </script>
