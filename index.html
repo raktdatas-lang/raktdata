@@ -211,6 +211,130 @@
     <!-- ==========================================
          BLOOD SERVICES SECTION (Request & Find)
          ========================================== -->
+    <!-- ==========================================
+         BECOME VOLUNTEER SECTION (Phase 2: स्वयंसेवक व्हा)
+         ========================================== -->
+    <section id="volunteer" class="py-16 px-4 bg-white border-t border-gray-100">
+        <div class="container mx-auto max-w-6xl">
+            
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- डावी बाजू: माहिती आणि फायदे (5 Columns) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="bg-red-100 text-red-700 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                        <i class="fa-solid fa-handshake mr-1"></i> देशसेवा आणि समाजकार्य
+                    </span>
+                    <h2 class="text-3xl font-black text-gray-900 leading-tight">
+                        "National Blood Donation Movement" चे अधिकृत स्वयंसेवक व्हा!
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        फक्त रक्त देणे म्हणजेच मदत नव्हे, तर रक्ताची गरज असणाऱ्या रुग्णांपर्यंत मदत पोहोचवणे आणि जनजागृती करणे हे देखील तितकेच मोठे कार्य आहे. आमच्या राष्ट्रीय मोहिमेत सामील व्हा आणि तुमच्या परिसरातील जीवनरक्षक बना.
+                    </p>
+
+                    <!-- स्वयंसेवकांना मिळणारे फायदे (Phase 5 चे आकर्षण) -->
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start space-x-3">
+                            <div class="text-red-600 mt-1"><i class="fa-solid fa-id-card text-lg"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">डिजिटल ओळखपत्र (Digital ID Card)</h4>
+                                <p class="text-xs text-gray-500">नोंदणी पूर्ण होताच तुम्हाला तुमचे अधिकृत डिजिटल आयडी कार्ड मिळेल.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="text-red-600 mt-1"><i class="fa-solid fa-file-signature text-lg"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">नियुक्ती पत्र (Appointment Letter)</h4>
+                                <p class="text-xs text-gray-500">चळवळीचे अधिकृत प्रतिनिधी म्हणून डिजिटल नियुक्ती पत्र दिले जाईल.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="text-red-600 mt-1"><i class="fa-solid fa-graduation-cap text-lg"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">अकॅडमी ट्रेनिंग व सर्टिफिकेट (Academy Training)</h4>
+                                <p class="text-xs text-gray-500">रक्तदानाविषयीचे ई-बुक्स वाचून क्विझ पूर्ण करा आणि प्रमाणपत्र मिळवा.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- उजवी बाजू: नोंदणी फॉर्म (7 Columns) -->
+                <div class="lg:col-span-7 bg-gray-50 p-6 md:p-8 rounded-3xl border border-gray-100 shadow-inner">
+                    <h3 class="text-lg font-bold text-gray-950 mb-1 flex items-center">
+                        <i class="fa-solid fa-user-pen text-red-600 mr-2"></i> स्वयंसेवक नोंदणी अर्ज
+                    </h3>
+                    <p class="text-xs text-gray-500 mb-6">कृपया तुमची अचूक माहिती भरा जेणेकरून तुमचे ओळखपत्र योग्य रितीने तयार होईल.</p>
+
+                    <form action="#" method="POST" class="space-y-4">
+                        <!-- Full Name & Email -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1.5">पूर्ण नाव (Full Name)</label>
+                                <input type="text" placeholder="पहिले आणि आडनाव" required class="w-full bg-white border border-gray-200 focus:border-red-500 focus:ring-0 rounded-xl px-4 py-3 text-sm transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1.5">ईमेल आयडी (Email)</label>
+                                <input type="email" placeholder="example@gmail.com" required class="w-full bg-white border border-gray-200 focus:border-red-500 focus:ring-0 rounded-xl px-4 py-3 text-sm transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Mobile Number & Blood Group -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1.5">मोबाईल नंबर (WhatsApp)</label>
+                                <input type="tel" pattern="[0-9]{10}" placeholder="१० अंकी नंबर" required class="w-full bg-white border border-gray-200 focus:border-red-500 focus:ring-0 rounded-xl px-4 py-3 text-sm transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1.5">तुमचा रक्तगट</label>
+                                <select required class="w-full bg-white border border-gray-200 focus:border-red-500 focus:ring-0 rounded-xl px-4 py-3 text-sm font-bold text-red-600 transition-all">
+                                    <option value="" disabled selected>निवडा...</option>
+                                    <option>A +ve</option><option>A -ve</option><option>B +ve</option><option>B -ve</option>
+                                    <option>O +ve</option><option>O -ve</option><option>AB +ve</option><option>AB -ve</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- State, District & Pincode -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1.5">राज्य</label>
+                                <input type="text" value="महाराष्ट्र" readonly class="w-full bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-gray-600 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1.5">जिल्हा (District)</label>
+                                <input type="text" placeholder="उदा. पुणे" required class="w-full bg-white border border-gray-200 focus:border-red-500 focus:ring-0 rounded-xl px-4 py-3 text-sm transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1.5">पिनकोड (Pincode)</label>
+                                <input type="text" pattern="[0-9]{6}" placeholder="६ अंकी पिनकोड" required class="w-full bg-white border border-gray-200 focus:border-red-500 focus:ring-0 rounded-xl px-4 py-3 text-sm transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Referrer (भविष्यात Phase 5 च्या नेटवर्कसाठी उपयुक्त) -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1.5">रेफरल कोड / लिंक (ऐच्छिक)</label>
+                            <input type="text" placeholder="तुमच्या मित्राचा रेफरल कोड असल्यास येथे टाका" class="w-full bg-white border border-gray-200 focus:border-red-500 focus:ring-0 rounded-xl px-4 py-3 text-sm transition-all">
+                        </div>
+
+                        <!-- Agreement Checkbox -->
+                        <div class="flex items-start space-x-2 pt-2">
+                            <input type="checkbox" required class="mt-1 text-red-600 rounded focus:ring-0 border-gray-300">
+                            <p class="text-xs text-gray-500 leading-normal">
+                                मी स्वतःच्या इच्छेने राष्ट्रीय रक्तदान चळवळीत सहभागी होत असून, समाजहित आणि रुग्णांच्या सेवेसाठी सदैव तत्पर राहीन अशी शपथ घेतो.
+                            </p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 rounded-xl shadow-md hover:shadow-lg transition duration-300 flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <span>मोहिमेत सामील व्हा आणि डॅशबोर्ड उघडा</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
     <section id="blood-services" class="py-16 px-4 bg-gray-50 border-t border-gray-100">
         <div class="container mx-auto max-w-6xl">
             <div class="grid lg:grid-cols-2 gap-12 items-start">
