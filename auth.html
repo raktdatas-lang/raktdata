@@ -155,6 +155,31 @@
             formRegister.classList.remove('hidden');
             formLogin.classList.add('hidden');
         });
+    <!-- ==========================================
+         FIREBASE SDK INTEGRATION (v10+)
+         ========================================== -->
+    <script type="module">
+        // Firebase मॉड्युल्स इम्पोर्ट करणे
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // ⚠️ तुमच्या Firebase प्रोजेक्टचे Configuration येथे टाका
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Firebase आणि सर्व्हिसेस सुरू करा
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // --- नोंदणी आणि लॉगिनचे लॉजिक खालीलप्रमाणे ---
     </script>
 </body>
 </html>
