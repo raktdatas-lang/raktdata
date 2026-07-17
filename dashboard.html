@@ -23,7 +23,10 @@
             </div>
 
             <!-- Nav Links -->
-            <nav class="space-y-1">
+           <a href="#academy-section" id="nav-academy" class="flex items-center space-x-3 text-gray-400 hover:bg-gray-900 hover:text-white px-4 py-3 rounded-xl font-semibold text-sm transition">
+    <i class="fa-solid fa-graduation-cap text-base"></i>
+    <span>स्वयंसेवक अकॅडमी</span>
+</a>
                 <a href="#" class="flex items-center space-x-3 bg-red-600 text-white px-4 py-3 rounded-xl font-bold text-sm transition">
                     <i class="fa-solid fa-chart-pie text-base"></i>
                     <span>मुख्य डॅशबोर्ड</span>
@@ -92,6 +95,53 @@
         </section>
 
         <!-- Main Workspace (ID Card & Updates) -->
+        <!-- ==========================================
+     PHASE 5: VOLUNTEER ACADEMY & QUIZ SECTION
+     ========================================== -->
+<section id="academy-section" class="bg-white p-6 md:p-8 rounded-3xl border border-gray-100 shadow-sm mt-8 space-y-6">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 border-b border-gray-100 gap-2">
+        <div>
+            <h3 class="font-black text-gray-950 text-base flex items-center">
+                <i class="fa-solid fa-graduation-cap text-red-600 mr-2"></i> जीवनरक्षक स्वयंसेवक अकॅडमी
+            </h3>
+            <p class="text-xs text-gray-500 mt-0.5">अधिकृत ओळखपत्र आणि प्रमाणपत्र मिळवण्यासाठी ही ट्रेनिंग क्विझ पूर्ण करणे बंधनकारक आहे.</p>
+        </div>
+        <span id="quiz-status-badge" class="bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-3 py-1 rounded-full">ट्रेनिंग अपूर्ण</span>
+    </div>
+
+    <!-- अभ्यासाचे मुद्दे / मार्गदर्शिका -->
+    <div class="grid md:grid-cols-2 gap-6 bg-gray-50 p-4 md:p-6 rounded-2xl border border-gray-100">
+        <div class="space-y-2">
+            <h4 class="font-bold text-gray-900 text-sm flex items-center text-red-700"><i class="fa-solid fa-book-open mr-2"></i> रक्तदानाचे मूळ नियम:</h4>
+            <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
+                <li>रक्तदात्याचे वय १८ ते ६५ वर्षांच्या दरम्यान असावे.</li>
+                <li>वजन किमान ४५ ते ५० किलोग्रॅम असणे आवश्यक आहे.</li>
+                <li>हिमोग्लोबिनचे प्रमाण किमान १२.५ g/dL असावे.</li>
+            </ul>
+        </div>
+        <div class="space-y-2">
+            <h4 class="font-bold text-gray-900 text-sm flex items-center text-red-700"><i class="fa-solid fa-triangle-exclamation mr-2"></i> कधी रक्तदान करू नये?</h4>
+            <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
+                <li>मोठा आजार किंवा शस्त्रक्रिया झाली असल्यास ६ ते १२ महिने थांबावे.</li>
+                <li>कोणतेही टॅटू (Tattoo) काढल्यास पुढील ६ महिने रक्तदान करता येत नाही.</li>
+                <li>अल्कोहोल किंवा मद्यसेवन केल्यास पुढील २४ तास रक्तदान टाळावे.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Live Quiz Container -->
+    <div id="quiz-box" class="space-y-4 pt-2">
+        <h4 class="font-bold text-gray-950 text-sm"><i class="fa-solid fa-circle-question text-red-600 mr-1"></i> प्रश्न: टॅटू (Tattoo) काढल्यानंतर किती महिन्यांपर्यंत रक्तदान करता येत नाही?</h4>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button onclick="checkAnswer(false, this)" class="quiz-opt bg-white border border-gray-200 hover:border-gray-400 text-gray-700 text-xs font-bold py-3 px-4 rounded-xl transition text-left">A) १ महिना</button>
+            <button onclick="checkAnswer(true, this)" class="quiz-opt bg-white border border-gray-200 hover:border-gray-400 text-gray-700 text-xs font-bold py-3 px-4 rounded-xl transition text-left">B) ६ महिने (योग्य)</button>
+            <button onclick="checkAnswer(false, this)" class="quiz-opt bg-white border border-gray-200 hover:border-gray-400 text-gray-700 text-xs font-bold py-3 px-4 rounded-xl transition text-left">C) कधीच नाही</button>
+        </div>
+        
+        <p id="quiz-feedback" class="text-xs font-bold hidden"></p>
+    </div>
+</section>
         <section class="grid lg:grid-cols-12 gap-8">
             
             <!-- डावी बाजू: डिजिटल आयडी कार्ड (Phase 5 चे मुख्य आकर्षण) -->
