@@ -205,7 +205,50 @@
     <!-- ==========================================
          ३. JAVASCRIPT & FIREBASE INTEGRATION
          ========================================== -->
-    <script type="module">
+    <// जागतिक स्तरावर (Globally) फंक्शन उपलब्ध करून देणे
+        window.checkAnswer = async function(isCorrect, element) {
+            const feedback = document.getElementById('quiz-feedback');
+            const allButtons = document.querySelectorAll('.quiz-opt');
+            
+            // सर्व बटनांना पुन्हा डिझाइनवर आणणे व क्लिक लॉक करणे
+            allButtons.forEach(btn => btn.disabled = true);
+
+            if (isCorrect) {
+                element.classList.remove('bg-white', 'border-gray-200');
+                element.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
+                
+                feedback.innerText = "🎉 अचूक उत्तर! तुम्ही परीक्षा उत्तीर्ण केली आहे. तुमचे ओळखपत्र अनलॉक झाले.";
+                feedback.className = "text-xs font-bold text-green-600 pt-2";
+                feedback.classList.remove('hidden');
+
+                // Firebase मधील ट्रेनिंग स्टेटस अपडेट करणे
+                const user = auth.currentUser;
+                if (user) {
+                    const docRef = doc(db, "users", user.uid);
+                    await setDoc(docRef, { trainingStatus: "Verified" }, { merge: true });
+                    
+                    // डॅशबोर्डवरील बॅजेस रिअल-टाइम बदलणे
+                    document.getElementById('quiz-status-badge').innerText = "Verified स्वयंसेवक";
+                    document.getElementById('quiz-status-badge').className = "bg-green-100 text-green-700 border border-green-200 text-xs font-bold px-3 py-1 rounded-full";
+                    
+                    // ट्रेनिंग स्टेटस बॉक्स अपडेट
+                    const pNodes = document.getElementById('user-blood-group').closest('section').querySelectorAll('p');
+                    pNodes[pNodes.length - 1].innerText = "उत्तीर्ण (Verified)";
+                    pNodes[pNodes.length - 1].className = "text-xs font-bold text-green-600 mt-1 bg-green-50 px-2 py-0.5 rounded-full inline-block";
+                }
+            } else {
+                element.classList.remove('bg-white', 'border-gray-200');
+                element.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
+                
+                feedback.innerText = "❌ चुकीचे उत्तर! कृपया नियम पुन्हा वाचा आणि पेज रिफ्रेश करून प्रयत्न करा.";
+                feedback.className = "text-xs font-bold text-red-600 pt-2";
+                feedback.classList.remove('hidden');
+            }
+        };
+
+        // लॉगिन डेटा फेच करताना आधीच पास आहे का ते तपासणे (onAuthStateChanged च्या आत शेवटी जोडा)
+        // जर युझरचा डेटा आधीच Verified असेल तर बॅज बदलण्यासाठी:
+        // if(userData.trainingStatus === "Verified") { ... बदल करा ... }>
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
