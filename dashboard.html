@@ -4,298 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>स्वयंसेवक डॅशबोर्ड | RAKTDATA.IN</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-50 font-sans min-h-screen flex flex-col lg:flex-row">
+<body class="bg-gray-50 font-sans antialiased">
 
-    <!-- ==========================================
-         १. SIDEBAR NAVIGATION (डावी बाजू)
-         ========================================== -->
-    <aside class="w-full lg:w-64 bg-gray-950 text-white flex flex-col justify-between p-6 lg:fixed lg:h-full z-10">
-        <div class="space-y-8">
-            <!-- Brand & Logo -->
-            <div class="flex items-center space-x-3 pb-4 border-b border-gray-800">
-                <img src="logo.png" alt="Logo" class="h-9 w-9 object-contain">
-                <span class="text-lg font-black tracking-wider text-red-600">RAKTDATA<span class="text-white">.IN</span></span>
+    <!-- मुख्य डॅशबोर्ड रचना -->
+    <div class="min-h-screen flex flex-col">
+        <!-- टॉप नेव्हिगेशन बार -->
+        <header class="bg-red-600 text-white shadow-md p-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-droplet text-2xl text-white"></i>
+                <span class="text-xl font-bold tracking-wider">RAKTDATA.IN</span>
             </div>
-
-            <!-- Nav Links -->
-           <a href="#academy-section" id="nav-academy" class="flex items-center space-x-3 text-gray-400 hover:bg-gray-900 hover:text-white px-4 py-3 rounded-xl font-semibold text-sm transition">
-    <i class="fa-solid fa-graduation-cap text-base"></i>
-    <span>स्वयंसेवक अकॅडमी</span>
-</a>
-                <a href="#" class="flex items-center space-x-3 bg-red-600 text-white px-4 py-3 rounded-xl font-bold text-sm transition">
-                    <i class="fa-solid fa-chart-pie text-base"></i>
-                    <span>मुख्य डॅशबोर्ड</span>
-                </a>
-                <a href="#id-card" class="flex items-center space-x-3 text-gray-400 hover:bg-gray-900 hover:text-white px-4 py-3 rounded-xl font-semibold text-sm transition">
-                    <i class="fa-solid fa-id-card text-base"></i>
-                    <span>माझे आयडी कार्ड</span>
-                </a>
-                <a href="#requests" class="flex items-center space-x-3 text-gray-400 hover:bg-gray-900 hover:text-white px-4 py-3 rounded-xl font-semibold text-sm transition">
-                    <i class="fa-solid fa-heart-pulse text-base"></i>
-                    <span>रक्त मागण्या (Live)</span>
-                </a>
-            </nav>
-        </div>
-
-        <!-- Logout Button -->
-        <div class="pt-6 border-t border-gray-800 mt-6 lg:mt-0">
-            <button id="btn-logout" class="w-full flex items-center justify-center space-x-2 bg-gray-900 hover:bg-red-700 text-gray-300 hover:text-white font-bold py-3 rounded-xl text-sm transition">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>लॉगआउट करा</span>
+            <button id="btn-logout" class="bg-red-700 hover:bg-red-800 px-4 py-2 rounded-lg text-sm font-semibold transition cursor-pointer">
+                <i class="fa-solid fa-right-from-bracket mr-2"></i>लॉगआउट
             </button>
-        </div>
-    </aside>
-
-    <!-- ==========================================
-         २. MAIN CONTENT AREA (उजवी बाजू)
-         ========================================== -->
-    <main class="flex-grow lg:pl-64 p-4 md:p-8 space-y-8">
-        
-        <!-- Header (Welcome User) -->
-        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-6 rounded-2xl border border-gray-100 shadow-sm gap-4">
-            <div>
-                <h1 class="text-xl md:text-2xl font-black text-gray-950 flex items-center">
-                    जय हिंद, <span id="user-display-name" class="text-red-600 ml-1.5">लोड होत आहे...</span> 🎉
-                </h1>
-                <p class="text-xs text-gray-500 mt-1">राष्ट्रीय रक्तदान चळवळीच्या अधिकृत डॅशबोर्डवर आपले स्वागत आहे.</p>
-            </div>
-            <div class="bg-red-50 text-red-700 px-4 py-2 rounded-xl text-xs font-bold border border-red-100 uppercase tracking-wider">
-                पद: <span id="user-role">स्वयंसेवक</span>
-            </div>
         </header>
 
-        <!-- Stats Grid (माहिती फलक) -->
-        <section class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center space-x-4">
-                <div class="p-3.5 bg-red-50 text-red-600 rounded-xl text-xl"><i class="fa-solid fa-droplet"></i></div>
-                <div>
-                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">माझा रक्तगट</p>
-                    <p id="user-blood-group" class="text-xl font-black text-gray-900 mt-0.5">-</p>
-                </div>
+        <!-- मुख्य कंटेन्ट -->
+        <main class="flex-1 p-6 max-w-4xl mx-auto w-full">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6 text-center">
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">जय हिंद, स्वयंसेवक! 👋</h1>
+                <p class="text-gray-600">तुमचे राष्ट्रीय रक्तदाता चळवळीचे डिजिटल ओळखपत्र खाली तयार आहे.</p>
             </div>
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center space-x-4">
-                <div class="p-3.5 bg-amber-50 text-amber-600 rounded-xl text-xl"><i class="fa-solid fa-users"></i></div>
-                <div>
-                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">माझे नेटवर्क</p>
-                    <p class="text-xl font-black text-gray-900 mt-0.5">० सदस्य</p>
+
+            <!-- डिजिटल ओळखपत्र (ID Card) -->
+            <div class="max-w-md mx-auto bg-gradient-to-br from-red-600 to-red-800 text-white rounded-2xl shadow-xl overflow-hidden border border-red-500 relative p-6 mb-6">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <i class="fa-solid fa-droplet text-9xl"></i>
                 </div>
-            </div>
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center space-x-4">
-                <div class="p-3.5 bg-green-50 text-green-600 rounded-xl text-xl"><i class="fa-solid fa-award"></i></div>
-                <div>
-                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">ट्रेनिंग स्टेटस</p>
-                    <p class="text-xs font-bold text-amber-600 mt-1 bg-amber-50 px-2 py-0.5 rounded-full inline-block">प्रलंबित (Pending)</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Main Workspace (ID Card & Updates) -->
-        <!-- ==========================================
-     PHASE 5: VOLUNTEER ACADEMY & QUIZ SECTION
-     ========================================== -->
-<section id="academy-section" class="bg-white p-6 md:p-8 rounded-3xl border border-gray-100 shadow-sm mt-8 space-y-6">
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 border-b border-gray-100 gap-2">
-        <div>
-            <h3 class="font-black text-gray-950 text-base flex items-center">
-                <i class="fa-solid fa-graduation-cap text-red-600 mr-2"></i> जीवनरक्षक स्वयंसेवक अकॅडमी
-            </h3>
-            <p class="text-xs text-gray-500 mt-0.5">अधिकृत ओळखपत्र आणि प्रमाणपत्र मिळवण्यासाठी ही ट्रेनिंग क्विझ पूर्ण करणे बंधनकारक आहे.</p>
-        </div>
-        <span id="quiz-status-badge" class="bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-3 py-1 rounded-full">ट्रेनिंग अपूर्ण</span>
-    </div>
-
-    <!-- अभ्यासाचे मुद्दे / मार्गदर्शिका -->
-    <div class="grid md:grid-cols-2 gap-6 bg-gray-50 p-4 md:p-6 rounded-2xl border border-gray-100">
-        <div class="space-y-2">
-            <h4 class="font-bold text-gray-900 text-sm flex items-center text-red-700"><i class="fa-solid fa-book-open mr-2"></i> रक्तदानाचे मूळ नियम:</h4>
-            <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
-                <li>रक्तदात्याचे वय १८ ते ६५ वर्षांच्या दरम्यान असावे.</li>
-                <li>वजन किमान ४५ ते ५० किलोग्रॅम असणे आवश्यक आहे.</li>
-                <li>हिमोग्लोबिनचे प्रमाण किमान १२.५ g/dL असावे.</li>
-            </ul>
-        </div>
-        <div class="space-y-2">
-            <h4 class="font-bold text-gray-900 text-sm flex items-center text-red-700"><i class="fa-solid fa-triangle-exclamation mr-2"></i> कधी रक्तदान करू नये?</h4>
-            <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
-                <li>मोठा आजार किंवा शस्त्रक्रिया झाली असल्यास ६ ते १२ महिने थांबावे.</li>
-                <li>कोणतेही टॅटू (Tattoo) काढल्यास पुढील ६ महिने रक्तदान करता येत नाही.</li>
-                <li>अल्कोहोल किंवा मद्यसेवन केल्यास पुढील २४ तास रक्तदान टाळावे.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Live Quiz Container -->
-    <div id="quiz-box" class="space-y-4 pt-2">
-        <h4 class="font-bold text-gray-950 text-sm"><i class="fa-solid fa-circle-question text-red-600 mr-1"></i> प्रश्न: टॅटू (Tattoo) काढल्यानंतर किती महिन्यांपर्यंत रक्तदान करता येत नाही?</h4>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <button onclick="checkAnswer(false, this)" class="quiz-opt bg-white border border-gray-200 hover:border-gray-400 text-gray-700 text-xs font-bold py-3 px-4 rounded-xl transition text-left">A) १ महिना</button>
-            <button onclick="checkAnswer(true, this)" class="quiz-opt bg-white border border-gray-200 hover:border-gray-400 text-gray-700 text-xs font-bold py-3 px-4 rounded-xl transition text-left">B) ६ महिने (योग्य)</button>
-            <button onclick="checkAnswer(false, this)" class="quiz-opt bg-white border border-gray-200 hover:border-gray-400 text-gray-700 text-xs font-bold py-3 px-4 rounded-xl transition text-left">C) कधीच नाही</button>
-        </div>
-        
-        <p id="quiz-feedback" class="text-xs font-bold hidden"></p>
-    </div>
-</section>
-        <section class="grid lg:grid-cols-12 gap-8">
-            
-            <!-- डावी बाजू: डिजिटल आयडी कार्ड (Phase 5 चे मुख्य आकर्षण) -->
-            <div id="id-card" class="lg:col-span-5 bg-white p-6 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center justify-center space-y-6">
-                <div class="w-full text-center pb-2 border-b border-gray-100">
-                    <h3 class="font-bold text-gray-950 text-sm flex items-center justify-center">
-                        <i class="fa-solid fa-address-card text-red-600 mr-2"></i> अधिकृत डिजिटल ओळखपत्र
-                    </h3>
-                </div>
-
-                <!-- ID Card Visual -->
-                <div class="w-full max-w-[290px] aspect-[2/3] bg-gradient-to-b from-red-700 via-red-600 to-amber-900 text-white rounded-2xl shadow-xl overflow-hidden relative p-4 flex flex-col justify-between border-4 border-white">
-                    <!-- Top Bar -->
-                    <div class="text-center space-y-0.5">
-                        <p class="text-[10px] font-black uppercase tracking-widest text-amber-300">RAKTDATA MOVEMENT</p>
-                        <p class="text-[8px] tracking-tight text-white/80">राष्ट्रीय रक्त डेटाबेस व स्वयंसेवक नेटवर्क</p>
+                
+                <div class="flex justify-between items-start border-b border-red-500/50 pb-4 mb-4">
+                    <div>
+                        <h2 class="text-lg font-bold tracking-wide">RAKTDATA.IN</h2>
+                        <p class="text-xs text-red-200">NATIONAL BLOOD DONATION MOVEMENT</p>
                     </div>
+                    <span id="badge-blood" class="bg-white text-red-600 font-black text-xl px-3 py-1 rounded-lg shadow-sm">
+                        --
+                    </span>
+                </div>
 
-                    <!-- Photo & Blood Group Holder -->
-                    <div class="flex flex-col items-center my-2 space-y-2">
-                        <div class="w-20 h-20 bg-white/20 rounded-full border-2 border-white flex items-center justify-center overflow-hidden">
-                            <i class="fa-solid fa-user text-4xl text-white/60"></i>
+                <div class="space-y-3">
+                    <div>
+                        <label class="text-xs text-red-200 block uppercase tracking-wider">स्वयंसेवकाचे नाव</label>
+                        <p id="card-name" class="text-xl font-bold tracking-wide">माहिती लोड होत आहे...</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs text-red-200 block uppercase tracking-wider">मोबाईल नंबर</label>
+                            <p id="card-phone" class="text-sm font-semibold tracking-wide">--</p>
                         </div>
-                        <div class="bg-white text-red-600 font-black text-xs px-2.5 py-0.5 rounded-full shadow-sm">
-                            BLOOD: <span id="card-blood">-</span>
+                        <div>
+                            <label class="text-xs text-red-200 block uppercase tracking-wider">ईमेल आयडी</label>
+                            <p id="card-email" class="text-sm font-semibold truncate">--</p>
                         </div>
                     </div>
-
-                    <!-- Info -->
-                    <div class="text-center space-y-1">
-                        <h4 id="card-name" class="font-black text-sm tracking-wide truncate">लोड होत आहे...</h4>
-                        <p class="text-[10px] bg-black/30 py-0.5 px-3 rounded-full inline-block font-semibold tracking-wider">VOLUNTEER</p>
-                    </div>
-
-                    <!-- Footer Bar -->
-                    <div class="pt-2 border-t border-white/20 flex justify-between items-center text-[8px] text-white/70">
-                        <p>ID: <span id="card-id">XXXX</span></p>
-                        <p>MH, INDIA</p>
-                    </div>
                 </div>
-                
-                <button onclick="window.print()" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold px-4 py-2 rounded-xl transition">
-                    <i class="fa-solid fa-download mr-1"></i> ओळखपत्र डाउनलोड करा
-                </button>
-            </div>
 
-            <!-- उजवी बाजू: सूचना आणि लाइव्ह मागण्या -->
-            <div id="requests" class="lg:col-span-7 bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-4">
-                <h3 class="font-bold text-gray-950 text-sm flex items-center">
-                    <i class="fa-solid fa-bell text-amber-500 mr-2"></i> तुमच्या परिसरातील रक्ताच्या मागण्या
-                </h3>
-                <div class="border-t border-gray-100 pt-4 text-center py-12 text-gray-400 space-y-2">
-                    <i class="fa-solid fa-folder-open text-3xl"></i>
-                    <p class="text-xs font-semibold">सध्या तुमच्या जिल्ह्यात कोणतीही तातडीची मागणी नाही.</p>
+                <div class="mt-6 pt-4 border-t border-red-500/50 flex justify-between items-center text-xs text-red-100">
+                    <span>STATUS: ACTIVE VOLUNTEER</span>
+                    <i class="fa-solid fa-qrcode text-2xl opacity-80"></i>
                 </div>
             </div>
+        </main>
+    </div>
 
-        </section>
-    </main>
-
-    <!-- ==========================================
-         ३. JAVASCRIPT & FIREBASE INTEGRATION
-         ========================================== -->
-    <// जागतिक स्तरावर (Globally) फंक्शन उपलब्ध करून देणे
-        window.checkAnswer = async function(isCorrect, element) {
-            const feedback = document.getElementById('quiz-feedback');
-            const allButtons = document.querySelectorAll('.quiz-opt');
-            
-            // सर्व बटनांना पुन्हा डिझाइनवर आणणे व क्लिक लॉक करणे
-            allButtons.forEach(btn => btn.disabled = true);
-
-            if (isCorrect) {
-                element.classList.remove('bg-white', 'border-gray-200');
-                element.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
-                
-                feedback.innerText = "🎉 अचूक उत्तर! तुम्ही परीक्षा उत्तीर्ण केली आहे. तुमचे ओळखपत्र अनलॉक झाले.";
-                feedback.className = "text-xs font-bold text-green-600 pt-2";
-                feedback.classList.remove('hidden');
-
-                // Firebase मधील ट्रेनिंग स्टेटस अपडेट करणे
-                const user = auth.currentUser;
-                if (user) {
-                    const docRef = doc(db, "users", user.uid);
-                    await setDoc(docRef, { trainingStatus: "Verified" }, { merge: true });
-                    
-                    // डॅशबोर्डवरील बॅजेस रिअल-टाइम बदलणे
-                    document.getElementById('quiz-status-badge').innerText = "Verified स्वयंसेवक";
-                    document.getElementById('quiz-status-badge').className = "bg-green-100 text-green-700 border border-green-200 text-xs font-bold px-3 py-1 rounded-full";
-                    
-                    // ट्रेनिंग स्टेटस बॉक्स अपडेट
-                    const pNodes = document.getElementById('user-blood-group').closest('section').querySelectorAll('p');
-                    pNodes[pNodes.length - 1].innerText = "उत्तीर्ण (Verified)";
-                    pNodes[pNodes.length - 1].className = "text-xs font-bold text-green-600 mt-1 bg-green-50 px-2 py-0.5 rounded-full inline-block";
-                }
-            } else {
-                element.classList.remove('bg-white', 'border-gray-200');
-                element.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
-                
-                feedback.innerText = "❌ चुकीचे उत्तर! कृपया नियम पुन्हा वाचा आणि पेज रिफ्रेश करून प्रयत्न करा.";
-                feedback.className = "text-xs font-bold text-red-600 pt-2";
-                feedback.classList.remove('hidden');
-            }
-        };
-
-        // लॉगिन डेटा फेच करताना आधीच पास आहे का ते तपासणे (onAuthStateChanged च्या आत शेवटी जोडा)
-        // जर युझरचा डेटा आधीच Verified असेल तर बॅज बदलण्यासाठी:
-        // if(userData.trainingStatus === "Verified") { ... बदल करा ... }>
+    <!-- ─── JAVASCRIPT & FIREBASE INTEGRATION ─── -->
+    <script type="module">
+        // फायरबेस मॉड्युल्स इम्पोर्ट करणे
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // Firebase Configuration (तुमचा मागील प्रोजेक्ट कॉन्फिगरेशन कोड येथे वापरा)
+        // तुमचा अचूक Firebase Configuration कोड (रंगीत दिसण्यासाठी योग्य फॉरमॅट)
         const firebaseConfig = {
-            apiKey: "AIzaSyC8NAwn6GGQo0UCXjeUhy_h-EqqigxCGIU",
+            apiKey: "AIzaSyCBAwn6GGQo0UCXjeUhy_h-EqqigxCGIU",
             authDomain: "raktdata-d13f6.firebaseapp.com",
+            databaseURL: "https://raktdata-d13f6-default-rtdb.firebaseio.com",
             projectId: "raktdata-d13f6",
-            storageBucket: "raktdata-d13f6.appspot.com",
+            storageBucket: "raktdata-d13f6.firebasestorage.app",
             messagingSenderId: "1069694803367",
-            appId: "1:1069694803367:web:d2f6f3d8360d69ef462a82"
+            appId: "1:1069694803367:web:d2f6f3d8360d69ef462a82",
+            measurementId: "G-1TXPB99M62"
         };
 
+        // फायरबेस ॲप इनिशिअलाईज करणे
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // युझर लॉगिन आहे की नाही ते तपासणे व डेटा दाखवणे
+        // युझर लॉगिन स्टेट तपासणे आणि डेटा लोड करणे
         onAuthStateChanged(auth, async (user) => {
             if (user) {
-                // युझर लॉगिन आहे, Firestore मधून डेटा आणा
-                const docRef = doc(db, "users", user.uid);
-                const docSnap = await getDoc(docRef);
+                try {
+                    // युझरच्या UID वरून Firestore मधून डेटा आणणे
+                    const docRef = doc(db, "users", user.uid);
+                    const docSnap = await getDoc(docRef);
 
-                if (docSnap.exists()) {
-                    const userData = docSnap.data();
-                    
-                    // डॅशबोर्डवर डेटा सेट करणे
-                    document.getElementById('user-display-name').innerText = userData.fullName;
-                    document.getElementById('user-blood-group').innerText = userData.bloodGroup;
-                    
-                    // आयडी कार्डवर डेटा सेट करणे
-                    document.getElementById('card-name').innerText = userData.fullName;
-                    document.getElementById('card-blood').innerText = userData.bloodGroup;
-                    document.getElementById('card-id').innerText = user.uid.substring(0, 6).toUpperCase();
+                    if (docSnap.exists()) {
+                        const userData = docSnap.data();
+                        
+                        // ओळखपत्रावर डेटा सेट करणे
+                        document.getElementById("card-name").innerText = userData.name || "नाव उपलब्ध नाही";
+                        document.getElementById("card-phone").innerText = userData.phone || "--";
+                        document.getElementById("card-email").innerText = user.email || "--";
+                        document.getElementById("badge-blood").innerText = userData.bloodGroup || "--";
+                    } else {
+                        console.log("डेटाबेसमध्ये युझरचा अतिरिक्त डेटा सापडला नाही.");
+                        document.getElementById("card-name").innerText = "स्वयंसेवक";
+                        document.getElementById("card-email").innerText = user.email;
+                    }
+                } catch (error) {
+                    console.error("डेटा आणताना एरर आला:", error);
                 }
             } else {
-                // युझर लॉगिन नसेल तर थेट लॉगिन पेजवर पाठवा
+                // जर युझर लॉगिन नसेल, तर त्याला लॉगिन पेजवर पाठवा
                 window.location.href = "auth.html";
             }
         });
 
         // लॉगआउट लॉजिक
-        document.getElementById('btn-logout').addEventListener('click', () => {
+        document.getElementById("btn-logout").addEventListener("click", () => {
             signOut(auth).then(() => {
                 window.location.href = "auth.html";
+            }).catch((error) => {
+                alert("लॉगआउट करताना चूक झाली: " + error.message);
             });
         });
     </script>
