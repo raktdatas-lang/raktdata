@@ -95,7 +95,7 @@
             position: absolute;
             width: 250px;
             height: 250px;
-            background: rgba(198, 40, 40, 0.15);
+            background: rgba(198, 40, 40, 0.12);
             border-radius: 50%;
             top: -50px;
             right: -50px;
@@ -103,42 +103,58 @@
         .bg-blood-icon {
             position: absolute;
             font-size: 120px;
-            color: rgba(198, 40, 40, 0.08);
+            color: rgba(198, 40, 40, 0.05);
             bottom: 20px;
             left: 10px;
         }
-        /* Logo Header */
+        
+        /* Logo Header Structure with New Logo Image */
         .poster-header {
             position: absolute;
-            top: 15px;
+            top: 12px;
             left: 0;
             width: 100%;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 15px;
+            box-sizing: border-box;
             z-index: 2;
         }
+        .logo-img {
+            height: 42px;
+            width: auto;
+            margin-right: 10px;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
+        }
+        .header-text-block {
+            text-align: left;
+        }
         .poster-logo {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 900;
             color: var(--primary-color);
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             margin: 0;
+            line-height: 1;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         .poster-tagline {
             color: white;
-            font-size: 8px;
-            letter-spacing: 2px;
-            margin: 2px 0 0 0;
+            font-size: 7.5px;
+            letter-spacing: 1px;
+            margin: 3px 0 0 0;
             font-weight: bold;
         }
+        
         /* Main Slogan */
         .poster-slogan {
             position: absolute;
-            top: 60px;
+            top: 68px;
             width: 100%;
             text-align: center;
             color: var(--gold-color);
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: bold;
             padding: 0 15px;
             box-sizing: border-box;
@@ -165,7 +181,7 @@
         /* User Info Area */
         .info-area {
             position: absolute;
-            top: 115px;
+            top: 120px;
             left: 155px;
             right: 20px;
             color: white;
@@ -277,14 +293,17 @@
             <div class="bg-blood-icon"><i class="fa-solid fa-droplet"></i></div>
             
             <div class="poster-header">
-                <h1 class="poster-logo">RAKTDATA.IN</h1>
-                <p class="poster-tagline">NATIONAL BLOOD DONATION MOVEMENT</p>
+                <!-- तुमचा नवीन लोगो इथे जोडला आहे -->
+                <img class="logo-img" src="logo.png" alt="Raktdata Logo">
+                <div class="header-text-block">
+                    <h1 class="poster-logo">RAKTDATA.IN</h1>
+                    <p class="poster-tagline">NATIONAL BLOOD DONATION MOVEMENT</p>
+                </div>
             </div>
             
             <div class="poster-slogan">"रक्तदान हेच जीवनदान! मी नोंदणी केली आहे, तुम्ही कधी करताय?"</div>
             
             <div class="photo-frame">
-                <!-- Default Dummy Photo if User hasn't uploaded yet -->
                 <img id="posterPhoto" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Photo">
             </div>
             
@@ -313,14 +332,12 @@
     </div>
 
     <script>
-        // ड्युटी ऑन चेंज: फॉर्ममधील डेटा पोस्टरवर लाईव्ह अपडेट करणे
         function updatePoster() {
             document.getElementById('posterName').innerText = document.getElementById('inputName').value || "तुमचे नाव";
             document.getElementById('posterBlood').innerText = document.getElementById('inputBlood').value;
             document.getElementById('posterCity').innerText = document.getElementById('inputCity').value || "महाराष्ट्र";
         }
 
-        // युझरने अपलोड केलेला फोटो वाचून फ्रेममध्ये लावणे
         function handlePhoto(event) {
             const file = event.target.files[0];
             if (file) {
@@ -332,12 +349,10 @@
             }
         }
 
-        // 'html2canvas' वापरून संपूर्ण पोस्टर इमेज बनवून डाऊनलोड करणे
         function downloadPoster() {
             const posterElement = document.getElementById('poster-area');
             const name = document.getElementById('inputName').value || 'Raktdata';
             
-            // डाऊनलोड करताना इमेज क्लिअर यावी म्हणून स्केल २.५ ठेवले आहे
             html2canvas(posterElement, {
                 scale: 2.5, 
                 useCORS: true,
