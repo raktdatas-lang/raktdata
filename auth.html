@@ -4,117 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>लॉगिन / नोंदणी | RAKTDATA.IN</title>
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS for modern and responsive styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome for beautiful icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col justify-between font-sans">
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- Back to Home Button -->
-    <div class="container mx-auto px-4 pt-6">
-        <a href="index.html" class="inline-flex items-center text-sm font-bold text-gray-600 hover:text-red-600 transition">
-            <i class="fa-solid fa-arrow-left-long mr-2"></i> मुख्य पृष्ठावर जा
+    <!-- Back to Home Link -->
+    <div class="p-4">
+        <a href="index.html" class="text-gray-600 hover:text-red-600 font-medium transition duration-300 flex items-center space-x-1">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>मुख्य पृष्ठावर जा</span>
         </a>
     </div>
 
     <!-- Main Auth Card Container -->
-    <main class="flex-grow flex items-center justify-center px-4 py-12">
-        <div class="bg-white w-full max-w-lg rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+    <main class="flex-grow flex items-center justify-center px-4 py-8">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden border border-gray-100">
             
-            <!-- Brand Header -->
-            <!-- Brand Header (नवीन इमेज लोगोसह) -->
-<div class="bg-gray-950 text-white p-6 text-center space-y-2">
-    <div class="flex justify-center items-center space-x-2">
-        <img src="logo.png" alt="RAKTDATA.IN Logo" class="h-9 w-9 object-contain">
-        <span class="text-xl font-black tracking-wider text-red-600">RAKTDATA<span class="text-white">.IN</span></span>
-    </div>
-    <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold">National Blood Donation Movement</p>
-</div>
-            <!-- Tab Toggles (Login vs Register) -->
-            <div class="flex border-b border-gray-100 font-bold text-sm text-gray-500">
-                <button id="tab-login" class="w-1/2 py-4 text-center border-b-2 border-red-600 text-red-600 focus:outline-none transition-all">
-                    <i class="fa-solid fa-right-to-bracket mr-1"></i> लॉगिन करा
+            <!-- Card Header -->
+            <div class="bg-slate-900 text-white text-center p-6 border-b-4 border-red-600">
+                <div class="flex items-center justify-center space-x-2 mb-2">
+                    <i class="fa-solid fa-droplet text-red-500 text-3xl animate-pulse"></i>
+                    <span class="text-2xl font-black tracking-wider text-red-500">RAKTDATA<span class="text-white">.IN</span></span>
+                </div>
+                <p class="text-xs tracking-widest text-gray-400 uppercase font-bold">National Blood Donation Movement</p>
+            </div>
+
+            <!-- Tab Switching Buttons -->
+            <div class="flex border-b border-gray-200">
+                <button id="tab-login" class="w-1/2 py-4 font-bold text-sm border-b-2 border-red-600 text-red-600 transition duration-300 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-sign-in"></i>
+                    <span>लॉगिन करा</span>
                 </button>
-                <button id="tab-register" class="w-1/2 py-4 text-center border-b-2 border-transparent hover:text-gray-800 focus:outline-none transition-all">
-                    <i class="fa-solid fa-user-plus mr-1"></i> नवीन नोंदणी
+                <button id="tab-register" class="w-1/2 py-4 font-bold text-sm border-b-2 border-transparent text-gray-500 hover:text-red-600 transition duration-300 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>नवीन नोंदणी</span>
                 </button>
             </div>
 
-            <!-- Forms Content Wrapper -->
-            <div class="p-6 md:p-8">
+            <!-- Forms Content Area -->
+            <div class="p-6">
                 
-                <!-- ==========================================
-                     १. LOGIN FORM (लॉगिन फॉर्म)
-                     ========================================== -->
+                <!-- 1. LOGIN FORM -->
                 <form id="form-login" class="space-y-4">
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1.5 uppercase">ईमेल आयडी (Email)</label>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">ईमेल आयडी (Email)</label>
                         <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400"><i class="fa-solid fa-envelope text-sm"></i></span>
-                            <input type="email" placeholder="तुमचा ईमेल टाका" required class="w-full bg-gray-50 border border-gray-200 focus:border-red-500 focus:bg-white rounded-xl pl-10 pr-4 py-3 text-sm transition outline-none">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                            <input type="email" id="login-email" required placeholder="तुमचा ईमेल टाका" class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300 bg-gray-50">
                         </div>
                     </div>
-
                     <div>
-                        <div class="flex justify-between items-center mb-1.5">
+                        <div class="flex justify-between items-center mb-1">
                             <label class="block text-xs font-bold text-gray-700 uppercase">पासवर्ड (Password)</label>
-                            <a href="#forgot" class="text-xs font-semibold text-red-600 hover:underline">पासवर्ड विसरलात?</a>
+                            <a href="#" class="text-xs font-semibold text-red-600 hover:underline">पासवर्ड विसरलात?</a>
                         </div>
                         <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400"><i class="fa-solid fa-lock text-sm"></i></span>
-                            <input type="password" placeholder="••••••••" required class="w-full bg-gray-50 border border-gray-200 focus:border-red-500 focus:bg-white rounded-xl pl-10 pr-4 py-3 text-sm transition outline-none">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                                <i class="fa-solid fa-lock"></i>
+                            </span>
+                            <input type="password" id="login-password" required placeholder="••••••••" class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300 bg-gray-50">
                         </div>
                     </div>
-
-                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 rounded-xl shadow-md transition duration-300 mt-2">
-                        डॅशबोर्डवर प्रवेश करा
+                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg text-sm shadow-md transition duration-300 transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                        <span>डॅशबोर्डवर प्रवेश करा</span>
                     </button>
                 </form>
 
-                <!-- ==========================================
-                     २. REGISTER FORM (नोंदणी फॉर्म - सुरुवातीला लपवलेला)
-                     ========================================== -->
+                <!-- 2. REGISTER FORM (Initially Hidden) -->
                 <form id="form-register" class="space-y-4 hidden">
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1.5 uppercase">पूर्ण नाव (Full Name)</label>
-                        <input type="text" placeholder="पहिले आणि आडनाव" required class="w-full bg-gray-50 border border-gray-200 focus:border-red-500 focus:bg-white rounded-xl px-4 py-3 text-sm transition outline-none">
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1.5 uppercase">ईमेल आयडी (Email)</label>
-                            <input type="email" placeholder="name@gmail.com" required class="w-full bg-gray-50 border border-gray-200 focus:border-red-500 focus:bg-white rounded-xl px-4 py-3 text-sm transition outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1.5 uppercase">मोबाईल नंबर (WhatsApp)</label>
-                            <input type="tel" pattern="[0-9]{10}" placeholder="10 अंकी नंबर" required class="w-full bg-gray-50 border border-gray-200 focus:border-red-500 focus:bg-white rounded-xl px-4 py-3 text-sm transition outline-none">
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">पूर्ण नाव (Full Name)</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                            <input type="text" id="reg-name" required placeholder="नाव आणि आडनाव टाका" class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300 bg-gray-50">
                         </div>
                     </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1.5 uppercase">पासवर्ड तयार करा</label>
-                            <input type="password" placeholder="किमान ६ अक्षरे" required class="w-full bg-gray-50 border border-gray-200 focus:border-red-500 focus:bg-white rounded-xl px-4 py-3 text-sm transition outline-none">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">मोबाईल नंबर (Mobile Number)</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            <input type="tel" id="reg-phone" required placeholder="१० अंकी नंबर टाका" class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300 bg-gray-50">
                         </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1.5 uppercase">रक्तगट निवडा</label>
-                            <select required class="w-full bg-gray-50 border border-gray-200 focus:border-red-500 focus:bg-white rounded-xl px-4 py-3 text-sm font-bold text-red-600 transition outline-none">
-                                <option value="" disabled selected>निवडा...</option>
-                                <option>A +ve</option><option>A -ve</option><option>B +ve</option><option>B -ve</option>
-                                <option>O +ve</option><option>O -ve</option><option>AB +ve</option><option>AB -ve</option>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">रक्तगट (Blood Group)</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                                <i class="fa-solid fa-droplet"></i>
+                            </span>
+                            <select id="reg-blood" class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300 bg-gray-50">
+                                <option value="A+">A +ve</option>
+                                <option value="A-">A -ve</option>
+                                <option value="B+">B +ve</option>
+                                <option value="B-">B -ve</option>
+                                <option value="O+">O +ve</option>
+                                <option value="O-">O -ve</option>
+                                <option value="AB+">AB +ve</option>
+                                <option value="AB-">AB -ve</option>
                             </select>
                         </div>
                     </div>
-
-                    <div class="flex items-start space-x-2 pt-2">
-                        <input type="checkbox" required class="mt-1 text-red-600 rounded border-gray-300 focus:ring-0">
-                        <p class="text-xs text-gray-500">मी नियमांचे पालन करण्यास आणि रक्त तुटवडा दूर करण्यासाठी प्रामाणिकपणे मदत करण्यास सहमत आहे.</p>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">ईमेल आयडी (Email)</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                            <input type="email" id="reg-email" required placeholder="example@email.com" class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300 bg-gray-50">
+                        </div>
                     </div>
-
-                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 rounded-xl shadow-md transition duration-300 mt-2">
-                        खाते तयार करा (Register)
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">पासवर्ड तयार करा (Password)</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                                <i class="fa-solid fa-lock"></i>
+                            </span>
+                            <input type="password" id="reg-password" required placeholder="किमान ६ अक्षरे/अंक" class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300 bg-gray-50">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-lg text-sm shadow-md transition duration-300 transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                        <span>खाते तयार करा</span>
                     </button>
                 </form>
 
@@ -122,14 +140,12 @@
         </div>
     </main>
 
-    <!-- Simple Footer -->
-    <footer class="bg-white border-t border-gray-100 py-4 text-center text-xs text-gray-400">
-        <p>&copy; 2026 RAKTDATA.IN. सुरक्षित युझर ऑथेंटिकेशन प्रणाली.</p>
+    <!-- Footer -->
+    <footer class="text-center py-4 text-xs text-gray-400 border-t border-gray-100 bg-white">
+        &copy; 2026 RAKTDATA.IN. सुरक्षित युझर ऑथेंटिकेशन प्रणाली.
     </footer>
 
-    <!-- ==========================================
-         JAVASCRIPT FOR TAB TOGGLING
-         ========================================== -->
+    <!-- JAVASCRIPT FOR TAB TOGGLING -->
     <script>
         const tabLogin = document.getElementById('tab-login');
         const tabRegister = document.getElementById('tab-register');
@@ -140,7 +156,7 @@
             // Highlight Tab
             tabLogin.classList.add('border-red-600', 'text-red-600');
             tabRegister.classList.remove('border-red-600', 'text-red-600');
-            tabRegister.classList.add('border-transparent');
+            tabLogin.classList.remove('border-transparent');
             // Show/Hide Form
             formLogin.classList.remove('hidden');
             formRegister.classList.add('hidden');
@@ -155,33 +171,87 @@
             formRegister.classList.remove('hidden');
             formLogin.classList.add('hidden');
         });
-    <!-- ==========================================
-         // FIREBASE 🟧 INTEGRATION (v10+)
-         ========================================== -->
+    </script>
+
+    <!-- FIREBASE INTEGRATION (v10+) -->
     <script type="module">
-        // Firebase मॉड्युल्स इम्पोर्ट करणे
+        // Firebase मॉड्यूल्स इम्पोर्ट करणे
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // ⚠️ तुमच्या Firebase प्रोजेक्टचे Configuration येथे टाका
-    const firebaseConfig = {
-  apiKey: "AIzaSyC8NAwn6GGQo0UCXjeUhy_h-EqqigxCGIU",
-  authDomain: "raktdata-d13f6.firebaseapp.com",
-  databaseURL: "https://raktdata-d13f6-default-rtdb.firebaseio.com",
-  projectId: "raktdata-d13f6",
-  storageBucket: "raktdata-d13f6.firebasestorage.app",
-  messagingSenderId: "1069694803367",
-  appId: "1:1069694803367:web:d2f6f3d8360d69ef462a82",
-  measurementId: "G-1TXP899M62"
-};
+        // तुमच्या Firebase प्रोजेक्टचे Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCBAwn6GGQo0UCXjeUhy_h-EqqigxCGIU",
+            authDomain: "raktdata-d13f6.firebaseapp.com",
+            databaseURL: "https://raktdata-d13f6-default-rtdb.firebaseio.com",
+            projectId: "raktdata-d13f6",
+            storageBucket: "raktdata-d13f6.firebasestorage.app",
+            messagingSenderId: "1069694803367",
+            appId: "1:1069694803367:web:d2f6f3d8360d69ef462a82",
+            measurementId: "G-1TXPB99M62"
+        };
 
-        // Firebase आणि सर्व्हिसेस सुरू करा
+        // Firebase आणि सर्विसेस सुरू करा
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
         // --- नोंदणी आणि लॉगिनचे लॉजिक खालीलप्रमाणे ---
+
+        // १. नोंदणी (Registration) सबमिट करणे
+        formRegister.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('reg-name').value;
+            const phone = document.getElementById('reg-phone').value;
+            const blood = document.getElementById('reg-blood').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+
+            try {
+                // Firebase Auth मध्ये युझर तयार करा
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Firestore Database मध्ये युझरचा अतिरिक्त डेटा सेव्ह करा
+                await setDoc(doc(db, "users", user.uid), {
+                    uid: user.uid,
+                    name: name,
+                    phone: phone,
+                    bloodGroup: blood,
+                    email: email,
+                    role: "user",
+                    createdAt: new Date().toISOString()
+                });
+
+                alert("🚀 नोंदणी यशस्वी झाली!");
+                window.location.href = "dashboard.html"; // यशस्वी नोंदणीनंतर डॅशबोर्डवर नेणे
+
+            } catch (error) {
+                console.error("Error during registration:", error);
+                alert("❌ एरर: " + error.message);
+            }
+        });
+
+        // २. लॉगिन (Login) सबमिट करणे
+        formLogin.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                // Firebase Auth द्वारे लॉगिन करा
+                await signInWithEmailAndPassword(auth, email, password);
+                alert("🔓 लॉगिन यशस्वी झाले!");
+                window.location.href = "dashboard.html";
+
+            } catch (error) {
+                console.error("Error during login:", error);
+                alert("❌ चुकीचा ईमेल किंवा पासवर्ड! कृपया पुन्हा तपासा.");
+            }
+        });
     </script>
 </body>
 </html>
