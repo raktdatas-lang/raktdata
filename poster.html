@@ -14,17 +14,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         body { font-family: 'Noto Sans Devanagari', sans-serif; }
+        .pulse { animation: pulse-animation 2s infinite; }
+        @keyframes pulse-animation {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-[#070b19] min-h-screen py-8 px-4 flex flex-col items-center justify-center gap-6 text-white">
 
     <div class="w-full max-w-[1050px] flex flex-col lg:flex-row gap-8 items-stretch justify-center">
         
-        <!-- डावा भाग: माहिती भरण्यासाठी फॉर्म -->
+        <!-- डावा भाग: माहिती भरण्यासाठी फॉर्म पॅनल -->
         <div class="w-full lg:w-[420px] bg-slate-900 p-6 rounded-2xl shadow-xl border border-slate-800 flex flex-col justify-between">
             <div>
                 <h3 class="text-lg font-black text-red-500 border-b border-slate-800 pb-3 mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-square-sliders-stroke"></i> कार्ड डिझाईन पॅनल
+                    <i class="fa-solid fa-sliders"></i> कार्ड डिझाईन पॅनल
                 </h3>
                 
                 <div class="space-y-4">
@@ -84,7 +90,7 @@
 
                     <!-- फोटो अपलोड -->
                     <div>
-                        <label class="block text-xs font-bold text-slate-400 mb-1">रक्तदात्याचा फोटो बदला:</label>
+                        <label class="block text-xs font-bold text-slate-400 mb-1">रक्तदात्याचा फोटो निवडा:</label>
                         <input type="file" id="input-photo" accept="image/*" 
                             class="w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-slate-800 file:text-white hover:file:bg-slate-700 cursor-pointer">
                     </div>
@@ -97,21 +103,29 @@
             </button>
         </div>
 
-        <!-- उजवा भाग: नवीन आकर्षक लाईव्ह प्रीव्ह्यू -->
+        <!-- उजवा भाग: सुरक्षित लाईव्ह प्रीव्ह्यू (इमेज एरर-फ्री डिझाईन) -->
         <div class="w-full max-w-[480px] flex items-center justify-center">
             
             <div id="poster-area" class="w-full aspect-square bg-[#0c1329] text-white p-6 relative rounded-3xl shadow-2xl flex flex-col justify-between overflow-hidden border-2 border-slate-800/80">
                 
-                <!-- प्रीमियम बॅकग्राउंड लाईट्स -->
+                <!-- प्रीमियम बॅकग्राउंड लाईट्स इफेक्ट्स -->
                 <div class="absolute -top-20 -right-20 w-60 h-60 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                <!-- हेडर: नवीन अधिकृत लोगो सह -->
+                <!-- हेडर: अधिकृत लोगो आणि ब्रँडिंग (SVG आधारित सुरक्षित स्वरूप) -->
                 <div class="flex items-center justify-between border-b border-slate-800/60 pb-3 relative z-10">
                     <div class="flex items-center space-x-3">
-                        <!-- तुमचा मूळ लोगो इथे जोडला आहे -->
-                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center p-0.5 shadow-xl border border-red-500/20">
-                            <img src="https://i.imgur.com/5zBqG2V.jpeg" class="w-full h-full object-contain rounded-full" alt="Raktdata Logo" crossorigin="anonymous">
+                        <!-- लोगो: तुटणार नाही असा शाश्वत पांढरा बेस थेंब लोगो -->
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-xl border border-red-500/30 p-1.5 relative overflow-hidden">
+                            <!-- भारताच्या नकाशासह रक्ताचा थेंब दर्शवणारा वेक्टर आयकॉन -->
+                            <div class="relative w-full h-full flex items-center justify-center text-red-650 text-red-600">
+                                <i class="fa-solid fa-droplet text-3xl"></i>
+                                <div class="absolute inset-0 flex items-center justify-center text-[9px] text-white font-black mt-1">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </div>
+                            </div>
+                            <div class="absolute top-0 left-0 right-0 h-[3px] bg-orange-500"></div>
+                            <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-green-600"></div>
                         </div>
                         <div>
                             <h1 class="text-2xl font-[900] tracking-wider text-red-500 leading-none">RAKTDATA.IN</h1>
@@ -123,22 +137,27 @@
                     </div>
                 </div>
 
-                <!-- संदेश पट्टी -->
+                <!-- घोषवाक्य संदेश पट्टी -->
                 <div class="text-center my-1.5 relative z-10">
                     <p class="text-amber-400 text-[13px] font-bold tracking-wide drop-shadow-sm">
                         "रक्तदान हेच जीवनदान! मी नोंदणी केली आहे, तुम्ही कधी करताय?"
                     </p>
                 </div>
 
-                <!-- मध्य विभाग: मुख्य डेटा आणि फोटो लेआउट -->
+                <!-- मध्य विभाग: फोटो फ्रेम आणि डेटा लेआउट -->
                 <div class="grid grid-cols-[130px_1fr] gap-4 my-auto items-center relative z-10">
                     
-                    <!-- डावीकडे: मॉडर्न प्रोफाइल फ्रेम -->
-                    <div class="w-[130px] aspect-[3/4] bg-slate-900 border-[3px] border-amber-400 rounded-2xl p-0.5 shadow-2xl overflow-hidden">
-                        <img id="poster-img" src="https://i.imgur.com/8Qp4ZmL.jpeg" class="w-full h-full object-cover rounded-xl" alt="Donor Photo" crossorigin="anonymous">
+                    <!-- डावीकडे: आधुनिक फोटो फ्रेम (सुरुवातीला सुंदर युझर प्लेसहोल्डर आयकॉन) -->
+                    <div class="w-[130px] aspect-[3/4] bg-slate-900 border-[3px] border-amber-400 rounded-2xl p-0.5 shadow-2xl overflow-hidden flex items-center justify-center relative">
+                        <img id="poster-img" src="" class="w-full h-full object-cover rounded-xl hidden" alt="Donor Photo">
+                        <!-- डीफॉल्ट प्लेसहोल्डर लूक जे इमेज नसताना दिसेल -->
+                        <div id="placeholder-box" class="flex flex-col items-center justify-center text-center p-2 text-slate-500">
+                            <i class="fa-solid fa-user-shield text-4xl text-amber-400/80 mb-2"></i>
+                            <p class="text-[9px] font-bold uppercase tracking-wider text-slate-400">फोटो निवडा</p>
+                        </div>
                     </div>
 
-                    <!-- उजवीकडे: माहिती आणि संस्था -->
+                    <!-- उजवीकडे: माहिती आणि संस्था विभाग -->
                     <div class="space-y-3">
                         <div class="flex items-center justify-between">
                             <span class="text-[9px] text-red-400 bg-red-950/50 border border-red-900/40 px-2 py-0.5 rounded-md font-bold uppercase tracking-wider">
@@ -154,7 +173,7 @@
                             दिलीप म. गायकवाड
                         </h2>
 
-                        <!-- तिन्ही बॅजेस एकाच ओळीत सुबक -->
+                        <!-- तिन्ही बॅजेस -->
                         <div class="flex flex-wrap gap-1.5">
                             <span class="bg-red-600 text-white text-[9.5px] font-black px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1">
                                 <i class="fa-solid fa-droplet text-[8px]"></i> <span id="poster-bg">AB+</span>
@@ -167,7 +186,7 @@
                             </span>
                         </div>
 
-                        <!-- 🔥 आकर्षक संलग्न संस्था बॉक्स (Premium Glassmorphism Look) -->
+                        <!-- संलग्न संस्था बॉक्स (Premium Glassmorphism Look) -->
                         <div class="bg-gradient-to-r from-amber-500/10 to-transparent border-l-4 border-amber-400 bg-slate-900/40 rounded-r-xl p-2 mt-2 shadow-sm">
                             <p class="text-[7px] text-amber-400 uppercase font-black tracking-widest mb-0.5">संलग्न संस्था / मंडळ</p>
                             <p id="poster-org" class="text-[11.5px] font-bold text-slate-200 tracking-wide truncate">
@@ -184,7 +203,7 @@
                         चला, एकत्र येऊया आणि गरजूंना जीवनदान देऊया! ❤️
                     </p>
                     
-                    <!-- बॉटम आकर्षक ग्लॉसी पट्टी -->
+                    <!-- बॉटम पट्टी -->
                     <div class="bg-gradient-to-r from-red-600 via-red-700 to-red-650 text-white py-2 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 shadow-lg border border-red-500/20">
                         <i class="fa-solid fa-globe text-[11px] opacity-90"></i>
                         <span class="tracking-wide">www.raktdata.in वर आजच नोंदणी करा!</span>
@@ -213,8 +232,9 @@
         const posterCity = document.getElementById('poster-city');
         const posterState = document.getElementById('poster-state');
         const posterImg = document.getElementById('poster-img');
+        const placeholderBox = document.getElementById('placeholder-box');
 
-        // रिअल-टाइम अपडेट्स
+        // रिअल-टाइम टेक्स्ट अपडेट्स
         inputName.addEventListener('input', (e) => posterName.innerText = e.target.value || "नाव");
         inputOrg.addEventListener('input', (e) => posterOrg.innerText = e.target.value || "स्वतंत्र रक्तदाता");
         inputBg.addEventListener('change', (e) => posterBg.innerText = e.target.value);
@@ -222,26 +242,28 @@
         inputCity.addEventListener('input', (e) => posterCity.innerText = e.target.value || "शहर");
         inputState.addEventListener('input', (e) => posterState.innerText = e.target.value || "राज्य");
 
-        // फोटो अपलोड हँडलर
+        // स्थानिक पातळीवर सुरक्षित फोटो लोड करणे
         inputPhoto.addEventListener('change', function(e) {
             const file = this.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     posterImg.src = event.target.result;
+                    posterImg.classList.remove('hidden');
+                    placeholderBox.classList.add('hidden');
                 }
                 reader.readAsDataURL(file);
             }
         });
 
-        // इमेज जनरेशन आणि डाउनलोड
+        // इमेज डाऊनलोड कार्यप्रणाली (CORS सुरक्षित पर्याय)
         document.getElementById('btn-download').addEventListener('click', () => {
             const poster = document.getElementById('poster-area');
             
             html2canvas(poster, {
                 scale: 3, 
                 useCORS: true,
-                allowTaint: false,
+                allowTaint: true,
                 backgroundColor: null
             }).then(canvas => {
                 const image = canvas.toDataURL("image/png");
@@ -251,7 +273,7 @@
                 link.click();
             }).catch(err => {
                 console.error("डाउनलोड एरर:", err);
-                alert("इमेज डाउनलोड करताना काहीतरी तांत्रिक अडचण आली.");
+                alert("इमेज डाउनलोड करताना काहीतरी तांत्रिक अडचण आली. कृपया फोटो निवडून पुन्हा प्रयत्न करा.");
             });
         });
     </script>
