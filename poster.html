@@ -6,7 +6,7 @@
     <title>रक्तदान जनजागृती पोस्टर मेकर | Raktdata.in</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Html2Canvas Library (इमेज डाऊनलोड करण्यासाठी) -->
+    <!-- Html2Canvas Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
     <style>
@@ -73,7 +73,7 @@
             background: #b71c1c;
         }
 
-        /* --- POSTER PREVIEW STYLE (SQUARE - 1080x1080 Ratio) --- */
+        /* --- POSTER PREVIEW STYLE --- */
         .poster-preview-wrapper {
             margin-top: 25px;
             display: flex;
@@ -90,7 +90,6 @@
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        /* Background Decorations */
         .bg-circle {
             position: absolute;
             width: 250px;
@@ -108,7 +107,6 @@
             left: 10px;
         }
         
-        /* Logo Header Structure with New Logo Image */
         .poster-header {
             position: absolute;
             top: 12px;
@@ -147,7 +145,6 @@
             font-weight: bold;
         }
         
-        /* Main Slogan */
         .poster-slogan {
             position: absolute;
             top: 68px;
@@ -160,11 +157,10 @@
             box-sizing: border-box;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
         }
-        /* Photo Frame */
         .photo-frame {
             position: absolute;
             top: 110px;
-            left: 30px;
+            left: 25px;
             width: 110px;
             height: 140px;
             border: 3px solid var(--gold-color);
@@ -178,37 +174,48 @@
             height: 100%;
             object-fit: cover;
         }
-        /* User Info Area */
         .info-area {
             position: absolute;
-            top: 120px;
-            left: 155px;
-            right: 20px;
+            top: 112px;
+            left: 150px;
+            right: 15px;
             color: white;
         }
         .user-title {
-            font-size: 10px;
-            color: #ccc;
-            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--gold-color);
             margin-bottom: 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .reg-number-display {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 9.5px;
         }
         .user-name {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: bold;
             color: #fff;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             line-height: 1.2;
         }
         .badge-row {
             display: flex;
-            gap: 10px;
-            margin-top: 5px;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
         }
         .badge {
             background: var(--primary-color);
-            padding: 4px 8px;
+            padding: 3px 7px;
             border-radius: 4px;
-            font-size: 10px;
+            font-size: 9.5px;
             font-weight: bold;
             display: inline-flex;
             align-items: center;
@@ -217,7 +224,9 @@
         .badge-location {
             background: #37474f;
         }
-        /* Call to Action */
+        .badge-state {
+            background: #0288d1;
+        }
         .cta-box {
             position: absolute;
             bottom: 45px;
@@ -229,7 +238,6 @@
             padding: 0 10px;
             box-sizing: border-box;
         }
-        /* Footer Ribbon */
         .poster-footer {
             position: absolute;
             bottom: 0;
@@ -252,12 +260,22 @@
         <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px;">
         
         <!-- Input Form -->
-        <div class="form-group">
-            <label><i class="fa-solid fa-user"></i> तुमचे पूर्ण नाव (मराठीत):</label>
-            <input type="text" id="inputName" value="दिलीप म. गायकवाड" placeholder="नाव टाईप करा" oninput="updatePoster()">
-        </div>
-        
         <div class="form-group" style="display: flex; gap: 15px;">
+            <div style="flex: 2;">
+                <label><i class="fa-solid fa-user"></i> पूर्ण नाव (मराठीत):</label>
+                <input type="text" id="inputName" value="दिलीप म. गायकवाड" placeholder="नाव टाईप करा" oninput="updatePoster()">
+            </div>
+            <div style="flex: 1;">
+                <label><i class="fa-solid fa-id-card"></i> नोंदणी क्र.:</label>
+                <input type="text" id="inputReg" value="RD-101" placeholder="उदा. 101" oninput="updatePoster()">
+            </div>
+        </div>
+
+        <div class="form-group" style="display: flex; gap: 15px;">
+            <div style="flex: 1;">
+                <label><i class="fa-solid fa-briefcase"></i> पद / हुद्दा:</label>
+                <input type="text" id="inputRole" value="सक्रिय रक्तदाता" placeholder="उदा. स्वयंसेवक, सदस्य" oninput="updatePoster()">
+            </div>
             <div style="flex: 1;">
                 <label><i class="fa-solid fa-droplet" style="color: var(--primary-color);"></i> रक्तगट:</label>
                 <select id="inputBlood" onchange="updatePoster()">
@@ -271,9 +289,16 @@
                     <option value="O-">O -ve</option>
                 </select>
             </div>
+        </div>
+        
+        <div class="form-group" style="display: flex; gap: 15px;">
             <div style="flex: 1;">
-                <label><i class="fa-solid fa-location-dot"></i> शहर/जिल्हा:</label>
-                <input type="text" id="inputCity" value="पुणे" placeholder="उदा. मुंबई" oninput="updatePoster()">
+                <label><i class="fa-solid fa-location-dot"></i> जिल्हा:</label>
+                <input type="text" id="inputDistrict" value="पुणे" placeholder="उदा. सातारा" oninput="updatePoster()">
+            </div>
+            <div style="flex: 1;">
+                <label><i class="fa-solid fa-map"></i> राज्य:</label>
+                <input type="text" id="inputState" value="महाराष्ट्र" placeholder="उदा. महाराष्ट्र" oninput="updatePoster()">
             </div>
         </div>
 
@@ -293,7 +318,6 @@
             <div class="bg-blood-icon"><i class="fa-solid fa-droplet"></i></div>
             
             <div class="poster-header">
-                <!-- तुमचा नवीन लोगो इथे जोडला आहे -->
                 <img class="logo-img" src="logo.png" alt="Raktdata Logo">
                 <div class="header-text-block">
                     <h1 class="poster-logo">RAKTDATA.IN</h1>
@@ -308,12 +332,16 @@
             </div>
             
             <div class="info-area">
-                <div class="user-title">सक्रिय रक्तदाता</div>
+                <div class="user-title">
+                    <span id="posterRole">सक्रिय रक्तदाता</span>
+                    <span class="reg-number-display" id="posterReg">नोंदणी क्र: RD-101</span>
+                </div>
                 <div class="user-name" id="posterName">दिलीप म. गायकवाड</div>
                 
                 <div class="badge-row">
                     <span class="badge"><i class="fa-solid fa-droplet"></i> <span id="posterBlood">O+</span></span>
-                    <span class="badge badge-location"><i class="fa-solid fa-location-dot"></i> <span id="posterCity">पुणे</span></span>
+                    <span class="badge badge-location"><i class="fa-solid fa-location-dot"></i> <span id="posterDistrict">पुणे</span></span>
+                    <span class="badge badge-state"><i class="fa-solid fa-map"></i> <span id="posterState">महाराष्ट्र</span></span>
                 </div>
             </div>
             
@@ -334,8 +362,13 @@
     <script>
         function updatePoster() {
             document.getElementById('posterName').innerText = document.getElementById('inputName').value || "तुमचे नाव";
+            document.getElementById('posterRole').innerText = document.getElementById('inputRole').value || "रक्तदाता";
             document.getElementById('posterBlood').innerText = document.getElementById('inputBlood').value;
-            document.getElementById('posterCity').innerText = document.getElementById('inputCity').value || "महाराष्ट्र";
+            document.getElementById('posterDistrict').innerText = document.getElementById('inputDistrict').value || "जिल्हा";
+            document.getElementById('posterState').innerText = document.getElementById('inputState').value || "राज्य";
+            
+            const regVal = document.getElementById('inputReg').value;
+            document.getElementById('posterReg').innerText = regVal ? `नोंदणी क्र: ${regVal}` : "";
         }
 
         function handlePhoto(event) {
