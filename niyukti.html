@@ -1,211 +1,9 @@
-<!DOCTYPE html>
-<html lang="mr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>स्वयंसेवी नियुक्तीपत्र | RAKTDATA.IN</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for Marathi -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- html2pdf.js for Document Download -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <style>
-        body { font-family: 'Noto Sans Devanagari', sans-serif; }
-        .letter-border { border: 4px solid #0f172a; }
-    </style>
-</head>
-<body class="bg-gray-100 py-10">
-
-    <!-- Action Bar (फक्त डाउनलोड बटण दाखवण्यासाठी, पीडीएफ मध्ये हे दिसणार नाही) -->
-    <div class="max-w-[800px] mx-auto mb-4 text-right no-print">
-        <button id="btn-download" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-2 rounded-lg shadow-md transition flex items-center space-x-2 inline-flex">
-            <i class="fa-solid fa-file-pdf"></i>
-            <span>नियुक्तीपत्र PDF डाउनलोड करा</span>
-        </button>
-    </div>
-
-    <!-- MAIN APPOINTMENT LETTER CONTAINER -->
-    <div id="print-area" class="max-w-[800px] mx-auto bg-white letter-border p-6 shadow-2xl relative overflow-hidden text-slate-800">
-        
-        <!-- HEADER SECTION -->
-        <div class="flex justify-between items-center border-b border-gray-300 pb-4">
-            <!-- Left Logo -->
-            <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-lg relative overflow-hidden">
-                <!-- रक्ताचा थेंब आणि नकाशाचे चिन्ह (तुम्ही इमेज पॅथ बदलू शकता) -->
-                <i class="fa-solid fa-droplet text-white text-5xl"></i>
-            </div>
-            
-            <!-- Center Title -->
-            <div class="text-center flex-1 mx-4">
-                <h1 class="text-4xl font-black text-red-600 tracking-wider">RAKTDATA.IN</h1>
-                <p class="text-xs font-bold uppercase tracking-widest text-slate-700 mt-1">National Blood Donation Movement</p>
-                <p class="text-sm font-bold text-red-600 mt-2"><i class="fa-solid fa-heart"></i> रक्तदानासाठी एकत्र – संस्था स्वतंत्र <i class="fa-solid fa-heart"></i></p>
-            </div>
-            
-            <!-- Right Badge -->
-            <div class="text-center border-2 border-amber-500 rounded-full p-2 w-20 h-20 flex flex-col items-center justify-center bg-amber-50 shadow">
-                <p class="text-[8px] font-black text-amber-700 uppercase leading-none">Blood Donation</p>
-                <i class="fa-solid fa-droplet text-red-600 text-lg my-1"></i>
-                <p class="text-[8px] font-black text-amber-700 uppercase leading-none">Save Life</p>
-            </div>
-        </div>
-
-        <!-- MAIN TITLE BANNER -->
-        <div class="text-center my-4">
-            <span class="bg-slate-900 text-white text-lg font-bold px-10 py-1.5 rounded-full shadow-md tracking-wide border-2 border-amber-400">
-                स्वयंसेवी नियुक्तीपत्र
-            </span>
-        </div>
-
-        <!-- TWO COLUMN CONTENT -->
-        <div class="grid grid-cols-4 gap-6 mt-6">
-            
-            <!-- SIDEBAR (LEFT COLUMN) -->
-            <div class="col-span-1 border-r border-gray-200 pr-4 space-y-6">
-                
-                <div class="bg-slate-900 text-white text-center text-xs font-bold py-1 rounded">
-                    नियुक्ती तपशील
-                </div>
-
-                <!-- Profile Placeholder -->
-                <div class="flex flex-col items-center space-y-2">
-                    <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center border border-gray-300">
-                        <i class="fa-solid fa-user text-3xl text-gray-500"></i>
-                    </div>
-                    <div class="text-center">
-                        <p class="text-[10px] text-gray-500 font-bold uppercase">Volunteer ID</p>
-                        <p class="text-xs font-black text-red-600" id="lbl-volunteer-id">RDN-KON-0001</p>
-                    </div>
-                </div>
-
-                <!-- QR Code Placeholder -->
-                <div class="text-center space-y-1">
-                    <div class="w-24 h-24 mx-auto border border-gray-300 p-1 bg-white">
-                        <!-- QR Code Image -->
-                        <i class="fa-solid fa-qrcode text-7xl text-slate-800"></i>
-                    </div>
-                    <p class="text-[9px] text-gray-500 font-bold">पडताळणीसाठी स्कॅन करा</p>
-                    <p class="text-[10px] text-red-600 font-bold underline">www.raktdata.in/verify</p>
-                </div>
-
-                <!-- Metadata List -->
-                <div class="space-y-3 text-[11px]">
-                    <div>
-                        <p class="text-gray-400 font-bold"><i class="fa-solid fa-calendar-check mr-1 text-slate-700"></i> नियुक्ती दिनांक</p>
-                        <p class="font-bold text-slate-800 ml-4" id="lbl-date">05 जुलै 2026</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-400 font-bold"><i class="fa-solid fa-clock mr-1 text-slate-700"></i> वैधता कालावधी</p>
-                        <p class="font-bold text-slate-800 ml-4">05 जुलै 2026 ते 04 जुलै 2027</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-400 font-bold"><i class="fa-solid fa-map-location-dot mr-1 text-slate-700"></i> विभाग</p>
-                        <p class="font-bold text-slate-800 ml-4" id="lbl-dept">कोकण विभाग</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-400 font-bold"><i class="fa-solid fa-briefcase mr-1 text-slate-700"></i> भूमिका</p>
-                        <p class="font-bold text-slate-800 ml-4">समन्वय, जनजागृती आणि नेटवर्क विस्तार</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- MAIN TEXT AREA (RIGHT COLUMN) -->
-            <div class="col-span-3 space-y-4 text-xs leading-relaxed text-justify">
-                
-                <!-- References -->
-                <div class="flex justify-between items-center font-bold text-slate-700 mb-2">
-                    <p>पत्र क्रमांक: <span class="text-red-600" id="lbl-letter-no">RDN/2026/KONKAN/001</span></p>
-                    <p>दिनांक: 05 जुलै 2026</p>
-                </div>
-
-                <!-- Subject Information -->
-                <div>
-                    <p class="font-bold">प्रति,</p>
-                    <h2 class="text-base font-black text-red-600 mt-0.5" id="lbl-name">श्री. संजय रामभाऊ गांगुर्डे</h2>
-                    <p class="font-bold text-gray-600">मुंबई, महाराष्ट्र</p>
-                </div>
-
-                <div class="border-y border-dashed border-amber-500 py-1 font-bold">
-                    विषय: <span class="text-red-600" id="lbl-subject-role">कोकण विभाग समन्वयकर</span> म्हणून स्वयंसेवी नियुक्ती.
-                </div>
-
-                <!-- Body Content -->
-                <p>
-                    रक्तदान जनजागृती, सामाजिक बांधिलकी आणि मानवसेवेबद्दलची आपली निष्ठा लक्षात घेऊन, आपणास <span class="font-bold text-red-600">RAKTDATA.IN – National Blood Donation Movement</span> या राष्ट्रीय रक्तदान जनजागृती उपक्रमात <span class="font-bold text-red-600">"कोकण विभाग समन्वयक"</span> म्हणून स्वयंसेवी स्वरूपात नियुक्त करण्यात येत आहे.
-                </p>
-
-                <!-- Responsibilities -->
-                <div>
-                    <h4 class="bg-slate-900 text-white text-[10px] px-2 py-0.5 rounded inline-block font-bold mb-1">प्रमुख जबाबदाऱ्या</h4>
-                    <ol class="list-decimal list-inside space-y-0.5 pl-1 font-medium text-slate-700">
-                        <li>कोकण विभागातील रक्तदान जनजागृतीसाठी समन्वय साधणे.</li>
-                        <li>रक्तदान क्षेत्रात कार्यरत संस्था, ब्लड बँका, रुग्णालये व स्वयंसेवक यांच्याशी संवाद वाढवणे.</li>
-                        <li>रक्तदान शिबिरांची माहिती Raktdata.in वर पोहोचविणे.</li>
-                        <li>नवीन स्वयंसेवक व संस्थांना नेटवर्कशी जोडण्यासाठी सहकार्य करणे.</li>
-                        <li>रक्तदानाविषयी अचूक, विश्वासार्ह व सकारात्मक माहितीचा प्रसार करणे.</li>
-                        <li>Raktdata.in च्या आचारसंहितेचे पालन करणे.</li>
-                    </ol>
-                </div>
-
-                <!-- Terms & Conditions -->
-                <div>
-                    <h4 class="bg-slate-900 text-white text-[10px] px-2 py-0.5 rounded inline-block font-bold mb-1">अटी व शर्ती</h4>
-                    <ul class="list-disc list-inside space-y-0.5 pl-1 text-slate-600">
-                        <li>ही नियुक्ती पूर्णपणे स्वयंसेवी स्वरूपाची आहे.</li>
-                        <li>या नियुक्तीमुळे रोजगार, वेतन, मानधन किंवा मालकी हक्क निर्माण होत नाही.</li>
-                        <li>संबंधित व्यक्ती स्वतःच्या स्वेच्छेने सामाजिक क्षेत्रात ही भूमिका पार पाडू शकतात.</li>
-                        <li>Raktdata.in हे सर्व संस्था आणि रक्तदान क्षेत्रातील घटकांना जोडणारे डिजिटल व्यासपीठ आहे.</li>
-                        <li>कोणत्याही आर्थिक व्यवहारासाठी संस्थापकांची पूर्वपरवानगी आवश्यक राहील.</li>
-                    </ul>
-                </div>
-
-                <p class="font-bold mt-2">आपल्या सहकार्यामुळे रक्तदान चळवळीला नवी दिशा मिळेल, असा आम्हाला विश्वास आहे. आपल्या कार्यासाठी मन:पूर्वक शुभेच्छा.</p>
-                
-                <p class="text-center font-bold text-red-600 my-2"><i class="fa-solid fa-heart"></i> रक्तदानासाठी एकत्र – संस्था स्वतंत्र <i class="fa-solid fa-heart"></i></p>
-
-                <!-- SIGNATURE SECTION -->
-                <div class="flex justify-between items-end pt-4 mt-4">
-                    <div class="text-center">
-                        <!-- Digital Signature Image Path Placeholder -->
-                        <div class="h-10 flex items-center justify-center font-serif italic text-blue-800 text-lg font-bold">
-                            Gaikwad
-                        </div>
-                        <p class="font-black text-slate-800 border-t border-gray-400 pt-1">दिलीप म. गायकवाड</p>
-                        <p class="text-[10px] text-gray-500 font-bold">संस्थापक (Founder)</p>
-                        <p class="text-[9px] text-gray-400">रक्तदान - मानवतेचा संदेश</p>
-                    </div>
-
-                    <!-- Seal / Round Stamp -->
-                    <div class="w-20 h-20 rounded-full border-2 border-dashed border-blue-900 flex flex-col items-center justify-center text-center p-1 opacity-80 rotate-12">
-                        <span class="text-[7px] font-black text-blue-900 tracking-tighter">RAKTDATA.IN</span>
-                        <i class="fa-solid fa-star text-[6px] text-blue-900 my-0.5"></i>
-                        <span class="text-[6px] font-bold text-blue-800 leading-none">FOUNDER<br>MOVEMENT</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- FOOTER BAR -->
-        <div class="bg-slate-900 text-white text-[9px] flex justify-between items-center p-2 rounded-lg mt-6 -mx-2">
-            <div><i class="fa-solid fa-globe text-red-500 mr-1"></i> www.raktdata.in</div>
-            <div><i class="fa-solid fa-envelope text-red-500 mr-1"></i> raktdatas@gmail.com</div>
-            <div><i class="fa-solid fa-phone text-red-500 mr-1"></i> +91 93214 30535</div>
-        </div>
-
-    </div>
-
-    <!-- FIREBASE AND DYNAMIC SETUP -->
+<!-- सुधारित सुरक्षित फायरबेस लॉजिक -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // फायरबेस कॉन्फिगरेशन
         const firebaseConfig = {
             apiKey: "AIzaSyD4uQCBK2VW9Oc1xWIAPRVxd_zlmN45PFY",
             authDomain: "raktdata-d13f6.firebaseapp.com",
@@ -221,7 +19,6 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // युझर डेटा लोड करणे
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 const userDocRef = doc(db, "users", user.uid);
@@ -230,13 +27,25 @@
                 if (docSnap.exists()) {
                     const userData = docSnap.data();
                     
-                    // डेटाबेसमधून नाव सेट करणे
-                    document.getElementById('lbl-name').innerText = userData.name || "स्वयंसेवकाचे नाव";
-                    
-                    // जर तुमच्या डेटाबेसमध्ये रोल किंवा रिजन असेल तर ते इथे टाकू शकता
-                    if(userData.role) {
-                        document.getElementById('lbl-subject-role').innerText = userData.role;
+                    // 🚨 सुरक्षा तपासणी: जर युझरचा status 'approved' नसेल तर पत्र दाखवू नका
+                    if (userData.status !== "approved") {
+                        document.getElementById('print-area').innerHTML = `
+                            <div class="text-center py-20">
+                                <i class="fa-solid fa-user-shield text-red-600 text-5xl mb-4"></i>
+                                <h2 class="text-xl font-bold text-gray-800">प्रवेश नाकारला!</h2>
+                                <p class="text-sm text-gray-600 mt-2">तुमचे नियुक्तीपत्र अद्याप मुख्य कार्यालयाकडून मंजूर (Approve) झालेले नाही.</p>
+                                <a href="dashboard.html" class="mt-4 inline-block bg-slate-900 text-white text-xs font-bold px-4 py-2 rounded">डॅशबोर्डवर परत जा</a>
+                            </div>
+                        `;
+                        document.getElementById('btn-download').style.display = 'none'; // डाउनलोड बटण लपवा
+                        return;
                     }
+
+                    // जर मंजूर असेल तरच डेटा दाखवा
+                    document.getElementById('lbl-name').innerText = userData.name || "स्वयंसेवकाचे नाव";
+                    document.getElementById('lbl-volunteer-id').innerText = userData.volunteerId || "RDN-PENDING";
+                    document.getElementById('lbl-dept').innerText = userData.department || "स्थानिक विभाग";
+                    document.getElementById('lbl-subject-role').innerText = userData.role || "स्वयंसेवक";
                 }
             } else {
                 window.location.href = "auth.html";
@@ -256,5 +65,3 @@
             html2pdf().set(options).from(element).save();
         });
     </script>
-</body>
-</html>
