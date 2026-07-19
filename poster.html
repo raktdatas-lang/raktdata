@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>रक्तदान जनजागृती पोस्टर मेकर | Raktdata.in</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Html2Canvas Library (इमेज डाऊनलोड करण्यासाठी) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #c62828;
+            --navy-color: #0d1b3e;
+            --gold-color: #d4af37;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #eceff1;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-top: 0;
+            font-size: 22px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: #b71c1c;
+        }
+
+        /* --- POSTER PREVIEW STYLE (SQUARE - 1080x1080 Ratio) --- */
+        .poster-preview-wrapper {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        #poster-area {
+            width: 360px;
+            height: 360px;
+            background: linear-gradient(135deg, #101c42 0%, #050b1e 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        /* Background Decorations */
+        .bg-circle {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: rgba(198, 40, 40, 0.15);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+        }
+        .bg-blood-icon {
+            position: absolute;
+            font-size: 120px;
+            color: rgba(198, 40, 40, 0.08);
+            bottom: 20px;
+            left: 10px;
+        }
+        /* Logo Header */
+        .poster-header {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+        .poster-logo {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .poster-tagline {
+            color: white;
+            font-size: 8px;
+            letter-spacing: 2px;
+            margin: 2px 0 0 0;
+            font-weight: bold;
+        }
+        /* Main Slogan */
+        .poster-slogan {
+            position: absolute;
+            top: 60px;
+            width: 100%;
+            text-align: center;
+            color: var(--gold-color);
+            font-size: 14px;
+            font-weight: bold;
+            padding: 0 15px;
+            box-sizing: border-box;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+        }
+        /* Photo Frame */
+        .photo-frame {
+            position: absolute;
+            top: 110px;
+            left: 30px;
+            width: 110px;
+            height: 140px;
+            border: 3px solid var(--gold-color);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* User Info Area */
+        .info-area {
+            position: absolute;
+            top: 115px;
+            left: 155px;
+            right: 20px;
+            color: white;
+        }
+        .user-title {
+            font-size: 10px;
+            color: #ccc;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+        .user-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        .badge-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .badge {
+            background: var(--primary-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .badge-location {
+            background: #37474f;
+        }
+        /* Call to Action */
+        .cta-box {
+            position: absolute;
+            bottom: 45px;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        /* Footer Ribbon */
+        .poster-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2><i class="fa-solid fa-palette"></i> रक्तदान जनजागृती पोस्टर मेकर</h2>
+        <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px;">
+        
+        <!-- Input Form -->
+        <div class="form-group">
+            <label><i class="fa-solid fa-user"></i> तुमचे पूर्ण नाव (मराठीत):</label>
+            <input type="text" id="inputName" value="दिलीप म. गायकवाड" placeholder="नाव टाईप करा" oninput="updatePoster()">
+        </div>
+        
+        <div class="form-group" style="display: flex; gap: 15px;">
+            <div style="flex: 1;">
+                <label><i class="fa-solid fa-droplet" style="color: var(--primary-color);"></i> रक्तगट:</label>
+                <select id="inputBlood" onchange="updatePoster()">
+                    <option value="A+">A +ve</option>
+                    <option value="A-">A -ve</option>
+                    <option value="B+">B +ve</option>
+                    <option value="B-">B -ve</option>
+                    <option value="AB+">AB +ve</option>
+                    <option value="AB-">AB -ve</option>
+                    <option value="O+" selected>O +ve</option>
+                    <option value="O-">O -ve</option>
+                </select>
+            </div>
+            <div style="flex: 1;">
+                <label><i class="fa-solid fa-location-dot"></i> शहर/जिल्हा:</label>
+                <input type="text" id="inputCity" value="पुणे" placeholder="उदा. मुंबई" oninput="updatePoster()">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label><i class="fa-solid fa-image"></i> तुमचा चांगला फोटो निवडा:</label>
+            <input type="file" id="inputPhoto" accept="image/*" onchange="handlePhoto(event)">
+        </div>
+    </div>
+
+    <!-- Poster Preview & Download Area -->
+    <div class="poster-preview-wrapper">
+        <h3 style="color: var(--navy-color); margin-bottom: 10px;"><i class="fa-solid fa-eye"></i> पोस्टर प्रिव्ह्यू</h3>
+        
+        <!-- Actual Canvas Design -->
+        <div id="poster-area">
+            <div class="bg-circle"></div>
+            <div class="bg-blood-icon"><i class="fa-solid fa-droplet"></i></div>
+            
+            <div class="poster-header">
+                <h1 class="poster-logo">RAKTDATA.IN</h1>
+                <p class="poster-tagline">NATIONAL BLOOD DONATION MOVEMENT</p>
+            </div>
+            
+            <div class="poster-slogan">"रक्तदान हेच जीवनदान! मी नोंदणी केली आहे, तुम्ही कधी करताय?"</div>
+            
+            <div class="photo-frame">
+                <!-- Default Dummy Photo if User hasn't uploaded yet -->
+                <img id="posterPhoto" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Photo">
+            </div>
+            
+            <div class="info-area">
+                <div class="user-title">सक्रिय रक्तदाता</div>
+                <div class="user-name" id="posterName">दिलीप म. गायकवाड</div>
+                
+                <div class="badge-row">
+                    <span class="badge"><i class="fa-solid fa-droplet"></i> <span id="posterBlood">O+</span></span>
+                    <span class="badge badge-location"><i class="fa-solid fa-location-dot"></i> <span id="posterCity">पुणे</span></span>
+                </div>
+            </div>
+            
+            <div class="cta-box">
+                चला, एकत्र येऊया आणि गरजूंना जीवनदान देऊया! ❤️
+            </div>
+            
+            <div class="poster-footer">
+                🌐 www.raktdata.in वर आजच नोंदणी करा!
+            </div>
+        </div>
+
+        <button class="btn" style="max-width: 360px; margin-top: 15px; background: #2e7d32;" onclick="downloadPoster()">
+            <i class="fa-solid fa-download"></i> पोस्टर गॅलरीमध्ये डाउनलोड करा
+        </button>
+    </div>
+
+    <script>
+        // ड्युटी ऑन चेंज: फॉर्ममधील डेटा पोस्टरवर लाईव्ह अपडेट करणे
+        function updatePoster() {
+            document.getElementById('posterName').innerText = document.getElementById('inputName').value || "तुमचे नाव";
+            document.getElementById('posterBlood').innerText = document.getElementById('inputBlood').value;
+            document.getElementById('posterCity').innerText = document.getElementById('inputCity').value || "महाराष्ट्र";
+        }
+
+        // युझरने अपलोड केलेला फोटो वाचून फ्रेममध्ये लावणे
+        function handlePhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('posterPhoto').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // 'html2canvas' वापरून संपूर्ण पोस्टर इमेज बनवून डाऊनलोड करणे
+        function downloadPoster() {
+            const posterElement = document.getElementById('poster-area');
+            const name = document.getElementById('inputName').value || 'Raktdata';
+            
+            // डाऊनलोड करताना इमेज क्लिअर यावी म्हणून स्केल २.५ ठेवले आहे
+            html2canvas(posterElement, {
+                scale: 2.5, 
+                useCORS: true,
+                allowTaint: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `Raktdata_Poster_${name}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
