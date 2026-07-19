@@ -4,82 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>स्वयंसेवक डॅशबोर्ड | RAKTDATA.IN</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2pdf.js for Card Download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
-<body class="bg-gray-50 font-sans antialiased">
+<body class="bg-gray-50 font-sans min-h-screen">
 
-    <!-- मुख्य डॅशबोर्ड रचना -->
-    <div class="min-h-screen flex flex-col">
-        <!-- टॉप नेव्हिगेशन बार -->
-        <header class="bg-red-600 text-white shadow-md p-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-droplet text-2xl text-white"></i>
-                <span class="text-xl font-bold tracking-wider">RAKTDATA.IN</span>
+    <!-- TOP NAVIGATION BAR -->
+    <nav class="bg-slate-900 text-white px-6 py-4 shadow-md flex justify-between items-center border-b-4 border-red-600">
+        <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-droplet text-red-500 text-2xl animate-pulse"></i>
+            <span class="text-xl font-black tracking-wider text-red-500">RAKTDATA<span class="text-white">.IN</span></span>
+        </div>
+        <button id="btn-logout" class="bg-red-600 hover:bg-red-700 text-white font-bold text-xs py-2 px-4 rounded-lg shadow transition flex items-center space-x-1">
+            <i class="fa-solid fa-sign-out"></i>
+            <span>लॉगआउट</span>
+        </button>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- LEFT COLUMN: PROFILE CARD & EDIT PROFILE -->
+        <div class="space-y-6 lg:col-span-1">
+            
+            <!-- 1. DIGITAL ID CARD SECTION -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex flex-col items-center">
+                <h3 class="text-sm font-bold text-gray-700 uppercase mb-4 w-full text-left"><i class="fa-solid fa-id-card text-red-500 mr-1"></i> डिजिटल ओळखपत्र</h3>
+                
+                <!-- ID Card Design -->
+                <div id="id-card" class="bg-gradient-to-br from-red-600 to-red-800 text-white rounded-2xl p-5 w-full max-w-sm shadow-xl relative overflow-hidden aspect-[3.5/2.2] border border-red-500">
+                    <div class="absolute -right-8 -bottom-8 bg-white/10 w-32 h-32 rounded-full blur-xl"></div>
+                    
+                    <div class="flex justify-between items-start mb-6 border-b border-white/20 pb-2">
+                        <div>
+                            <h4 class="font-black text-sm tracking-wide">RAKTDATA.IN</h4>
+                            <p class="text-[9px] uppercase tracking-widest text-red-200">National Volunteer Network</p>
+                        </div>
+                        <div class="bg-white text-red-700 font-black px-2.5 py-1 rounded-lg text-sm shadow-md" id="card-blood">...</div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div>
+                            <p class="text-[9px] uppercase text-red-200 font-bold">स्वयंसेवकाचे नाव</p>
+                            <p class="font-bold text-base tracking-wide" id="card-name">लोड होत आहे...</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 pt-1 border-t border-white/10">
+                            <div>
+                                <p class="text-[8px] uppercase text-red-200 font-bold">मोबाईल नंबर</p>
+                                <p class="text-xs font-semibold" id="card-phone">...</p>
+                            </div>
+                            <div>
+                                <p class="text-[8px] uppercase text-red-200 font-bold">ईमेल आयडी</p>
+                                <p class="text-xs font-semibold truncate" id="card-email">...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 flex justify-between items-center text-[9px] text-red-100 font-bold uppercase tracking-wider">
+                        <span>Status: Active Volunteer</span>
+                        <i class="fa-solid fa-qrcode text-base text-white opacity-80"></i>
+                    </div>
+                </div>
+
+                <!-- Download Button -->
+                <button id="btn-download-card" class="mt-4 w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-2.5 rounded-lg shadow flex items-center justify-center space-x-2 transition">
+                    <i class="fa-solid fa-download"></i>
+                    <span>ओळखपत्र डाउनलोड करा (PDF)</span>
+                </button>
             </div>
-            <button id="btn-logout" class="bg-red-700 hover:bg-red-800 px-4 py-2 rounded-lg text-sm font-semibold transition cursor-pointer">
-                <i class="fa-solid fa-right-from-bracket mr-2"></i>लॉगआउट
-            </button>
-        </header>
 
-        <!-- मुख्य कंटेन्ट -->
-        <main class="flex-1 p-6 max-w-4xl mx-auto w-full">
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6 text-center">
-                <h1 class="text-2xl font-bold text-gray-800 mb-2">जय हिंद, स्वयंसेवक! 👋</h1>
-                <p class="text-gray-600">तुमचे राष्ट्रीय रक्तदाता चळवळीचे डिजिटल ओळखपत्र खाली तयार आहे.</p>
+            <!-- 2. EDIT PROFILE SECTION -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                <h3 class="text-sm font-bold text-gray-700 uppercase mb-4"><i class="fa-solid fa-user-edit text-red-500 mr-1"></i> माहिती अपडेट करा</h3>
+                <form id="form-edit-profile" class="space-y-3">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">पूर्ण नाव</label>
+                        <input type="text" id="edit-name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-gray-50">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">मोबाईल नंबर</label>
+                        <input type="tel" id="edit-phone" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-gray-50">
+                    </div>
+                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-2 rounded-lg transition shadow">
+                        बदल जतन करा (Update)
+                    </button>
+                </form>
             </div>
 
-            <!-- डिजिटल ओळखपत्र (ID Card) -->
-            <div class="max-w-md mx-auto bg-gradient-to-br from-red-600 to-red-800 text-white rounded-2xl shadow-xl overflow-hidden border border-red-500 relative p-6 mb-6">
-                <div class="absolute top-0 right-0 p-4 opacity-10">
-                    <i class="fa-solid fa-droplet text-9xl"></i>
+        </div>
+
+        <!-- RIGHT COLUMN: ALERTS & HISTORY -->
+        <div class="space-y-6 lg:col-span-2">
+            
+            <!-- 1. LIVE EMERGENCY REQUESTS -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-sm font-bold text-gray-700 uppercase flex items-center">
+                        <span class="flex h-2 w-2 relative mr-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                        </span>
+                        रक्ताची तातडीची गरज (Live Emergency Requests)
+                    </h3>
                 </div>
                 
-                <div class="flex justify-between items-start border-b border-red-500/50 pb-4 mb-4">
-                    <div>
-                        <h2 class="text-lg font-bold tracking-wide">RAKTDATA.IN</h2>
-                        <p class="text-xs text-red-200">NATIONAL BLOOD DONATION MOVEMENT</p>
-                    </div>
-                    <span id="badge-blood" class="bg-white text-red-600 font-black text-xl px-3 py-1 rounded-lg shadow-sm">
-                        --
-                    </span>
-                </div>
-
+                <!-- Request Alert Items -->
                 <div class="space-y-3">
-                    <div>
-                        <label class="text-xs text-red-200 block uppercase tracking-wider">स्वयंसेवकाचे नाव</label>
-                        <p id="card-name" class="text-xl font-bold tracking-wide">माहिती लोड होत आहे...</p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-red-50 border-l-4 border-red-600 p-4 rounded-r-xl flex justify-between items-center">
                         <div>
-                            <label class="text-xs text-red-200 block uppercase tracking-wider">मोबाईल नंबर</label>
-                            <p id="card-phone" class="text-sm font-semibold tracking-wide">--</p>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-red-600 text-white text-xs font-black px-2 py-0.5 rounded">O +ve</span>
+                                <span class="font-bold text-xs text-gray-800">जिल्हा रुग्णालय, ठाणे</span>
+                            </div>
+                            <p class="text-[11px] text-gray-600 mt-1"><i class="fa-solid fa-clock mr-1"></i> आवश्यक वेळ: आज संध्याकाळपर्यंत | संपर्क: ९८XXXXXXXX</p>
                         </div>
-                        <div>
-                            <label class="text-xs text-red-200 block uppercase tracking-wider">ईमेल आयडी</label>
-                            <p id="card-email" class="text-sm font-semibold truncate">--</p>
-                        </div>
+                        <a href="tel:9800000000" class="bg-red-600 hover:bg-red-700 text-white text-[10px] font-bold py-1.5 px-3 rounded shadow transition">संपर्क करा</a>
                     </div>
-                </div>
 
-                <div class="mt-6 pt-4 border-t border-red-500/50 flex justify-between items-center text-xs text-red-100">
-                    <span>STATUS: ACTIVE VOLUNTEER</span>
-                    <i class="fa-solid fa-qrcode text-2xl opacity-80"></i>
+                    <div class="bg-red-50 border-l-4 border-red-600 p-4 rounded-r-xl flex justify-between items-center">
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-red-600 text-white text-xs font-black px-2 py-0.5 rounded">AB -ve</span>
+                                <span class="font-bold text-xs text-gray-800">केईएम हॉस्पिटल, मुंबई</span>
+                            </div>
+                            <p class="text-[11px] text-gray-600 mt-1"><i class="fa-solid fa-clock mr-1"></i> आवश्यक वेळ: त्वरित (Urgent) | संपर्क: ८६XXXXXXXX</p>
+                        </div>
+                        <a href="tel:8600000000" class="bg-red-600 hover:bg-red-700 text-white text-[10px] font-bold py-1.5 px-3 rounded shadow transition">संपर्क करा</a>
+                    </div>
                 </div>
             </div>
-        </main>
-    </div>
 
-    <!-- ─── JAVASCRIPT & FIREBASE INTEGRATION ─── -->
+            <!-- 2. DONATION HISTORY TABLE -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 overflow-hidden">
+                <h3 class="text-sm font-bold text-gray-700 uppercase mb-4"><i class="fa-solid fa-history text-red-500 mr-1"></i> माझा रक्तदान इतिहास (Donation History)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100 text-gray-700 text-[10px] font-bold uppercase border-b border-gray-200">
+                                <th class="p-3">क्र.</th>
+                                <th class="p-3">तारीख (Date)</th>
+                                <th class="p-3">ठिकाण / रक्तपेढी (Location)</th>
+                                <th class="p-3">स्थिती (Status)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-xs text-gray-600 divide-y divide-gray-100">
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="p-3 font-semibold">१</td>
+                                <td class="p-3">१४ जून २०२५</td>
+                                <td class="p-3">रक्तदान शिबिर, दादर स्टेशन</td>
+                                <td class="p-3"><span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full">यशस्वी</span></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="p-3 font-semibold">२</td>
+                                <td class="p-3">०८ जानेवारी २०२६</td>
+                                <td class="p-3">वाडिया बाल रुग्णालय, परळ</td>
+                                <td class="p-3"><span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full">यशस्वी</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-4 text-xs text-gray-400 border-t border-gray-100 bg-white mt-8">
+        &copy; 2026 RAKTDATA.IN. राष्ट्रीय सेवा प्रकल्प.
+    </footer>
+
+    <!-- FIREBASE LOGIC BLOCK -->
     <script type="module">
-        // फायरबेस मॉड्युल्स इम्पोर्ट करणे
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // तुमचा अचूक Firebase Configuration कोड (रंगीत दिसण्यासाठी योग्य फॉरमॅट)
+        // फायरबेस कॉन्फिगरेशन (अचूक की सह)
         const firebaseConfig = {
             apiKey: "AIzaSyD4uQCBK2VW9OC1xWIApRVxd_zlmN45PFY",
             authDomain: "raktdata-d13f6.firebaseapp.com",
@@ -91,48 +195,83 @@
             measurementId: "G-1TXPB99M62"
         };
 
-        // फायरबेस ॲप इनिशिअलाईज करणे
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // युझर लॉगिन स्टेट तपासणे आणि डेटा लोड करणे
+        let currentUserDocRef = null;
+
+        // १. युझर लॉगिन स्टेट तपासणे आणि डेटा लोड करणे
         onAuthStateChanged(auth, async (user) => {
             if (user) {
-                try {
-                    // युझरच्या UID वरून Firestore मधून डेटा आणणे
-                    const docRef = doc(db, "users", user.uid);
-                    const docSnap = await getDoc(docRef);
+                currentUserDocRef = doc(db, "users", user.uid);
+                const docSnap = await getDoc(currentUserDocRef);
 
-                    if (docSnap.exists()) {
-                        const userData = docSnap.data();
-                        
-                        // ओळखपत्रावर डेटा सेट करणे
-                        document.getElementById("card-name").innerText = userData.name || "नाव उपलब्ध नाही";
-                        document.getElementById("card-phone").innerText = userData.phone || "--";
-                        document.getElementById("card-email").innerText = user.email || "--";
-                        document.getElementById("badge-blood").innerText = userData.bloodGroup || "--";
-                    } else {
-                        console.log("डेटाबेसमध्ये युझरचा अतिरिक्त डेटा सापडला नाही.");
-                        document.getElementById("card-name").innerText = "स्वयंसेवक";
-                        document.getElementById("card-email").innerText = user.email;
-                    }
-                } catch (error) {
-                    console.error("डेटा आणताना एरर आला:", error);
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+
+                    // आयडी कार्डवर डेटा सेट करणे (नाव अचूक दिसेल)
+                    document.getElementById('card-name').innerText = userData.name || "नाव उपलब्ध नाही";
+                    document.getElementById('card-blood').innerText = userData.bloodGroup || "N/A";
+                    document.getElementById('card-phone').innerText = userData.phone || "N/A";
+                    document.getElementById('card-email').innerText = userData.email || user.email;
+
+                    // एडिट फॉर्ममध्ये व्हॅल्यू सेट करणे
+                    document.getElementById('edit-name').value = userData.name || "";
+                    document.getElementById('edit-phone').value = userData.phone || "";
+                } else {
+                    console.log("डेटाबेसमध्ये युझरची नोंद सापडली नाही!");
                 }
             } else {
-                // जर युझर लॉगिन नसेल, तर त्याला लॉगिन पेजवर पाठवा
+                // युझर लॉगिन नसेल तर लॉगिन पेजवर पाठवा
                 window.location.href = "auth.html";
             }
         });
 
-        // लॉगआउट लॉजिक
-        document.getElementById("btn-logout").addEventListener("click", () => {
+        // २. प्रोफाइल डेटा अपडेट करणे (Edit Profile)
+        const formEditProfile = document.getElementById('form-edit-profile');
+        formEditProfile.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newName = document.getElementById('edit-name').value;
+            const newPhone = document.getElementById('edit-phone').value;
+
+            if (currentUserDocRef) {
+                try {
+                    await updateDoc(currentUserDocRef, {
+                        name: newName,
+                        phone: newPhone
+                    });
+                    alert("✅ तुमची माहिती यशस्वीरित्या अपडेट झाली आहे!");
+                    // कार्डवरील व्हॅल्यू त्वरित बदलणे
+                    document.getElementById('card-name').innerText = newName;
+                    document.getElementById('card-phone').innerText = newPhone;
+                } catch (error) {
+                    console.error("Update Error:", error);
+                    alert("❌ बदल जतन करताना एरर आला: " + error.message);
+                }
+            }
+        });
+
+        // ३. लॉगआउट (Log Out) लॉजिक
+        document.getElementById('btn-logout').addEventListener('click', () => {
             signOut(auth).then(() => {
                 window.location.href = "auth.html";
             }).catch((error) => {
                 alert("लॉगआउट करताना चूक झाली: " + error.message);
             });
+        });
+
+        // ४. डिजिटल ओळखपत्र PDF म्हणून डाउनलोड करणे (html2pdf)
+        document.getElementById('btn-download-card').addEventListener('click', () => {
+            const element = document.getElementById('id-card');
+            const options = {
+                margin:       0.5,
+                filename:     'Raktdata_Volunteer_Card.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 3, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().set(options).from(element).save();
         });
     </script>
 </body>
