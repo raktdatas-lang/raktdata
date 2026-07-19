@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>मल्टी-पर्पज पोस्टर मेकर | RAKTDATA.IN</title>
+    <title>रक्तदान जनजागृती पोस्टर मेकर | RAKTDATA.IN</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts for Marathi -->
@@ -16,76 +16,138 @@
         body { font-family: 'Noto Sans Devanagari', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-100 min-h-screen py-8 px-4 flex flex-col items-center">
+<body class="bg-slate-100 min-h-screen py-8 px-4 flex flex-col items-center justify-center gap-6">
 
-    <!-- कंट्रोल पॅनल (निवड आणि डाउनलोड) -->
-    <div class="w-full max-w-[500px] bg-white p-4 rounded-2xl shadow-md mb-6 flex flex-col sm:flex-row gap-4 justify-between items-center">
-        <div class="w-full sm:w-auto">
-            <label class="block text-xs font-bold text-slate-500 mb-1">पोस्टरचा प्रकार निवडा:</label>
-            <select id="template-select" class="w-full bg-slate-100 border border-slate-300 rounded-xl px-3 py-2 text-sm font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500">
-                <option value="awareness">१) रक्तदान जनजागृती पोस्टर</option>
-                <option value="camp">२) रक्तदान शिबीर बॅनर</option>
-                <option value="idcard">३) डिझायनर ओळखपत्र (ID Card)</option>
-            </select>
-        </div>
-        <button id="btn-download" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md transition flex items-center justify-center space-x-2">
-            <i class="fa-solid fa-download"></i>
-            <span>इमेज (PNG) डाउनलोड करा</span>
-        </button>
-    </div>
-
-    <!-- मुख्य डिझाईन कंटेनर -->
-    <div id="poster-area" class="w-full max-w-[500px] aspect-[4/5] bg-gradient-to-br from-red-700 via-red-600 to-amber-600 text-white p-8 relative rounded-2xl shadow-2xl flex flex-col justify-between overflow-hidden border-4 border-white">
+    <!-- मुख्य कंटेनर जो फॉर्म आणि पोस्टर एकत्र जोडतो -->
+    <div class="w-full max-w-[1000px] flex flex-col md:flex-row gap-8 items-start justify-center">
         
-        <!-- व्हिज्युअल डिझाईन एलिमेंट्स -->
-        <div class="absolute -top-10 -right-10 w-40 h-40 bg-white opacity-5 rounded-full blur-2xl"></div>
-        <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-amber-400 opacity-10 rounded-full blur-xl"></div>
-
-        <!-- शीर्ष भाग: ब्रँडिंग -->
-        <div class="flex items-center justify-between border-b border-white/20 pb-4 relative z-10">
-            <div class="flex items-center space-x-3">
-                <div class="w-12 h-12 bg-white text-red-600 rounded-full flex items-center justify-center shadow-md">
-                    <i class="fa-solid fa-droplet text-2xl animate-pulse"></i>
-                </div>
-                <div>
-                    <h1 class="text-2xl font-black tracking-wider leading-none">RAKTDATA.IN</h1>
-                    <p class="text-[9px] font-bold uppercase tracking-widest text-amber-200 mt-0.5">National Blood Donation Movement</p>
-                </div>
-            </div>
-            <div class="bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20 text-[10px] font-bold" id="badge-text">
-                <i class="fa-solid fa-heart text-amber-300 mr-1"></i> जीवनदान
-            </div>
-        </div>
-
-        <!-- मध्य भाग: बदलणारा डायनॅमिक कंटेनर -->
-        <div id="dynamic-content" class="text-center my-auto py-4 relative z-10 w-full">
-            <!-- डीफॉल्ट: जनजागृती डिझाईन दाखवले जाईल -->
-        </div>
-
-        <!-- तळाचा भाग: संपर्क माहिती -->
-        <div class="bg-slate-900/90 text-white p-4 rounded-xl border border-white/10 relative z-10 shadow-lg mt-auto">
-            <p class="text-[10px] text-amber-400 font-bold text-center uppercase tracking-wider mb-2" id="contact-title">
-                अधिक माहिती व मदतीसाठी संपर्क करा
-            </p>
+        <!-- डावा भाग: संस्था आणि माहिती बदलण्यासाठी फॉर्म -->
+        <div class="w-full md:w-[400px] bg-white p-6 rounded-2xl shadow-lg border border-slate-200">
+            <h3 class="text-lg font-black text-slate-800 border-b pb-3 mb-4">
+                <i class="fa-solid fa-pen-to-square text-red-600 mr-2"></i>पोस्टरची माहिती बदला
+            </h3>
             
-            <div class="grid grid-cols-2 gap-2 text-xs font-bold border-t border-white/10 pt-2">
-                <div class="flex items-center space-x-2 bg-white/5 p-2 rounded-lg justify-center border border-white/5">
-                    <i class="fa-solid fa-phone text-amber-400 text-sm"></i>
-                    <span id="poster-phone">+91 93214 30535</span>
+            <div class="space-y-4">
+                <!-- संस्थेचे नाव इनपुट -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">तुमच्या संस्थेचे / मंडळाचे नाव:</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                            <i class="fa-solid fa-building"></i>
+                        </span>
+                        <input type="text" id="input-org" value="रक्तदाता फाउंडेशन, महाराष्ट्र" 
+                            class="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+                            placeholder="उदा. साई ब्लड बँक / नवतरुण मंडळ">
+                    </div>
                 </div>
-                <div class="flex items-center space-x-2 bg-white/5 p-2 rounded-lg justify-center border border-white/5">
-                    <i class="fa-solid fa-globe text-red-400 text-sm"></i>
-                    <span id="poster-web">www.raktdata.in</span>
+
+                <!-- मोबाईल नंबर इनपुट -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">संपर्क मोबाईल नंबर:</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
+                        <input type="text" id="input-phone" value="+91 93214 30535" 
+                            class="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+                            placeholder="उदा. +91 98765 43210">
+                    </div>
                 </div>
+
+                <!-- डाउनलोड बटण फॉर्मच्या खाली -->
+                <button id="btn-download" class="w-full mt-4 bg-red-600 hover:bg-red-700 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-md transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-download"></i>
+                    <span>पोस्टर इमेज (PNG) डाउनलोड करा</span>
+                </button>
             </div>
-            <p class="text-[9px] text-center text-gray-400 mt-2 font-medium">
-                <i class="fa-solid fa-quote-left mr-1 text-[8px]"></i> रक्तदानासाठी एकत्र – संस्था स्वतंत्र <i class="fa-solid fa-quote-right ml-1 text-[8px]"></i>
-            </p>
+        </div>
+
+        <!-- उजवा भाग: लाईव्ह पोस्टर प्रीव्ह्यू -->
+        <div class="w-full max-w-[450px] flex flex-col items-center">
+            
+            <!-- मुख्य पोस्टर डिझाईन -->
+            <div id="poster-area" class="w-full aspect-[4/5] bg-gradient-to-br from-red-700 via-red-600 to-amber-600 text-white p-8 relative rounded-2xl shadow-2xl flex flex-col justify-between overflow-hidden border-4 border-white">
+                
+                <!-- बॅकग्राउंड इफेक्ट्स -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-white opacity-5 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-amber-400 opacity-10 rounded-full blur-xl"></div>
+
+                <!-- शीर्ष भाग: ब्रँडिंग -->
+                <div class="flex items-center justify-between border-b border-white/20 pb-4 relative z-10">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-white text-red-600 rounded-full flex items-center justify-center shadow-md">
+                            <i class="fa-solid fa-droplet text-2xl animate-pulse"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-black tracking-wider leading-none">RAKTDATA.IN</h1>
+                            <p class="text-[9px] font-bold uppercase tracking-widest text-amber-200 mt-0.5">National Blood Donation Movement</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20 text-[10px] font-bold">
+                        <i class="fa-solid fa-heart text-amber-300 mr-1"></i> जीवनदान
+                    </div>
+                </div>
+
+                <!-- मध्य भाग: मुख्य विचार आणि संस्थेचे नाव -->
+                <div class="text-center my-auto py-4 relative z-10 space-y-4">
+                    <div class="space-y-2">
+                        <span class="bg-amber-400 text-red-900 text-xs font-black px-4 py-1 rounded-full uppercase tracking-wider shadow">
+                            राष्ट्रीय रक्तदान मोहीम
+                        </span>
+                        <h2 class="text-3xl font-black text-white tracking-wide leading-tight drop-shadow-md pt-2">
+                            रक्तदान हेच सर्वश्रेष्ठ दान!
+                        </h2>
+                    </div>
+
+                    <!-- रक्ताचा थेंब -->
+                    <div class="relative w-24 h-24 mx-auto my-2 flex items-center justify-center bg-white/10 rounded-full border-2 border-white/30 p-2 shadow-inner">
+                        <i class="fa-solid fa-droplet text-white text-5xl drop-shadow-lg"></i>
+                        <i class="fa-solid fa-heart text-amber-400 text-lg absolute bottom-5 right-5 animate-bounce"></i>
+                    </div>
+
+                    <!-- संदेश -->
+                    <p class="text-xs font-medium text-amber-100 max-w-[85%] mx-auto leading-relaxed drop-shadow">
+                        "तुमचे एक पाऊल आणि थोडेसे रक्त, एखाद्या गरजू कुटुंबाला कायमचे हसू देऊ शकते. आजच नोंदणी करा आणि रक्षक बना!"
+                    </p>
+
+                    <!-- dynamic 🏢 संस्थेचे नाव दाखवणारा विभाग -->
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl py-2 px-4 inline-block max-w-[95%] mx-auto shadow-sm">
+                        <p class="text-[9px] text-amber-300 uppercase font-bold tracking-widest mb-0.5">
+                            <i class="fa-solid fa-building mr-1"></i> सौजन्याने / आयोजक
+                        </p>
+                        <h3 id="poster-org" class="text-sm font-black text-white tracking-wide">
+                            रक्तदाता फाउंडेशन, Maharashtra
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- तळाचा भाग: संपर्क माहिती -->
+                <div class="bg-slate-900/90 text-white p-4 rounded-xl border border-white/10 relative z-10 shadow-lg mt-auto">
+                    <p class="text-[10px] text-amber-400 font-bold text-center uppercase tracking-wider mb-2">
+                        अधिक माहिती व मदतीसाठी संपर्क करा
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-2 text-xs font-bold border-t border-white/10 pt-2">
+                        <div class="flex items-center space-x-2 bg-white/5 p-2 rounded-lg justify-center border border-white/5">
+                            <i class="fa-solid fa-phone text-amber-400 text-sm"></i>
+                            <span id="poster-phone">+91 93214 30535</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-white/5 p-2 rounded-lg justify-center border border-white/5">
+                            <i class="fa-solid fa-globe text-red-400 text-sm"></i>
+                            <span id="poster-web">www.raktdata.in</span>
+                        </div>
+                    </div>
+                    <p class="text-[9px] text-center text-gray-400 mt-2 font-medium">
+                        <i class="fa-solid fa-quote-left mr-1 text-[8px]"></i> रक्तदानासाठी एकत्र – संस्था स्वतंत्र <i class="fa-solid fa-quote-right ml-1 text-[8px]"></i>
+                    </p>
+                </div>
+
+            </div>
         </div>
 
     </div>
 
-    <!-- फायरबेस आणि लॉजिक स्क्रिप्ट -->
+    <!-- फायरबेस आणि इनपुट मॅनेजमेंट स्क्रिप्ट -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
@@ -98,7 +160,7 @@
             projectId: "raktdata-d13f6",
             storageBucket: "raktdata-d13f6.firebasestorage.app",
             messagingSenderId: "1069694803367",
-            appId: "1:1069694803367:web:d2f6f3d8360d690f462a82",
+            appId: "1:1069694803367:web:d2f6f3d8360d69ef462a82",
             measurementId: "G-1TXPB99M62"
         };
 
@@ -106,134 +168,43 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        let globalUserData = {
-            name: "रक्तदाता स्वयंसेवक",
-            phone: "+91 93214 30535",
-            organization: "रक्तदाता फाउंडेशन, महाराष्ट्र",
-            volunteerId: "RDN-2026-001",
-            role: "रक्तदान समन्वयक"
-        };
+        const inputOrg = document.getElementById('input-org');
+        const inputPhone = document.getElementById('input-phone');
+        const posterOrg = document.getElementById('poster-org');
+        const posterPhone = document.getElementById('poster-phone');
 
-        // फायरबेस युझर डेटा फेचिंग
+        // १. रिअल-टाइम टाईपिंगनुसार पोस्टरवरील नाव बदलणे
+        inputOrg.addEventListener('input', (e) => {
+            posterOrg.innerText = e.target.value || "संस्थेचे नाव";
+        });
+
+        inputPhone.addEventListener('input', (e) => {
+            posterPhone.innerText = e.target.value || "+91 XXXXXXXXXX";
+        });
+
+        // २. फायरबेस लॉगिनवरून डीफॉल्ट माहिती भरणे
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 const userDocRef = doc(db, "users", user.uid);
                 const docSnap = await getDoc(userDocRef);
                 if (docSnap.exists()) {
-                    const data = docSnap.data();
-                    if(data.name) globalUserData.name = data.name;
-                    if(data.phone) globalUserData.phone = data.phone;
-                    if(data.organization) globalUserData.organization = data.organization;
-                    if(data.volunteerId) globalUserData.volunteerId = data.volunteerId;
-                    if(data.role) globalUserData.role = data.role;
+                    const userData = docSnap.data();
                     
-                    document.getElementById('poster-phone').innerText = globalUserData.phone;
+                    if(userData.organization) {
+                        inputOrg.value = userData.organization;
+                        posterOrg.innerText = userData.organization;
+                    }
+                    if(userData.phone) {
+                        inputPhone.value = userData.phone;
+                        posterPhone.innerText = userData.phone;
+                    }
                 }
             }
-            // डीफॉल्ट टेम्पलेट लोड करा
-            renderTemplate('awareness');
         });
 
-        // टेम्पलेट्स जनरेट करण्याचे फंक्शन
-        function renderTemplate(type) {
-            const container = document.getElementById('dynamic-content');
-            const badge = document.getElementById('badge-text');
-            const contactTitle = document.getElementById('contact-title');
-            
-            if (type === 'awareness') {
-                badge.innerHTML = `<i class="fa-solid fa-heart text-amber-300 mr-1"></i> जीवनदान`;
-                contactTitle.innerText = "अधिक माहिती व मदतीसाठी संपर्क करा";
-                container.innerHTML = `
-                    <div class="space-y-4">
-                        <span class="bg-amber-400 text-red-900 text-xs font-black px-4 py-1 rounded-full uppercase tracking-wider shadow">राष्ट्रीय रक्तदान मोहीम</span>
-                        <h2 class="text-3xl font-black text-white tracking-wide leading-tight drop-shadow-md pt-2">रक्तदान हेच सर्वश्रेष्ठ दान!</h2>
-                        <div class="relative w-24 h-24 mx-auto my-2 flex items-center justify-center bg-white/10 rounded-full border-2 border-white/30 p-2 shadow-inner">
-                            <i class="fa-solid fa-droplet text-white text-5xl drop-shadow-lg"></i>
-                            <i class="fa-solid fa-heart text-amber-400 text-lg absolute bottom-5 right-5 animate-bounce"></i>
-                        </div>
-                        <p class="text-xs font-medium text-amber-100 max-w-[85%] mx-auto leading-relaxed drop-shadow">"तुमचे एक पाऊल आणि थोडेसे रक्त, एखाद्या गरजू कुटुंबाला कायमचे हसू देऊ शकते. आजच नोंदणी करा."</p>
-                        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl py-2 px-4 inline-block max-w-[90%] mx-auto shadow-sm">
-                            <p class="text-[9px] text-amber-300 uppercase font-bold tracking-widest">सौजन्याने / आयोजक</p>
-                            <h3 class="text-sm font-black text-white tracking-wide mt-0.5">${globalUserData.organization}</h3>
-                        </div>
-                    </div>
-                `;
-            } 
-            else if (type === 'camp') {
-                badge.innerHTML = `<i class="fa-solid fa-calendar-days text-amber-300 mr-1"></i> शिबीर`;
-                contactTitle.innerText = "शिबिरात रक्तदानासाठी संपर्क करा";
-                container.innerHTML = `
-                    <div class="space-y-3">
-                        <span class="bg-white text-red-700 text-xs font-black px-4 py-1 rounded-full uppercase tracking-wider shadow">भव्य रक्तदान शिबीर</span>
-                        <h2 class="text-2xl font-black text-amber-300 tracking-wide leading-tight drop-shadow">चला, रक्तदानाचे कर्तव्य बजावूया!</h2>
-                        
-                        <!-- शिबीर तपशील बॉक्स -->
-                        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 text-left space-y-2 max-w-[95%] mx-auto shadow">
-                            <div class="flex items-start space-x-2 text-xs">
-                                <i class="fa-solid fa-location-dot text-amber-300 mt-1"></i>
-                                <p><span class="font-black text-white block">स्थळ:</span> स्थानिक सरकारी शाळा / सामुदायिक सभागृह</p>
-                            </div>
-                            <div class="grid grid-cols-2 gap-2 text-xs border-t border-white/10 pt-2">
-                                <div class="flex items-center space-x-2">
-                                    <i class="fa-solid fa-calendar text-amber-300"></i>
-                                    <p><span class="font-black text-white">दिनांक:</span> आगामी रविवार</p>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <i class="fa-solid fa-clock text-amber-300"></i>
-                                    <p><span class="font-black text-white">वेळ:</span> स. ९ ते दु. ४</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <p class="text-[11px] font-bold text-red-100 italic bg-red-900/30 py-1 rounded-lg">प्रत्येक रक्तदात्यास आकर्षक प्रमाणपत्र व ओळखपत्र दिले जाईल.</p>
-                        <div class="text-xs font-black text-white">आयोजक: <span class="text-amber-300">${globalUserData.organization}</span></div>
-                    </div>
-                `;
-            } 
-            else if (type === 'idcard') {
-                badge.innerHTML = `<i class="fa-solid fa-id-card text-amber-300 mr-1"></i> अधिकृत`;
-                contactTitle.innerText = "आपत्कालीन पडताळणीसाठी स्कॅन करा";
-                container.innerHTML = `
-                    <div class="bg-white text-slate-800 rounded-2xl p-6 max-w-[320px] mx-auto shadow-2xl border-2 border-amber-400 text-center space-y-3 relative">
-                        <div class="absolute top-0 right-0 bg-red-600 text-white font-black text-[8px] px-3 py-1 rounded-bl-xl uppercase">स्वयंसेवक</div>
-                        
-                        <!-- प्रोफाइल फोटो आयकॉन -->
-                        <div class="w-16 h-16 bg-slate-100 rounded-full mx-auto flex items-center justify-center border-2 border-red-600 shadow-md">
-                            <i class="fa-solid fa-user text-3xl text-slate-400"></i>
-                        </div>
-                        
-                        <!-- युझरची माहिती -->
-                        <div>
-                            <h3 class="text-base font-black text-red-600 leading-tight">${globalUserData.name}</h3>
-                            <p class="text-[10px] font-bold text-slate-500 uppercase mt-0.5">${globalUserData.role}</p>
-                        </div>
-                        
-                        <!-- कार्ड डिटेल्स ग्रीड -->
-                        <div class="bg-slate-50 p-2 rounded-xl text-left text-[10px] space-y-1 font-bold border border-slate-200">
-                            <p class="text-slate-600"><span class="text-slate-400">ID NO:</span> ${globalUserData.volunteerId}</p>
-                            <p class="text-slate-600"><span class="text-slate-400">संस्था:</span> ${globalUserData.organization}</p>
-                            <p class="text-slate-600"><span class="text-slate-400">मोबाईल:</span> ${globalUserData.phone}</p>
-                        </div>
-                        
-                        <!-- QR कोड ग्राफिक्स -->
-                        <div class="flex items-center justify-center space-x-2 border-t border-dashed border-slate-300 pt-2">
-                            <i class="fa-solid fa-qrcode text-3xl text-slate-700"></i>
-                            <span class="text-[8px] text-left text-slate-400 leading-tight">डिजिटल पडताळणीसाठी<br><strong class="text-red-600">raktdata.in/verify</strong></span>
-                        </div>
-                    </div>
-                `;
-            }
-        }
-
-        // ड्रॉपडाउन चेंज इव्हेंट
-        document.getElementById('template-select').addEventListener('change', (e) => {
-            renderTemplate(e.target.value);
-        });
-
-        // इमेज डाउनलोड लॉजिक
+        // ३. डाउनलोड पर्याय
         document.getElementById('btn-download').addEventListener('click', () => {
             const poster = document.getElementById('poster-area');
-            const selectedType = document.getElementById('template-select').value;
             
             html2canvas(poster, {
                 scale: 3,
@@ -243,12 +214,12 @@
             }).then(canvas => {
                 const image = canvas.toDataURL("image/png");
                 const link = document.createElement('a');
-                link.download = `Raktdata_${selectedType}_Design.png`;
+                link.download = 'Raktdata_Custom_Poster.png';
                 link.href = image;
                 link.click();
             }).catch(err => {
-                console.error("इमेज डाऊनलोड एरर: ", err);
-                alert("इमेज डाउनलोड करताना अडचण आली.");
+                console.error("इमेज डाऊनलोड त्रुटी: ", err);
+                alert("डाउनलोड करताना अडचण आली.");
             });
         });
     </script>
