@@ -103,7 +103,7 @@
             </button>
         </div>
 
-        <!-- उजवा भाग: सुरक्षित लाईव्ह प्रीव्ह्यू (इमेज एरर-फ्री डिझाईन) -->
+        <!-- उजवा भाग: सुरक्षित लाईव्ह प्रीव्ह्यू -->
         <div class="w-full max-w-[480px] flex items-center justify-center">
             
             <div id="poster-area" class="w-full aspect-square bg-[#0c1329] text-white p-6 relative rounded-3xl shadow-2xl flex flex-col justify-between overflow-hidden border-2 border-slate-800/80">
@@ -112,13 +112,12 @@
                 <div class="absolute -top-20 -right-20 w-60 h-60 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                <!-- हेडर: अधिकृत लोगो आणि ब्रँडिंग (SVG आधारित सुरक्षित स्वरूप) -->
+                <!-- हेडर: अधिकृत लोगो आणि ब्रँडिंग -->
                 <div class="flex items-center justify-between border-b border-slate-800/60 pb-3 relative z-10">
                     <div class="flex items-center space-x-3">
-                        <!-- लोगो: तुटणार नाही असा शाश्वत पांढरा बेस थेंब लोगो -->
+                        <!-- लोगो: सुरक्षित इनबिल्ट वेक्टर स्वरूप -->
                         <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-xl border border-red-500/30 p-1.5 relative overflow-hidden">
-                            <!-- भारताच्या नकाशासह रक्ताचा थेंब दर्शवणारा वेक्टर आयकॉन -->
-                            <div class="relative w-full h-full flex items-center justify-center text-red-650 text-red-600">
+                            <div class="relative w-full h-full flex items-center justify-center text-red-600">
                                 <i class="fa-solid fa-droplet text-3xl"></i>
                                 <div class="absolute inset-0 flex items-center justify-center text-[9px] text-white font-black mt-1">
                                     <i class="fa-solid fa-map-location-dot"></i>
@@ -147,13 +146,16 @@
                 <!-- मध्य विभाग: फोटो फ्रेम आणि डेटा लेआउट -->
                 <div class="grid grid-cols-[130px_1fr] gap-4 my-auto items-center relative z-10">
                     
-                    <!-- डावीकडे: आधुनिक फोटो फ्रेम (सुरुवातीला सुंदर युझर प्लेसहोल्डर आयकॉन) -->
+                    <!-- डावीकडे: आधुनिक फोटो फ्रेम (सुरक्षित SVG प्रोफाइल) -->
                     <div class="w-[130px] aspect-[3/4] bg-slate-900 border-[3px] border-amber-400 rounded-2xl p-0.5 shadow-2xl overflow-hidden flex items-center justify-center relative">
                         <img id="poster-img" src="" class="w-full h-full object-cover rounded-xl hidden" alt="Donor Photo">
-                        <!-- डीफॉल्ट प्लेसहोल्डर लूक जे इमेज नसताना दिसेल -->
-                        <div id="placeholder-box" class="flex flex-col items-center justify-center text-center p-2 text-slate-500">
-                            <i class="fa-solid fa-user-shield text-4xl text-amber-400/80 mb-2"></i>
-                            <p class="text-[9px] font-bold uppercase tracking-wider text-slate-400">फोटो निवडा</p>
+                        
+                        <!-- डीफॉल्ट सुरेख प्रोफाइल डिझाईन (इमेज नसताना दिसेल) -->
+                        <div id="placeholder-box" class="w-full h-full flex flex-col items-center justify-center bg-slate-800 text-slate-500">
+                            <svg class="w-16 h-16 text-slate-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                            <span class="text-[8px] font-bold text-slate-400 tracking-wider uppercase mt-2">फोटो अपलोड करा</span>
                         </div>
                     </div>
 
@@ -256,7 +258,7 @@
             }
         });
 
-        // इमेज डाऊनलोड कार्यप्रणाली (CORS सुरक्षित पर्याय)
+        // इमेज डाऊनलोड कार्यप्रणाली
         document.getElementById('btn-download').addEventListener('click', () => {
             const poster = document.getElementById('poster-area');
             
@@ -273,7 +275,7 @@
                 link.click();
             }).catch(err => {
                 console.error("डाउनलोड एरर:", err);
-                alert("इमेज डाउनलोड करताना काहीतरी तांत्रिक अडचण आली. कृपया फोटो निवडून पुन्हा प्रयत्न करा.");
+                alert("इमेज डाउनलोड करताना तांत्रिक अडचण आली.");
             });
         });
     </script>
