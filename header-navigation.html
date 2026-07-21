@@ -1,741 +1,154 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RAKTDATA.IN - Professional Navigation Header</title>
-
-  <!-- Google Fonts: Poppins & Noto Sans Devanagari -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAKTDATA.IN | National Blood Donation Movement</title>
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    /* ==========================================
-       1. VARIABLES & RESET
-       ========================================== */
-    :root {
-      --primary-red: #C00000;
-      --navy-blue: #0A2A66;
-      --accent-gold: #FFD700;
-      --bg-white: #FFFFFF;
-      --bg-light: #F8F9FA;
-      --text-dark: #1F2937;
-      --text-muted: #6B7280;
-      --border-color: #E5E7EB;
-      --radius: 8px;
-      --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      --transition: all 0.3s ease-in-out;
-    }
-
+    /* Global Styles */
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      background-color: var(--bg-light);
-      color: var(--text-dark);
+      background-color: #f4f6f9;
+      color: #333;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    /* ==========================================
-       2. HEADER & STICKY NAVIGATION
-       ========================================== */
-    .header-wrapper {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: var(--bg-white);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    }
-
-    /* Top Bar Header */
-    .top-header {
+    /* Top Navigation Header */
+    .header-container {
+      background-color: #ffffff;
+      padding: 15px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 5%;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 2px solid #e5e7eb;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
       gap: 10px;
+      text-decoration: none;
     }
 
     .brand-logo i {
+      color: #C00000;
       font-size: 32px;
-      color: var(--primary-red);
     }
 
-    .brand-title {
+    .brand-text h1 {
+      color: #C00000;
       font-size: 24px;
       font-weight: 800;
-      color: var(--primary-red);
       letter-spacing: 0.5px;
+      line-height: 1;
     }
 
-    .brand-subtitle {
+    .brand-text p {
+      color: #0A2A66;
       font-size: 10px;
-      font-weight: 600;
-      color: var(--navy-blue);
+      font-weight: 700;
       letter-spacing: 1px;
-      display: block;
+      margin-top: 3px;
     }
 
     .header-actions {
       display: flex;
-      align-items: center;
-      gap: 15px;
+      gap: 10px;
     }
 
-    .action-btn {
-      background: var(--bg-light);
-      border: 1px solid var(--border-color);
+    .btn-action {
       padding: 8px 16px;
-      border-radius: var(--radius);
-      cursor: pointer;
+      border-radius: 6px;
+      font-size: 13px;
       font-weight: 600;
-      color: var(--navy-blue);
+      text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 8px;
-      transition: var(--transition);
+      gap: 6px;
+      transition: all 0.2s;
     }
 
-    .action-btn:hover {
-      background: var(--navy-blue);
-      color: var(--bg-white);
-      border-color: var(--navy-blue);
+    .btn-search {
+      background: #f3f4f6;
+      color: #374151;
+      border: 1px solid #d1d5db;
     }
 
-    .mobile-hamburger {
-      display: none;
-      font-size: 22px;
-      background: var(--primary-red);
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: var(--radius);
-      cursor: pointer;
+    .btn-login {
+      background: #0A2A66;
+      color: #ffffff;
+      border: 1px solid #0A2A66;
     }
 
-    /* Desktop Navigation Bar */
-    .main-nav {
-      background: var(--navy-blue);
+    /* Main Navigation Bar */
+    .nav-bar {
+      background-color: #0A2A66;
       padding: 0 5%;
-      position: relative;
-    }
-
-    .nav-list {
       display: flex;
-      align-items: center;
-    }
-
-    .nav-item {
-      position: relative;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .nav-link {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 18px;
+      font-size: 14px;
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 5px;
-      padding: 16px 14px;
-      color: var(--bg-white);
-      font-size: 14px;
-      font-weight: 500;
-      transition: var(--transition);
-      cursor: pointer;
+      transition: background 0.3s;
     }
 
-    .nav-link:hover, .nav-item:hover > .nav-link {
-      color: var(--accent-gold);
-      background: rgba(255, 255, 255, 0.05);
+    .nav-link:hover {
+      background-color: #05183d;
+      color: #FFD700;
     }
 
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 3px;
-      background: var(--primary-red);
-      transition: var(--transition);
-      transform: translateX(-50%);
-    }
-
-    .nav-item:hover > .nav-link::after {
-      width: 100%;
-    }
-
-    /* ==========================================
-       3. MEGA MENU DROPDOWNS
-       ========================================== */
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--bg-white);
-      min-width: 240px;
-      box-shadow: var(--shadow);
-      border-radius: 0 0 var(--radius) var(--radius);
-      border-top: 3px solid var(--primary-red);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: var(--transition);
-      z-index: 100;
-    }
-
-    .nav-item:hover .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .dropdown-menu a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 18px;
-      color: var(--text-dark);
-      font-size: 13px;
-      font-weight: 500;
-      border-bottom: 1px solid var(--border-color);
-      transition: var(--transition);
-    }
-
-    .dropdown-menu a:last-child {
-      border-bottom: none;
-    }
-
-    .dropdown-menu a:hover {
-      background: var(--bg-light);
-      color: var(--primary-red);
-      padding-left: 22px;
-    }
-
-    .dropdown-menu i {
-      color: var(--primary-red);
-      font-size: 12px;
-    }
-
-    /* ==========================================
-       4. QUICK ACTION BAR
-       ========================================== */
+    /* Quick Action Bar */
     .quick-bar {
-      background: var(--bg-white);
-      padding: 15px 5%;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-
-    .quick-btn {
-      padding: 10px 18px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 600;
-      border: 1px solid transparent;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .qb-red { background: #FFEBEE; color: #C00000; border-color: #FFCDD2; }
-    .qb-blue { background: #E8EAF6; color: #0A2A66; border-color: #C5CAE9; }
-    .qb-gold { background: #FFFDE7; color: #F57F17; border-color: #FFF59D; }
-
-    .quick-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    /* ==========================================
-       5. MODALS (SEARCH & LOGIN)
-       ========================================== */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6);
+      background-color: #ffffff;
+      padding: 12px 5%;
       display: flex;
       justify-content: center;
-      align-items: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: var(--transition);
-      z-index: 2000;
+      gap: 15px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #e5e7eb;
     }
 
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .modal-box {
-      background: var(--bg-white);
-      width: 90%;
-      max-width: 480px;
-      padding: 25px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      position: relative;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 15px; right: 15px;
-      font-size: 18px;
-      cursor: pointer;
-      color: var(--text-muted);
-    }
-
-    .modal-title {
-      font-size: 18px;
+    .btn-quick {
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
       font-weight: 700;
-      color: var(--navy-blue);
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    .search-input-box {
+      text-decoration: none;
       display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-
-    .search-input-box input {
-      flex: 1;
-      padding: 12px;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius);
-      outline: none;
-    }
-
-    .login-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .login-role-btn {
-      padding: 12px;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius);
-      background: var(--bg-light);
-      font-weight: 600;
-      color: var(--navy-blue);
-      text-align: center;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .login-role-btn:hover {
-      background: var(--primary-red);
-      color: white;
-      border-color: var(--primary-red);
-    }
-
-    /* ==========================================
-       6. MOBILE DRAWER & ACCORDION
-       ========================================== */
-    .mobile-drawer {
-      position: fixed;
-      top: 0; left: -100%;
-      width: 280px;
-      height: 100%;
-      background: var(--bg-white);
-      z-index: 3000;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      overflow-y: auto;
-    }
-
-    .mobile-drawer.active {
-      left: 0;
-    }
-
-    .drawer-header {
-      background: var(--navy-blue);
-      color: white;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 6px;
     }
 
-    .mobile-menu-list {
-      padding: 10px 0;
-    }
+    .btn-quick-red { background-color: #FFE6E6; color: #C00000; border: 1px solid #FFCCCC; }
+    .btn-quick-blue { background-color: #E6F0FA; color: #0A2A66; border: 1px solid #CCE0F5; }
+    .btn-quick-gold { background-color: #FFF9E6; color: #B28900; border: 1px solid #FFEAA8; }
 
-    .accordion-btn {
-      width: 100%;
-      padding: 14px 20px;
-      background: none;
-      border: none;
-      text-align: left;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-dark);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border-color);
-      cursor: pointer;
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      background: var(--bg-light);
-      transition: max-height 0.3s ease-out;
-    }
-
-    .accordion-content a {
-      display: block;
-      padding: 10px 30px;
-      font-size: 13px;
-      color: var(--text-muted);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-
-    /* ==========================================
-       7. FOOTER SECTION
-       ========================================== */
-    footer {
-      background: var(--navy-blue);
-      color: white;
-      padding: 40px 5% 20px;
-      margin-top: 40px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      margin-bottom: 30px;
-    }
-
-    .footer-col h4 {
-      color: var(--accent-gold);
-      margin-bottom: 15px;
-      font-size: 16px;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-col ul li a {
-      color: #D1D5DB;
-      font-size: 13px;
-      transition: var(--transition);
-    }
-
-    .footer-col ul li a:hover {
-      color: white;
-      padding-left: 5px;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 12px;
-    }
-
-    .social-links a {
-      width: 36px; height: 36px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      display: flex; justify-content: center; align-items: center;
-      color: white;
-      transition: var(--transition);
-    }
-
-    .social-links a:hover {
-      background: var(--primary-red);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 12px;
-      color: #9CA3AF;
-    }
-
-    /* Responsive Queries */
-    @media (max-width: 992px) {
-      .main-nav { display: none; }
-      .mobile-hamburger { display: block; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ==========================================
-       HEADER SECTION
-       ========================================== -->
-  <header class="header-wrapper">
-    <!-- Top Header Bar -->
-    <div class="top-header">
-      <div class="brand-logo">
-        <i class="fa-solid => fa-droplet"></i>
-        <div>
-          <span class="brand-title">RAKTDATA.IN</span>
-          <span class="brand-subtitle">NATIONAL BLOOD DONATION MOVEMENT</span>
-        </div>
-      </div>
-
-      <div class="header-actions">
-        <button class="action-btn" onclick="openModal('searchModal')">
-          <i class="fa-solid fa-magnifying-glass"></i> <span class="hide-mobile">Search</span>
-        </button>
-
-        <button class="action-btn" onclick="openModal('loginModal')">
-          <i class="fa-solid fa-circle-user"></i> <span class="hide-mobile">Login</span>
-        </button>
-
-        <button class="mobile-hamburger" onclick="toggleDrawer()">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- Desktop Navigation Menu Bar -->
-    <nav class="main-nav">
-      <ul class="nav-list">
-        <!-- 1. Home -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">Home</a>
-          <div class="dropdown-menu">
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Home</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Latest Updates</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Success Stories</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Gallery</a>
-          </div>
-        </li>
-
-        <!-- 2. About -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">About <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
-          <div class="dropdown-menu">
-            <a href="#"><i class="fa-solid fa-angle-right"></i> About RAKTDATA.IN</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Mission</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Vision</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Founder</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Our Team</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Awards</a>
-          </div>
-        </li>
-
-        <!-- 3. Volunteers -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">Volunteers <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
-          <div class="dropdown-menu">
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Volunteer Registration</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Volunteer Login</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Volunteer Dashboard</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Appointment Letter Verification</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Appointment Letter Download</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Certificate Download</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Training</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> FAQ</a>
-          </div>
-        </li>
-
-        <!-- 4. Blood Donors -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">Blood Donors <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
-          <div class="dropdown-menu">
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Register Blood Donor</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Search Blood Donor</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Blood Donation Camps</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Blood Group Information</a>
-          </div>
-        </li>
-
-        <!-- 5. Blood Banks -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">Blood Banks <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
-          <div class="dropdown-menu">
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Register Blood Bank</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Blood Bank Directory</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Blood Availability</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Contact Blood Bank</a>
-          </div>
-        </li>
-
-        <!-- 6. Organizations -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">Organizations <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
-          <div class="dropdown-menu">
-            <a href="#"><i class="fa-solid fa-angle-right"></i> NGO Registration</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Hospital Registration</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Partner Organization</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> CSR Partnership</a>
-          </div>
-        </li>
-
-        <!-- 7. Knowledge Hub -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">Knowledge <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
-          <div class="dropdown-menu">
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Blood Donation Guide</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Blog</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Videos</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Downloads</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Forms</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Awareness Material</a>
-          </div>
-        </li>
-
-        <!-- 8. Events -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">Events <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
-          <div class="dropdown-menu">
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Upcoming Camps</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Past Events</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Volunteer Meetings</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Photo Gallery</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> News</a>
-          </div>
-        </li>
-
-        <!-- 9. Verify -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">Verify <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
-          <div class="dropdown-menu">
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Appointment Letter Verification</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> Volunteer Verification</a>
-            <a href="#"><i class="fa-solid fa-angle-right"></i> QR Verification</a>
-          </div>
-        </li>
-
-        <!-- 10. Contact -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">Contact</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Quick Actions Horizontal Scroll Bar -->
-  <div class="quick-bar">
-    <button class="quick-btn qb-red"><i class="fa-solid fa-heart-pulse"></i> Become Blood Donor</button>
-    <button class="quick-btn qb-blue"><i class="fa-solid fa-handshake-angle"></i> Become Volunteer</button>
-    <button class="quick-btn qb-gold"><i class="fa-solid fa-certificate"></i> Verify Appointment Letter</button>
-    <button class="quick-btn qb-red"><i class="fa-solid fa-notes-medical"></i> Request Blood</button>
-    <button class="quick-btn qb-blue"><i class="fa-solid fa-hospital"></i> Blood Bank</button>
-    <button class="quick-btn qb-gold"><i class="fa-solid fa-phone-volume"></i> Emergency Contact</button>
-  </div>
-
-  <!-- ==========================================
-       MOBILE DRAWER NAVIGATION (Accordion)
-       ========================================== -->
-  <div class="mobile-drawer" id="mobileDrawer">
-    <div class="drawer-header">
-      <span>RAKTDATA Menu</span>
-      <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="toggleDrawer()"></i>
-    </div>
-
-    <div class="mobile-menu-list">
-      <button class="accordion-btn" onclick="toggleAccordion(this)">▶ Home</button>
-      <div class="accordion-content">
-        <a href="#">Home</a>
-        <a href="#">Latest Updates</a>
-        <a href="#">Success Stories</a>
-        <a href="#">Gallery</a>
-      </div>
-
-      <button class="accordion-btn" onclick="toggleAccordion(this)">▶ About</button>
-      <div class="accordion-content">
-        <a href="#">About RAKTDATA.IN</a>
-        <a href="#">Mission</a>
-        <a href="#">Vision</a>
-        <a href="#">Founder</a>
-      </div>
-
-      <button class="accordion-btn" onclick="toggleAccordion(this)">▶ Volunteers</button>
-      <div class="accordion-content">
-        <a href="#">Volunteer Registration</a>
-        <a href="#">Volunteer Login</a>
-        <a href="#">Dashboard</a>
-        <a href="#">Appointment Letter Download</a>
-      </div>
-
-      <button class="accordion-btn" onclick="toggleAccordion(this)">▶ Blood Donors</button>
-      <div class="accordion-content">
-        <a href="#">Register Blood Donor</a>
-        <a href="#">Search Blood Donor</a>
-        <a href="#">Blood Donation Camps</a>
-      </div>
-
-      <button class="accordion-btn" onclick="toggleAccordion(this)">▶ Verify</button>
-      <div class="accordion-content">
-        <a href="#">Appointment Letter Verification</a>
-        <a href="#">QR Verification</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==========================================
-       MODALS (Search & Multi-Role Login)
-       ========================================== -->
-  <!-- Search Modal -->
-  <div class="modal-overlay" id="searchModal">
-    <div class="modal-box">
-      <i class="fa-solid fa-xmark modal-close" onclick="closeModal('searchModal')"></i>
-      <div class="modal-title">Search RAKTDATA Portal</div>
-      <div class="search-input-box">
-        <input type="text" placeholder="Search Volunteers, Blood Banks, Camps..." />
-        <button class="action-btn" style="background:var(--primary-red); color:white;">Search</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Multi-Role Login Popup Modal -->
-  <div class="modal-overlay" id="loginModal">
-    <div class="modal-box">
-      <i class="fa-solid fa-xmark modal-close" onclick="closeModal('loginModal')"></i>
-      <div class="modal-title">Select Login Type</div>
-      <div class="login-options">
-        <div class="login-role-btn"><i class="fa-solid fa-user-shield"></i> Volunteer Login</div>
-        <div class="login-role-btn"><i class="fa-solid fa-users-gear"></i> Coordinator Login</div>
-        <div class="login-role-btn"><i class="fa-solid fa-user-lock"></i> Admin Login</div>
-      </div>
-    </div>
-  </div>
-<!-- ==========================================
-       HERO SECTION & MAIN CONTENT
-       ========================================== -->
-  <style>
-    .hero-container {
+    /* Hero Section */
+    .hero-wrapper {
       background: linear-gradient(135deg, #0A2A66 0%, #05183d 100%);
       color: white;
-      padding: 60px 5%;
+      padding: 50px 5%;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
       align-items: center;
     }
 
@@ -748,66 +161,78 @@
 
     .hero-text h1 span {
       color: #FFD700;
+      display: block;
+      font-size: 24px;
+      margin-top: 5px;
     }
 
     .hero-text p {
       font-size: 15px;
-      color: #D1D5DB;
+      color: #E5E7EB;
       margin-bottom: 25px;
       line-height: 1.6;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 15px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .btn-main {
-      padding: 14px 28px;
+      padding: 12px 22px;
       border-radius: 8px;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 14px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       text-decoration: none;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
     }
 
-    .btn-red-main {
-      background: #C00000;
-      color: white;
-      border: none;
+    .btn-red-main { background: #C00000; color: white; border: 1px solid #C00000; }
+    .btn-red-main:hover { background: #990000; }
+    
+    .btn-outline-gold { background: transparent; color: #FFD700; border: 1.5px solid #FFD700; }
+    .btn-outline-gold:hover { background: #FFD700; color: #0A2A66; }
+
+    /* Animated Visual Banner Box */
+    .hero-banner-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px dashed #FFD700;
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      backdrop-filter: blur(5px);
     }
 
-    .btn-red-main:hover {
-      background: #990000;
-      transform: translateY(-2px);
+    .hero-banner-box i {
+      font-size: 60px;
+      color: #E53935;
+      margin-bottom: 15px;
+      animation: pulse 2s infinite;
     }
 
-    .btn-outline-gold {
-      background: transparent;
-      color: #FFD700;
-      border: 2px solid #FFD700;
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
-    .btn-outline-gold:hover {
-      background: #FFD700;
-      color: #0A2A66;
-      transform: translateY(-2px);
-    }
+    .hero-banner-box h3 { color: #FFD700; font-size: 20px; margin-bottom: 8px; }
+    .hero-banner-box p { color: #FFFFFF; font-size: 13px; line-height: 1.5; }
 
-    /* Stats Counter Section */
+    /* Statistics Counter Section */
     .stats-section {
       background: #FFFFFF;
-      padding: 40px 5%;
+      padding: 35px 5%;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
 
     .stat-card {
@@ -817,41 +242,109 @@
       border: 1px solid #E5E7EB;
     }
 
-    .stat-card i {
-      font-size: 32px;
-      color: #C00000;
-      margin-bottom: 10px;
+    .stat-card i { font-size: 30px; color: #C00000; margin-bottom: 10px; }
+    .stat-number { font-size: 26px; font-weight: 800; color: #0A2A66; }
+    .stat-label { font-size: 13px; color: #6B7280; font-weight: 600; margin-top: 4px; }
+
+    /* Footer Section */
+    footer {
+      background-color: #05183d;
+      color: #ffffff;
+      padding: 40px 5% 20px;
     }
 
-    .stat-number {
-      font-size: 28px;
-      font-weight: 800;
-      color: #0A2A66;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
     }
 
-    .stat-label {
-      font-size: 13px;
-      color: #6B7280;
-      font-weight: 600;
-      margin-top: 5px;
+    .footer-col h4 {
+      color: #FFD700;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: #D1D5DB; text-decoration: none; font-size: 13px; }
+    .footer-col ul li a:hover { color: #FFFFFF; }
+
+    .social-icons { display: flex; gap: 12px; }
+    .social-icons a {
+      color: #ffffff;
+      background: rgba(255,255,255,0.1);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      font-size: 12px;
+      color: #9CA3AF;
     }
 
     @media (max-width: 768px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-buttons {
-        justify-content: center;
-      }
+      .hero-wrapper { grid-template-columns: 1fr; text-align: center; }
+      .hero-buttons { justify-content: center; }
     }
   </style>
+</head>
+<body>
 
-  <!-- Hero Banner -->
-  <section class="hero-container">
+  <!-- Top Header -->
+  <header class="header-container">
+    <a href="#" class="brand-logo">
+      <i class="fa-solid fa-droplet"></i>
+      <div class="brand-text">
+        <h1>RAKTDATA.IN</h1>
+        <p>NATIONAL BLOOD DONATION MOVEMENT</p>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a href="#" class="btn-action btn-search"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+      <a href="#" class="btn-action btn-login"><i class="fa-solid fa-user"></i> Login</a>
+    </div>
+  </header>
+
+  <!-- Main Navigation Bar -->
+  <nav class="nav-bar">
+    <a href="#" class="nav-link">Home</a>
+    <a href="#" class="nav-link">About <i class="fa-solid fa-chevron-down"></i></a>
+    <a href="#" class="nav-link">Volunteers <i class="fa-solid fa-chevron-down"></i></a>
+    <a href="#" class="nav-link">Blood Donors <i class="fa-solid fa-chevron-down"></i></a>
+    <a href="#" class="nav-link">Blood Banks <i class="fa-solid fa-chevron-down"></i></a>
+    <a href="#" class="nav-link">Organizations <i class="fa-solid fa-chevron-down"></i></a>
+    <a href="#" class="nav-link">Knowledge <i class="fa-solid fa-chevron-down"></i></a>
+    <a href="#" class="nav-link">Events <i class="fa-solid fa-chevron-down"></i></a>
+    <a href="#" class="nav-link">Verify <i class="fa-solid fa-chevron-down"></i></a>
+    <a href="#" class="nav-link">Contact</a>
+  </nav>
+
+  <!-- Quick Action Buttons -->
+  <div class="quick-bar">
+    <a href="#" class="btn-quick btn-quick-red"><i class="fa-solid fa-heart"></i> Become Blood Donor</a>
+    <a href="#" class="btn-quick btn-quick-blue"><i class="fa-solid fa-user-plus"></i> Become Volunteer</a>
+    <a href="#" class="btn-quick btn-quick-gold"><i class="fa-solid fa-certificate"></i> Verify Appointment Letter</a>
+    <a href="#" class="btn-quick btn-quick-red"><i class="fa-solid fa-hand-holding-medical"></i> Request Blood</a>
+    <a href="#" class="btn-quick btn-quick-blue"><i class="fa-solid fa-hospital"></i> Blood Bank</a>
+    <a href="#" class="btn-quick btn-quick-gold"><i class="fa-solid fa-phone"></i> Emergency Contact</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-wrapper">
     <div class="hero-text">
-      <h1>"रक्तदान हेच जीवनदान!"<br><span>National Blood Donation Movement</span> मध्ये सामील व्हा!</h1>
-      <p>तुमचे एक लहानसे पाऊल कोणाचा तरी जीव वाचवू शकते. आजच RAKTDATA.IN प्लॅटफॉर्मवर नोंदणी करा आणि अधिकृत <b>सक्रिय रक्तदाता / स्वयंसेवक (Active Blood Donor)</b> व्हा!</p>
+      <h1>"रक्तदान हेच श्रेष्ठ दान!"<span>National Blood Donation Movement</span></h1>
+      <p>तुमचे एक लहानसे पाऊल कोणाचा तरी जीव वाचवू शकते. आजच RAKTDATA.IN प्लॅटफॉर्मवर नोंदणी करा आणि अधिकृत <b>सक्रिय रक्तदाता / स्वयंसेवक</b> व्हा!</p>
+      
       <div class="hero-buttons">
         <a href="#" class="btn-main btn-red-main"><i class="fa-solid fa-heart-pulse"></i> १. रक्तदाता नोंदणी</a>
         <a href="#" class="btn-main btn-outline-gold"><i class="fa-solid fa-sitemap"></i> २. संस्था नोंदणी</a>
@@ -859,13 +352,15 @@
       </div>
     </div>
     
-    <div style="text-align: center;">
-      <!-- Banner Graphic Placeholder / Image -->
-      <img src="https://via.placeholder.com/450x320/0A2A66/FFD700?text=RAKTDATA.IN+Blood+Movement" alt="Raktdata Banner" style="max-width: 100%; border-radius: 12px; border: 3px solid #FFD700;">
+    <!-- Hero Banner Card -->
+    <div class="hero-banner-box">
+      <i class="fa-solid fa-hand-holding-droplet"></i>
+      <h3>एक जीवन वाचवा!</h3>
+      <p>तुमच्या भागात आयोजित होणाऱ्या आगामी रक्तदान शिबिरांची माहिती मिळवा आणि एका क्लिकवर सहभागी व्हा.</p>
     </div>
   </section>
 
-  <!-- Live Statistics Counter -->
+  <!-- Live Statistics Section -->
   <section class="stats-section">
     <div class="stat-card">
       <i class="fa-solid fa-users"></i>
@@ -880,7 +375,7 @@
     <div class="stat-card">
       <i class="fa-solid fa-building-ngo"></i>
       <div class="stat-number">150+</div>
-      <div class="stat-label">संलग्न संस्था / मंडळे (Organizations)</div>
+      <div class="stat-label">संलग्न संस्था / मंडळे</div>
     </div>
     <div class="stat-card">
       <i class="fa-solid fa-heart-circle-check"></i>
@@ -888,16 +383,14 @@
       <div class="stat-label">मदत मिळालेले रुग्ण (Lives Saved)</div>
     </div>
   </section>
-  <!-- ==========================================
-       FOOTER SECTION
-       ========================================== -->
+
+  <!-- Footer Section -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col">
         <h4>RAKTDATA.IN</h4>
         <p style="font-size:12px; color:#D1D5DB; line-height:1.6;">National Blood Donation Movement. Uniting donors and saving lives across India.</p>
       </div>
-
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
@@ -908,7 +401,6 @@
           <li><a href="#">Disclaimer</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Support</h4>
         <ul>
@@ -918,10 +410,9 @@
           <li><a href="#">Sitemap</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Social Media</h4>
-        <div class="social-links">
+        <div class="social-icons">
           <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#"><i class="fa-brands fa-instagram"></i></a>
           <a href="#"><i class="fa-brands fa-youtube"></i></a>
@@ -930,41 +421,10 @@
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
       &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
     </div>
   </footer>
 
-  <!-- ==========================================
-       JAVASCRIPT LOGIC
-       ========================================== -->
-  <script>
-    // Modal Management Functions
-    function openModal(id) {
-      document.getElementById(id).classList.add('active');
-    }
-
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('active');
-    }
-
-    // Mobile Drawer Toggle
-    function toggleDrawer() {
-      document.getElementById('mobileDrawer').classList.toggle('active');
-    }
-
-    // Mobile Accordion Logic
-    function toggleAccordion(btn) {
-      const content = btn.nextElementSibling;
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-      } else {
-        // Close other open accordions
-        document.querySelectorAll('.accordion-content').forEach(el => el.style.maxHeight = null);
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
-    }
-  </script>
 </body>
 </html>
