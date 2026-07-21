@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RAKTDATA.IN - Professional Navigation Header</title>
+
+  <!-- Google Fonts: Poppins & Noto Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    /* ==========================================
+       1. VARIABLES & RESET
+       ========================================== */
+    :root {
+      --primary-red: #C00000;
+      --navy-blue: #0A2A66;
+      --accent-gold: #FFD700;
+      --bg-white: #FFFFFF;
+      --bg-light: #F8F9FA;
+      --text-dark: #1F2937;
+      --text-muted: #6B7280;
+      --border-color: #E5E7EB;
+      --radius: 8px;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ==========================================
+       2. HEADER & STICKY NAVIGATION
+       ========================================== */
+    .header-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bg-white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Top Bar Header */
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 5%;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo i {
+      font-size: 32px;
+      color: var(--primary-red);
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary-red);
+      letter-spacing: 0.5px;
+    }
+
+    .brand-subtitle {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--navy-blue);
+      letter-spacing: 1px;
+      display: block;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .action-btn {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--navy-blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .action-btn:hover {
+      background: var(--navy-blue);
+      color: var(--bg-white);
+      border-color: var(--navy-blue);
+    }
+
+    .mobile-hamburger {
+      display: none;
+      font-size: 22px;
+      background: var(--primary-red);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    /* Desktop Navigation Bar */
+    .main-nav {
+      background: var(--navy-blue);
+      padding: 0 5%;
+      position: relative;
+    }
+
+    .nav-list {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 16px 14px;
+      color: var(--bg-white);
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-item:hover > .nav-link {
+      color: var(--accent-gold);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--primary-red);
+      transition: var(--transition);
+      transform: translateX(-50%);
+    }
+
+    .nav-item:hover > .nav-link::after {
+      width: 100%;
+    }
+
+    /* ==========================================
+       3. MEGA MENU DROPDOWNS
+       ========================================== */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--bg-white);
+      min-width: 240px;
+      box-shadow: var(--shadow);
+      border-radius: 0 0 var(--radius) var(--radius);
+      border-top: 3px solid var(--primary-red);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: var(--transition);
+      z-index: 100;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      color: var(--text-dark);
+      font-size: 13px;
+      font-weight: 500;
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--bg-light);
+      color: var(--primary-red);
+      padding-left: 22px;
+    }
+
+    .dropdown-menu i {
+      color: var(--primary-red);
+      font-size: 12px;
+    }
+
+    /* ==========================================
+       4. QUICK ACTION BAR
+       ========================================== */
+    .quick-bar {
+      background: var(--bg-white);
+      padding: 15px 5%;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .quick-btn {
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .qb-red { background: #FFEBEE; color: #C00000; border-color: #FFCDD2; }
+    .qb-blue { background: #E8EAF6; color: #0A2A66; border-color: #C5CAE9; }
+    .qb-gold { background: #FFFDE7; color: #F57F17; border-color: #FFF59D; }
+
+    .quick-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* ==========================================
+       5. MODALS (SEARCH & LOGIN)
+       ========================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      z-index: 2000;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: var(--bg-white);
+      width: 90%;
+      max-width: 480px;
+      padding: 25px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px; right: 15px;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy-blue);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .search-input-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .search-input-box input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      outline: none;
+    }
+
+    .login-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .login-role-btn {
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      background: var(--bg-light);
+      font-weight: 600;
+      color: var(--navy-blue);
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .login-role-btn:hover {
+      background: var(--primary-red);
+      color: white;
+      border-color: var(--primary-red);
+    }
+
+    /* ==========================================
+       6. MOBILE DRAWER & ACCORDION
+       ========================================== */
+    .mobile-drawer {
+      position: fixed;
+      top: 0; left: -100%;
+      width: 280px;
+      height: 100%;
+      background: var(--bg-white);
+      z-index: 3000;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      overflow-y: auto;
+    }
+
+    .mobile-drawer.active {
+      left: 0;
+    }
+
+    .drawer-header {
+      background: var(--navy-blue);
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mobile-menu-list {
+      padding: 10px 0;
+    }
+
+    .accordion-btn {
+      width: 100%;
+      padding: 14px 20px;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      background: var(--bg-light);
+      transition: max-height 0.3s ease-out;
+    }
+
+    .accordion-content a {
+      display: block;
+      padding: 10px 30px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* ==========================================
+       7. FOOTER SECTION
+       ========================================== */
+    footer {
+      background: var(--navy-blue);
+      color: white;
+      padding: 40px 5% 20px;
+      margin-top: 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer-col h4 {
+      color: var(--accent-gold);
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      color: #D1D5DB;
+      font-size: 13px;
+      transition: var(--transition);
+    }
+
+    .footer-col ul li a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-links a {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex; justify-content: center; align-items: center;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary-red);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 12px;
+      color: #9CA3AF;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 992px) {
+      .main-nav { display: none; }
+      .mobile-hamburger { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER SECTION
+       ========================================== -->
+  <header class="header-wrapper">
+    <!-- Top Header Bar -->
+    <div class="top-header">
+      <div class="brand-logo">
+        <i class="fa-solid => fa-droplet"></i>
+        <div>
+          <span class="brand-title">RAKTDATA.IN</span>
+          <span class="brand-subtitle">NATIONAL BLOOD DONATION MOVEMENT</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="action-btn" onclick="openModal('searchModal')">
+          <i class="fa-solid fa-magnifying-glass"></i> <span class="hide-mobile">Search</span>
+        </button>
+
+        <button class="action-btn" onclick="openModal('loginModal')">
+          <i class="fa-solid fa-circle-user"></i> <span class="hide-mobile">Login</span>
+        </button>
+
+        <button class="mobile-hamburger" onclick="toggleDrawer()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation Menu Bar -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <!-- 1. Home -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">Home</a>
+          <div class="dropdown-menu">
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Home</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Latest Updates</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Success Stories</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Gallery</a>
+          </div>
+        </li>
+
+        <!-- 2. About -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">About <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#"><i class="fa-solid fa-angle-right"></i> About RAKTDATA.IN</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Mission</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Vision</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Founder</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Our Team</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Awards</a>
+          </div>
+        </li>
+
+        <!-- 3. Volunteers -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">Volunteers <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Volunteer Registration</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Volunteer Login</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Volunteer Dashboard</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Appointment Letter Verification</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Appointment Letter Download</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Certificate Download</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Training</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> FAQ</a>
+          </div>
+        </li>
+
+        <!-- 4. Blood Donors -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">Blood Donors <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Register Blood Donor</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Search Blood Donor</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Blood Donation Camps</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Blood Group Information</a>
+          </div>
+        </li>
+
+        <!-- 5. Blood Banks -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">Blood Banks <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Register Blood Bank</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Blood Bank Directory</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Blood Availability</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Contact Blood Bank</a>
+          </div>
+        </li>
+
+        <!-- 6. Organizations -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">Organizations <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#"><i class="fa-solid fa-angle-right"></i> NGO Registration</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Hospital Registration</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Partner Organization</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> CSR Partnership</a>
+          </div>
+        </li>
+
+        <!-- 7. Knowledge Hub -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">Knowledge <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Blood Donation Guide</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Blog</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Videos</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Downloads</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Forms</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Awareness Material</a>
+          </div>
+        </li>
+
+        <!-- 8. Events -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">Events <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Upcoming Camps</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Past Events</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Volunteer Meetings</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Photo Gallery</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> News</a>
+          </div>
+        </li>
+
+        <!-- 9. Verify -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">Verify <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Appointment Letter Verification</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> Volunteer Verification</a>
+            <a href="#"><i class="fa-solid fa-angle-right"></i> QR Verification</a>
+          </div>
+        </li>
+
+        <!-- 10. Contact -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Quick Actions Horizontal Scroll Bar -->
+  <div class="quick-bar">
+    <button class="quick-btn qb-red"><i class="fa-solid fa-heart-pulse"></i> Become Blood Donor</button>
+    <button class="quick-btn qb-blue"><i class="fa-solid fa-handshake-angle"></i> Become Volunteer</button>
+    <button class="quick-btn qb-gold"><i class="fa-solid fa-certificate"></i> Verify Appointment Letter</button>
+    <button class="quick-btn qb-red"><i class="fa-solid fa-notes-medical"></i> Request Blood</button>
+    <button class="quick-btn qb-blue"><i class="fa-solid fa-hospital"></i> Blood Bank</button>
+    <button class="quick-btn qb-gold"><i class="fa-solid fa-phone-volume"></i> Emergency Contact</button>
+  </div>
+
+  <!-- ==========================================
+       MOBILE DRAWER NAVIGATION (Accordion)
+       ========================================== -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <span>RAKTDATA Menu</span>
+      <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="toggleDrawer()"></i>
+    </div>
+
+    <div class="mobile-menu-list">
+      <button class="accordion-btn" onclick="toggleAccordion(this)">▶ Home</button>
+      <div class="accordion-content">
+        <a href="#">Home</a>
+        <a href="#">Latest Updates</a>
+        <a href="#">Success Stories</a>
+        <a href="#">Gallery</a>
+      </div>
+
+      <button class="accordion-btn" onclick="toggleAccordion(this)">▶ About</button>
+      <div class="accordion-content">
+        <a href="#">About RAKTDATA.IN</a>
+        <a href="#">Mission</a>
+        <a href="#">Vision</a>
+        <a href="#">Founder</a>
+      </div>
+
+      <button class="accordion-btn" onclick="toggleAccordion(this)">▶ Volunteers</button>
+      <div class="accordion-content">
+        <a href="#">Volunteer Registration</a>
+        <a href="#">Volunteer Login</a>
+        <a href="#">Dashboard</a>
+        <a href="#">Appointment Letter Download</a>
+      </div>
+
+      <button class="accordion-btn" onclick="toggleAccordion(this)">▶ Blood Donors</button>
+      <div class="accordion-content">
+        <a href="#">Register Blood Donor</a>
+        <a href="#">Search Blood Donor</a>
+        <a href="#">Blood Donation Camps</a>
+      </div>
+
+      <button class="accordion-btn" onclick="toggleAccordion(this)">▶ Verify</button>
+      <div class="accordion-content">
+        <a href="#">Appointment Letter Verification</a>
+        <a href="#">QR Verification</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODALS (Search & Multi-Role Login)
+       ========================================== -->
+  <!-- Search Modal -->
+  <div class="modal-overlay" id="searchModal">
+    <div class="modal-box">
+      <i class="fa-solid fa-xmark modal-close" onclick="closeModal('searchModal')"></i>
+      <div class="modal-title">Search RAKTDATA Portal</div>
+      <div class="search-input-box">
+        <input type="text" placeholder="Search Volunteers, Blood Banks, Camps..." />
+        <button class="action-btn" style="background:var(--primary-red); color:white;">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-Role Login Popup Modal -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-box">
+      <i class="fa-solid fa-xmark modal-close" onclick="closeModal('loginModal')"></i>
+      <div class="modal-title">Select Login Type</div>
+      <div class="login-options">
+        <div class="login-role-btn"><i class="fa-solid fa-user-shield"></i> Volunteer Login</div>
+        <div class="login-role-btn"><i class="fa-solid fa-users-gear"></i> Coordinator Login</div>
+        <div class="login-role-btn"><i class="fa-solid fa-user-lock"></i> Admin Login</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FOOTER SECTION
+       ========================================== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>RAKTDATA.IN</h4>
+        <p style="font-size:12px; color:#D1D5DB; line-height:1.6;">National Blood Donation Movement. Uniting donors and saving lives across India.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Mission & Vision</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Social Media</h4>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT LOGIC
+       ========================================== -->
+  <script>
+    // Modal Management Functions
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    // Mobile Drawer Toggle
+    function toggleDrawer() {
+      document.getElementById('mobileDrawer').classList.toggle('active');
+    }
+
+    // Mobile Accordion Logic
+    function toggleAccordion(btn) {
+      const content = btn.nextElementSibling;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        // Close other open accordions
+        document.querySelectorAll('.accordion-content').forEach(el => el.style.maxHeight = null);
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    }
+  </script>
+</body>
+</html>
