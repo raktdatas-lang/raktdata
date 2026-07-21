@@ -1,244 +1,109 @@
-<!DOCTYPE html>
-<html lang="mr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RaktaData Poster</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<!-- Step-by-Step Section -->
+<div class="services-container">
+    <div class="service-title">🎯 उपलब्ध सेवा / Registration Steps</div>
 
-        body {
-            background-color: #0d0f1d;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .poster-card {
-            width: 100%;
-            max-width: 500px;
-            background: linear-gradient(180deg, #18192d 0%, #0c0d19 100%);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            color: #ffffff;
-            border: 1px solid #2a2c42;
-        }
-
-        /* Header Area */
-        .header {
-            text-align: center;
-            padding: 20px 15px 15px;
-            background: rgba(255, 255, 255, 0.02);
-            border-bottom: 1px solid #2a2c42;
-        }
-
-        .logo-img {
-            max-width: 220px;
-            height: auto;
-            margin-bottom: 5px;
-        }
-
-        /* Quote Section */
-        .quote {
-            text-align: center;
-            font-size: 16px;
-            color: #fbc02d;
-            font-weight: 700;
-            padding: 15px 20px;
-            line-height: 1.4;
-        }
-
-        /* Profile Section */
-        .profile-container {
-            display: flex;
-            padding: 0 20px 15px 20px;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .photo-box {
-            width: 135px;
-            height: 165px;
-            border-radius: 14px;
-            border: 3px solid #fbc02d;
-            overflow: hidden;
-            flex-shrink: 0;
-            background-color: #222;
-        }
-
-        .photo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .details-box {
-            flex-grow: 1;
-        }
-
-        .reg-no {
-            background-color: #37474f;
-            color: #eceff1;
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 6px;
-            display: inline-block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .user-name {
-            font-size: 22px;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .tags {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .bg-blood { background-color: #d32f2f; color: white; }
-        .bg-city { background-color: #37474f; color: white; }
-        .bg-state { background-color: #0288d1; color: white; }
-
-        /* Extra Info Section (Tri-Lingual Position, Org, Mobile) */
-        .extra-info-container {
-            background: rgba(255, 255, 255, 0.04);
-            margin: 5px 20px 15px 20px;
-            padding: 12px 15px;
-            border-radius: 10px;
-            border-left: 4px solid #e53935;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .info-row {
-            display: flex;
-            flex-direction: column;
-            font-size: 13px;
-        }
-
-        .info-label {
-            color: #90a4ae;
-            font-size: 10px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-        }
-
-        .info-value {
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 13px;
-        }
-
-        /* Footer Slogan */
-        .slogan {
-            text-align: center;
-            font-size: 13px;
-            margin-bottom: 12px;
-            color: #e0e0e0;
-            font-weight: 600;
-        }
-
-        .footer-banner {
-            background-color: #d32f2f;
-            text-align: center;
-            padding: 12px;
-            font-weight: bold;
-            font-size: 14px;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="poster-card">
-        <!-- Header -->
-        <div class="header">
-            <!-- RAKTDATA LOGO / TEXT -->
-            <div style="font-size: 26px; font-weight: 900; color: #e53935; letter-spacing: 1px;">
-                RAKTDATA.IN
-            </div>
-            <div style="font-size: 10px; color: #b0bec5; letter-spacing: 1.5px; font-weight: 700; margin-top: 2px;">
-                NATIONAL BLOOD DONATION MOVEMENT
-            </div>
+    <!-- Step 1: Normal Registration -->
+    <div class="service-card">
+        <div class="step-badge">1</div>
+        <div class="service-info">
+            <div class="service-heading">सर्वांसाठी साधी नोंदणी</div>
+            <div class="service-sub">Simple Registration for All Donors</div>
         </div>
-
-        <!-- Quote -->
-        <div class="quote">
-            "रक्तदान हेच जीवनदान! मी नोंदणी केली आहे, तुम्ही कधी करताय?"
-        </div>
-
-        <!-- Profile Section -->
-        <div class="profile-container">
-            <div class="photo-box">
-                <!-- फोटोचा पाथ / लिंक येथे टाका -->
-                <img src="Raktdata_Poster_दिलीप म. गायकवाड (2)_3.jpg" alt="दिलीप म. गायकवाड">
-            </div>
-            <div class="details-box">
-                <div class="reg-no">नोंदणी क्र: RD-101</div>
-                <div class="user-name">दिलीप म. गायकवाड</div>
-                <div class="tags">
-                    <span class="tag bg-blood">🩸 AB+</span>
-                    <span class="tag bg-city">📍 मुंबई</span>
-                    <span class="tag bg-state">महाराष्ट्र</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Added Info Block (Three-Language Position, Group, Mobile) -->
-        <div class="extra-info-container">
-            <div class="info-row">
-                <span class="info-label">पद / पद / Designation:</span>
-                <span class="info-value">सक्रिय रक्तदाता / सक्रिय रक्तदाता / Active Blood Donor</span>
-            </div>
-            
-            <div class="info-row">
-                <span class="info-label">संलग्न संस्था / संबद्ध संस्था / Group:</span>
-                <span class="info-value">[येथे तुमच्या संस्थेचे/ग्रुपचे नाव टाका]</span>
-            </div>
-            
-            <div class="info-row">
-                <span class="info-label">मो. नंबर / मो. नं. / Mob. No.:</span>
-                <span class="info-value">+91 [तुमचा १० अंकी मोबाईल नंबर]</span>
-            </div>
-        </div>
-
-        <!-- Slogan -->
-        <div class="slogan">
-            चला, एकत्र येऊया आणि गरजूंना जीवनदान देऊया! ❤️
-        </div>
-
-        <!-- Red Footer Banner -->
-        <div class="footer-banner">
-            🌐 www.raktdata.in वर आजच नोंदणी करा!
-        </div>
+        <a href="#register" class="btn btn-red">नोंदणी करा</a>
     </div>
 
-</body>
-</html>
+    <!-- Step 2: Organization Registration -->
+    <div class="service-card">
+        <div class="step-badge">2</div>
+        <div class="service-info">
+            <div class="service-heading">संस्था नोंदणी</div>
+            <div class="service-sub">Organization / Group Registration</div>
+        </div>
+        <a href="#org-register" class="btn btn-blue">संस्था जोडा</a>
+    </div>
+
+    <!-- Step 3: Appointment Letter / Certificate -->
+    <div class="service-card">
+        <div class="step-badge">3</div>
+        <div class="service-info">
+            <div class="service-heading">नियुक्ती पत्र / ID डाउनलोड</div>
+            <div class="service-sub">Appointment Letter / Official Card</div>
+        </div>
+        <a href="#download-letter" class="btn btn-green">डाउनलोड</a>
+    </div>
+</div>
+
+<style>
+    .services-container {
+        background: rgba(255, 255, 255, 0.03);
+        margin: 15px 20px;
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid #2a2c42;
+    }
+
+    .service-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #fbc02d;
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    .service-card {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 10px 12px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        gap: 12px;
+    }
+
+    .service-card:last-child {
+        margin-bottom: 0;
+    }
+
+    .step-badge {
+        background: #37474f;
+        color: #fff;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+
+    .service-info {
+        flex-grow: 1;
+    }
+
+    .service-heading {
+        font-size: 13px;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .service-sub {
+        font-size: 10px;
+        color: #b0bec5;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 11px;
+        font-weight: 700;
+        border-radius: 6px;
+        text-decoration: none;
+        color: white;
+        white-space: nowrap;
+    }
+
+    .btn-red { background-color: #d32f2f; }
+    .btn-blue { background-color: #0288d1; }
+    .btn-green { background-color: #388e3c; }
+</style>
