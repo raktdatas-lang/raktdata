@@ -3,195 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>प्रीमियम रक्तदाता कार्ड मेकर | RAKTDATA.IN</title>
+    <title>प्रीमियम व्ही.आय.पी. रक्तदाता डिजिटल कार्ड | RAKTDATA.IN</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for Marathi -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts for Devanagari & English -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800;900&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- html2canvas for Image Download -->
+    <!-- html2canvas for High Resolution Download -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        body { font-family: 'Noto Sans Devanagari', sans-serif; }
-        .pulse { animation: pulse-animation 2s infinite; }
-        @keyframes pulse-animation {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
+        body {
+            font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+            background-color: #060913;
+        }
+        
+        .red-glow {
+            box-shadow: 0 0 25px rgba(225, 29, 72, 0.35);
+        }
+
+        .pulse-heart {
+            animation: heartPulse 1.8s infinite ease-in-out;
+        }
+
+        @keyframes heartPulse {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.15); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.15); }
+            70% { transform: scale(1); }
         }
     </style>
 </head>
-<body class="bg-[#070b19] min-h-screen py-8 px-4 flex flex-col items-center justify-center gap-6 text-white">
+<body class="min-h-screen text-slate-100 py-8 px-4 flex flex-col items-center justify-center">
 
-    <div class="w-full max-w-[1050px] flex flex-col lg:flex-row gap-8 items-stretch justify-center">
+    <!-- Header Banner -->
+    <div class="text-center mb-8 max-w-xl">
+        <div class="inline-flex items-center gap-2 bg-red-950/60 border border-red-500/30 px-4 py-1.5 rounded-full text-red-400 font-bold text-xs uppercase tracking-widest mb-3 shadow-lg">
+            <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i> नवी प्रीमियम व्ही.आय.पी. डिझाईन
+        </div>
+        <h1 class="text-3xl font-black text-white tracking-wide">राष्ट्रीय रक्तदान चळवळ कार्ड जनरेटर</h1>
+        <p class="text-xs text-slate-400 mt-1">आपला मूळ लोगो समाविष्ट करून तयार केलेली आधुनिक डिजिटल कार्ड आवृत्ती</p>
+    </div>
+
+    <!-- Main Workspace Grid -->
+    <div class="w-full max-w-[1080px] grid grid-cols-1 lg:grid-cols-12 gap-8 items-start justify-center">
         
-        <!-- डावा भाग: माहिती भरण्यासाठी फॉर्म पॅनल -->
-        <div class="w-full lg:w-[420px] bg-slate-900 p-6 rounded-2xl shadow-xl border border-slate-800 flex flex-col justify-between">
-            <div>
-                <h3 class="text-lg font-black text-red-500 border-b border-slate-800 pb-3 mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-sliders"></i> कार्ड डिझाईन पॅनल
+        <!-- Left Side: Control Panel (Form Inputs) -->
+        <div class="lg:col-span-5 bg-slate-900/90 border border-slate-800 p-6 rounded-3xl shadow-2xl space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 class="text-base font-bold text-red-500 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square"></i> माहिती नोंदणी पॅनल
                 </h3>
-                
-                <div class="space-y-4">
-                    <!-- नाव -->
+                <span class="text-[10px] text-slate-500 font-mono">v3.0 VIP Edition</span>
+            </div>
+
+            <!-- Form Inputs -->
+            <div class="space-y-3.5 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-300 mb-1">रक्तदात्याचे संपूर्ण नाव:</label>
+                    <input type="text" id="input-name" value="दिलीप म. गायकवाड" 
+                        class="w-full px-3.5 py-2.5 bg-slate-800/90 border border-slate-700 rounded-xl text-sm font-bold text-white focus:outline-none focus:border-red-500 transition">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-amber-400 mb-1">संलग्न संस्था / मंडळ / ग्रुप:</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-500">
+                            <i class="fa-solid fa-building-flag"></i>
+                        </span>
+                        <input type="text" id="input-org" value="जय भवानी मित्र मंडळ, मुंबई" 
+                            class="w-full pl-9 pr-3.5 py-2.5 bg-slate-800/90 border border-amber-500/40 rounded-xl text-sm font-bold text-amber-100 focus:outline-none focus:border-amber-400 transition"
+                            placeholder="संस्थेचे नाव प्रविष्ट करा">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-slate-400 mb-1">रक्तदात्याचे नाव:</label>
-                        <input type="text" id="input-name" value="दिलीप म. गायकवाड" 
-                            class="w-full px-3 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm font-bold text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition">
+                        <label class="block font-bold text-slate-300 mb-1">रक्तगट (Blood Group):</label>
+                        <select id="input-bg" class="w-full px-3 py-2.5 bg-slate-800 border border-slate-700 rounded-xl font-bold text-red-400 focus:outline-none focus:border-red-500">
+                            <option value="AB+" selected>AB+</option>
+                            <option value="A+">A+</option>
+                            <option value="B+">B+</option>
+                            <option value="O+">O+</option>
+                            <option value="A-">A-</option>
+                            <option value="B-">B-</option>
+                            <option value="O-">O-</option>
+                            <option value="AB-">AB-</option>
+                        </select>
                     </div>
-
-                    <!-- संलग्न संस्था -->
                     <div>
-                        <label class="block text-xs font-bold text-amber-400 mb-1">संलग्न संस्था / मंडळ:</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-500">
-                                <i class="fa-solid fa-users"></i>
-                            </span>
-                            <input type="text" id="input-org" value="जय भवानी मित्र मंडळ, मुंबई" 
-                                class="w-full pl-9 pr-3 py-2.5 bg-slate-800 border border-amber-500/30 rounded-xl text-sm font-bold text-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition"
-                                placeholder="संस्थेचे नाव टाईप करा">
-                        </div>
+                        <label class="block font-bold text-slate-300 mb-1">नोंदणी क्रमांक:</label>
+                        <input type="text" id="input-reg" value="RD-101" 
+                            class="w-full px-3.5 py-2.5 bg-slate-800 border border-slate-700 rounded-xl font-bold text-white">
                     </div>
+                </div>
 
-                    <!-- रक्तगट आणि नोंदणी क्र. -->
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-400 mb-1">रक्तगट:</label>
-                            <select id="input-bg" class="w-full px-3 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm font-bold text-white focus:outline-none focus:ring-2 focus:ring-red-500">
-                                <option value="AB+" selected>AB+</option>
-                                <option value="A+">A+</option>
-                                <option value="B+">B+</option>
-                                <option value="O+">O+</option>
-                                <option value="A-">A-</option>
-                                <option value="B-">B-</option>
-                                <option value="O-">O-</option>
-                                <option value="AB-">AB-</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-400 mb-1">नोंदणी क्र.:</label>
-                            <input type="text" id="input-reg" value="RD-101" 
-                                class="w-full px-3 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm font-bold text-white">
-                        </div>
-                    </div>
-
-                    <!-- जिल्हा आणि राज्य -->
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-400 mb-1">जिल्हा/शहर:</label>
-                            <input type="text" id="input-city" value="मुंबई" class="w-full px-3 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm font-bold text-white">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-400 mb-1">राज्य:</label>
-                            <input type="text" id="input-state" value="महाराष्ट्र" class="w-full px-3 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm font-bold text-white">
-                        </div>
-                    </div>
-
-                    <!-- फोटो अपलोड -->
+                <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-slate-400 mb-1">रक्तदात्याचा फोटो निवडा:</label>
-                        <input type="file" id="input-photo" accept="image/*" 
-                            class="w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-slate-800 file:text-white hover:file:bg-slate-700 cursor-pointer">
+                        <label class="block font-bold text-slate-300 mb-1">जिल्हा / शहर:</label>
+                        <input type="text" id="input-city" value="मुंबई" class="w-full px-3.5 py-2.5 bg-slate-800 border border-slate-700 rounded-xl font-bold text-white">
                     </div>
+                    <div>
+                        <label class="block font-bold text-slate-300 mb-1">राज्य:</label>
+                        <input type="text" id="input-state" value="महाराष्ट्र" class="w-full px-3.5 py-2.5 bg-slate-800 border border-slate-700 rounded-xl font-bold text-white">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-300 mb-1">रक्तदात्याचा फोटो निवडा:</label>
+                    <input type="file" id="input-photo" accept="image/*" 
+                        class="w-full text-xs text-slate-400 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-slate-800 file:text-white hover:file:bg-slate-700 cursor-pointer border border-slate-800 rounded-xl p-1">
                 </div>
             </div>
 
-            <button id="btn-download" class="w-full mt-6 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
-                <i class="fa-solid fa-circle-arrow-down"></i>
-                <span>डिजिटल कार्ड डाउनलोड करा</span>
+            <!-- Download Button -->
+            <button id="btn-download" class="w-full mt-4 bg-gradient-to-r from-red-600 via-red-650 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-extrabold text-sm py-4 rounded-2xl shadow-xl hover:shadow-red-600/30 transition-all flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-download text-lg"></i>
+                <span>प्रीमियम HD कार्ड डाउनलोड करा</span>
             </button>
         </div>
 
-        <!-- उजवा भाग: सुरक्षित लाईव्ह प्रीव्ह्यू -->
-        <div class="w-full max-w-[480px] flex items-center justify-center">
+        <!-- Right Side: Live VIP Card Preview -->
+        <div class="lg:col-span-7 flex flex-col items-center justify-center">
             
-            <div id="poster-area" class="w-full aspect-square bg-[#0c1329] text-white p-6 relative rounded-3xl shadow-2xl flex flex-col justify-between overflow-hidden border-2 border-slate-800/80">
-                
-                <!-- प्रीमियम बॅकग्राउंड लाईट्स इफेक्ट्स -->
-                <div class="absolute -top-20 -right-20 w-60 h-60 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> लाईव्ह प्रीव्ह्यू (Live HD Preview)
+            </p>
 
-                <!-- हेडर: अधिकृत लोगो आणि ब्रँडिंग -->
-                <div class="flex items-center justify-between border-b border-slate-800/60 pb-3 relative z-10">
+            <!-- CARD CONTAINER (Square 500x500 for Social Media / Printing) -->
+            <div id="poster-area" class="w-full max-w-[500px] aspect-square bg-gradient-to-br from-[#0c0510] via-[#120718] to-[#08020a] text-white p-6 relative rounded-[2rem] shadow-2xl flex flex-col justify-between overflow-hidden border-2 border-amber-500/30 red-glow">
+                
+                <!-- Background Glow Elements -->
+                <div class="absolute -top-16 -right-16 w-56 h-56 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                <!-- CARD HEADER: Brand Logo & Title -->
+                <div class="flex items-center justify-between border-b border-slate-800/80 pb-3 relative z-10">
                     <div class="flex items-center space-x-3">
-                        <!-- लोगो: सुरक्षित इनबिल्ट वेक्टर स्वरूप -->
-                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-xl border border-red-500/30 p-1.5 relative overflow-hidden">
-                            <div class="relative w-full h-full flex items-center justify-center text-red-600">
-                                <i class="fa-solid fa-droplet text-3xl"></i>
-                                <div class="absolute inset-0 flex items-center justify-center text-[9px] text-white font-black mt-1">
-                                    <i class="fa-solid fa-map-location-dot"></i>
-                                </div>
-                            </div>
-                            <div class="absolute top-0 left-0 right-0 h-[3px] bg-orange-500"></div>
-                            <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-green-600"></div>
+                        <!-- Embedded Provided Logo -->
+                        <div class="w-[52px] h-[52px] bg-gradient-to-b from-slate-900 to-black rounded-2xl p-1 border border-amber-500/50 shadow-lg flex items-center justify-center">
+                            <img id="main-logo" src="" class="w-full h-full object-contain rounded-xl" alt="Raktdata Logo">
                         </div>
                         <div>
-                            <h1 class="text-2xl font-[900] tracking-wider text-red-500 leading-none">RAKTDATA.IN</h1>
-                            <p class="text-[8.5px] font-black uppercase tracking-[0.25em] text-slate-400 mt-1">National Blood Donation Movement</p>
+                            <div class="flex items-center gap-1.5">
+                                <h1 class="text-2xl font-[900] tracking-wider text-white font-en leading-none">RAKTDATA<span class="text-red-500">.IN</span></h1>
+                                <i class="fa-solid fa-circle-check text-amber-400 text-xs" title="Verified Organization"></i>
+                            </div>
+                            <p class="text-[8px] font-extrabold uppercase tracking-[0.22em] text-amber-400 mt-1">National Blood Donation Movement</p>
                         </div>
                     </div>
-                    <div class="bg-red-950/40 border border-red-800/30 px-2.5 py-1 rounded-full text-[9px] font-black text-red-400 tracking-wide uppercase">
-                        <i class="fa-solid fa-heart pulse mr-1"></i> आयडी कार्ड
+
+                    <div class="text-right">
+                        <div class="bg-gradient-to-r from-red-600/30 to-amber-500/20 border border-amber-500/40 px-3 py-1 rounded-full flex items-center gap-1.5">
+                            <i class="fa-solid fa-heart-pulse text-red-500 text-xs pulse-heart"></i>
+                            <span class="text-[9px] font-black text-amber-300 tracking-wider uppercase">VIP CARD</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- घोषवाक्य संदेश पट्टी -->
-                <div class="text-center my-1.5 relative z-10">
-                    <p class="text-amber-400 text-[13px] font-bold tracking-wide drop-shadow-sm">
-                        "रक्तदान हेच जीवनदान! मी नोंदणी केली आहे, तुम्ही कधी करताय?"
-                    </p>
+                <!-- SLOGAN BANNER -->
+                <div class="my-1.5 text-center relative z-10">
+                    <div class="bg-gradient-to-r from-transparent via-red-950/40 to-transparent py-1 border-y border-red-500/20">
+                        <p class="text-amber-300 text-[12px] font-bold tracking-wide">
+                            "रक्तदान हेच जीवनदान! मी नोंदणी केली आहे, तुम्ही कधी करताय?"
+                        </p>
+                    </div>
                 </div>
 
-                <!-- मध्य विभाग: फोटो फ्रेम आणि डेटा लेआउट -->
-                <div class="grid grid-cols-[130px_1fr] gap-4 my-auto items-center relative z-10">
+                <!-- MIDDLE SECTION: DONOR PHOTO & DATA -->
+                <div class="grid grid-cols-[135px_1fr] gap-4 my-auto items-center relative z-10">
                     
-                    <!-- डावीकडे: आधुनिक फोटो फ्रेम (सुरक्षित SVG प्रोफाइल) -->
-                    <div class="w-[130px] aspect-[3/4] bg-slate-900 border-[3px] border-amber-400 rounded-2xl p-0.5 shadow-2xl overflow-hidden flex items-center justify-center relative">
+                    <!-- Left Photo Frame with Gold Border -->
+                    <div class="w-[135px] aspect-[3/4] bg-slate-950 border-2 border-amber-400/80 rounded-2xl p-1 shadow-2xl relative overflow-hidden flex items-center justify-center">
                         <img id="poster-img" src="" class="w-full h-full object-cover rounded-xl hidden" alt="Donor Photo">
                         
-                        <!-- डीफॉल्ट सुरेख प्रोफाइल डिझाईन (इमेज नसताना दिसेल) -->
-                        <div id="placeholder-box" class="w-full h-full flex flex-col items-center justify-center bg-slate-800 text-slate-500">
-                            <svg class="w-16 h-16 text-slate-600" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                            <span class="text-[8px] font-bold text-slate-400 tracking-wider uppercase mt-2">फोटो अपलोड करा</span>
+                        <!-- Default Avatar Placeholder -->
+                        <div id="placeholder-box" class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 to-slate-950 text-slate-500 rounded-xl p-2 text-center border border-slate-800">
+                            <div class="w-12 h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center mb-1 text-amber-400">
+                                <i class="fa-solid fa-user-check text-xl"></i>
+                            </div>
+                            <span class="text-[8px] font-bold text-slate-400 tracking-wider uppercase">फोटो अपडेट करा</span>
+                        </div>
+
+                        <!-- Mini Badge Overlay -->
+                        <div class="absolute bottom-1 right-1 bg-red-600 text-white rounded-md px-1.5 py-0.5 text-[8px] font-black shadow-md border border-amber-300">
+                            VERIFIED
                         </div>
                     </div>
 
-                    <!-- उजवीकडे: माहिती आणि संस्था विभाग -->
-                    <div class="space-y-3">
+                    <!-- Right Donor Details -->
+                    <div class="space-y-2.5">
+                        
                         <div class="flex items-center justify-between">
-                            <span class="text-[9px] text-red-400 bg-red-950/50 border border-red-900/40 px-2 py-0.5 rounded-md font-bold uppercase tracking-wider">
-                                सक्रिय रक्तदाता
+                            <span class="text-[8px] font-black tracking-widest text-emerald-400 bg-emerald-950/60 border border-emerald-500/40 px-2 py-0.5 rounded-md uppercase flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> सक्रिय रक्तदाता
                             </span>
-                            <span class="text-[9px] text-slate-400 font-medium">
-                                नोंदणी: <span id="poster-reg" class="font-bold text-white">RD-101</span>
+                            <span class="text-[9px] text-slate-400 font-bold font-mono">
+                                ID: <span id="poster-reg" class="text-amber-300 font-black">RD-101</span>
                             </span>
                         </div>
 
-                        <!-- नाव -->
-                        <h2 id="poster-name" class="text-xl font-black text-white tracking-wide drop-shadow-md">
-                            दिलीप म. गायकवाड
-                        </h2>
+                        <!-- Name -->
+                        <div>
+                            <h2 id="poster-name" class="text-xl font-black text-white tracking-wide drop-shadow-md">
+                                दिलीप म. गायकवाड
+                            </h2>
+                        </div>
 
-                        <!-- तिन्ही बॅजेस -->
+                        <!-- Badges: Blood Group, City, State -->
                         <div class="flex flex-wrap gap-1.5">
-                            <span class="bg-red-600 text-white text-[9.5px] font-black px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1">
-                                <i class="fa-solid fa-droplet text-[8px]"></i> <span id="poster-bg">AB+</span>
+                            <span class="bg-gradient-to-r from-red-600 to-red-700 text-white text-[10px] font-black px-2.5 py-0.5 rounded-lg shadow-md border border-red-400/30 flex items-center gap-1">
+                                <i class="fa-solid fa-droplet text-[8px] text-amber-300"></i> <span id="poster-bg">AB+</span>
                             </span>
-                            <span class="bg-slate-800/80 text-slate-300 text-[9.5px] font-bold px-2 py-0.5 rounded-md border border-slate-700/60 flex items-center gap-1">
-                                <i class="fa-solid fa-location-dot text-slate-400 text-[8px]"></i> <span id="poster-city">मुंबई</span>
+                            <span class="bg-slate-800/90 text-slate-200 text-[10px] font-bold px-2 py-0.5 rounded-lg border border-slate-700 flex items-center gap-1">
+                                <i class="fa-solid fa-location-dot text-amber-400 text-[8px]"></i> <span id="poster-city">मुंबई</span>
                             </span>
-                            <span class="bg-blue-600 text-white text-[9.5px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1">
-                                <i class="fa-solid fa-map text-[8px]"></i> <span id="poster-state">महाराष्ट्र</span>
+                            <span class="bg-blue-950/80 text-blue-200 text-[10px] font-bold px-2 py-0.5 rounded-lg border border-blue-800/60 flex items-center gap-1">
+                                <i class="fa-solid fa-map text-[8px] text-blue-400"></i> <span id="poster-state">महाराष्ट्र</span>
                             </span>
                         </div>
 
-                        <!-- संलग्न संस्था बॉक्स (Premium Glassmorphism Look) -->
-                        <div class="bg-gradient-to-r from-amber-500/10 to-transparent border-l-4 border-amber-400 bg-slate-900/40 rounded-r-xl p-2 mt-2 shadow-sm">
-                            <p class="text-[7px] text-amber-400 uppercase font-black tracking-widest mb-0.5">संलग्न संस्था / मंडळ</p>
-                            <p id="poster-org" class="text-[11.5px] font-bold text-slate-200 tracking-wide truncate">
+                        <!-- Organization Box -->
+                        <div class="bg-gradient-to-r from-amber-500/15 via-slate-900/80 to-transparent border-l-4 border-amber-400 rounded-r-xl p-2 mt-1 shadow-sm">
+                            <p class="text-[7.5px] text-amber-400 uppercase font-black tracking-widest mb-0.5">संलग्न संस्था / मंडळ</p>
+                            <p id="poster-org" class="text-[11px] font-bold text-slate-100 tracking-wide truncate">
                                 जय भवानी मित्र मंडळ, मुंबई
                             </p>
                         </div>
@@ -199,16 +235,20 @@
                     </div>
                 </div>
 
-                <!-- फुटर विभाग -->
-                <div class="mt-auto relative z-10 text-center space-y-2.5">
-                    <p class="text-[9.5px] text-slate-400 font-medium tracking-wide">
+                <!-- CARD FOOTER -->
+                <div class="mt-auto relative z-10 text-center space-y-2">
+                    <p class="text-[9px] text-slate-400 font-medium tracking-wide">
                         चला, एकत्र येऊया आणि गरजूंना जीवनदान देऊया! ❤️
                     </p>
-                    
-                    <!-- बॉटम पट्टी -->
-                    <div class="bg-gradient-to-r from-red-600 via-red-700 to-red-650 text-white py-2 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 shadow-lg border border-red-500/20">
-                        <i class="fa-solid fa-globe text-[11px] opacity-90"></i>
-                        <span class="tracking-wide">www.raktdata.in वर आजच नोंदणी करा!</span>
+
+                    <!-- Bottom CTA Ribbon -->
+                    <div class="bg-gradient-to-r from-red-700 via-amber-600 to-red-700 text-white py-1.5 px-3 rounded-xl font-black text-xs flex items-center justify-between shadow-lg border border-amber-400/30">
+                        <span class="text-[9.5px] font-bold tracking-wide flex items-center gap-1">
+                            <i class="fa-solid fa-globe text-amber-200"></i> www.raktdata.in
+                        </span>
+                        <span class="bg-black/30 text-[8.5px] px-2 py-0.5 rounded-md text-amber-200 font-extrabold uppercase">
+                            आजच नोंदणी करा
+                        </span>
                     </div>
                 </div>
 
@@ -217,7 +257,7 @@
 
     </div>
 
-    <!-- लॉजिक स्क्रिप्ट -->
+    <!-- JS Logic -->
     <script>
         const inputName = document.getElementById('input-name');
         const inputOrg = document.getElementById('input-org');
@@ -236,7 +276,7 @@
         const posterImg = document.getElementById('poster-img');
         const placeholderBox = document.getElementById('placeholder-box');
 
-        // रिअल-टाइम टेक्स्ट अपडेट्स
+        // Live text sync
         inputName.addEventListener('input', (e) => posterName.innerText = e.target.value || "नाव");
         inputOrg.addEventListener('input', (e) => posterOrg.innerText = e.target.value || "स्वतंत्र रक्तदाता");
         inputBg.addEventListener('change', (e) => posterBg.innerText = e.target.value);
@@ -244,7 +284,7 @@
         inputCity.addEventListener('input', (e) => posterCity.innerText = e.target.value || "शहर");
         inputState.addEventListener('input', (e) => posterState.innerText = e.target.value || "राज्य");
 
-        // स्थानिक पातळीवर सुरक्षित फोटो लोड करणे
+        // Photo Upload Handling (Local FileReader)
         inputPhoto.addEventListener('change', function(e) {
             const file = this.files[0];
             if (file) {
@@ -258,7 +298,7 @@
             }
         });
 
-        // इमेज डाऊनलोड कार्यप्रणाली
+        // Download as HD Image via html2canvas
         document.getElementById('btn-download').addEventListener('click', () => {
             const poster = document.getElementById('poster-area');
             
@@ -270,7 +310,7 @@
             }).then(canvas => {
                 const image = canvas.toDataURL("image/png");
                 const link = document.createElement('a');
-                link.download = `Raktdata_Premium_Card_${posterName.innerText.replace(/\s+/g, '_')}.png`;
+                link.download = `Raktdata_VIP_Card_${posterName.innerText.replace(/\s+/g, '_')}.png`;
                 link.href = image;
                 link.click();
             }).catch(err => {
