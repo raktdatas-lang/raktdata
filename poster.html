@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #121212;
+            background-color: #0d0f1d;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,9 +25,9 @@
             width: 100%;
             max-width: 500px;
             background: linear-gradient(180deg, #18192d 0%, #0c0d19 100%);
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             color: #ffffff;
             border: 1px solid #2a2c42;
         }
@@ -35,24 +35,15 @@
         /* Header Area */
         .header {
             text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
+            padding: 20px 15px 15px;
+            background: rgba(255, 255, 255, 0.02);
             border-bottom: 1px solid #2a2c42;
         }
 
-        .brand-name {
-            color: #e53935;
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .brand-subtitle {
-            font-size: 11px;
-            color: #b0bec5;
-            letter-spacing: 1.5px;
-            margin-top: 4px;
-            text-transform: uppercase;
+        .logo-img {
+            max-width: 220px;
+            height: auto;
+            margin-bottom: 5px;
         }
 
         /* Quote Section */
@@ -60,27 +51,27 @@
             text-align: center;
             font-size: 16px;
             color: #fbc02d;
-            font-weight: 600;
+            font-weight: 700;
             padding: 15px 20px;
             line-height: 1.4;
         }
 
-        /* Profile & Details Grid */
+        /* Profile Section */
         .profile-container {
             display: flex;
-            padding: 0 20px 20px 20px;
+            padding: 0 20px 15px 20px;
             gap: 15px;
             align-items: center;
         }
 
         .photo-box {
-            width: 140px;
-            height: 170px;
-            border-radius: 12px;
+            width: 135px;
+            height: 165px;
+            border-radius: 14px;
             border: 3px solid #fbc02d;
             overflow: hidden;
             flex-shrink: 0;
-            background-color: #333;
+            background-color: #222;
         }
 
         .photo-box img {
@@ -96,16 +87,17 @@
         .reg-no {
             background-color: #37474f;
             color: #eceff1;
-            font-size: 12px;
+            font-size: 11px;
             padding: 4px 8px;
-            border-radius: 4px;
+            border-radius: 6px;
             display: inline-block;
             margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .user-name {
             font-size: 22px;
-            font-weight: bold;
+            font-weight: 800;
             color: #ffffff;
             margin-bottom: 10px;
         }
@@ -114,56 +106,62 @@
             display: flex;
             gap: 6px;
             flex-wrap: wrap;
-            margin-bottom: 10px;
         }
 
         .tag {
             font-size: 12px;
             padding: 4px 10px;
             border-radius: 12px;
-            font-weight: 600;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .bg-blood { background-color: #d32f2f; color: white; }
         .bg-city { background-color: #37474f; color: white; }
         .bg-state { background-color: #0288d1; color: white; }
 
-        /* New Info Sections (Trilingual Position, Organization & Mobile) */
-        .extra-info {
-            background: rgba(255, 255, 255, 0.05);
-            margin: 0 20px 20px 20px;
+        /* Extra Info Section (Tri-Lingual Position, Org, Mobile) */
+        .extra-info-container {
+            background: rgba(255, 255, 255, 0.04);
+            margin: 5px 20px 15px 20px;
             padding: 12px 15px;
-            border-radius: 8px;
+            border-radius: 10px;
             border-left: 4px solid #e53935;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .info-row {
-            margin-bottom: 8px;
+            display: flex;
+            flex-direction: column;
             font-size: 13px;
         }
 
-        .info-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .label {
-            color: #b0bec5;
-            font-size: 11px;
-            display: block;
+        .info-label {
+            color: #90a4ae;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin-bottom: 2px;
         }
 
-        .value {
+        .info-value {
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 13px;
         }
 
-        /* Footer Call to Action */
+        /* Footer Slogan */
         .slogan {
             text-align: center;
-            font-size: 14px;
-            margin-bottom: 15px;
+            font-size: 13px;
+            margin-bottom: 12px;
             color: #e0e0e0;
+            font-weight: 600;
         }
 
         .footer-banner {
@@ -171,8 +169,9 @@
             text-align: center;
             padding: 12px;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 14px;
             color: #ffffff;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -181,8 +180,13 @@
     <div class="poster-card">
         <!-- Header -->
         <div class="header">
-            <div class="brand-name">RAKTDATA.IN</div>
-            <div class="brand-subtitle">National Blood Donation Movement</div>
+            <!-- RAKTDATA LOGO / TEXT -->
+            <div style="font-size: 26px; font-weight: 900; color: #e53935; letter-spacing: 1px;">
+                RAKTDATA.IN
+            </div>
+            <div style="font-size: 10px; color: #b0bec5; letter-spacing: 1.5px; font-weight: 700; margin-top: 2px;">
+                NATIONAL BLOOD DONATION MOVEMENT
+            </div>
         </div>
 
         <!-- Quote -->
@@ -193,8 +197,8 @@
         <!-- Profile Section -->
         <div class="profile-container">
             <div class="photo-box">
-                <!-- फोटोची URL येथे बदला -->
-                <img src="https://via.placeholder.com/140x170" alt="दिलीप म. गायकवाड">
+                <!-- फोटोचा पाथ / लिंक येथे टाका -->
+                <img src="Raktdata_Poster_दिलीप म. गायकवाड (2)_3.jpg" alt="दिलीप म. गायकवाड">
             </div>
             <div class="details-box">
                 <div class="reg-no">नोंदणी क्र: RD-101</div>
@@ -207,19 +211,21 @@
             </div>
         </div>
 
-        <!-- Added Info: Position (3 Languages), Organization & Mobile -->
-        <div class="extra-info">
+        <!-- Added Info Block (Three-Language Position, Group, Mobile) -->
+        <div class="extra-info-container">
             <div class="info-row">
-                <span class="label">पद / पद / Designation:</span>
-                <span class="value">सक्रिय रक्तदाता / सक्रिय रक्तदाता / Active Blood Donor</span>
+                <span class="info-label">पद / पद / Designation:</span>
+                <span class="info-value">सक्रिय रक्तदाता / सक्रिय रक्तदाता / Active Blood Donor</span>
             </div>
+            
             <div class="info-row">
-                <span class="label">संलग्न संस्था / संबद्ध संस्था / Associated Organization / Group:</span>
-                <span class="value">[तुमच्या संस्थेचे / ग्रुपचे नाव]</span>
+                <span class="info-label">संलग्न संस्था / संबद्ध संस्था / Group:</span>
+                <span class="info-value">[येथे तुमच्या संस्थेचे/ग्रुपचे नाव टाका]</span>
             </div>
+            
             <div class="info-row">
-                <span class="label">मो. नंबर / मो. नं. / Mob. No.:</span>
-                <span class="value">+91 XXXXXXXXXX</span>
+                <span class="info-label">मो. नंबर / मो. नं. / Mob. No.:</span>
+                <span class="info-value">+91 [तुमचा १० अंकी मोबाईल नंबर]</span>
             </div>
         </div>
 
@@ -228,7 +234,7 @@
             चला, एकत्र येऊया आणि गरजूंना जीवनदान देऊया! ❤️
         </div>
 
-        <!-- Red Footer -->
+        <!-- Red Footer Banner -->
         <div class="footer-banner">
             🌐 www.raktdata.in वर आजच नोंदणी करा!
         </div>
