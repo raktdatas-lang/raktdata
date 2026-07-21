@@ -7,15 +7,21 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <style>
-    /* Global Styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+  /* Logo Styling */
+.brand-logo img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
 
+/* RAKTDATA (लाल) आणि .IN (निळा) रंग */
+.brand-text h1 .text-red {
+  color: #C00000;
+}
+
+.brand-text h1 .text-blue {
+  color: #0A2A66;
+}
     body {
       background-color: #f4f6f9;
       color: #333;
@@ -32,17 +38,17 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .brand-logo i {
-      color: #C00000;
-      font-size: 32px;
-    }
+ <a href="index.html" class="brand-logo">
+  <!-- तुमच्या logo.jpg फाईलची लिंक -->
+  <img src="logo.jpg" alt="RAKTDATA Logo">
+  
+  <div class="brand-text">
+    <h1>
+      <span class="text-red">RAKTDATA</span><span class="text-blue">.IN</span>
+    </h1>
+    <p>NATIONAL BLOOD DONATION MOVEMENT</p>
+  </div>
+</a
 
     .brand-text h1 {
       color: #C00000;
