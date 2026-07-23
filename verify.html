@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>पडताळणी केंद्र (Verification) | RAKTDATA.IN</title>
+  
+  <!-- Font Awesome Icons & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header-container {
+      background-color: #ffffff;
+      padding: 12px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo img {
+      height: 48px;
+      width: auto;
+    }
+
+    .brand-text h1 {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .text-red { color: #C00000; }
+    .text-blue { color: #0A2A66; }
+
+    .brand-text p {
+      color: #0A2A66;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background-color: #0A2A66;
+      padding: 12px 5%;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Hero Banner */
+    .hero-sec {
+      background: linear-gradient(135deg, #0A2A66 0%, #1e3a8a 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    .hero-sec h1 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .hero-sec p {
+      font-size: 16px;
+      color: #e2e8f0;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    /* Tab Navigation Bar */
+    .tab-bar {
+      background: #ffffff;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .tab-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 16px 24px;
+      border: none;
+      background: none;
+      font-size: 15px;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn:hover {
+      color: #0A2A66;
+      background: #f1f5f9;
+    }
+
+    .tab-btn.active {
+      color: #C00000;
+      border-bottom-color: #C00000;
+      background: #fef2f2;
+    }
+
+    /* Container Area */
+    .container {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Form Card Box */
+    .card-box {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .card-title {
+      font-size: 22px;
+      color: #0A2A66;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 8px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #0A2A66;
+      box-shadow: 0 0 0 3px rgba(10, 42, 102, 0.1);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: #0A2A66;
+      color: #ffffff;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover {
+      background: #1e3a8a;
+    }
+
+    /* Verification Box Output */
+    .verify-result {
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .verify-success {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+    }
+
+    /* QR Container */
+    .qr-box {
+      text-align: center;
+      padding: 20px;
+      border: 2px dashed #cbd5e1;
+      border-radius: 12px;
+      background: #f8fafc;
+    }
+
+    .qr-icon {
+      font-size: 70px;
+      color: #0A2A66;
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #05183d;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .tab-container {
+        justify-content: flex-start;
+      }
+      .card-box {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header-container">
+    <a href="index.html" class="brand-logo">
+      <img src="logo.png" alt="RAKTDATA Logo">
+      <div class="brand-text">
+        <h1><span class="text-red">RAKTDATA</span><span class="text-blue">.IN</span></h1>
+        <p>NATIONAL BLOOD DONATION MOVEMENT</p>
+      </div>
+    </a>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a>
+    <a href="donors.html" class="nav-link"><i class="fa-solid fa-hand-holding-medical"></i> रक्तदाते</a>
+    <a href="blood-banks.html" class="nav-link"><i class="fa-solid fa-hospital"></i> रक्तपेढी</a>
+    <a href="organizations.html" class="nav-link"><i class="fa-solid fa-building-ngo"></i> संस्था</a>
+    <a href="knowledge.html" class="nav-link"><i class="fa-solid fa-book-open"></i> माहिती केंद्र</a>
+    <a href="volunteers.html" class="nav-link"><i class="fa-solid fa-hand-holding-hand"></i> स्वयंसेवक</a>
+    <a href="verify.html" class="nav-link" style="color: #FFD700;"><i class="fa-solid fa-circle-check"></i> Verify</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-sec">
+    <h1>🔍 अधिकृत पडताळणी केंद्र (Verification Portal)</h1>
+    <p>RAKTDATA मधील नियुक्ती पत्र, स्वयंसेवक ओळखपत्र किंवा प्रमाणपत्र अस्सल असल्याची ऑनलाईन पडताळणी करा.</p>
+  </section>
+
+  <!-- Sub Navigation Tabs -->
+  <div class="tab-bar">
+    <div class="tab-container">
+      <button class="tab-btn active" onclick="switchTab('appointment', event)">
+        <i class="fa-solid fa-file-signature"></i> Appointment Letter Verification
+      </button>
+      <button class="tab-btn" onclick="switchTab('volunteer', event)">
+        <i class="fa-solid fa-id-card"></i> Volunteer Verification
+      </button>
+      <button class="tab-btn" onclick="switchTab('qr', event)">
+        <i class="fa-solid fa-qrcode"></i> QR Verification
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- 1️⃣ Appointment Letter Verification Tab -->
+    <div id="tab-appointment" class="tab-content active">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-file-circle-check" style="color: #C00000;"></i> नियुक्ती पत्र पडताळणी</h2>
+        <form onsubmit="handleAppointmentVerify(event)">
+          <div class="form-group">
+            <label for="appLetterNo">नियुक्ती पत्र / संदर्भ क्रमांक (Letter Reference No.) *</label>
+            <input type="text" id="appLetterNo" placeholder="उदा. RAKT/APP/2026/8921" required>
+          </div>
+
+          <div class="form-group">
+            <label for="appMobile">नोंदणीकृत मोबाईल नंबर *</label>
+            <input type="tel" id="appMobile" pattern="[0-9]{10}" placeholder="१० अंकी मोबाईल क्रमांक" required>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <i class="fa-solid fa-magnifying-glass"></i> पडताळणी करा
+          </button>
+        </form>
+
+        <div id="appResult" class="verify-result verify-success">
+          <h4><i class="fa-solid fa-circle-check"></i> नियुक्ती पत्र प्रमाणित आहे! (Verified)</h4>
+          <p style="margin-top: 8px; font-size: 14px;"><strong>नाव:</strong> राहुल पाटील</p>
+          <p style="font-size: 14px;"><strong>पदनामाचा प्रकार:</strong> जिल्हा समन्वयक (District Coordinator)</p>
+          <p style="font-size: 14px;"><strong>वैधता:</strong> ३१ डिसेंबर २०२६ पर्यंत</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2️⃣ Volunteer Verification Tab -->
+    <div id="tab-volunteer" class="tab-content">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-user-check" style="color: #0A2A66;"></i> स्वयंसेवक पडताळणी</h2>
+        <form onsubmit="handleVolunteerVerify(event)">
+          <div class="form-group">
+            <label for="volId">स्वयंसेवक ओळखपत्र आयडी (Volunteer ID) *</label>
+            <input type="text" id="volId" placeholder="उदा. VOL-MH-1042" required>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <i class="fa-solid fa-user-gear"></i> आयडी तपासा
+          </button>
+        </form>
+
+        <div id="volResult" class="verify-result verify-success">
+          <h4><i class="fa-solid fa-circle-check"></i> अधिकृत स्वयंसेवक! (Active Volunteer)</h4>
+          <p style="margin-top: 8px; font-size: 14px;"><strong>स्वयंसेवकाचे नाव:</strong> अमित शिंदे</p>
+          <p style="font-size: 14px;"><strong>जिल्हा:</strong> पुणे</p>
+          <p style="font-size: 14px;"><strong>स्टेटस:</strong> सक्रीय स्वयंसेवक (Verified Member)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3️⃣ QR Verification Tab -->
+    <div id="tab-qr" class="tab-content">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-qrcode" style="color: #C00000;"></i> QR कोडद्वारे त्वरित पडताळणी</h2>
+        
+        <div class="qr-box">
+          <i class="fa-solid fa-qrcode qr-icon"></i>
+          <h4 style="color:#0A2A66; margin-bottom: 8px;">कॅमेरा वापरून QR स्कॅन करा</h4>
+          <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">
+            तुमच्या पत्रकावर किंवा ओळखपत्रावर असलेला QR कोड स्कॅन करण्यासाठी खालील बटण दाबा.
+          </p>
+          <button type="button" class="btn-submit" onclick="startScanner()" style="max-width: 250px; margin: 0 auto;">
+            <i class="fa-solid fa-camera"></i> कॅमेरा सुरू करा
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
+  </footer>
+
+  <!-- JavaScript Code -->
+  <script>
+    // Tab Switcher Function
+    function switchTab(tabName, event) {
+      const buttons = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+    }
+
+    // Appointment Verification Handler
+    function handleAppointmentVerify(e) {
+      e.preventDefault();
+      document.getElementById('appResult').style.display = 'block';
+    }
+
+    // Volunteer Verification Handler
+    function handleVolunteerVerify(e) {
+      e.preventDefault();
+      document.getElementById('volResult').style.display = 'block';
+    }
+
+    // QR Camera Simulator
+    function startScanner() {
+      alert("कॅमेरा स्कॅनर सुरू होत आहे... कृपया QR कोड कॅमेऱ्यासमोर धरा.");
+    }
+  </script>
+
+</body>
+</html>
