@@ -514,28 +514,33 @@
     </div>
   </footer>
 <!-- 🔗 Google Sheet बातम्या कनेक्ट करणारी Script -->
+ <!-- 🔗 Google Sheet बातम्या कनेक्ट करणारी Script (Fixed) -->
   <script>
-    // ⚠️ इथे तुमची खरी Web App URL टाकून शेवटी ?type=news ठेवा
-    const NEWS_API_URL = "https://script.google.com/macros/s/AKfycbwNpv6JE40xLRQW90MqXACgapMIV7FdHtThOI23tcct128m415uer74oxTZ-MQ6EsSU/exec";
+    const NEWS_API_URL = "https://script.google.com/macros/s/AKfycbwNpv6JE40xLRQW90MqXACgapMlV7FdHtThOIZ3tcct128m415uer74oxT7.../exec?type=news";
 
     async function fetchLiveNews() {
       const marquee = document.getElementById('dynamicNewsMarquee');
       try {
         const response = await fetch(NEWS_API_URL, { redirect: "follow" });
-        const newsArray = await response.json();
+        const newsData = await response.json();
 
-        if (newsArray && newsArray.length > 0) {
+        if (newsData) {
           let newsHTML = "";
-          newsArray.forEach(newsText => {
-            newsHTML += `
-              <span class="news-item">
-                <i class="fa-solid fa-circle-dot"></i> ${newsText}
-              </span>
-            `;
-          });
-          marquee.innerHTML = newsHTML;
-        } else {
-          marquee.innerHTML = `<span class="news-item">सध्या कोणतीही नवीन बातमी उपलब्ध नाही.</span>`;
+          
+          // जर डेटा लिस्ट (Array) असेल
+          if (Array.isArray(newsData) && newsData.length > 0) {
+            newsData.forEach(item => {
+              let text = typeof item === 'object' ? (item.news || item.text || item[0] || Object.values(item)[0]) : item;
+              newsHTML += `<span class="news-item"><i class="fa-solid fa-circle-dot"></i> ${text}</span>`;
+            });
+          } 
+          // जर डेटा सिंगल ऑब्जेक्ट असेल
+          else if (typeof newsData === 'object') {
+            let text = newsData.news || newsData.text || Object.values(newsData)[0];
+            newsHTML = `<span class="news-item"><i class="fa-solid fa-circle-dot"></i> ${text}</span>`;
+          }
+
+          marquee.innerHTML = newsHTML || `<span class="news-item">RAKTDATA.IN मध्ये आपले स्वागत आहे!</span>`;
         }
       } catch (error) {
         console.error("News Fetch Error:", error);
