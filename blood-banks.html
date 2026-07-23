@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>रक्तपेढी विभाग | RAKTDATA.IN</title>
+  
+  <!-- Font Awesome Icons & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header-container {
+      background-color: #ffffff;
+      padding: 12px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo img {
+      height: 48px;
+      width: auto;
+    }
+
+    .brand-text h1 {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .text-red { color: #C00000; }
+    .text-blue { color: #0A2A66; }
+
+    .brand-text p {
+      color: #0A2A66;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background-color: #0A2A66;
+      padding: 12px 5%;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Hero Banner */
+    .hero-sec {
+      background: linear-gradient(135deg, #0A2A66 0%, #1e3a8a 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    .hero-sec h1 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .hero-sec p {
+      font-size: 16px;
+      color: #e2e8f0;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    /* Tab Navigation Bar */
+    .tab-bar {
+      background: #ffffff;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .tab-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 16px 24px;
+      border: none;
+      background: none;
+      font-size: 15px;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn:hover {
+      color: #0A2A66;
+      background: #f1f5f9;
+    }
+
+    .tab-btn.active {
+      color: #C00000;
+      border-bottom-color: #C00000;
+      background: #fef2f2;
+    }
+
+    /* Container Area */
+    .container {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Forms & Cards */
+    .card-box {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .card-title {
+      font-size: 22px;
+      color: #0A2A66;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus, 
+    .form-group select:focus, 
+    .form-group textarea:focus {
+      border-color: #0A2A66;
+      box-shadow: 0 0 0 3px rgba(10, 42, 102, 0.1);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: #C00000;
+      color: #ffffff;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover {
+      background: #a00000;
+    }
+
+    /* Blood Bank Card Item */
+    .bank-card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 24px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .bank-info h3 {
+      font-size: 18px;
+      color: #0A2A66;
+      margin-bottom: 8px;
+    }
+
+    .bank-info p {
+      font-size: 14px;
+      color: #475569;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bank-contact-btn {
+      background: #0A2A66;
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bank-contact-btn:hover {
+      background: #1e3a8a;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #05183d;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .tab-container {
+        justify-content: flex-start;
+      }
+      .card-box {
+        padding: 20px;
+      }
+      .bank-card {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header-container">
+    <a href="index.html" class="brand-logo">
+      <img src="logo.png" alt="RAKTDATA Logo">
+      <div class="brand-text">
+        <h1><span class="text-red">RAKTDATA</span><span class="text-blue">.IN</span></h1>
+        <p>NATIONAL BLOOD DONATION MOVEMENT</p>
+      </div>
+    </a>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a>
+    <a href="donors.html" class="nav-link"><i class="fa-solid fa-hand-holding-medical"></i> रक्तदाते</a>
+    <a href="blood-banks.html" class="nav-link" style="color: #FFD700;"><i class="fa-solid fa-hospital"></i> रक्तपेढी</a>
+    <a href="volunteers.html" class="nav-link"><i class="fa-solid fa-hand-holding-hand"></i> स्वयंसेवक</a>
+    <a href="contact.html" class="nav-link"><i class="fa-solid fa-envelope"></i> संपर्क करा</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-sec">
+    <h1>🏥 रक्तपेढी विभाग (Blood Banks)</h1>
+    <p>अधिकृत सरकारी व खाजगी रक्तपेढ्यांची नोंदणी करा, जवळच्या रक्तपेढीची माहिती मिळवा आणि थेट संपर्क साधा.</p>
+  </section>
+
+  <!-- Sub Navigation Tabs -->
+  <div class="tab-bar">
+    <div class="tab-container">
+      <button class="tab-btn active" onclick="switchTab('register')">
+        <i class="fa-solid fa-hospital-user"></i> रक्तपेढी नोंदणी
+      </button>
+      <button class="tab-btn" onclick="switchTab('list')">
+        <i class="fa-solid fa-list-check"></i> रक्तपेढी यादी
+      </button>
+      <button class="tab-btn" onclick="switchTab('contact')">
+        <i class="fa-solid fa-headset"></i> संपर्क व मदत केंद्र
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- 1️⃣ रक्तपेढी नोंदणी Tab -->
+    <div id="tab-register" class="tab-content active">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-hospital" style="color: #C00000;"></i> नवीन रक्तपेढी नोंदणी अर्ज</h2>
+        <form id="bankRegForm" onsubmit="handleBankRegistration(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="bankName">रक्तपेढीचे नाव (Blood Bank Name) *</label>
+              <input type="text" id="bankName" placeholder="उदा. रेड क्रॉस ब्लड बँक" required>
+            </div>
+
+            <div class="form-group">
+              <label for="licenseNo">परवाना / नोंदणी क्रमांक (License No.) *</label>
+              <input type="text" id="licenseNo" placeholder="उदा. MH/BB/10293" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactPerson">संपर्क व्यक्तीचे नाव *</label>
+              <input type="text" id="contactPerson" placeholder="अधिकारी / मॅनेजरचे नाव" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">फोन / मोबाईल नंबर *</label>
+              <input type="tel" id="phone" placeholder="०२२-XXXXXXXX / मोबाईल क्र." required>
+            </div>
+
+            <div class="form-group">
+              <label for="district">जिल्हा *</label>
+              <input type="text" id="district" placeholder="उदा. मुंबई, पुणे, ठाणे" required>
+            </div>
+
+            <div class="form-group">
+              <label for="taluka">तालुका / शहर *</label>
+              <input type="text" id="taluka" placeholder="उदा. दादर, शिवाजी नगर" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="address">संपूर्ण पत्ता *</label>
+              <textarea id="address" rows="3" placeholder="रुग्णालय परिसर, रस्ता, पिनकोड" required></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <i class="fa-solid fa-paper-plane"></i> नोंदणी अर्ज सबमिट करा
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 2️⃣ रक्तपेढी यादी Tab -->
+    <div id="tab-list" class="tab-content">
+      <div class="card-box" style="max-width: 900px;">
+        <h2 class="card-title"><i class="fa-solid fa-list-check" style="color: #0A2A66;"></i> नोंदणीकृत रक्तपेढ्यांची यादी</h2>
+        
+        <!-- Filter Bar -->
+        <div class="form-grid" style="margin-bottom: 25px;">
+          <div class="form-group">
+            <label for="filterDistrict">जिल्ह्यानुसार शोधा</label>
+            <input type="text" id="filterDistrict" placeholder="जिल्ह्याचे नाव टाका..." onkeyup="filterBanks()">
+          </div>
+        </div>
+
+        <div id="bankListContainer">
+          <!-- Sample Bank 1 -->
+          <div class="bank-card">
+            <div class="bank-info">
+              <h3>रुबी हॉल क्लिनिक ब्लड बँक</h3>
+              <p><i class="fa-solid fa-location-dot" style="color:#C00000;"></i> ४०, ससून रोड, पुणे - ४११०-०१</p>
+              <p><i class="fa-solid fa-id-card"></i> परवाना क्र: MH-PUN-0192</p>
+              <p><i class="fa-solid fa-clock"></i> २४ तास उघडे (24x7 Services)</p>
+            </div>
+            <a href="tel:02066455100" class="bank-contact-btn"><i class="fa-solid fa-phone"></i> कॉल करा</a>
+          </div>
+
+          <!-- Sample Bank 2 -->
+          <div class="bank-card">
+            <div class="bank-info">
+              <h3>के. ई. एम. हॉस्पिटल ब्लड बँक</h3>
+              <p><i class="fa-solid fa-location-dot" style="color:#C00000;"></i> परळ, मुंबई - ४०००१२</p>
+              <p><i class="fa-solid fa-id-card"></i> परवाना क्र: MH-MUM-0045</p>
+              <p><i class="fa-solid fa-clock"></i> २४ तास उघडे (24x7 Services)</p>
+            </div>
+            <a href="tel:02224107000" class="bank-contact-btn"><i class="fa-solid fa-phone"></i> कॉल करा</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3️⃣ संपर्क Tab -->
+    <div id="tab-contact" class="tab-content">
+      <div class="card-box" style="max-width: 650px;">
+        <h2 class="card-title"><i class="fa-solid fa-headset" style="color: #0A2A66;"></i> रक्तपेढी समन्वय केंद्र</h2>
+        <p style="font-size: 14px; color: #64748b; margin-bottom: 20px;">
+          रक्तपेढी नोंदणी, डेटा अपडेट किंवा तातडीच्या समन्वयासाठी खालील तपशीलांवर संपर्क साधा:
+        </p>
+
+        <div style="background: #f1f5f9; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+          <p style="margin-bottom: 10px;"><strong><i class="fa-solid fa-envelope" style="color:#C00000;"></i> ईमेल:</strong> bloodbank@raktdata.in</p>
+          <p style="margin-bottom: 10px;"><strong><i class="fa-solid fa-phone" style="color:#0A2A66;"></i> हेल्पलाईन:</strong> +91 1800-XXX-XXXX (24x7 Toll-Free)</p>
+          <p><strong><i class="fa-solid fa-building" style="color:#0A2A66;"></i> मुख्यालय:</strong> RAKTDATA.IN सेंट्रल डेस्क, महाराष्ट्र</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
+  </footer>
+
+  <!-- JavaScript Code -->
+  <script>
+    // Tab Switcher
+    function switchTab(tabName) {
+      const buttons = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+    }
+
+    // Bank Registration Submit
+    function handleBankRegistration(e) {
+      e.preventDefault();
+      const bName = document.getElementById('bankName').value;
+      alert(`धन्यवाद! '${bName}' ची नोंदणी माहिती यशस्वीरीत्या प्राप्त झाली आहे. पडताळणीनंतर यादीत समाविष्ट केले जाईल.`);
+      document.getElementById('bankRegForm').reset();
+    }
+
+    // Dynamic Filter Search (Demo)
+    function filterBanks() {
+      const input = document.getElementById('filterDistrict').value.toLowerCase();
+      const cards = document.querySelectorAll('.bank-card');
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(input) ? 'flex' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
