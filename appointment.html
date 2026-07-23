@@ -358,7 +358,49 @@
   </footer>
 
   <!-- JavaScript Code Connected to Your Google Sheet -->
+<!-- JavaScript Code for Google Sheet Data -->
   <script>
+    const SHEET_URL = "https://script.google.com/macros/s/AKfycbwR2gmW7DIPQj6PkrL8jrMqYBH6KmehvbD4c3SQZXI8rrTQiP_LAyAaGxAOR3Mm11hsvw/exec";
+
+    async function searchAppointment(event) {
+      event.preventDefault();
+      
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const letterBox = document.getElementById('letterBox');
+
+      if (!query) {
+        alert("कृपया Volunteer ID प्रविष्ट करा.");
+        return;
+      }
+
+      try {
+        // redirect: "follow" जोडल्यामुळे रीडायरेक्ट होणारी लिंक यशस्वीपणे लोड होईल
+        const response = await fetch(SHEET_URL, { redirect: "follow" });
+        const volunteerList = await response.json();
+
+        // डेटा शोधणे
+        const found = volunteerList.find(item => 
+          (item.id && item.id.toString().toLowerCase() === query) || 
+          (item.name && item.name.toString().toLowerCase().includes(query))
+        );
+
+        if (found) {
+          document.getElementById('outName').innerText = found.name || "N/A";
+          document.getElementById('outId').innerText = found.id || "N/A";
+          document.getElementById('outDistrict').innerText = found.district || "N/A";
+
+          letterBox.style.display = 'block';
+          letterBox.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          letterBox.style.display = 'none';
+          alert("❌ माहिती आढळली नाही!\nकृपया अचूक Volunteer ID (उदा. RD00001) प्रविष्ट करा.");
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        alert("डेटा लोड करताना त्रुटी आली. कृपया इंटरनेट तपासा किंवा थोड्या वेळाने प्रयत्न करा.");
+      }
+    }
+
     const SHEET_URL = "https://script.google.com/macros/s/AKfycbwR2gmW7DIPQj6PkrL8jrMqYBH6KmehvbD4c3SQZXI8rrTQiP_LAyAaGxAOR3Mm11hsvw/exec";
 
     async function searchAppointment(event) {
