@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>माहिती केंद्र | RAKTDATA.IN</title>
+  
+  <!-- Font Awesome Icons & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header-container {
+      background-color: #ffffff;
+      padding: 12px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo img {
+      height: 48px;
+      width: auto;
+    }
+
+    .brand-text h1 {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .text-red { color: #C00000; }
+    .text-blue { color: #0A2A66; }
+
+    .brand-text p {
+      color: #0A2A66;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background-color: #0A2A66;
+      padding: 12px 5%;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Hero Banner */
+    .hero-sec {
+      background: linear-gradient(135deg, #0A2A66 0%, #1e3a8a 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    .hero-sec h1 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .hero-sec p {
+      font-size: 16px;
+      color: #e2e8f0;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    /* Tab Navigation Bar */
+    .tab-bar {
+      background: #ffffff;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .tab-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 16px 20px;
+      border: none;
+      background: none;
+      font-size: 14px;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn:hover {
+      color: #0A2A66;
+      background: #f1f5f9;
+    }
+
+    .tab-btn.active {
+      color: #C00000;
+      border-bottom-color: #C00000;
+      background: #fef2f2;
+    }
+
+    /* Container Area */
+    .container {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards Layout */
+    .card-box {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .card-title {
+      font-size: 22px;
+      color: #0A2A66;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+    }
+
+    /* FAQ Accordion */
+    .faq-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      background: #f8fafc;
+      padding: 16px;
+      font-weight: 700;
+      color: #0A2A66;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      padding: 16px;
+      font-size: 14px;
+      color: #475569;
+      display: none;
+      background: #fff;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    /* Blog Grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .blog-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .blog-card h4 {
+      color: #0A2A66;
+      margin-bottom: 10px;
+    }
+
+    .blog-card p {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 12px;
+    }
+
+    /* Download List */
+    .download-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .btn-download {
+      background: #C00000;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .video-card {
+      background: #f1f5f9;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #05183d;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .tab-container {
+        justify-content: flex-start;
+      }
+      .card-box {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header-container">
+    <a href="index.html" class="brand-logo">
+      <img src="logo.png" alt="RAKTDATA Logo">
+      <div class="brand-text">
+        <h1><span class="text-red">RAKTDATA</span><span class="text-blue">.IN</span></h1>
+        <p>NATIONAL BLOOD DONATION MOVEMENT</p>
+      </div>
+    </a>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a>
+    <a href="donors.html" class="nav-link"><i class="fa-solid fa-hand-holding-medical"></i> रक्तदाते</a>
+    <a href="blood-banks.html" class="nav-link"><i class="fa-solid fa-hospital"></i> रक्तपेढी</a>
+    <a href="organizations.html" class="nav-link"><i class="fa-solid fa-building-ngo"></i> संस्था</a>
+    <a href="knowledge.html" class="nav-link" style="color: #FFD700;"><i class="fa-solid fa-book-open"></i> माहिती केंद्र</a>
+    <a href="volunteers.html" class="nav-link"><i class="fa-solid fa-hand-holding-hand"></i> स्वयंसेवक</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-sec">
+    <h1>📚 माहिती केंद्र (Knowledge Hub)</h1>
+    <p>रक्तदानाबद्दलचे गैरसमज दूर करा, शास्त्रीय माहिती जाणून घ्या आणि मार्गदर्शक साहित्य डाउनलोड करा.</p>
+  </section>
+
+  <!-- Sub Navigation Tabs -->
+  <div class="tab-bar">
+    <div class="tab-container">
+      <button class="tab-btn active" onclick="switchTab('info')">
+        <i class="fa-solid fa-droplet"></i> रक्तदान माहिती
+      </button>
+      <button class="tab-btn" onclick="switchTab('faq')">
+        <i class="fa-solid fa-circle-question"></i> FAQ (प्रश्नोत्तरे)
+      </button>
+      <button class="tab-btn" onclick="switchTab('blog')">
+        <i class="fa-solid fa-newspaper"></i> ब्लॉग (Articles)
+      </button>
+      <button class="tab-btn" onclick="switchTab('videos')">
+        <i class="fa-solid fa-video"></i> व्हिडिओ
+      </button>
+      <button class="tab-btn" onclick="switchTab('downloads')">
+        <i class="fa-solid fa-file-arrow-down"></i> डाउनलोड
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- 1️⃣ रक्तदान माहिती Tab -->
+    <div id="tab-info" class="tab-content active">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-heart-pulse" style="color: #C00000;"></i> रक्तदान का आणि कोणी करावे?</h2>
+        
+        <h4 style="color:#0A2A66; margin-top: 15px;">१. कोण रक्तदान करू शकते?</h4>
+        <ul style="margin-left: 20px; font-size: 14px; color: #475569; margin-bottom: 15px;">
+          <li>वय १८ ते ६५ वर्षांदरम्यान असावे.</li>
+          <li>वजन किमान ४५ ते ५० किलो असणे आवश्यक आहे.</li>
+          <li>हिमोग्लोबिनचे प्रमाण १२.५ g/dl पेक्षा जास्त असावे.</li>
+        </ul>
+
+        <h4 style="color:#0A2A66;">२. रक्तदानाचे फायदे:</h4>
+        <ul style="margin-left: 20px; font-size: 14px; color: #475569;">
+          <li>हृदयाचे आरोग्य चांगले राहण्यास मदत होते.</li>
+          <li>शरीरात नवीन आणि ताजी रक्तपेशी निर्मिती वेगाने होते.</li>
+          <li>नियमित मोफत आरोग्य तपासणी होते.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2️⃣ FAQ Tab -->
+    <div id="tab-faq" class="tab-content">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-circle-question" style="color: #0A2A66;"></i> वारंवार विचारले जाणारे प्रश्न</h2>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>रक्तदान केल्याने अशक्तपणा येतो का?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            नाही, मानवी शरीरात साधारण ५ लिटर रक्त असते. त्यापैकी केवळ ३५० ते ४५० मिली रक्त घेतले जाते, जे २४ ते ४८ तासांत पुन्हा तयार होते.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>मी किती कालावधीनंतर पुन्हा रक्तदान करू शकतो?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            पुरुष दर ३ महिन्यांनी आणि महिला दर ४ महिन्यांनी सुरक्षितपणे रक्तदान करू शकतात.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3️⃣ ब्लॉग Tab -->
+    <div id="tab-blog" class="tab-content">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-newspaper" style="color: #0A2A66;"></i> आरोग्य आणि रक्तदान ब्लॉग</h2>
+        
+        <div class="blog-grid">
+          <div class="blog-card">
+            <h4>रक्तदानापूर्वी आणि नंतर कोणती काळजी घ्यावी?</h4>
+            <p>रक्तदानापूर्वी भरपूर पाणी पिणे आणि पौष्टिक आहार घेणे का आवश्यक आहे जाणून घ्या...</p>
+            <a href="#" style="color:#C00000; font-weight:600; font-size:13px; text-decoration:none;">अधिक वाचा ➔</a>
+          </div>
+
+          <div class="blog-card">
+            <h4>रेअर ब्लड ग्रुप्स (Rare Blood Groups) म्हणजे काय?</h4>
+            <p>बॉम्बे ब्लड ग्रुप आणि Rh-Negative रक्तगटांबद्दल महत्त्वाची माहिती...</p>
+            <a href="#" style="color:#C00000; font-weight:600; font-size:13px; text-decoration:none;">अधिक वाचा ➔</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4️⃣ व्हिडिओ Tab -->
+    <div id="tab-videos" class="tab-content">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-video" style="color: #C00000;"></i> जागृती व्हिडिओ</h2>
+        
+        <div class="video-grid">
+          <div class="video-card">
+            <i class="fa-brands fa-youtube" style="font-size:45px; color:#ff0000; margin-bottom:100px;"></i>
+            <h4>रक्तदान प्रक्रियेचा सोपा व्हिडिओ</h4>
+          </div>
+          <div class="video-card">
+            <i class="fa-brands fa-youtube" style="font-size:45px; color:#ff0000; margin-bottom:100px;"></i>
+            <h4>डॉक्टरांचा विशेष सल्ला</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5️⃣ डाउनलोड Tab -->
+    <div id="tab-downloads" class="tab-content">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-file-arrow-down" style="color: #0A2A66;"></i> पोस्टर आणि मार्गदर्शक साहित्य</h2>
+        
+        <div class="download-item">
+          <div>
+            <h4 style="font-size:15px; color:#0A2A66;">रक्तदान जागृती पोस्टर (PDF)</h4>
+            <p style="font-size:12px; color:#64748b;">शिबीर आयोजनासाठी प्रिंट-रेडी पोस्टर</p>
+          </div>
+          <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> डाउनलोड</a>
+        </div>
+
+        <div class="download-item">
+          <div>
+            <h4 style="font-size:15px; color:#0A2A66;">रक्तदाता मार्गदर्शिका (E-Book)</h4>
+            <p style="font-size:12px; color:#64748b;">रक्तदानाविषयी सविस्तर माहिती पुस्तक</p>
+          </div>
+          <a href="#" class="btn-download"><i class="fa-solid fa-download"></i> डाउनलोड</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
+  </footer>
+
+  <!-- JavaScript Code -->
+  <script>
+    // Tab Switcher
+    function switchTab(tabName) {
+      const buttons = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+    }
+
+    // FAQ Toggle Accordion
+    function toggleFaq(element) {
+      const answer = element.nextElementSibling;
+      const isVisible = answer.style.display === 'block';
+      answer.style.display = isVisible ? 'none' : 'block';
+    }
+  </script>
+
+</body>
+</html>
