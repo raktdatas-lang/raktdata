@@ -547,14 +547,7 @@
       event.currentTarget.classList.add('active');
       document.getElementById('tab-' + tabName).classList.add('active');
     }
-
-    // 1️⃣ Registration Form Handler
-    function handleRegistration(e) {
-      e.preventDefault();
-      const name = document.getElementById('fullName').value;
-      alert(`धन्यवाद ${name}! तुमची स्वयंसेवक म्हणून यशस्वी नोंदणी झाली आहे. लवकरच आमची टीम तुमच्याशी संपर्क साधेल.`);
-      document.getElementById('regForm').reset();
-    }
+ 
 
     // 2️⃣ Login Form Handler
     function handleLogin(e) {
