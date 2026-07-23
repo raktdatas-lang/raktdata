@@ -178,6 +178,70 @@
       line-height: 1.5;
     }
 
+    /* Appointment Letter Design */
+    .letter-container {
+      display: none;
+      margin-top: 30px;
+      border: 3px double #0A2A66;
+      padding: 25px;
+      background: #ffffff;
+      border-radius: 10px;
+    }
+
+    .letter-header {
+      text-align: center;
+      border-bottom: 2px solid #C00000;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .letter-header h3 { color: #C00000; font-size: 20px; font-weight: 800; }
+    .letter-header p { color: #0A2A66; font-size: 11px; font-weight: 700; }
+
+    .letter-title {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: #0A2A66;
+      margin-bottom: 20px;
+      text-decoration: underline;
+    }
+
+    .letter-content {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .letter-details {
+      margin-top: 15px;
+      background: #f9fafb;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .letter-details p {
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .btn-print {
+      margin-top: 20px;
+      width: 100%;
+      background: #10B981;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
     /* Footer */
     footer {
       background-color: #05183d;
@@ -186,6 +250,14 @@
       padding: 20px;
       font-size: 12px;
       margin-top: 60px;
+    }
+
+    /* Print Style Optimization */
+    @media print {
+      body * { visibility: hidden; }
+      .letter-container, .letter-container * { visibility: visible; }
+      .letter-container { position: absolute; left: 0; top: 0; width: 100%; border: none; }
+      .btn-print { display: none; }
     }
   </style>
 </head>
@@ -219,27 +291,61 @@
   <!-- Appointment Verification Box -->
   <main class="verify-wrapper">
     <div class="verify-header">
-      <i class="fa-solid fa-file-certificate"></i>
+      <i class="fa-solid fa-file-contract"></i>
       <h2>नियुक्ती पत्र व कार्ड पडताळणी</h2>
       <p>तुमचे अधिकृत नियुक्ती पत्र किंवा आयडी कार्ड शोधण्यासाठी मोबाईल नंबर/आयडी टाका.</p>
     </div>
 
     <div class="verify-body">
-      <form action="#" method="GET">
+      <form onsubmit="searchAppointment(event)">
         
         <div class="form-group">
           <label>मोबाईल नंबर किंवा स्वयंसेवक ID नंबर <span>*</span></label>
           <div class="input-box">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="उदा. 98xxxxxxxx किंवा RAKT10023" required>
+            <input type="text" id="searchInput" placeholder="उदा. 98xxxxxxxx किंवा RAKT10023" required>
           </div>
         </div>
 
         <button type="submit" class="btn-search-app">
-          <i class="fa-solid fa-download"></i> शोध घ्या आणि पत्र डाउनलोड करा
+          <i class="fa-solid fa-search"></i> शोध घ्या आणि पत्र पहा
         </button>
 
       </form>
+
+      <!-- Appointment Letter Container (Shows after search) -->
+      <div id="letterBox" class="letter-container">
+        <div class="letter-header">
+          <h3>RAKTDATA.IN</h3>
+          <p>NATIONAL BLOOD DONATION MOVEMENT</p>
+        </div>
+
+        <div class="letter-title">अधिकृत स्वयंसेवक नियुक्ती पत्र</div>
+
+        <div class="letter-content">
+          <p>सस्नेह नमस्कार,</p>
+          <p style="margin-top: 10px;">
+            अभिनंदन! <strong>RAKTDATA.IN (National Blood Donation Movement)</strong> अंतर्गत आपली स्वयंसेवक म्हणून यशस्वीरीत्या निवड व नोंदणी झाली आहे.
+          </p>
+
+          <div class="letter-details">
+            <p><strong>स्वयंसेवकाचे नाव:</strong> <span id="outName" style="color: #C00000; font-weight:700;"></span></p>
+            <p><strong>Volunteer ID:</strong> <span id="outId" style="font-weight:700;"></span></p>
+            <p><strong>मोबाईल नंबर:</strong> <span id="outMobile"></span></p>
+            <p><strong>जिल्हा:</strong> <span id="outDistrict"></span></p>
+            <p><strong>पद/जबाबदारी:</strong> <span id="outRole" style="color: #0A2A66; font-weight:700;">रक्तदान नोंदणी व जनजागृती स्वयंसेवक</span></p>
+            <p><strong>स्टेटस:</strong> <span style="color: green; font-weight: bold;">Verified ✅ (प्रमाणित)</span></p>
+          </div>
+
+          <p style="margin-top: 15px; font-size: 12px; color: #666;">
+            * हे डिजिटल नियुक्ती पत्र RAKTDATA.IN द्वारे अधिकृतपणे जारी केले गेले आहे.
+          </p>
+        </div>
+
+        <button onclick="window.print()" class="btn-print">
+          <i class="fa-solid fa-print"></i> प्रिंट करा / PDF सेव्ह करा
+        </button>
+      </div>
 
       <div class="info-note">
         <i class="fa-solid fa-circle-info"></i> <b>टीप:</b> नोंदणीनंतर तुमचे नियुक्ती पत्र त्वरित जनरेट होते. समस्या असल्यास संपर्क क्रमांकावर व्हॉट्सॲप करा.
@@ -251,6 +357,39 @@
   <footer>
     &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
   </footer>
+
+  <!-- JavaScript for Search Logic -->
+  <script>
+    // स्वयंसेवकांचा डेटा (इथे नवीन स्वयंसेवक जोडू शकता)
+    const volunteerList = [
+      { id: "RAKT10023", mobile: "9876543210", name: "राहुल गणेश पाटील", district: "पुणे" },
+      { id: "RAKT10024", mobile: "9123456789", name: "अमित मारूती देशमुख", district: "नाशिक" },
+      { id: "RAKT10025", mobile: "9988776655", name: "सचिन विजय शिंदे", district: "मुंबई" }
+    ];
+
+    function searchAppointment(event) {
+      event.preventDefault(); // फॉर्म रीलोड होण्यापासून रोखते
+      
+      const query = document.getElementById('searchInput').value.trim();
+      const letterBox = document.getElementById('letterBox');
+
+      // डेटा शोधणे
+      const found = volunteerList.find(item => item.id === query || item.mobile === query);
+
+      if (found) {
+        document.getElementById('outName').innerText = found.name;
+        document.getElementById('outId').innerText = found.id;
+        document.getElementById('outMobile').innerText = found.mobile;
+        document.getElementById('outDistrict').innerText = found.district;
+
+        letterBox.style.display = 'block'; // नियुक्ती पत्र दाखवणे
+        letterBox.scrollIntoView({ behavior: 'smooth' }); // स्क्रोल करून पत्राकडे नेणे
+      } else {
+        letterBox.style.display = 'none';
+        alert("❌ माहिती आढळली नाही!\nकृपया अचूक मोबाईल नंबर किंवा Volunteer ID प्रविष्ट करा.");
+      }
+    }
+  </script>
 
 </body>
 </html>
