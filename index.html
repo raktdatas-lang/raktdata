@@ -8,6 +8,68 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
+    /* 📰 Breaking News Ticker CSS */
+  .news-ticker-container {
+    background: #000000;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 42px;
+    border-top: 2px solid #C00000;
+    border-bottom: 3px solid #FFD700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+
+  .news-ticker-badge {
+    background: linear-gradient(135deg, #C00000 0%, #8B0000 100%);
+    color: #ffffff;
+    padding: 0 20px;
+    height: 100%;
+    font-weight: 800;
+    font-size: 14px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.4);
+  }
+
+  .live-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    display: inline-block;
+    animation: blinker 1s linear infinite;
+  }
+
+  @keyframes blinker {
+    50% { opacity: 0; }
+  }
+
+  .news-ticker-content {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .news-ticker-content marquee {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 42px;
+  }
+
+  .news-item {
+    display: inline-block;
+    margin-right: 50px;
+  }
+
+  .news-item i {
+    color: #FFD700;
+    margin-right: 8px;
+  }
     /* Global Styles */
     * {
       box-sizing: border-box;
