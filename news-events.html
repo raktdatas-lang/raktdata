@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>बातम्या व कार्यक्रम | RAKTDATA.IN</title>
+  
+  <!-- Font Awesome Icons & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header-container {
+      background-color: #ffffff;
+      padding: 12px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo img {
+      height: 48px;
+      width: auto;
+    }
+
+    .brand-text h1 {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .text-red { color: #C00000; }
+    .text-blue { color: #0A2A66; }
+
+    .brand-text p {
+      color: #0A2A66;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background-color: #0A2A66;
+      padding: 12px 5%;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Hero Banner */
+    .hero-sec {
+      background: linear-gradient(135deg, #0A2A66 0%, #1e3a8a 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    .hero-sec h1 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .hero-sec p {
+      font-size: 16px;
+      color: #e2e8f0;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    /* Tab Navigation Bar */
+    .tab-bar {
+      background: #ffffff;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .tab-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 16px 24px;
+      border: none;
+      background: none;
+      font-size: 15px;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn:hover {
+      color: #0A2A66;
+      background: #f1f5f9;
+    }
+
+    .tab-btn.active {
+      color: #C00000;
+      border-bottom-color: #C00000;
+      background: #fef2f2;
+    }
+
+    /* Container Area */
+    .container {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards Layout */
+    .card-box {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card-title {
+      font-size: 22px;
+      color: #0A2A66;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+    }
+
+    /* Grid Items */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .news-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .news-card-body {
+      padding: 20px;
+    }
+
+    .date-badge {
+      font-size: 12px;
+      background: #fef2f2;
+      color: #C00000;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .news-card h4 {
+      font-size: 16px;
+      color: #0A2A66;
+      margin-bottom: 8px;
+    }
+
+    .news-card p {
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    /* Event List Item */
+    .event-card {
+      display: flex;
+      gap: 20px;
+      background: #f8fafc;
+      border-left: 5px solid #C00000;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      align-items: center;
+    }
+
+    .event-date {
+      text-align: center;
+      background: #0A2A66;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      min-width: 70px;
+    }
+
+    .event-date .day {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .event-date .month {
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .event-details h4 {
+      font-size: 17px;
+      color: #0A2A66;
+      margin-bottom: 4px;
+    }
+
+    .event-details p {
+      font-size: 13px;
+      color: #475569;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #05183d;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .tab-container {
+        justify-content: flex-start;
+      }
+      .card-box {
+        padding: 20px;
+      }
+      .event-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header-container">
+    <a href="index.html" class="brand-logo">
+      <img src="logo.png" alt="RAKTDATA Logo">
+      <div class="brand-text">
+        <h1><span class="text-red">RAKTDATA</span><span class="text-blue">.IN</span></h1>
+        <p>NATIONAL BLOOD DONATION MOVEMENT</p>
+      </div>
+    </a>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a>
+    <a href="donors.html" class="nav-link"><i class="fa-solid fa-hand-holding-medical"></i> रक्तदाते</a>
+    <a href="blood-banks.html" class="nav-link"><i class="fa-solid fa-hospital"></i> रक्तपेढी</a>
+    <a href="organizations.html" class="nav-link"><i class="fa-solid fa-building-ngo"></i> संस्था</a>
+    <a href="news-events.html" class="nav-link" style="color: #FFD700;"><i class="fa-solid fa-newspaper"></i> बातम्या व कार्यक्रम</a>
+    <a href="knowledge.html" class="nav-link"><i class="fa-solid fa-book-open"></i> माहिती केंद्र</a>
+    <a href="volunteers.html" class="nav-link"><i class="fa-solid fa-hand-holding-hand"></i> स्वयंसेवक</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-sec">
+    <h1>📰 बातम्या व कार्यक्रम (News & Events)</h1>
+    <p>RAKTDATA अभियानाशी संबंधित ताज्या बातम्या, आगामी रक्तदान शिबिरे आणि उपक्रमांची माहिती मिळवा.</p>
+  </section>
+
+  <!-- Sub Navigation Tabs -->
+  <div class="tab-bar">
+    <div class="tab-container">
+      <button class="tab-btn active" onclick="switchTab('news')">
+        <i class="fa-solid fa-newspaper"></i> ताज्या बातम्या
+      </button>
+      <button class="tab-btn" onclick="switchTab('events')">
+        <i class="fa-solid fa-calendar-days"></i> आगामी कार्यक्रम
+      </button>
+      <button class="tab-btn" onclick="switchTab('media')">
+        <i class="fa-solid fa-photo-film"></i> मीडिया व गॅलरी
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- 1️⃣ ताज्या बातम्या Tab -->
+    <div id="tab-news" class="tab-content active">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-bullhorn" style="color: #C00000;"></i> महत्वाच्या बातम्या व अपडेट्स</h2>
+        
+        <div class="news-grid">
+          <div class="news-card">
+            <div class="news-card-body">
+              <span class="date-badge"><i class="fa-solid fa-calendar"></i> १५ जुलै २०२६</span>
+              <h4>राज्यभरात ५०+ नवीन रक्तदाते नोंदणी केंद्र सुरू!</h4>
+              <p>ग्रामीण भागातील रुग्णांना तात्काळ रक्त मिळण्यासाठी RAKTDATA ने नवीन मोहीम हाती घेतली आहे.</p>
+            </div>
+          </div>
+
+          <div class="news-card">
+            <div class="news-card-body">
+              <span class="date-badge"><i class="fa-solid fa-calendar"></i> १० जुलै २०२६</span>
+              <h4>विश्व रक्तदाता दिनानिमित्त ५०००+ युनिटचे संकलन</h4>
+              <p>तरुणांच्या उत्स्फूर्त सहभागामुळे या वर्षातील सर्वात मोठे रक्तदान यशस्वी झाले.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2️⃣ आगामी कार्यक्रम Tab -->
+    <div id="tab-events" class="tab-content">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-calendar-check" style="color: #0A2A66;"></i> नियोजित कार्यक्रम व शिबिरे</h2>
+
+        <div class="event-card">
+          <div class="event-date">
+            <div class="day">२८</div>
+            <div class="month">जुलै</div>
+          </div>
+          <div class="event-details">
+            <h4>महा-रक्तदान व आरोग्य तपासणी शिबीर</h4>
+            <p><i class="fa-solid fa-clock"></i> सकाळी ९:०० ते दुपारी ४:०० | <i class="fa-solid fa-location-dot"></i> जिल्हा रुग्णालय परिसर, नाशिक</p>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-date">
+            <div class="day">०५</div>
+            <div class="month">ऑगस्ट</div>
+          </div>
+          <div class="event-details">
+            <h4>युवा स्वयंसेवक कार्यशाळा २०२६</h4>
+            <p><i class="fa-solid fa-clock"></i> सकाळी १०:०० ते दुपारी १:०० | <i class="fa-solid fa-location-dot"></i> टाऊन हॉल, पुणे</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3️⃣ मीडिया व गॅलरी Tab -->
+    <div id="tab-media" class="tab-content">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-images" style="color: #0A2A66;"></i> फोटो आणि वृत्तपत्र कात्रणे</h2>
+        <p style="font-size: 14px; color: #64748b; text-align: center; padding: 30px 0;">
+          <i class="fa-solid fa-photo-film" style="font-size: 40px; color: #cbd5e1; display: block; margin-bottom: 10px;"></i>
+          नवीन फोटो व मीडिया कव्हरेज लवकरच अपडेट केले जाईल.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
+  </footer>
+
+  <!-- JavaScript Code -->
+  <script>
+    // Tab Switcher
+    function switchTab(tabName) {
+      const buttons = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
