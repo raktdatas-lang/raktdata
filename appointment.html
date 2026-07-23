@@ -293,17 +293,17 @@
     <div class="verify-header">
       <i class="fa-solid fa-file-contract"></i>
       <h2>नियुक्ती पत्र व कार्ड पडताळणी</h2>
-      <p>तुमचे अधिकृत नियुक्ती पत्र किंवा आयडी कार्ड शोधण्यासाठी मोबाईल नंबर/आयडी टाका.</p>
+      <p>तुमचे अधिकृत नियुक्ती पत्र किंवा आयडी कार्ड शोधण्यासाठी Volunteer ID (उदा. RD00001) टाका.</p>
     </div>
 
     <div class="verify-body">
       <form onsubmit="searchAppointment(event)">
         
         <div class="form-group">
-          <label>मोबाईल नंबर किंवा स्वयंसेवक ID नंबर <span>*</span></label>
+          <label>स्वयंसेवक ID (Volunteer ID) किंवा नाव <span>*</span></label>
           <div class="input-box">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="searchInput" placeholder="उदा. 98xxxxxxxx किंवा RAKT10023" required>
+            <input type="text" id="searchInput" placeholder="उदा. RD00001" required>
           </div>
         </div>
 
@@ -331,9 +331,8 @@
           <div class="letter-details">
             <p><strong>स्वयंसेवकाचे नाव:</strong> <span id="outName" style="color: #C00000; font-weight:700;"></span></p>
             <p><strong>Volunteer ID:</strong> <span id="outId" style="font-weight:700;"></span></p>
-            <p><strong>मोबाईल नंबर:</strong> <span id="outMobile"></span></p>
             <p><strong>जिल्हा:</strong> <span id="outDistrict"></span></p>
-            <p><strong>पद/जबाबदारी:</strong> <span id="outRole" style="color: #0A2A66; font-weight:700;">रक्तदान नोंदणी व जनजागृती स्वयंसेवक</span></p>
+            <p><strong>पद/जबाबदारी:</strong> <span style="color: #0A2A66; font-weight:700;">रक्तदान नोंदणी व जनजागृती स्वयंसेवक</span></p>
             <p><strong>स्टेटस:</strong> <span style="color: green; font-weight: bold;">Verified ✅ (प्रमाणित)</span></p>
           </div>
 
@@ -358,35 +357,45 @@
     &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
   </footer>
 
-  <!-- JavaScript for Search Logic -->
+  <!-- JavaScript Code Connected to Your Google Sheet -->
   <script>
-    // स्वयंसेवकांचा डेटा (इथे नवीन स्वयंसेवक जोडू शकता)
-    const volunteerList = [
-      { id: "RAKT10023", mobile: "9876543210", name: "राहुल गणेश पाटील", district: "पुणे" },
-      { id: "RAKT10024", mobile: "9123456789", name: "अमित मारूती देशमुख", district: "नाशिक" },
-      { id: "RAKT10025", mobile: "9988776655", name: "सचिन विजय शिंदे", district: "मुंबई" }
-    ];
+    const SHEET_URL = "https://script.google.com/macros/s/AKfycbwR2gmW7DIPQj6PkrL8jrMqYBH6KmehvbD4c3SQZXI8rrTQiP_LAyAaGxAOR3Mm11hsvw/exec";
 
-    function searchAppointment(event) {
-      event.preventDefault(); // फॉर्म रीलोड होण्यापासून रोखते
+    async function searchAppointment(event) {
+      event.preventDefault();
       
-      const query = document.getElementById('searchInput').value.trim();
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
       const letterBox = document.getElementById('letterBox');
 
-      // डेटा शोधणे
-      const found = volunteerList.find(item => item.id === query || item.mobile === query);
+      if (!query) {
+        alert("कृपया Volunteer ID प्रविष्ट करा.");
+        return;
+      }
 
-      if (found) {
-        document.getElementById('outName').innerText = found.name;
-        document.getElementById('outId').innerText = found.id;
-        document.getElementById('outMobile').innerText = found.mobile;
-        document.getElementById('outDistrict').innerText = found.district;
+      try {
+        const response = await fetch(SHEET_URL);
+        const volunteerList = await response.json();
 
-        letterBox.style.display = 'block'; // नियुक्ती पत्र दाखवणे
-        letterBox.scrollIntoView({ behavior: 'smooth' }); // स्क्रोल करून पत्राकडे नेणे
-      } else {
-        letterBox.style.display = 'none';
-        alert("❌ माहिती आढळली नाही!\nकृपया अचूक मोबाईल नंबर किंवा Volunteer ID प्रविष्ट करा.");
+        // सर्च करणे (ID किंवा नावाने)
+        const found = volunteerList.find(item => 
+          item.id.toLowerCase() === query || 
+          item.name.toLowerCase().includes(query)
+        );
+
+        if (found) {
+          document.getElementById('outName').innerText = found.name || "N/A";
+          document.getElementById('outId').innerText = found.id || "N/A";
+          document.getElementById('outDistrict').innerText = found.district || "N/A";
+
+          letterBox.style.display = 'block';
+          letterBox.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          letterBox.style.display = 'none';
+          alert("❌ माहिती आढळली नाही!\nकृपया अचूक Volunteer ID (उदा. RD00001) प्रविष्ट करा.");
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        alert("डेटा लोड करताना त्रुटी आली. कृपया इंटरनेट तपासा.");
       }
     }
   </script>
