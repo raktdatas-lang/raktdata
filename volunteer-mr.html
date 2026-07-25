@@ -168,7 +168,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Form Styles */
+    /* Form Styles & Cards */
     .card-box {
       background: #ffffff;
       padding: 35px;
@@ -191,18 +191,46 @@
       padding-bottom: 12px;
     }
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+    .google-form-container {
+      text-align: center;
+    }
+
+    .btn-external-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #C00000;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      transition: background 0.3s ease;
+    }
+
+    .btn-external-link:hover {
+      background: #a00000;
+    }
+
+    .iframe-wrapper {
+      width: 100%;
+      height: 850px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #cbd5e1;
+    }
+
+    .iframe-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     .form-group {
       margin-bottom: 18px;
-    }
-
-    .form-group.full-width {
-      grid-column: 1 / -1;
     }
 
     .form-group label {
@@ -213,9 +241,7 @@
       margin-bottom: 6px;
     }
 
-    .form-group input, 
-    .form-group select, 
-    .form-group textarea {
+    .form-group input {
       width: 100%;
       padding: 12px 14px;
       border: 1px solid #cbd5e1;
@@ -225,9 +251,7 @@
       transition: all 0.3s;
     }
 
-    .form-group input:focus, 
-    .form-group select:focus, 
-    .form-group textarea:focus {
+    .form-group input:focus {
       border-color: #0A2A66;
       box-shadow: 0 0 0 3px rgba(10, 42, 102, 0.1);
     }
@@ -326,6 +350,9 @@
       .card-box {
         padding: 20px;
       }
+      .iframe-wrapper {
+        height: 750px;
+      }
     }
   </style>
 </head>
@@ -359,16 +386,16 @@
   <!-- Sub Navigation Tabs -->
   <div class="tab-bar">
     <div class="tab-container">
-      <button class="tab-btn active" onclick="switchTab('registration')">
+      <button class="tab-btn active" onclick="switchTab('registration', this)">
         <i class="fa-solid fa-user-plus"></i> स्वयंसेवक नोंदणी
       </button>
-      <button class="tab-btn" onclick="switchTab('login')">
+      <button class="tab-btn" onclick="switchTab('login', this)">
         <i class="fa-solid fa-right-to-bracket"></i> स्वयंसेवक लॉगिन
       </button>
-      <button class="tab-btn" onclick="switchTab('verification')">
+      <button class="tab-btn" onclick="switchTab('verification', this)">
         <i class="fa-solid fa-file-certificate"></i> नियुक्तीपत्र पडताळणी
       </button>
-      <button class="tab-btn" onclick="switchTab('guide')">
+      <button class="tab-btn" onclick="switchTab('guide', this)">
         <i class="fa-solid fa-book-open"></i> स्वयंसेवक मार्गदर्शक
       </button>
     </div>
@@ -376,62 +403,20 @@
 
   <div class="container">
 
-    <!-- 1️⃣ स्वयंसेवक नोंदणी Tab -->
+    <!-- 1️⃣ स्वयंसेवक नोंदणी Tab (Google Form) -->
     <div id="tab-registration" class="tab-content active">
-      <div class="card-box">
-        <h2 class="card-title"><i class="fa-solid fa-user-plus" style="color: #C00000;"></i> नवीन स्वयंसेवक नोंदणी अर्ज</h2>
-       <form action="https://formspree.io/f/mqerdoyv" method="POST">
-  <div class="form-grid">
-    <div class="form-group">
-      <label for="fullName">संपूर्ण नाव *</label>
-      <input type="text" id="fullName" name="Full Name" placeholder="नाव, मधले नाव, अडनाव" required>
-    </div>
+      <div class="card-box google-form-container">
+        <h2 class="card-title" style="justify-content: center;"><i class="fa-solid fa-user-plus" style="color: #C00000;"></i> नवीन स्वयंसेवक नोंदणी अर्ज</h2>
+        
+        <!-- Direct Link Button -->
+        <a href="https://forms.gle/1K68onGrLTT9KjVW6" target="_blank" class="btn-external-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> नवीन विंडोमध्ये फॉर्म उघडा
+        </a>
 
-    <div class="form-group">
-      <label for="mobile">मोबाईल नंबर (WhatsApp) *</label>
-      <input type="tel" id="mobile" name="Mobile" pattern="[0-9]{10}" placeholder="१० अंकी नंबर" required>
-    </div>
-
-    <div class="form-group">
-      <label for="email">ईमेल आयडी</label>
-      <input type="email" id="email" name="Email" placeholder="example@gmail.com">
-    </div>
-
-    <div class="form-group">
-      <label for="bloodGroup">रक्तगट (Blood Group) *</label>
-      <select id="bloodGroup" name="Blood Group" required>
-        <option value="">निवडा</option>
-        <option value="A+">A+</option>
-        <option value="A-">A-</option>
-        <option value="B+">B+</option>
-        <option value="B-">B-</option>
-        <option value="O+">O+</option>
-        <option value="O-">O-</option>
-        <option value="AB+">AB+</option>
-        <option value="AB-">AB-</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="district">जिल्हा *</label>
-      <input type="text" id="district" name="District" placeholder="उदा. पुणे, मुंबई, नाशिक" required>
-    </div>
-
-    <div class="form-group">
-      <label for="taluka">तालुका *</label>
-      <input type="text" id="taluka" name="Taluka" placeholder="उदा. हवेली" required>
-    </div>
-
-    <div class="form-group full-width">
-      <label for="address">संपूर्ण पत्ता</label>
-      <textarea id="address" name="Address" rows="3" placeholder="घर क्र., परिसर, पिनकोड"></textarea>
-    </div>
-  </div>
-
-  <button type="submit" class="btn-submit">
-    <i class="fa-solid fa-paper-plane"></i> नोंदणी सबमिट करा
-  </button>
-</form>
+        <!-- Embedded Google Form -->
+        <div class="iframe-wrapper">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScJp86EimfV1vXmCgS7K1dY-m5eGvA0B9N-v4n7z8N5L-sR_Q/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">लोड होत आहे...</iframe>
+        </div>
       </div>
     </div>
 
@@ -442,7 +427,7 @@
         <form id="loginForm" onsubmit="handleLogin(event)">
           <div class="form-group">
             <label for="loginMobile">नोंदणीकृत मोबाईल नंबर *</label>
-            <input type="tel" id="loginMobile" pattern="[0-9]{10}" placeholder="१० अंकी मोबाईल नंबर" required>
+            <input type="tel" id="loginMobile" pattern="[0-9]{10}" maxlength="10" placeholder="१० अंकी मोबाईल नंबर" required>
           </div>
 
           <div class="form-group">
@@ -535,21 +520,20 @@
   <!-- JavaScript Code -->
   <script>
     // Tab Switch Functionality
-    function switchTab(tabName) {
-      // All tab buttons and contents Reset
+    function switchTab(tabName, btnElement) {
       const buttons = document.querySelectorAll('.tab-btn');
       const contents = document.querySelectorAll('.tab-content');
 
       buttons.forEach(btn => btn.classList.remove('active'));
       contents.forEach(content => content.classList.remove('active'));
 
-      // Active state apply
-      event.currentTarget.classList.add('active');
+      if (btnElement) {
+        btnElement.classList.add('active');
+      }
       document.getElementById('tab-' + tabName).classList.add('active');
     }
- 
 
-    // 2️⃣ Login Form Handler
+    // Login Form Handler
     function handleLogin(e) {
       e.preventDefault();
       const mobile = document.getElementById('loginMobile').value;
@@ -557,7 +541,7 @@
       document.getElementById('loginForm').reset();
     }
 
-    // 3️⃣ Verification Form Handler
+    // Verification Form Handler
     function handleVerification(e) {
       e.preventDefault();
       const certId = document.getElementById('certId').value.trim();
