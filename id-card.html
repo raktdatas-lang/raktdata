@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>डिजिटल आयडी कार्ड जनरेटर | RAKTDATA.IN</title>
+  
+  <!-- Font Awesome Icons & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- html2canvas for Image Download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+    }
+
+    body {
+      background-color: #f1f5f9;
+      color: #1e293b;
+      padding: 20px 10px;
+    }
+
+    .main-title {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #0A2A66;
+    }
+
+    .main-title h1 {
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* Form Container */
+    .form-box {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      flex: 1;
+      min-width: 320px;
+      max-width: 500px;
+    }
+
+    .form-box h3 {
+      font-size: 18px;
+      color: #C00000;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .btn-download {
+      width: 100%;
+      background: #10b981;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.3s;
+    }
+
+    .btn-download:hover {
+      background: #059669;
+    }
+
+    /* ID Card Preview Container */
+    .card-preview-area {
+      flex: 1;
+      min-width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Printable Vertical ID Card Design */
+    .id-card {
+      width: 320px;
+      height: 500px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+
+    .id-header {
+      background: linear-gradient(135deg, #0A2A66 0%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 15px;
+      text-align: center;
+      border-bottom: 4px solid #C00000;
+    }
+
+    .id-header h2 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .id-header h2 span {
+      color: #C00000;
+    }
+
+    .id-header p {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #cbd5e1;
+    }
+
+    .id-badge-title {
+      background: #C00000;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 0;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    /* Photo Styling */
+    .photo-area {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .photo-box {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      border: 3px solid #0A2A66;
+      object-fit: cover;
+      background: #e2e8f0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Member Details */
+    .id-body {
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    .volunteer-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0A2A66;
+      margin-bottom: 2px;
+      text-transform: capitalize;
+    }
+
+    .volunteer-id {
+      font-size: 12px;
+      font-weight: 700;
+      color: #C00000;
+      margin-bottom: 12px;
+      background: #fef2f2;
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      border: 1px solid #fca5a5;
+    }
+
+    .details-table {
+      width: 100%;
+      text-align: left;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .details-table tr td {
+      padding: 4px 0;
+    }
+
+    .details-table tr td:first-child {
+      font-weight: 700;
+      color: #475569;
+      width: 40%;
+    }
+
+    .details-table tr td:last-child {
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .blood-group-badge {
+      color: #C00000;
+      font-weight: 800;
+    }
+
+    /* ID Footer */
+    .id-footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: #0A2A66;
+      color: #ffffff;
+      padding: 8px;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    .id-footer p {
+      margin: 0;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-title">
+    <h1>🪪 डिजिटल स्वयंसेवक आयडी कार्ड जनरेटर</h1>
+    <p>तुमची माहिती भरा आणि तात्काळ अधिकृत ID Card डाऊनलोड करा.</p>
+  </div>
+
+  <div class="container">
+    
+    <!-- 1️⃣ माहिती भरण्याचा फॉर्म -->
+    <div class="form-box">
+      <h3><i class="fa-solid fa-user-pen"></i> स्वयंसेवक माहिती भरा</h3>
+      
+      <div class="form-group">
+        <label>स्वयंसेवकाचे पूर्ण नाव *</label>
+        <input type="text" id="inputName" placeholder="उदा. राहुल संभाजी पाटील" oninput="updateCard()">
+      </div>
+
+      <div class="form-group">
+        <label>आयडी नंबर (Volunteer ID) *</label>
+        <input type="text" id="inputVolId" placeholder="उदा. RAKTDATA-2026-101" oninput="updateCard()">
+      </div>
+
+      <div class="form-group">
+        <label>रक्तगट (Blood Group) *</label>
+        <select id="inputBlood" onchange="updateCard()">
+          <option value="A+">A +ve</option>
+          <option value="A-">A -ve</option>
+          <option value="B+" selected>B +ve</option>
+          <option value="B-">B -ve</option>
+          <option value="O+">O +ve</option>
+          <option value="O-">O -ve</option>
+          <option value="AB+">AB +ve</option>
+          <option value="AB-">AB -ve</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>मोबाईल नंबर *</label>
+        <input type="tel" id="inputMobile" placeholder="उदा. 9876543210" maxlength="10" oninput="updateCard()">
+      </div>
+
+      <div class="form-group">
+        <label>शहर / तालुका *</label>
+        <input type="text" id="inputCity" placeholder="उदा. पुणे / ठाणे" oninput="updateCard()">
+      </div>
+
+      <div class="form-group">
+        <label>स्वयंसेवकाचा फोटो अपलोड करा *</label>
+        <input type="file" id="inputPhoto" accept="image/*" onchange="loadPhoto(event)">
+      </div>
+
+      <button class="btn-download" onclick="downloadIDCard()">
+        <i class="fa-solid fa-download"></i> आयडी कार्ड डाऊनलोड करा (PNG)
+      </button>
+    </div>
+
+    <!-- 2️⃣ LIVE ID CARD PREVIEW AREA -->
+    <div class="card-preview-area">
+      <h3 style="margin-bottom: 15px; color: #0A2A66;"><i class="fa-solid fa-eye"></i> Live Preview</h3>
+      
+      <!-- Actual ID Card Canvas -->
+      <div class="id-card" id="idCard">
+        
+        <div class="id-header">
+          <h2><span>RAKTDATA</span>.IN</h2>
+          <p>NATIONAL BLOOD DONATION MOVEMENT</p>
+        </div>
+
+        <div class="id-badge-title">VOLUNTEER / स्वयंसेवक</div>
+
+        <div class="photo-area">
+          <img src="https://via.placeholder.com/150?text=Photo" id="cardPhoto" class="photo-box" alt="Volunteer Photo">
+        </div>
+
+        <div class="id-body">
+          <div class="volunteer-name" id="cardName">राहुल पाटील</div>
+          <div class="volunteer-id" id="cardVolId">ID: RAKTDATA-2026-101</div>
+
+          <table class="details-table">
+            <tr>
+              <td><i class="fa-solid fa-droplet text-red"></i> रक्तगट:</td>
+              <td class="blood-group-badge" id="cardBlood">B +ve</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-phone"></i> मोबाईल:</td>
+              <td id="cardMobile">9876543210</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-location-dot"></i> शहर:</td>
+              <td id="cardCity">पुणे</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="id-footer">
+          <p>www.raktdata.in | अधिकृत स्वयंसेवक ओळखपत्र</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Live update functions
+    function updateCard() {
+      const name = document.getElementById('inputName').value.trim();
+      const volId = document.getElementById('inputVolId').value.trim();
+      const blood = document.getElementById('inputBlood').value;
+      const mobile = document.getElementById('inputMobile').value.trim();
+      const city = document.getElementById('inputCity').value.trim();
+
+      document.getElementById('cardName').innerText = name ? name : "राहुल पाटील";
+      document.getElementById('cardVolId').innerText = "ID: " + (volId ? volId : "RAKTDATA-2026-101");
+      document.getElementById('cardBlood').innerText = blood;
+      document.getElementById('cardMobile').innerText = mobile ? mobile : "9876543210";
+      document.getElementById('cardCity').innerText = city ? city : "पुणे";
+    }
+
+    // Photo preview upload function
+    function loadPhoto(event) {
+      const photoBox = document.getElementById('cardPhoto');
+      if (event.target.files && event.target.files[0]) {
+        photoBox.src = URL.createObjectURL(event.target.files[0]);
+      }
+    }
+
+    // Download ID Card as Image
+    function downloadIDCard() {
+      const cardElement = document.getElementById('idCard');
+      const name = document.getElementById('inputName').value.trim() || 'Volunteer';
+
+      html2canvas(cardElement, {
+        scale: 3, // High Resolution Image Output
+        useCORS: true
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `RAKTDATA_ID_Card_${name}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    }
+  </script>
+
+</body>
+</html>
