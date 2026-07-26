@@ -23,6 +23,21 @@
       line-height: 1.6;
     }
 
+    /* Google Form Responsive Frame */
+    .iframe-wrapper {
+      position: relative;
+      width: 100%;
+      height: 850px;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .iframe-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* Header */
     .header-container {
       background-color: #ffffff;
@@ -83,27 +98,27 @@
     }
 
     /* Hero Banner */
-    .volunteer-hero {
+    .hero-sec {
       background: linear-gradient(135deg, #0A2A66 0%, #1e3a8a 100%);
       color: #ffffff;
       text-align: center;
       padding: 45px 20px;
     }
 
-    .volunteer-hero h1 {
+    .hero-sec h1 {
       font-size: 32px;
       font-weight: 800;
       margin-bottom: 10px;
     }
 
-    .volunteer-hero p {
-      font-size: 16px;
+    .hero-sec p {
+      font-size: 15px;
       color: #e2e8f0;
-      max-width: 750px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
-    /* Tab Navigation Bar */
+    /* Sub Tab Navigation Bar */
     .tab-bar {
       background: #ffffff;
       box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
@@ -168,14 +183,14 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Form Styles & Cards */
+    /* Cards & Forms */
     .card-box {
       background: #ffffff;
       padding: 35px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.05);
       border: 1px solid #e2e8f0;
-      max-width: 800px;
+      max-width: 650px;
       margin: 0 auto;
     }
 
@@ -183,50 +198,12 @@
       font-size: 22px;
       color: #0A2A66;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       display: flex;
       align-items: center;
       gap: 10px;
       border-bottom: 2px solid #f1f5f9;
       padding-bottom: 12px;
-    }
-
-    .google-form-container {
-      text-align: center;
-    }
-
-    .btn-external-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #C00000;
-      color: #ffffff;
-      text-decoration: none;
-      padding: 14px 28px;
-      font-size: 16px;
-      font-weight: 700;
-      border-radius: 8px;
-      margin-bottom: 25px;
-      transition: background 0.3s ease;
-    }
-
-    .btn-external-link:hover {
-      background: #a00000;
-    }
-
-    .iframe-wrapper {
-      width: 100%;
-      height: 900px;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid #cbd5e1;
-    }
-
-    .iframe-wrapper iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
     }
 
     .form-group {
@@ -235,10 +212,10 @@
 
     .form-group label {
       display: block;
-      font-size: 14px;
-      font-weight: 700;
-      color: #334155;
+      font-weight: 600;
       margin-bottom: 6px;
+      font-size: 14px;
+      color: #334155;
     }
 
     .form-group input {
@@ -248,89 +225,32 @@
       border-radius: 8px;
       font-size: 14px;
       outline: none;
-      transition: all 0.3s;
+      transition: border-color 0.2s;
     }
 
     .form-group input:focus {
       border-color: #0A2A66;
-      box-shadow: 0 0 0 3px rgba(10, 42, 102, 0.1);
     }
 
-    .btn-submit {
+    .btn-action {
       width: 100%;
-      background: #C00000;
-      color: #ffffff;
+      background: #0A2A66;
+      color: white;
       border: none;
-      padding: 14px;
+      padding: 12px;
       border-radius: 8px;
-      font-size: 16px;
       font-weight: 700;
+      font-size: 15px;
       cursor: pointer;
-      transition: background 0.3s;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      transition: background 0.3s;
     }
 
-    .btn-submit:hover {
-      background: #a00000;
-    }
-
-    /* Verification Result Box */
-    .result-card {
-      display: none;
-      margin-top: 25px;
-      padding: 20px;
-      border-radius: 8px;
-      border-left: 5px solid #10b981;
-      background: #ecfdf5;
-    }
-
-    .result-card.invalid {
-      border-left-color: #ef4444;
-      background: #fef2f2;
-    }
-
-    /* Guide Rules List */
-    .guide-list {
-      list-style: none;
-    }
-
-    .guide-item {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      border-left: 4px solid #0A2A66;
-      display: flex;
-      gap: 15px;
-      align-items: flex-start;
-    }
-
-    .guide-icon {
-      background: #e0e7ff;
-      color: #0A2A66;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    .guide-content h4 {
-      font-size: 16px;
-      color: #0A2A66;
-      margin-bottom: 5px;
-    }
-
-    .guide-content p {
-      font-size: 14px;
-      color: #475569;
+    .btn-action:hover {
+      background: #1e3a8a;
     }
 
     /* Footer */
@@ -344,14 +264,11 @@
     }
 
     @media (max-width: 768px) {
-      .tab-container {
-        justify-content: flex-start;
-      }
       .card-box {
         padding: 20px;
       }
       .iframe-wrapper {
-        height: 750px;
+        height: 1000px;
       }
     }
   </style>
@@ -372,30 +289,31 @@
   <!-- Navigation Bar -->
   <nav class="nav-bar">
     <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a>
-    <a href="about.html" class="nav-link"><i class="fa-solid fa-heart"></i> आमच्याबद्दल</a>
-    <a href="volunteers.html" class="nav-link" style="color: #FFD700;"><i class="fa-solid fa-hand-holding-hand"></i> स्वयंसेवक</a>
+    <a href="donors.html" class="nav-link"><i class="fa-solid fa-hand-holding-medical"></i> रक्तदाते</a>
+    <a href="blood-banks.html" class="nav-link"><i class="fa-solid fa-hospital"></i> रक्तपेढी</a>
+    <a href="volunteer-mr.html" class="nav-link" style="color: #FFD700;"><i class="fa-solid fa-hand-holding-hand"></i> स्वयंसेवक</a>
     <a href="contact.html" class="nav-link"><i class="fa-solid fa-envelope"></i> संपर्क करा</a>
   </nav>
 
   <!-- Hero Section -->
-  <section class="volunteer-hero">
+  <section class="hero-sec">
     <h1>🤝 स्वयंसेवक विभाग (Volunteers)</h1>
-    <p>रक्तदान चळवळीचे खंदे पाठीराखे बना! नोंदणी करा, पोर्टलमधे लॉगिन करा, नियुक्तीपत्र पडताळून पहा आणि मार्गदर्शक तत्त्वांचे पालन करा.</p>
+    <p>रक्तदान चळवळीचे खंदे पाठीराखे बना! नोंदणी करा, पोर्टलमध्‍ये लॉगिन करा, नियुक्तीपत्र पडताळून पाहा आणि मार्गदर्शक तत्त्वांचे पालन करा.</p>
   </section>
 
   <!-- Sub Navigation Tabs -->
   <div class="tab-bar">
     <div class="tab-container">
-      <button class="tab-btn active" onclick="switchTab('registration', this)">
+      <button class="tab-btn active" onclick="switchTab('register', event)">
         <i class="fa-solid fa-user-plus"></i> स्वयंसेवक नोंदणी
       </button>
-      <button class="tab-btn" onclick="switchTab('login', this)">
+      <button class="tab-btn" onclick="switchTab('login', event)">
         <i class="fa-solid fa-right-to-bracket"></i> स्वयंसेवक लॉगिन
       </button>
-      <button class="tab-btn" onclick="switchTab('verification', this)">
-        <i class="fa-solid fa-file-certificate"></i> नियुक्तीपत्र पडताळणी
+      <button class="tab-btn" onclick="switchTab('verify', event)">
+        <i class="fa-solid fa-shield-halved"></i> नियुक्तीपत्र पडताळणी
       </button>
-      <button class="tab-btn" onclick="switchTab('guide', this)">
+      <button class="tab-btn" onclick="switchTab('guidelines', event)">
         <i class="fa-solid fa-book-open"></i> स्वयंसेवक मार्गदर्शक
       </button>
     </div>
@@ -403,110 +321,86 @@
 
   <div class="container">
 
-    <!-- 1️⃣ स्वयंसेवक नोंदणी Tab (Google Form Updated) -->
-    <div id="tab-registration" class="tab-content active">
-      <div class="card-box google-form-container">
-        <h2 class="card-title" style="justify-content: center;"><i class="fa-solid fa-user-plus" style="color: #C00000;"></i> नवीन स्वयंसेवक नोंदणी अर्ज</h2>
+    <!-- 1️⃣ स्वयंसेवक नोंदणी Tab (Google Form Embed) -->
+    <div id="tab-register" class="tab-content active">
+      <div class="card-box" style="max-width: 850px;">
+        <h2 class="card-title"><i class="fa-solid fa-user-plus" style="color: #C00000;"></i> नवीन स्वयंसेवक नोंदणी अर्ज</h2>
         
-        <!-- Direct Link Button -->
-        <a href="https://forms.gle/1K68onGrLTT9KjVW6" target="_blank" class="btn-external-link">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> नवीन विंडोमध्ये फॉर्म उघडा
-        </a>
-
-        <!-- Embedded Correct Google Form -->
+        <!-- 🔹 Google Form Embed Container 🔹 -->
         <div class="iframe-wrapper">
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdmjzC2htEbG1da11TPsrYToPkICap4OrhpcaY0yQE_S2QR9g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">लोड होत आहे...</iframe>
+          <!-- तुमच्या स्वयंसेवक फॉर्मची Google Form embed लिंक इथे टाकली आहे -->
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScX_VOLUNTEER_FORM_ID_HERE/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">लोड होत आहे…</iframe>
         </div>
       </div>
     </div>
 
     <!-- 2️⃣ स्वयंसेवक लॉगिन Tab -->
     <div id="tab-login" class="tab-content">
-      <div class="card-box" style="max-width: 480px;">
-        <h2 class="card-title"><i class="fa-solid fa-right-to-bracket" style="color: #0A2A66;"></i> स्वयंसेवक लॉगिन</h2>
-        <form id="loginForm" onsubmit="handleLogin(event)">
+      <div class="card-box">
+        <h2 class="card-title"><i class="fa-solid fa-right-to-bracket" style="color: #0A2A66;"></i> स्वयंसेवक पोर्टल लॉगिन</h2>
+        
+        <form onsubmit="handleLogin(event)">
           <div class="form-group">
-            <label for="loginMobile">नोंदणीकृत मोबाईल नंबर *</label>
-            <input type="tel" id="loginMobile" pattern="[0-9]{10}" maxlength="10" placeholder="१० अंकी मोबाईल नंबर" required>
+            <label for="loginEmail">ईमेल किंवा मोबाईल क्रमांक *</label>
+            <input type="text" id="loginEmail" placeholder="तुमचा ईमेल किंवा फोन टाका" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="loginPassword">पासवर्ड *</label>
+            <input type="password" id="loginPassword" placeholder="******" required>
           </div>
 
-          <div class="form-group">
-            <label for="loginPass">पासवर्ड / OTP *</label>
-            <input type="password" id="loginPass" placeholder="तुमचा पासवर्ड टाका" required>
-          </div>
-
-          <button type="submit" class="btn-submit" style="background: #0A2A66;">
-            <i class="fa-solid fa-lock"></i> लॉगिन करा
+          <button type="submit" class="btn-action">
+            <i class="fa-solid fa-lock"></i> सुरक्षित लॉगिन करा
           </button>
         </form>
       </div>
     </div>
 
-    <!-- 3️⃣ नियुक्तीपत्र पडताळणी Tab -->
-    <div id="tab-verification" class="tab-content">
-      <div class="card-box" style="max-width: 600px;">
-        <h2 class="card-title"><i class="fa-solid fa-shield-halved" style="color: #10b981;"></i> नियुक्तीपत्र पडताळणी (Verification)</h2>
+    <!-- 3️⃣ नियुक्तीपत्र पडताळणी + PDF डाऊनलोड Tab -->
+    <div id="tab-verify" class="tab-content">
+      <div class="card-box">
+        <h2 class="card-title">
+          <i class="fa-solid fa-shield-halved" style="color: #10b981;"></i> नियुक्तीपत्र पडताळणी (Verification)
+        </h2>
+        
         <p style="font-size: 14px; color: #64748b; margin-bottom: 20px;">
-          स्वयंसेवकाच्या नियुक्तीपत्रावरील <strong>अधिसूचना / आयडी क्रमांक (Appointment ID)</strong> टाका आणि वैधता तपासा.
+          स्वयंसेवकाच्या नियुक्तीपत्रातील सूचना / आयडी क्रमांक (Appointment ID) टाका आणि वैधता तपासा.
         </p>
 
-        <form id="verifyForm" onsubmit="handleVerification(event)">
-          <div class="form-group">
-            <label for="certId">नियुक्तीपत्र क्रमांक (Certificate / ID No.) *</label>
-            <input type="text" id="certId" placeholder="उदा. RAKTDATA-2026-1042" required>
-          </div>
-
-          <button type="submit" class="btn-submit" style="background: #10b981;">
-            <i class="fa-solid fa-magnifying-glass"></i> पडताळणी करा
-          </button>
-        </form>
-
-        <!-- Verification Result -->
-        <div id="verifyResult" class="result-card">
-          <h4 id="resTitle" style="font-size: 18px; margin-bottom: 5px;"></h4>
-          <p id="resDetails" style="font-size: 14px; color: #334155;"></p>
+        <div class="form-group">
+          <label for="certIdInput">नियुक्तीपत्र क्रमांक (Certificate / ID No.) *</label>
+          <input type="text" id="certIdInput" placeholder="उदा. RAKTDATA-2026-1042">
         </div>
+
+        <button type="button" class="btn-action" onclick="verifyAndDownload()" style="background: #10b981;">
+          <i class="fa-solid fa-magnifying-glass"></i> पडताळणी करा
+        </button>
+
+        <!-- निकाल आणि डाऊनलोड बटण दाखवण्यासाठी कंटेनर -->
+        <div id="resultBox"></div>
       </div>
     </div>
 
     <!-- 4️⃣ स्वयंसेवक मार्गदर्शक Tab -->
-    <div id="tab-guide" class="tab-content">
-      <div class="card-box">
+    <div id="tab-guidelines" class="tab-content">
+      <div class="card-box" style="max-width: 850px;">
         <h2 class="card-title"><i class="fa-solid fa-book-open" style="color: #0A2A66;"></i> स्वयंसेवक मार्गदर्शक व नियमावली</h2>
         
-        <ul class="guide-list">
-          <li class="guide-item">
-            <div class="guide-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-            <div class="guide-content">
-              <h4>१. तत्परता आणि मदत भावना</h4>
-              <p>जेव्हा जेव्हा जवळच्या रुग्णालयातून तातडीची रक्ताची मागणी येईल, तेव्हा स्थानिक रक्तदात्यांशी संपर्क साधून मदत करणे.</p>
-            </div>
-          </li>
+        <div style="font-size: 15px; color: #334155;">
+          <h3 style="color: #C00000; margin-bottom: 10px;">📌 स्वयंसेवकाची कर्तव्ये:</h3>
+          <ul style="margin-left: 20px; margin-bottom: 20px;">
+            <li style="margin-bottom: 8px;">तातडीच्या काळात गरजू रुग्णांना आणि त्यांच्या नातेवाईकांना योग्य मार्गदर्शन करणे.</li>
+            <li style="margin-bottom: 8px;">स्थानिक पातळीवर रक्तदान शिबिरांचे आयोजन करण्यासाठी सहकार्य करणे.</li>
+            <li style="margin-bottom: 8px;">पोर्टलवर नोंदणी केलेल्या रक्तदात्यांशी आदरपूर्वक आणि नम्रपणे संवाद साधणे.</li>
+          </ul>
 
-          <li class="guide-item">
-            <div class="guide-icon"><i class="fa-solid fa-shield-heart"></i></div>
-            <div class="guide-content">
-              <h4>२. पूर्णपणे मोफत सेवा</h4>
-              <p>RAKTDATA.IN ची सेवा पूर्णपणे मोफत आहे. कोणत्याही रुग्णाकडून किंवा नातेवाईकांकडून आर्थिक व्यवहार करू नये.</p>
-            </div>
-          </li>
-
-          <li class="guide-item">
-            <div class="guide-icon"><i class="fa-solid fa-user-secret"></i></div>
-            <div class="guide-content">
-              <h4>३. गोपनीयतेचे नियम (Privacy Rules)</h4>
-              <p>रक्तदाते आणि रुग्णांची वैयक्तिक माहिती सुरक्षित ठेवावी. ती सोशल मीडियावर परस्पर शेअर करू नये.</p>
-            </div>
-          </li>
-
-          <li class="guide-item">
-            <div class="guide-icon"><i class="fa-solid fa-people-group"></i></div>
-            <div class="guide-content">
-              <h4>४. रक्तदान शिबिरांचे आयोजन</h4>
-              <p>आपल्या तालुक्यात व जिल्ह्यात स्थानिक सामाजिक संस्था, कॉलेज आणि सोसायट्यांमध्ये रक्तदान शिबिरांचे आयोजन करण्यात पुढाकार घेणे.</p>
-            </div>
-          </li>
-        </ul>
+          <h3 style="color: #C00000; margin-bottom: 10px;">⚠️ महत्त्वाच्या सूचना:</h3>
+          <ul style="margin-left: 20px;">
+            <li style="margin-bottom: 8px;">RAKTDATA.IN च्या नावाने कोणत्याही रुग्णाकडून किंवा दात्याकडून पैसे घेणे पूर्णपणे निषिद्ध आहे.</li>
+            <li style="margin-bottom: 8px;">नियुक्तीपत्राचा गैरवापर केल्यास स्वयंसेवक पद तात्काळ रद्द केले जाईल.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -517,49 +411,78 @@
     &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
   </footer>
 
-  <!-- JavaScript Code -->
+  <!-- JavaScript Logic -->
   <script>
-    // Tab Switch Functionality
-    function switchTab(tabName, btnElement) {
+    // १. टॅब बदलण्यासाठीचे फंक्शन (Tab Switcher)
+    function switchTab(tabName, event) {
       const buttons = document.querySelectorAll('.tab-btn');
       const contents = document.querySelectorAll('.tab-content');
 
       buttons.forEach(btn => btn.classList.remove('active'));
       contents.forEach(content => content.classList.remove('active'));
 
-      if (btnElement) {
-        btnElement.classList.add('active');
-      }
+      event.currentTarget.classList.add('active');
       document.getElementById('tab-' + tabName).classList.add('active');
     }
 
-    // Login Form Handler
-    function handleLogin(e) {
-      e.preventDefault();
-      const mobile = document.getElementById('loginMobile').value;
-      alert(`मोबाईल क्र. ${mobile} सह लॉगिन यशस्वी झाले आहे! Dashboard कडे पुनर्निर्देशित केले जात आहे...`);
-      document.getElementById('loginForm').reset();
+    // २. स्वयंसेवक लॉगिन हँडलर
+    function handleLogin(event) {
+      event.preventDefault();
+      alert("लॉगिन यशस्वी झाले! स्वयंसेवक डॅशबोर्डवर रिडायरेक्ट करत आहे...");
     }
 
-    // Verification Form Handler
-    function handleVerification(e) {
-      e.preventDefault();
-      const certId = document.getElementById('certId').value.trim();
-      const resultBox = document.getElementById('verifyResult');
-      const resTitle = document.getElementById('resTitle');
-      const resDetails = document.getElementById('resDetails');
+    // ३. नियुक्तीपत्र डेटाबेस (Google Drive PDF लिंक्ससह)
+    const volunteerDatabase = {
+      "RAKTDATA-2026-1042": {
+        name: "अमित शर्मा",
+        role: "जिल्हा समन्वयक",
+        district: "पुणे",
+        status: "सक्रिय (Active)",
+        pdfUrl: "https://drive.google.com/uc?export=download&id=YOUR_DRIVE_FILE_ID_1"
+      },
+      "RAKTDATA-2026-1043": {
+        name: "प्रिया पाटील",
+        role: "रक्तदान शिबीर प्रमुख",
+        district: "मुंबई",
+        status: "सक्रिय (Active)",
+        pdfUrl: "https://drive.google.com/uc?export=download&id=YOUR_DRIVE_FILE_ID_2"
+      }
+    };
 
-      resultBox.style.display = 'block';
+    // ४. पडताळणी आणि PDF डाऊनलोड फंक्शन
+    function verifyAndDownload() {
+      const inputVal = document.getElementById("certIdInput").value.trim().toUpperCase();
+      const resultBox = document.getElementById("resultBox");
 
-      // Demo verification logic
-      if (certId.toUpperCase().includes('RAKTDATA') || certId.length >= 6) {
-        resultBox.className = 'result-card';
-        resTitle.innerHTML = '<i class="fa-solid fa-circle-check" style="color:#10b981;"></i> वैध नियुक्तीपत्र (Valid Certificate)';
-        resDetails.innerHTML = `<strong>आयडी:</strong> ${certId}<br><strong>नाव:</strong> अधिकृत RAKTDATA स्वयंसेवक<br><strong>स्थिती:</strong> सक्रिय (Active Volunteer)`;
+      if (!inputVal) {
+        alert("कृपया नियुक्तीपत्र क्रमांक टाका!");
+        return;
+      }
+
+      if (volunteerDatabase[inputVal]) {
+        const volunteer = volunteerDatabase[inputVal];
+        
+        resultBox.innerHTML = `
+          <div style="background: #f0fdf4; border: 1px solid #22c55e; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: left;">
+            <h3 style="color: #15803d; font-size: 18px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-circle-check"></i> अधिकृत नियुक्तीपत्र (Verified)
+            </h3>
+            <p style="margin-bottom: 5px;"><strong>नाव:</strong> ${volunteer.name}</p>
+            <p style="margin-bottom: 5px;"><strong>पद:</strong> ${volunteer.role}</p>
+            <p style="margin-bottom: 5px;"><strong>जिल्हा:</strong> ${volunteer.district}</p>
+            <p style="margin-bottom: 15px;"><strong>स्थिती:</strong> <span style="color: #22c55e; font-weight: bold;">${volunteer.status}</span></p>
+            
+            <a href="${volunteer.pdfUrl}" target="_blank" download style="display: inline-block; background: #0A2A66; color: white; text-decoration: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 14px;">
+              <i class="fa-solid fa-file-arrow-down"></i> नियुक्तीपत्र (PDF) डाऊनलोड करा
+            </a>
+          </div>
+        `;
       } else {
-        resultBox.className = 'result-card invalid';
-        resTitle.innerHTML = '<i class="fa-solid fa-circle-xmark" style="color:#ef4444;"></i> अवैध नियुक्तीपत्र (Invalid ID)';
-        resDetails.innerHTML = `प्रविष्ट केलेला आयडी (${certId}) आमच्या रेकॉर्डमध्ये आढळला नाही. कृपया आयडी तपासून पुन्हा प्रयत्न करा.`;
+        resultBox.innerHTML = `
+          <div style="background: #fef2f2; border: 1px solid #ef4444; color: #991b1b; padding: 15px; border-radius: 10px; margin-top: 20px;">
+            <i class="fa-solid fa-triangle-exclamation"></i> <strong>अमान्य नोंदणी!</strong> हा नियुक्तीपत्र क्रमांक आमच्या सिस्टीममध्ये उपलब्ध नाही. कृपया नंबर तपासून पहा.
+          </div>
+        `;
       }
     }
   </script>
