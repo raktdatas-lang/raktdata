@@ -3,13 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>स्वयंसेवक विभाग | RAKTDATA.IN</title>
+  <title>स्वयंसेवक विभाग - RAKTDATA.IN</title>
   
-  <!-- Font Awesome Icons & Google Fonts -->
+  <!-- FontAwesome & Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --primary-color: #8b0000;
+      --secondary-color: #0b2545;
+      --accent-color: #dc2626;
+      --light-bg: #f8fafc;
+      --white: #ffffff;
+      --text-color: #1e293b;
+      --border-color: #e2e8f0;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -18,12 +28,143 @@
     }
 
     body {
-      background-color: #f8fafc;
-      color: #1e293b;
+      background-color: var(--light-bg);
+      color: var(--text-color);
       line-height: 1.6;
     }
 
-    /* Google Form Responsive Frame */
+    /* Header Styling */
+    header {
+      background: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img {
+      height: 45px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .logo-subtext {
+      font-size: 0.75rem;
+      color: var(--secondary-color);
+      display: block;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--secondary-color);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--primary-color);
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: var(--white);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Tab Navigation */
+    .tabs-container {
+      max-width: 900px;
+      margin: -20px auto 30px;
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      display: flex;
+      overflow: hidden;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      background: none;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--secondary-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      border-bottom: 3px solid transparent;
+    }
+
+    .tab-btn:hover {
+      background: #f1f5f9;
+    }
+
+    .tab-btn.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+      background: #fff;
+    }
+
+    /* Content Area */
+    .content-container {
+      max-width: 900px;
+      margin: 0 auto 50px;
+      padding: 0 20px;
+    }
+
+    .tab-content {
+      display: none;
+      background: var(--white);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Form Embed Styling */
     .iframe-wrapper {
       position: relative;
       width: 100%;
@@ -35,454 +176,203 @@
     .iframe-wrapper iframe {
       width: 100%;
       height: 100%;
-      border: 0;
-    }
-
-    /* Header */
-    .header-container {
-      background-color: #ffffff;
-      padding: 12px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #e2e8f0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .brand-logo img {
-      height: 48px;
-      width: auto;
-    }
-
-    .brand-text h1 {
-      font-size: 24px;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .text-red { color: #C00000; }
-    .text-blue { color: #0A2A66; }
-
-    .brand-text p {
-      color: #0A2A66;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-top: 3px;
-    }
-
-    /* Navigation Bar */
-    .nav-bar {
-      background-color: #0A2A66;
-      padding: 12px 5%;
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .nav-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Hero Banner */
-    .hero-sec {
-      background: linear-gradient(135deg, #0A2A66 0%, #1e3a8a 100%);
-      color: #ffffff;
-      text-align: center;
-      padding: 45px 20px;
-    }
-
-    .hero-sec h1 {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    .hero-sec p {
-      font-size: 15px;
-      color: #e2e8f0;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    /* Sub Tab Navigation Bar */
-    .tab-bar {
-      background: #ffffff;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-      border-bottom: 1px solid #e2e8f0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .tab-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      overflow-x: auto;
-    }
-
-    .tab-btn {
-      padding: 16px 24px;
       border: none;
-      background: none;
-      font-size: 15px;
-      font-weight: 700;
-      color: #64748b;
-      cursor: pointer;
+    }
+
+    /* Verification Box Styling */
+    .search-box {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 3px solid transparent;
-      white-space: nowrap;
-      transition: all 0.3s ease;
-    }
-
-    .tab-btn:hover {
-      color: #0A2A66;
-      background: #f1f5f9;
-    }
-
-    .tab-btn.active {
-      color: #C00000;
-      border-bottom-color: #C00000;
-      background: #fef2f2;
-    }
-
-    /* Container Area */
-    .container {
-      max-width: 1100px;
-      margin: 35px auto;
-      padding: 0 20px;
-    }
-
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.4s ease;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Cards & Forms */
-    .card-box {
-      background: #ffffff;
-      padding: 35px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      border: 1px solid #e2e8f0;
-      max-width: 650px;
-      margin: 0 auto;
-    }
-
-    .card-title {
-      font-size: 22px;
-      color: #0A2A66;
-      font-weight: 800;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
       gap: 10px;
-      border-bottom: 2px solid #f1f5f9;
-      padding-bottom: 12px;
+      margin-bottom: 25px;
     }
 
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 6px;
-      font-size: 14px;
-      color: #334155;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 14px;
+    .search-box input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 1rem;
       outline: none;
-      transition: border-color 0.2s;
     }
 
-    .form-group input:focus {
-      border-color: #0A2A66;
-    }
-
-    .btn-action {
-      width: 100%;
-      background: #0A2A66;
-      color: white;
+    .search-box button {
+      padding: 12px 25px;
+      background: var(--primary-color);
+      color: var(--white);
       border: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 15px;
+      border-radius: 6px;
+      font-weight: 600;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
       transition: background 0.3s;
     }
 
-    .btn-action:hover {
-      background: #1e3a8a;
+    .search-box button:hover {
+      background: #6b0000;
+    }
+
+    .result-card {
+      display: none;
+      border: 2px solid #22c55e;
+      background: #f0fdf4;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .result-card h3 {
+      color: #15803d;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #22c55e;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
     }
 
     /* Footer */
     footer {
-      background-color: #05183d;
-      color: #ffffff;
+      background: var(--secondary-color);
+      color: var(--white);
       text-align: center;
       padding: 20px;
-      font-size: 13px;
-      margin-top: 60px;
-    }
-
-    @media (max-width: 768px) {
-      .card-box {
-        padding: 20px;
-      }
-      .iframe-wrapper {
-        height: 1000px;
-      }
+      margin-top: auto;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header-container">
-    <a href="index.html" class="brand-logo">
-      <img src="logo.png" alt="RAKTDATA Logo">
-      <div class="brand-text">
-        <h1><span class="text-red">RAKTDATA</span><span class="text-blue">.IN</span></h1>
-        <p>NATIONAL BLOOD DONATION MOVEMENT</p>
+  <!-- 🔹 Header 🔹 -->
+  <header>
+    <div class="logo-container">
+      <div class="logo-text">
+        RAKTDATA.IN
+        <span class="logo-subtext">NATIONAL BLOOD DONATION MOVEMENT</span>
       </div>
-    </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a></li>
+        <li><a href="#" class="active"><i class="fa-solid fa-handshake"></i> स्वयंसेवक</a></li>
+        <li><a href="#"><i class="fa-solid fa-envelope"></i> संपर्क करा</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Navigation Bar -->
-  <nav class="nav-bar">
-    <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a>
-    <a href="donors.html" class="nav-link"><i class="fa-solid fa-hand-holding-medical"></i> रक्तदाते</a>
-    <a href="blood-banks.html" class="nav-link"><i class="fa-solid fa-hospital"></i> रक्तपेढी</a>
-    <a href="volunteer-mr.html" class="nav-link" style="color: #FFD700;"><i class="fa-solid fa-hand-holding-hand"></i> स्वयंसेवक</a>
-    <a href="contact.html" class="nav-link"><i class="fa-solid fa-envelope"></i> संपर्क करा</a>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero-sec">
+  <!-- 🔹 Hero Banner 🔹 -->
+  <section class="hero">
     <h1>🤝 स्वयंसेवक विभाग (Volunteers)</h1>
-    <p>रक्तदान चळवळीचे खंदे पाठीराखे बना! नोंदणी करा, पोर्टलमध्‍ये लॉगिन करा, नियुक्तीपत्र पडताळून पाहा आणि मार्गदर्शक तत्त्वांचे पालन करा.</p>
+    <p>रक्तदान चळवळीचे खांदे पाठीराखे बना! नोंदणी करा, नियुक्तीपत्र पडताळून पहा आणि मार्गदर्शक तत्त्वांचे पालन करा.</p>
   </section>
 
-  <!-- Sub Navigation Tabs -->
-  <div class="tab-bar">
-    <div class="tab-container">
-      <button class="tab-btn active" onclick="switchTab('register', event)">
-        <i class="fa-solid fa-user-plus"></i> स्वयंसेवक नोंदणी
-      </button>
-      <button class="tab-btn" onclick="switchTab('login', event)">
-        <i class="fa-solid fa-right-to-bracket"></i> स्वयंसेवक लॉगिन
-      </button>
-      <button class="tab-btn" onclick="switchTab('verify', event)">
-        <i class="fa-solid fa-shield-halved"></i> नियुक्तीपत्र पडताळणी
-      </button>
-      <button class="tab-btn" onclick="switchTab('guidelines', event)">
-        <i class="fa-solid fa-book-open"></i> स्वयंसेवक मार्गदर्शक
-      </button>
-    </div>
+  <!-- 🔹 Tabs 🔹 -->
+  <div class="tabs-container">
+    <button class="tab-btn active" onclick="switchTab('register')">
+      <i class="fa-solid fa-user-plus"></i> स्वयंसेवक नोंदणी
+    </button>
+    <button class="tab-btn" onclick="switchTab('verify')">
+      <i class="fa-solid fa-certificate"></i> नियुक्तीपत्र पडताळणी
+    </button>
   </div>
 
-  <div class="container">
-
-    <!-- 1️⃣ स्वयंसेवक नोंदणी Tab (Google Form Embed) -->
-    <div id="tab-register" class="tab-content active">
-      <div class="card-box" style="max-width: 850px;">
-        <h2 class="card-title"><i class="fa-solid fa-user-plus" style="color: #C00000;"></i> नवीन स्वयंसेवक नोंदणी अर्ज</h2>
-        
-        <!-- 🔹 Google Form Embed Container 🔹 -->
-        <div class="iframe-wrapper">
-          <!-- तुमच्या स्वयंसेवक फॉर्मची Google Form embed लिंक इथे टाकली आहे -->
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScX_VOLUNTEER_FORM_ID_HERE/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">लोड होत आहे…</iframe>
-        </div>
+  <!-- 🔹 Main Content Container 🔹 -->
+  <div class="content-container">
+    
+    <!-- Tab 1: Registration Form -->
+    <div id="register-tab" class="tab-content active">
+      <h2 style="margin-bottom: 15px; color: var(--secondary-color);"><i class="fa-solid fa-file-pen"></i> नवीन स्वयंसेवक नोंदणी अर्ज</h2>
+      
+      <!-- Embedded Google Form -->
+      <div class="iframe-wrapper">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdmjzC2htEbG1da11TPsrYToPkICap4OrhpcaY0yQE_S2QR9g/viewform?embedded=true">लोड होत आहे…</iframe>
       </div>
     </div>
 
-    <!-- 2️⃣ स्वयंसेवक लॉगिन Tab -->
-    <div id="tab-login" class="tab-content">
-      <div class="card-box">
-        <h2 class="card-title"><i class="fa-solid fa-right-to-bracket" style="color: #0A2A66;"></i> स्वयंसेवक पोर्टल लॉगिन</h2>
-        
-        <form onsubmit="handleLogin(event)">
-          <div class="form-group">
-            <label for="loginEmail">ईमेल किंवा मोबाईल क्रमांक *</label>
-            <input type="text" id="loginEmail" placeholder="तुमचा ईमेल किंवा फोन टाका" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="loginPassword">पासवर्ड *</label>
-            <input type="password" id="loginPassword" placeholder="******" required>
-          </div>
-
-          <button type="submit" class="btn-action">
-            <i class="fa-solid fa-lock"></i> सुरक्षित लॉगिन करा
-          </button>
-        </form>
+    <!-- Tab 2: Verification & Download -->
+    <div id="verify-tab" class="tab-content">
+      <h2 style="margin-bottom: 15px; color: var(--secondary-color);"><i class="fa-solid fa-shield-halved"></i> नियुक्तीपत्र पडताळणी व डाऊनलोड</h2>
+      <p style="margin-bottom: 20px;">तुमचा अधिकृत Volunteer ID (उदा. RAKTDATA-2026-1042) टाकून तुमचे नियुक्तीपत्र डाउनलोड करा.</p>
+      
+      <div class="search-box">
+        <input type="text" id="volunteerIdInput" placeholder="उदा. RAKTDATA-2026-1042">
+        <button onclick="verifyVolunteer()"><i class="fa-solid fa-magnifying-glass"></i> शोध घ्या</button>
       </div>
-    </div>
 
-    <!-- 3️⃣ नियुक्तीपत्र पडताळणी + PDF डाऊनलोड Tab -->
-    <div id="tab-verify" class="tab-content">
-      <div class="card-box">
-        <h2 class="card-title">
-          <i class="fa-solid fa-shield-halved" style="color: #10b981;"></i> नियुक्तीपत्र पडताळणी (Verification)
-        </h2>
+      <div id="resultCard" class="result-card">
+        <h3><i class="fa-solid fa-circle-check"></i> नियुक्तीपत्र पडताळणी यशस्वी!</h3>
+        <p><strong>नाव:</strong> <span id="vName"></span></p>
+        <p><strong>पद:</strong> <span id="vRole"></span></p>
+        <p><strong>जिल्हा/विभाग:</strong> <span id="vDistrict"></span></p>
+        <p><strong>स्थिती:</strong> <span id="vStatus" style="color: green; font-weight: bold;"></span></p>
         
-        <p style="font-size: 14px; color: #64748b; margin-bottom: 20px;">
-          स्वयंसेवकाच्या नियुक्तीपत्रातील सूचना / आयडी क्रमांक (Appointment ID) टाका आणि वैधता तपासा.
-        </p>
-
-        <div class="form-group">
-          <label for="certIdInput">नियुक्तीपत्र क्रमांक (Certificate / ID No.) *</label>
-          <input type="text" id="certIdInput" placeholder="उदा. RAKTDATA-2026-1042">
-        </div>
-
-        <button type="button" class="btn-action" onclick="verifyAndDownload()" style="background: #10b981;">
-          <i class="fa-solid fa-magnifying-glass"></i> पडताळणी करा
-        </button>
-
-        <!-- निकाल आणि डाऊनलोड बटण दाखवण्यासाठी कंटेनर -->
-        <div id="resultBox"></div>
-      </div>
-    </div>
-
-    <!-- 4️⃣ स्वयंसेवक मार्गदर्शक Tab -->
-    <div id="tab-guidelines" class="tab-content">
-      <div class="card-box" style="max-width: 850px;">
-        <h2 class="card-title"><i class="fa-solid fa-book-open" style="color: #0A2A66;"></i> स्वयंसेवक मार्गदर्शक व नियमावली</h2>
-        
-        <div style="font-size: 15px; color: #334155;">
-          <h3 style="color: #C00000; margin-bottom: 10px;">📌 स्वयंसेवकाची कर्तव्ये:</h3>
-          <ul style="margin-left: 20px; margin-bottom: 20px;">
-            <li style="margin-bottom: 8px;">तातडीच्या काळात गरजू रुग्णांना आणि त्यांच्या नातेवाईकांना योग्य मार्गदर्शन करणे.</li>
-            <li style="margin-bottom: 8px;">स्थानिक पातळीवर रक्तदान शिबिरांचे आयोजन करण्यासाठी सहकार्य करणे.</li>
-            <li style="margin-bottom: 8px;">पोर्टलवर नोंदणी केलेल्या रक्तदात्यांशी आदरपूर्वक आणि नम्रपणे संवाद साधणे.</li>
-          </ul>
-
-          <h3 style="color: #C00000; margin-bottom: 10px;">⚠️ महत्त्वाच्या सूचना:</h3>
-          <ul style="margin-left: 20px;">
-            <li style="margin-bottom: 8px;">RAKTDATA.IN च्या नावाने कोणत्याही रुग्णाकडून किंवा दात्याकडून पैसे घेणे पूर्णपणे निषिद्ध आहे.</li>
-            <li style="margin-bottom: 8px;">नियुक्तीपत्राचा गैरवापर केल्यास स्वयंसेवक पद तात्काळ रद्द केले जाईल.</li>
-          </ul>
-        </div>
+        <a id="downloadPdfBtn" href="#" target="_blank" class="download-btn">
+          <i class="fa-solid fa-file-pdf"></i> नियुक्तीपत्र (PDF) डाऊनलोड करा
+        </a>
       </div>
     </div>
 
   </div>
 
-  <!-- Footer -->
+  <!-- 🔹 Footer 🔹 -->
   <footer>
-    &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
+    <p>© 2026 RAKTDATA.IN - National Blood Donation Movement | "रक्तदान करा, जीवन वाचवा!"</p>
   </footer>
 
-  <!-- JavaScript Logic -->
+  <!-- 🔹 JavaScript Section 🔹 -->
   <script>
-    // १. टॅब बदलण्यासाठीचे फंक्शन (Tab Switcher)
-    function switchTab(tabName, event) {
-      const buttons = document.querySelectorAll('.tab-btn');
+    // Tab Switcher
+    function switchTab(tabName) {
+      const tabs = document.querySelectorAll('.tab-btn');
       const contents = document.querySelectorAll('.tab-content');
 
-      buttons.forEach(btn => btn.classList.remove('active'));
+      tabs.forEach(tab => tab.classList.remove('active'));
       contents.forEach(content => content.classList.remove('active'));
 
-      event.currentTarget.classList.add('active');
-      document.getElementById('tab-' + tabName).classList.add('active');
+      if(tabName === 'register') {
+        tabs[0].classList.add('active');
+        document.getElementById('register-tab').classList.add('active');
+      } else {
+        tabs[1].classList.add('active');
+        document.getElementById('verify-tab').classList.add('active');
+      }
     }
 
-    // २. स्वयंसेवक लॉगिन हँडलर
-    function handleLogin(event) {
-      event.preventDefault();
-      alert("लॉगिन यशस्वी झाले! स्वयंसेवक डॅशबोर्डवर रिडायरेक्ट करत आहे...");
-    }
-
-    // ३. नियुक्तीपत्र डेटाबेस (Google Drive PDF लिंक्ससह)
+    // Dummy Database for Verification Demo
+    // (AutoCrat द्वारे ऑटो-जनरेट झालेल्या Drive direct download links इथे अपडेट करा)
     const volunteerDatabase = {
       "RAKTDATA-2026-1042": {
         name: "अमित शर्मा",
         role: "जिल्हा समन्वयक",
         district: "पुणे",
         status: "सक्रिय (Active)",
-        pdfUrl: "https://drive.google.com/uc?export=download&id=YOUR_DRIVE_FILE_ID_1"
-      },
-      "RAKTDATA-2026-1043": {
-        name: "प्रिया पाटील",
-        role: "रक्तदान शिबीर प्रमुख",
-        district: "मुंबई",
-        status: "सक्रिय (Active)",
-        pdfUrl: "https://drive.google.com/uc?export=download&id=YOUR_DRIVE_FILE_ID_2"
+        pdfUrl: "https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE"
       }
     };
 
-    // ४. पडताळणी आणि PDF डाऊनलोड फंक्शन
-    function verifyAndDownload() {
-      const inputVal = document.getElementById("certIdInput").value.trim().toUpperCase();
-      const resultBox = document.getElementById("resultBox");
+    function verifyVolunteer() {
+      const inputId = document.getElementById('volunteerIdInput').value.trim();
+      const resultCard = document.getElementById('resultCard');
 
-      if (!inputVal) {
-        alert("कृपया नियुक्तीपत्र क्रमांक टाका!");
-        return;
-      }
+      if(volunteerDatabase[inputId]) {
+        const data = volunteerDatabase[inputId];
+        document.getElementById('vName').innerText = data.name;
+        document.getElementById('vRole').innerText = data.role;
+        document.getElementById('vDistrict').innerText = data.district;
+        document.getElementById('vStatus').innerText = data.status;
+        document.getElementById('downloadPdfBtn').href = data.pdfUrl;
 
-      if (volunteerDatabase[inputVal]) {
-        const volunteer = volunteerDatabase[inputVal];
-        
-        resultBox.innerHTML = `
-          <div style="background: #f0fdf4; border: 1px solid #22c55e; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: left;">
-            <h3 style="color: #15803d; font-size: 18px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-              <i class="fa-solid fa-circle-check"></i> अधिकृत नियुक्तीपत्र (Verified)
-            </h3>
-            <p style="margin-bottom: 5px;"><strong>नाव:</strong> ${volunteer.name}</p>
-            <p style="margin-bottom: 5px;"><strong>पद:</strong> ${volunteer.role}</p>
-            <p style="margin-bottom: 5px;"><strong>जिल्हा:</strong> ${volunteer.district}</p>
-            <p style="margin-bottom: 15px;"><strong>स्थिती:</strong> <span style="color: #22c55e; font-weight: bold;">${volunteer.status}</span></p>
-            
-            <a href="${volunteer.pdfUrl}" target="_blank" download style="display: inline-block; background: #0A2A66; color: white; text-decoration: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 14px;">
-              <i class="fa-solid fa-file-arrow-down"></i> नियुक्तीपत्र (PDF) डाऊनलोड करा
-            </a>
-          </div>
-        `;
+        resultCard.style.display = 'block';
       } else {
-        resultBox.innerHTML = `
-          <div style="background: #fef2f2; border: 1px solid #ef4444; color: #991b1b; padding: 15px; border-radius: 10px; margin-top: 20px;">
-            <i class="fa-solid fa-triangle-exclamation"></i> <strong>अमान्य नोंदणी!</strong> हा नियुक्तीपत्र क्रमांक आमच्या सिस्टीममध्ये उपलब्ध नाही. कृपया नंबर तपासून पहा.
-          </div>
-        `;
+        alert("माफ करा, हा Volunteer ID आढळला नाही! कृपया नंबर तपासा.");
+        resultCard.style.display = 'none';
       }
     }
   </script>
