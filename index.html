@@ -369,22 +369,23 @@
 <body>
 
   <!-- Top Header -->
-<div class="header-container" style="display: flex; align-items: center; justify-content: flex-start; gap: 15px;">
-    
-    <!-- १. लोगो (Logo) -->
-    <a class="navbar-brand" href="#">
-        <img src="logo.png" alt="RAKTDATA.IN">
-    </a>
-
-    <!-- २. भाषा ड्रॉपडाऊन (Language Dropdown - आता डाव्या बाजूला) -->
-    <div class="language-select">
-        <select class="form-select">
-            <option value="mr">🌐 मराठी</option>
-            <option value="en">English</option>
+  <header class="header-container">
+    <a href="#" class="brand-logo">
+   <img src="logo.png" alt="Logo" style="height: 45px; width: auto;">
+      <div class="brand-text">
+        <h1>RAKTDATA.IN</h1>
+        <p>NATIONAL BLOOD DONATION MOVEMENT</p>
+      </div>
+   
+      <!-- 👇 हा भाषा बदलण्याचा कोड इथे पेस्ट करा 👇 -->
+      <div class="lang-switcher">
+        <i class="fa-solid fa-globe" style="color: #0A2A66;"></i>
+        <select onchange="location = this.value;" style="border:1px solid #ccc; padding:6px; border-radius:6px; font-weight:bold; cursor:pointer;">
+          <option value="volunteer.html" selected>मराठी</option>
+          <option value="volunteer-hi.html">हिंदी</option>
+          <option value="volunteer-en.html">English</option>
         </select>
-    </div>
-
-</div>
+      </div>
       <!-- 👆 भाषा बदलण्याचा कोड संपला 👆 -->
 
     </div>
