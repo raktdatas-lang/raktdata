@@ -377,22 +377,35 @@
         <p>NATIONAL BLOOD DONATION MOVEMENT</p>
       </div>
    
-      <!-- 👇 हा भाषा बदलण्याचा कोड इथे पेस्ट करा 👇 -->
-   <!-- Google Translate एलिमेंट साठी कंटेनर -->
-<div id="google_translate_element"></div>
+   <!-- भाषा निवडीचा साधा आणि सोपा कोड -->
+<div class="lang-switcher" style="display: inline-block;">
+    <i class="fa-solid fa-globe" style="color: #0A2A66; margin-right: 5px;"></i>
+    <select id="languageSelect" onchange="translatePage(this.value)" style="border: 1px solid #ccc; padding: 6px; border-radius: 6px; font-weight: bold; cursor: pointer;">
+        <option value="mr">मराठी</option>
+        <option value="hi">हिंदी</option>
+        <option value="en">English</option>
+    </select>
+</div>
 
-<!-- Google Translate ची ऑटोमॅटिक स्क्रिप्ट -->
+<!-- गुगल ट्रान्सलेट बॅकएंड स्क्रिप्ट -->
+<div id="google_translate_element" style="display:none;"></div>
 <script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'mr', // मूळ भाषा मराठी
-    includedLanguages: 'mr,hi,en', // मराठी, हिंदी आणि इंग्लिश पर्याय
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  }, 'google_translate_element');
-}
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'mr',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+
+  function translatePage(lang) {
+    var selectElement = document.querySelector('.goog-te-combo');
+    if (selectElement) {
+      selectElement.value = lang;
+      selectElement.dispatchEvent(new Event('change'));
+    }
+  }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-      <!-- 👆 भाषा बदलण्याचा कोड संपला 👆 -->
     </div>
       <!-- Line 395: 👈 भाषा बदलण्याचा कोड संपला 👉 -->
 
