@@ -1,0 +1,44 @@
+<!-- १. इनपुट फॉर्म -->
+<div class="poster-form">
+  <input type="text" id="volName" placeholder="तुमचे नाव टाका" oninput="updatePoster()">
+  <input type="text" id="volPhone" placeholder="मोबाईल नंबर" oninput="updatePoster()">
+  <input type="file" id="volPhoto" accept="image/*" onchange="loadPhoto(event)">
+  <button onclick="downloadPoster()">पोस्टर डाऊनलोड करा</button>
+</div>
+
+<!-- २. पोस्टर कॅनव्हास (ज्यावर डिझाइन जनरेट होईल) -->
+<div id="posterContainer" style="position: relative; width: 400px; height: 600px; background: url('poster-bg.jpg');">
+  <!-- फोटो डिस्प्ले -->
+  <img id="previewPhoto" style="position: absolute; top: 150px; left: 130px; width: 140px; height: 140px; border-radius: 50%;">
+  
+  <!-- नाव व फोन नंबर डिस्प्ले -->
+  <h3 id="displayName" style="position: absolute; bottom: 80px; width: 100%; text-align: center; color: #fff;"></h3>
+  <p id="displayPhone" style="position: absolute; bottom: 50px; width: 100%; text-align: center; color: #FFD700;"></p>
+</div>
+
+<!-- html2canvas लायब्ररी डाऊनलोडसाठी -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+function updatePoster() {
+  document.getElementById('displayName').innerText = document.getElementById('volName').value;
+  document.getElementById('displayPhone').innerText = document.getElementById('volPhone').value;
+}
+
+function loadPhoto(event) {
+  var reader = new FileReader();
+  reader.onload = function(){
+    var output = document.getElementById('previewPhoto');
+    output.src = reader.result;
+  };
+  reader.readAsDataURL(event.target.files[0]);
+}
+
+function downloadPoster() {
+  html2canvas(document.getElementById('posterContainer')).then(canvas => {
+    let link = document.createElement('a');
+    link.download = 'RaktData-Volunteer-Poster.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
+</script>
