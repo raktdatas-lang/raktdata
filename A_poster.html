@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्वयंसेवक पोस्टर जनरेटर - RaktData.in</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- HTML2Canvas Library for Image Downloading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #334155;
+        }
+
+        @media (max-width: 850px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Form Inputs Styling */
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .form-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ff4d4d;
+            border-bottom: 2px solid #ff4d4d;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        .input-group input {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: #ffffff;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #ff4d4d;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #e11d48, #9f1239);
+            color: #ffffff;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #f43f5e, #be123c);
+        }
+
+        /* Poster Preview Card Container */
+        .preview-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* The Poster Itself (Width: 450px, Height: 600px - Perfect 3:4 Ratio) */
+        #posterArea {
+            width: 420px;
+            height: 560px;
+            background: linear-gradient(180deg, #8b0000 0%, #4a0000 60%, #1a0000 100%);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            border: 3px solid #ffd700;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Poster Header */
+        .poster-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.4);
+            padding-bottom: 10px;
+        }
+
+        .poster-logo-icon {
+            font-size: 32px;
+            color: #ff4d4d;
+            background: #ffffff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ffd700;
+        }
+
+        .poster-brand-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .poster-tagline {
+            font-size: 11px;
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        /* Main Slogan Section */
+        .poster-slogan {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 10px 0 5px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .poster-subtext {
+            font-size: 13px;
+            color: #f1f5f9;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* Volunteer Photo Box */
+        .photo-container {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto;
+            border-radius: 50%;
+            border: 4px solid #ffd700;
+            overflow: hidden;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Volunteer Details Overlay */
+        .volunteer-info {
+            margin-top: 8px;
+        }
+
+        .volunteer-badge {
+            font-size: 11px;
+            color: #ffd700;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .volunteer-name {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-top: 2px;
+        }
+
+        .volunteer-phone {
+            font-size: 14px;
+            color: #ffd700;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        /* Poster Footer Line */
+        .poster-footer {
+            background: #ffd700;
+            color: #4a0000;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 800;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Form Left Section -->
+        <div class="form-section">
+            <div class="form-title">
+                <i class="fa-solid fa-id-card"></i> स्वयंसेवक माहिती भरा
+            </div>
+
+            <div class="input-group">
+                <label>तुमचे पूर्ण नाव :</label>
+                <input type="text" id="inputName" placeholder="उदा. अमोल पाटील" oninput="updatePoster()" value="अमोल पाटील">
+            </div>
+
+            <div class="input-group">
+                <label>मोबाईल नंबर :</label>
+                <input type="text" id="inputPhone" placeholder="उदा. +९१ ९८७६५४३२१०" oninput="updatePoster()" value="+९१ ९८७६५४३२१०">
+            </div>
+
+            <div class="input-group">
+                <label>तुमचा फोटो अपलोड करा :</label>
+                <input type="file" id="inputPhoto" accept="image/*" onchange="previewImage(event)">
+            </div>
+
+            <button class="btn-download" onclick="generatePoster()">
+                <i class="fa-solid fa-download"></i> पोस्टर डाऊनलोड करा (Download Image)
+            </button>
+        </div>
+
+        <!-- Poster Preview Right Section -->
+        <div class="preview-section">
+            <div id="posterArea">
+                
+                <!-- Brand Header -->
+                <div class="poster-header">
+                    <div class="poster-logo-icon">
+                        <i class="fa-solid fa-hand-holding-droplet"></i>
+                    </div>
+                    <div>
+                        <div class="poster-brand-name">RAKTDATA.IN</div>
+                        <div class="poster-tagline">National Blood Donation Movement</div>
+                    </div>
+                </div>
+
+                <!-- Main Campaign Slogan -->
+                <div>
+                    <div class="poster-slogan">"रक्तदान हेच श्रेष्ठ दान!"</div>
+                    <div class="poster-subtext">सक्रिय स्वयंसेवक - जीवनरक्षक मोहीम</div>
+                </div>
+
+                <!-- Volunteer Photo -->
+                <div class="photo-container">
+                    <img id="volunteerImg" src="https://via.placeholder.com/150?text=Photo" alt="Volunteer Photo">
+                </div>
+
+                <!-- Volunteer Info -->
+                <div class="volunteer-info">
+                    <div class="volunteer-badge">★ अधिकृत स्वयंसेवक ★</div>
+                    <div class="volunteer-name" id="displayVolunteerName">अमोल पाटील</div>
+                    <div class="volunteer-phone" id="displayVolunteerPhone"><i class="fa-solid fa-phone"></i> +९१ ९८७६५४३२१०</div>
+                </div>
+
+                <!-- Footer Call to Action -->
+                <div class="poster-footer">
+                    रक्तदानासाठी आजच नोंदणी करा: www.raktdata.in
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // १. नाव व मोबाईल नंबर लाईव्ह अपडेट करणे
+        function updatePoster() {
+            const name = document.getElementById('inputName').value;
+            const phone = document.getElementById('inputPhone').value;
+
+            document.getElementById('displayVolunteerName').innerText = name || "तुमचे नाव";
+                document.getElementById('displayVolunteerPhone').innerHTML = `<i class="fa-solid fa-phone"></i> ${phone || "+९१ XXXXXXXXXX"}`;
+        }
+
+        // २. अपलोड केलेला फोटो दाखवणे
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('volunteerImg');
+                output.src = reader.result;
+            };
+            if(event.target.files[0]) {
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+
+        // ३. पोस्टर फोटो (PNG) म्हणून डाऊनलोड करणे
+        function generatePoster() {
+            const posterElement = document.getElementById('posterArea');
+            
+            html2canvas(posterElement, {
+                scale: 2, // हाय क्वालिटी फोटोसाठी
+                useCORS: true
+            }).then(canvas => {
+                let link = document.createElement('a');
+                link.download = 'RaktData-Volunteer-Poster.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
+
+</body>
+</html>
