@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>स्वयंसेवक पोस्टर जनरेटर - RaktData.in</title>
+    <title>स्वयंसेवक जनजागृती पोस्टर जनरेटर - RaktData.in</title>
     <!-- Google Fonts & FontAwesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -77,7 +77,7 @@
             color: #cbd5e1;
         }
 
-        .input-group input {
+        .input-group input, .input-group select {
             padding: 12px;
             border-radius: 8px;
             border: 1px solid #475569;
@@ -87,7 +87,7 @@
             outline: none;
         }
 
-        .input-group input:focus {
+        .input-group input:focus, .input-group select:focus {
             border-color: #ff4d4d;
         }
 
@@ -122,7 +122,7 @@
             justify-content: center;
         }
 
-        /* The Poster Itself (Width: 450px, Height: 600px - Perfect 3:4 Ratio) */
+        /* The Poster Area */
         #posterArea {
             width: 420px;
             height: 560px;
@@ -137,6 +137,7 @@
             justify-content: space-between;
             padding: 20px;
             text-align: center;
+            transition: all 0.4s ease;
         }
 
         /* Poster Header */
@@ -262,7 +263,17 @@
         <!-- Form Left Section -->
         <div class="form-section">
             <div class="form-title">
-                <i class="fa-solid fa-id-card"></i> स्वयंसेवक माहिती भरा
+                <i class="fa-solid fa-id-card"></i> स्वयंसेवक माहिती व पोस्टर थीम
+            </div>
+
+            <!-- १. थीम निवडण्याचा ड्रॉपडाऊन -->
+            <div class="input-group">
+                <label>पोस्टरची डिझाईन थीम निवडा :</label>
+                <select id="themeSelect" onchange="changePosterTheme()">
+                    <option value="theme1">१. क्लासिक लाल-सोनेरी (रक्तदान श्रेष्ठ दान)</option>
+                    <option value="theme2">२. रॉयल नेव्ही ब्लू (जीवनरक्षक मोहीम)</option>
+                    <option value="theme3">३. ब्राइट रेड (आपत्कालीन मदत)</option>
+                </select>
             </div>
 
             <div class="input-group">
@@ -302,24 +313,24 @@
 
                 <!-- Main Campaign Slogan -->
                 <div>
-                    <div class="poster-slogan">"रक्तदान हेच श्रेष्ठ दान!"</div>
-                    <div class="poster-subtext">सक्रिय स्वयंसेवक - जीवनरक्षक मोहीम</div>
+                    <div class="poster-slogan" id="displaySlogan">"रक्तदान हेच श्रेष्ठ दान!"</div>
+                    <div class="poster-subtext" id="displaySubtext">सक्रिय स्वयंसेवक - जीवनरक्षक मोहीम</div>
                 </div>
 
                 <!-- Volunteer Photo -->
-                <div class="photo-container">
+                <div class="photo-container" id="displayPhotoBorder">
                     <img id="volunteerImg" src="https://via.placeholder.com/150?text=Photo" alt="Volunteer Photo">
                 </div>
 
                 <!-- Volunteer Info -->
                 <div class="volunteer-info">
-                    <div class="volunteer-badge">★ अधिकृत स्वयंसेवक ★</div>
+                    <div class="volunteer-badge" id="displayBadge">★ अधिकृत स्वयंसेवक ★</div>
                     <div class="volunteer-name" id="displayVolunteerName">अमोल पाटील</div>
                     <div class="volunteer-phone" id="displayVolunteerPhone"><i class="fa-solid fa-phone"></i> +९१ ९८७६५४३२१०</div>
                 </div>
 
                 <!-- Footer Call to Action -->
-                <div class="poster-footer">
+                <div class="poster-footer" id="displayFooter">
                     रक्तदानासाठी आजच नोंदणी करा: www.raktdata.in
                 </div>
 
@@ -336,10 +347,50 @@
             const phone = document.getElementById('inputPhone').value;
 
             document.getElementById('displayVolunteerName').innerText = name || "तुमचे नाव";
-                document.getElementById('displayVolunteerPhone').innerHTML = `<i class="fa-solid fa-phone"></i> ${phone || "+९१ XXXXXXXXXX"}`;
+            document.getElementById('displayVolunteerPhone').innerHTML = `<i class="fa-solid fa-phone"></i> ${phone || "+९१ XXXXXXXXXX"}`;
         }
 
-        // २. अपलोड केलेला फोटो दाखवणे
+        // २. थीम बदलण्याचे लॉजिक
+        function changePosterTheme() {
+            const theme = document.getElementById('themeSelect').value;
+            const poster = document.getElementById('posterArea');
+            const slogan = document.getElementById('displaySlogan');
+            const subtext = document.getElementById('displaySubtext');
+            const footer = document.getElementById('displayFooter');
+            const badge = document.getElementById('displayBadge');
+            const photoBorder = document.getElementById('displayPhotoBorder');
+
+            if (theme === 'theme1') {
+                poster.style.background = 'linear-gradient(180deg, #8b0000 0%, #4a0000 60%, #1a0000 100%)';
+                poster.style.borderColor = '#ffd700';
+                slogan.innerText = '"रक्तदान हेच श्रेष्ठ दान!"';
+                subtext.innerText = 'सक्रिय स्वयंसेवक - जीवनरक्षक मोहीम';
+                footer.style.background = '#ffd700';
+                footer.style.color = '#4a0000';
+                badge.style.color = '#ffd700';
+                photoBorder.style.borderColor = '#ffd700';
+            } else if (theme === 'theme2') {
+                poster.style.background = 'linear-gradient(180deg, #0A2A66 0%, #051838 100%)';
+                poster.style.borderColor = '#38bdf8';
+                slogan.innerText = '"एक पाऊल जीव वाचवण्यासाठी!"';
+                subtext.innerText = 'RaktData राष्ट्रीय रक्तदान चळवळ';
+                footer.style.background = '#38bdf8';
+                footer.style.color = '#051838';
+                badge.style.color = '#38bdf8';
+                photoBorder.style.borderColor = '#38bdf8';
+            } else if (theme === 'theme3') {
+                poster.style.background = 'linear-gradient(180deg, #dc2626 0%, #7f1d1d 100%)';
+                poster.style.borderColor = '#ffffff';
+                slogan.innerText = '"आपत्कालीन मदतीसाठी तत्पर!"';
+                subtext.innerText = 'सदैव सेवेत - RaktData स्वयंसेवक';
+                footer.style.background = '#ffffff';
+                footer.style.color = '#7f1d1d';
+                badge.style.color = '#ffffff';
+                photoBorder.style.borderColor = '#ffffff';
+            }
+        }
+
+        // ३. अपलोड केलेला फोटो दाखवणे
         function previewImage(event) {
             const reader = new FileReader();
             reader.onload = function() {
@@ -351,7 +402,7 @@
             }
         }
 
-        // ३. पोस्टर फोटो (PNG) म्हणून डाऊनलोड करणे
+        // ४. पोस्टर फोटो (PNG) म्हणून डाऊनलोड करणे
         function generatePoster() {
             const posterElement = document.getElementById('posterArea');
             
