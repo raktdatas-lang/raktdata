@@ -378,14 +378,20 @@
       </div>
    
       <!-- 👇 हा भाषा बदलण्याचा कोड इथे पेस्ट करा 👇 -->
-      <div class="lang-switcher">
-        <i class="fa-solid fa-globe" style="color: #0A2A66;"></i>
-        <select onchange="location = this.value;" style="border:1px solid #ccc; padding:6px; border-radius:6px; font-weight:bold; cursor:pointer;">
-          <option value="volunteer.html" selected>मराठी</option>
-          <option value="volunteer-hi.html">हिंदी</option>
-          <option value="volunteer-en.html">English</option>
-        </select>
-      </div>
+   <!-- Google Translate एलिमेंट साठी कंटेनर -->
+<div id="google_translate_element"></div>
+
+<!-- Google Translate ची ऑटोमॅटिक स्क्रिप्ट -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'mr', // मूळ भाषा मराठी
+    includedLanguages: 'mr,hi,en', // मराठी, हिंदी आणि इंग्लिश पर्याय
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
       <!-- 👆 भाषा बदलण्याचा कोड संपला 👆 -->
 
     </div>
