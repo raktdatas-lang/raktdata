@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>स्वयंसेवक माहिती व जनजागृती पोस्टर | RaktData.in</title>
+    <title>रक्तदाता व संस्था सन्मान पोस्टर मेकर | RaktData.in</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Html2Canvas -->
@@ -16,6 +16,7 @@
             --input-dark: #0f172a;
             --accent-red: #e11d48;
             --gold-color: #fbbf24;
+            --success-color: #10b981;
         }
 
         body {
@@ -47,7 +48,7 @@
         /* Form Styling */
         .form-section {
             flex: 1;
-            min-width: 300px;
+            min-width: 320px;
         }
 
         .form-title {
@@ -191,6 +192,7 @@
             background: rgba(255,255,255,0.15);
             padding: 2px 10px;
             border-radius: 12px;
+            font-weight: 600;
         }
 
         .photo-container {
@@ -219,6 +221,9 @@
             color: #fef08a;
             font-weight: 700;
             margin-bottom: 2px;
+            background: rgba(251, 191, 36, 0.15);
+            padding: 1px 8px;
+            border-radius: 10px;
         }
 
         .user-name {
@@ -227,6 +232,7 @@
             color: #ffffff;
             margin: 0;
             text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            line-height: 1.2;
         }
 
         .user-phone {
@@ -259,37 +265,46 @@
         <!-- Form Section -->
         <div class="form-section">
             <div class="form-title">
-                <i class="fa-solid fa-address-card" style="color: var(--accent-red);"></i>
-                स्वयंसेवक माहिती व पोस्टर थीम
+                <i class="fa-solid fa-people-arrows" style="color: var(--accent-red);"></i>
+                माहिती व पोस्टर सन्मान प्रकार
+            </div>
+
+            <div class="form-group">
+                <label>पोस्टरचा सन्मान प्रकार निवडा :</label>
+                <select id="userTypeSelect" onchange="updatePoster()">
+                    <option value="volunteer">👤 अधिकृत स्वयंसेवक</option>
+                    <option value="donor">🩸 सन्माननीय रक्तदाता</option>
+                    <option value="organization">🤝 सहयोगी संस्था / संघटना</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label>पोस्टरची डिझाईन थीम निवडा :</label>
                 <select id="themeSelect" onchange="updatePoster()">
-                    <option value="theme-red">१. ब्राईट रेड (आपत्कालीन मदत)</option>
-                    <option value="theme-blue">२. रॉयल ब्लू (रक्तदान हेच श्रेष्ठ दान)</option>
-                    <option value="theme-green">३. एमराल्ड ग्रीन (१ युनिट रक्त = ३ जीवन)</option>
-                    <option value="theme-dark">४. प्रीमियम डार्क (महा-रक्तदान जनजागृती)</option>
+                    <option value="theme-red">🔴 ब्राईट रेड (आपत्कालीन मदत)</option>
+                    <option value="theme-blue">💙 रॉयल् ब्लू (रक्तदान हेच श्रेष्ठ दान)</option>
+                    <option value="theme-green">🟢 एमराल्ड ग्रीन (१ युनिट रक्त = ३ जीवन)</option>
+                    <option value="theme-dark">🖤 प्रीमियम डार्क (महा-रक्तदान जनजागृती)</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>तुमचे पूर्ण नाव :</label>
+                <label id="labelName">व्यक्तीचे / संस्थेचे पूर्ण नाव :</label>
                 <input type="text" id="inputName" value="अमोल पाटील" placeholder="नाव टाका" oninput="updatePoster()">
             </div>
 
             <div class="form-group">
-                <label>मोबाईल नंबर :</label>
+                <label>संपर्क नंबर (पर्यायी) :</label>
                 <input type="text" id="inputPhone" value="+९१ ९८७६५४३२१०" placeholder="मोबाईल नंबर टाका" oninput="updatePoster()">
             </div>
 
             <div class="form-group">
-                <label>तुमचा फोटो अपलोड करा :</label>
+                <label>संबंधित फोटो अपलोड करा (फक्त व्यक्तीसाठी) :</label>
                 <input type="file" id="inputPhoto" accept="image/*" onchange="handlePhoto(event)">
             </div>
 
             <div class="form-group">
-                <label>संस्थेचा / स्वतःचा लोगो अपलोड करा (पर्यायी) :</label>
+                <label>संस्थेचा / स्वतःचा लोगो अपलोड करा (फक्त संस्थेसाठी) :</label>
                 <input type="file" id="inputLogo" accept="image/*" onchange="handleLogo(event)">
             </div>
 
@@ -314,7 +329,7 @@
                 <!-- Slogan Area -->
                 <div>
                     <div class="poster-slogan" id="displaySlogan">"आपत्कालीन मदतीसाठी तत्पर!"</div>
-                    <div class="poster-subtext">सदैव सेवेत - RaktData स्वयंसेवक</div>
+                    <div class="poster-subtext" id="displaySubtext">सदैव सेवेत - RaktData स्वयंसेवक</div>
                 </div>
 
                 <!-- User Photo -->
@@ -324,7 +339,7 @@
 
                 <!-- User Details -->
                 <div class="user-details">
-                    <div class="user-badge">★ अधिकृत स्वयंसेवक ★</div>
+                    <div class="user-badge" id="displayBadge">★ अधिकृत स्वयंसेवक ★</div>
                     <div class="user-name" id="displayName">अमोल पाटील</div>
                     <div class="user-phone"><i class="fa-solid fa-phone" style="font-size:10px; color:var(--gold-color);"></i> <span id="displayPhone">+९१ ९८७६५४३२१०</span></div>
                 </div>
@@ -340,24 +355,55 @@
     </div>
 
     <script>
-        const slogans = {
+        // Slogans based on Design Theme
+        const themeSlogans = {
             'theme-red': '"आपत्कालीन मदतीसाठी तत्पर!"',
             'theme-blue': '"रक्तदान हेच श्रेष्ठ दान, वाचवा कोणाचेही प्राण!"',
             'theme-green': '"१ युनिट रक्त वाचवू शकते ३ जणांचे जीवन!"',
             'theme-dark': '"चला एकत्र येऊया, रक्तदान चळवळ वाढवूया!"'
         };
 
+        // Text settings based on User Type सन्मान
+        const userTypeSettings = {
+            'volunteer': {
+                badge: '★ अधिकृत स्वयंसेवक ★',
+                subtext: 'सदैव सेवेत - RaktData स्वयंसेवक',
+                defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
+            },
+            'donor': {
+                badge: '🩸 सन्माननीय रक्तदाता 🩸',
+                subtext: '"रक्तदान करून वाचवले जीवन!"',
+                defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
+            },
+            'organization': {
+                badge: '🤝 सहयोगी संस्था 🤝',
+                subtext: 'आमचा आधार - मोहिमेत सहभागी संस्था',
+                defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/1297/1297136.png' // Organization icon
+            }
+        };
+
         function updatePoster() {
-            // Update Text
-            document.getElementById('displayName').innerText = document.getElementById('inputName').value || "तुमचे नाव";
+            // 1. Update Personal/Org Text Data
+            document.getElementById('displayName').innerText = document.getElementById('inputName').value || "नाव टाईप करा";
             document.getElementById('displayPhone').innerText = document.getElementById('inputPhone').value || "";
             
-            // Update Theme & Slogan
+            // 2. Handle Design Theme & Slogan
             const selectedTheme = document.getElementById('themeSelect').value;
-            const posterCard = document.getElementById('poster-card');
+            document.getElementById('poster-card').className = selectedTheme;
+            document.getElementById('displaySlogan').innerText = themeSlogans[selectedTheme];
+
+            // 3. Handle User Type सन्मान (Volunteer/Donor/Org)
+            const selectedType = document.getElementById('userTypeSelect').value;
+            const settings = userTypeSettings[selectedType];
             
-            posterCard.className = selectedTheme;
-            document.getElementById('displaySlogan').innerText = slogans[selectedTheme];
+            document.getElementById('displayBadge').innerText = settings.badge;
+            document.getElementById('displaySubtext').innerText = settings.subtext;
+
+            // संस्थेसाठी डीफॉल्ट फोटो बदलणे (जर संस्थेचा लोगो अपलोड नाही केला)
+            const photoEl = document.getElementById('posterPhoto');
+            if (photoEl.src.includes('cdn-icons-png')) { // Only if not a user-uploaded image
+                photoEl.src = settings.defaultPhoto;
+            }
         }
 
         // Handle User Photo
@@ -372,7 +418,7 @@
             }
         }
 
-        // Handle Dynamic Logo
+        // Handle Organization/Brand Logo
         function handleLogo(event) {
             const file = event.target.files[0];
             if (file) {
@@ -384,18 +430,18 @@
             }
         }
 
-        // Download Poster Image
+        // Download High-Res Poster
         function downloadPoster() {
             const poster = document.getElementById('poster-card');
-            const userName = document.getElementById('inputName').value || 'Volunteer';
+            const userName = document.getElementById('inputName').value || 'Honored';
 
             html2canvas(poster, {
-                scale: 3, // High Resolution Download
+                scale: 3, // High Resolution 3x
                 useCORS: true,
                 allowTaint: true
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `RaktData_Poster_${userName}.png`;
+                link.download = `RaktData_HonoredPoster_${userName}.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             });
