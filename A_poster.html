@@ -6,31 +6,27 @@
     <title>रक्तदाता व संस्था सन्मान पोस्टर मेकर | RAKTDATA.IN</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Html2Canvas for downloading poster -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <style>
         :root {
-            --bg-dark: #070c18;
-            --card-bg: #0f172a;
-            --input-bg: #1e293b;
-            --border-color: #334155;
-            --primary-red: #f43f5e;
-            --btn-red: #e11d48;
+            --bg-dark: #0b1120;
+            --card-bg: #111827;
+            --input-bg: #1f2937;
+            --border-color: #374151;
+            --primary-red: #e11d48;
             --whatsapp-green: #10b981;
-            --gold-color: #f59e0b;
-            --gold-gradient: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
+            --gold-color: #fbbf24;
+            --text-light: #f3f4f6;
+            --text-muted: #9ca3af;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', 'Tiro Devanagari Marathi', system-ui, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
@@ -43,10 +39,10 @@
 
         /* Top Header Navigation */
         .top-navbar {
-            background-color: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
+            background-color: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border-color);
-            padding: 14px 32px;
+            padding: 12px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -61,69 +57,49 @@
             gap: 12px;
         }
 
-        .nav-logo-icon {
-            width: 42px;
-            height: 42px;
-            background: radial-gradient(circle, #e11d48 0%, #9f1239 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 22px;
-            box-shadow: 0 0 12px rgba(225, 29, 72, 0.5);
+        .nav-logo {
+            width: 36px;
+            height: 36px;
         }
 
         .nav-title-group h1 {
-            font-size: 20px;
-            font-weight: 900;
+            font-size: 18px;
+            font-weight: 800;
             letter-spacing: 0.5px;
             color: #ffffff;
             line-height: 1;
         }
 
         .nav-title-group p {
-            font-size: 10px;
+            font-size: 9px;
             color: var(--text-muted);
-            letter-spacing: 0.8px;
-            margin-top: 3px;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
         }
 
         .page-heading {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
             color: #ffffff;
         }
 
-        .lang-dropdown {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
         .lang-dropdown select {
-            background: transparent;
+            background-color: var(--input-bg);
             color: #ffffff;
-            border: none;
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 6px;
             outline: none;
             cursor: pointer;
-            font-size: 14px;
-            padding-right: 8px;
         }
 
         /* Main Workspace Container */
         .workspace {
             display: flex;
             flex: 1;
-            padding: 30px;
-            gap: 30px;
-            max-width: 1400px;
+            padding: 24px;
+            gap: 24px;
+            max-width: 1300px;
             margin: 0 auto;
             width: 100%;
             flex-wrap: wrap;
@@ -132,23 +108,22 @@
         /* Form Controls Panel */
         .control-panel {
             flex: 1;
-            min-width: 360px;
+            min-width: 340px;
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 20px;
         }
 
         .panel-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 18px;
+            gap: 10px;
+            font-size: 16px;
             font-weight: 700;
-            padding-bottom: 16px;
+            padding-bottom: 12px;
             border-bottom: 1px solid var(--border-color);
-            margin-bottom: 22px;
+            margin-bottom: 20px;
             color: #ffffff;
         }
 
@@ -157,67 +132,37 @@
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .form-group label {
             display: block;
             font-size: 13px;
             color: var(--text-muted);
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .input-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .input-wrapper i {
-            position: absolute;
-            left: 14px;
-            color: var(--text-muted);
-            font-size: 14px;
+            margin-bottom: 6px;
         }
 
         .input-box {
             width: 100%;
             background-color: var(--input-bg);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 12px 14px 12px 40px;
+            border-radius: 8px;
+            padding: 10px 14px;
             color: #ffffff;
             font-size: 14px;
             outline: none;
-            transition: all 0.2s;
-        }
-
-        select.input-box {
-            appearance: none;
-            cursor: pointer;
-        }
-
-        .select-wrapper::after {
-            content: '\f107';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 14px;
-            color: var(--text-muted);
-            pointer-events: none;
+            transition: border-color 0.2s;
         }
 
         .input-box:focus {
             border-color: var(--primary-red);
-            box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.2);
         }
 
         .file-preview-card {
             background-color: var(--input-bg);
             border: 1px dashed var(--border-color);
-            border-radius: 10px;
-            padding: 10px 14px;
+            border-radius: 8px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -226,25 +171,24 @@
         .file-info {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .file-thumb {
-            width: 44px;
-            height: 44px;
-            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
             object-fit: cover;
-            background-color: #334155;
+            background-color: #374151;
         }
 
         .file-details h4 {
-            font-size: 13px;
+            font-size: 12px;
             color: #ffffff;
-            font-weight: 600;
         }
 
         .file-details p {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-muted);
         }
 
@@ -254,39 +198,32 @@
             background: none;
             border: none;
             font-size: 16px;
-            padding: 6px;
-            transition: color 0.2s;
-        }
-
-        .btn-remove:hover {
-            color: #ff6b81;
         }
 
         .action-btns {
-            margin-top: 28px;
+            margin-top: 24px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .btn {
             width: 100%;
-            padding: 14px;
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 8px;
             border: none;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            gap: 8px;
+            transition: opacity 0.2s;
         }
 
         .btn-download {
-            background-color: var(--btn-red);
+            background-color: var(--primary-red);
             color: #ffffff;
         }
 
@@ -296,176 +233,102 @@
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            opacity: 0.95;
+            opacity: 0.9;
         }
 
         /* Poster Live Preview Panel */
         .preview-panel {
             flex: 1;
-            min-width: 380px;
+            min-width: 340px;
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 24px;
+            border-radius: 12px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-
-        .preview-header {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
         }
 
         .preview-badge {
-            background-color: var(--btn-red);
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-red);
             color: #ffffff;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
-            padding: 6px 12px;
-            border-radius: 6px;
+            padding: 4px 8px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
-            gap: 6px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Preview Toolbar */
-        .preview-toolbar {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background-color: rgba(30, 41, 59, 0.7);
-            padding: 8px 16px;
-            border-radius: 30px;
-            margin-top: 18px;
-            border: 1px solid var(--border-color);
-        }
-
-        .tool-btn {
-            background: none;
-            border: none;
-            color: var(--text-light);
-            cursor: pointer;
-            font-size: 14px;
-            padding: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: color 0.2s;
-        }
-
-        .tool-btn:hover {
-            color: var(--primary-red);
-        }
-
-        .zoom-text {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-            min-width: 45px;
-            text-align: center;
+            gap: 4px;
+            z-index: 10;
         }
 
         /* ACTUAL POSTER CANVAS DESIGN */
-        .canvas-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: auto;
-            padding: 10px 0;
-        }
-
         #poster-canvas {
-            width: 420px;
-            height: 560px;
-            background: radial-gradient(circle at top center, #b91c1c 0%, #450a0a 100%);
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            width: 380px;
+            height: 520px;
+            background: radial-gradient(circle at top center, #991b1b 0%, #450a0a 100%);
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
             position: relative;
             transform-origin: center center;
-            transition: transform 0.2s;
+            transition: transform 0.2s ease;
         }
 
-        /* Poster Top Graphics & Titles */
         .poster-top {
-            padding: 24px 20px 0 20px;
+            padding: 15px 15px 0 15px;
             text-align: center;
-            position: relative;
-            z-index: 2;
         }
 
-        .poster-logo-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 8px;
+        .poster-header-logo {
+            width: 46px;
+            height: 46px;
+            margin: 0 auto 4px auto;
+            object-fit: contain;
         }
 
-        .poster-main-drop {
-            width: 50px;
-            height: 50px;
-            position: relative;
-        }
-
-        .poster-title-text {
+        .poster-title {
             color: #ffffff;
-            font-size: 26px;
+            font-size: 20px;
             font-weight: 900;
             letter-spacing: 0.5px;
             line-height: 1;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        .poster-subtitle-text {
+        .poster-subtitle {
             color: #fca5a5;
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 700;
-            letter-spacing: 1.5px;
-            margin-top: 4px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
-        .poster-tagline-text {
+        .poster-tagline {
             color: #fef08a;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
-            margin: 14px 0 16px 0;
-            font-family: 'Tiro Devanagari Marathi', serif;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            margin-bottom: 10px;
         }
 
         /* Circular Frame for User Image */
-        .poster-photo-container {
-            position: relative;
-            width: 130px;
-            height: 130px;
-            margin: 0 auto;
-        }
-
         .poster-photo-frame {
-            width: 130px;
-            height: 130px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            border: 4px solid #fbbf24;
+            border: 4px solid var(--gold-color);
+            margin: 0 auto;
             overflow: hidden;
             background-color: #ffffff;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            position: relative;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
         }
 
         .poster-photo-frame img {
@@ -477,111 +340,126 @@
         /* User Info Box */
         .poster-user-info {
             text-align: center;
-            margin-top: 12px;
-            position: relative;
-            z-index: 5;
+            margin-top: 8px;
         }
 
         .badge-ribbon {
-            background: var(--gold-gradient);
+            background-color: var(--gold-color);
             color: #000000;
             font-size: 11px;
             font-weight: 800;
-            padding: 4px 18px;
-            border-radius: 20px;
+            padding: 3px 14px;
+            border-radius: 12px;
             display: inline-block;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-bottom: 4px;
         }
 
         .poster-user-name {
             color: #ffffff;
-            font-size: 22px;
+            font-size: 19px;
             font-weight: 800;
-            margin-top: 6px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
             line-height: 1.2;
         }
 
         .poster-user-phone {
             color: #ffffff;
-            font-size: 13px;
-            margin-top: 4px;
+            font-size: 12px;
+            margin-top: 2px;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
         }
 
         .poster-user-blood {
             color: #fecdd3;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             margin-top: 2px;
         }
 
-        /* Poster Footer Bar */
+        /* Poster White Footer Bar */
         .poster-footer {
             background-color: #ffffff;
-            padding: 10px 14px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             position: relative;
-            z-index: 10;
         }
 
         .footer-items {
             display: flex;
-            gap: 14px;
+            gap: 10px;
         }
 
         .footer-item {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
             color: #881337;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
+            text-align: left;
             line-height: 1.2;
         }
 
         .footer-item i {
-            font-size: 18px;
-            color: #e11d48;
+            font-size: 14px;
+            color: var(--primary-red);
         }
 
         .qr-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
         }
 
         .qr-code {
-            width: 42px;
-            height: 42px;
+            width: 36px;
+            height: 36px;
         }
 
         .poster-url {
             position: absolute;
             bottom: 2px;
-            left: 14px;
+            left: 12px;
             font-size: 8px;
-            color: #e11d48;
+            color: var(--primary-red);
             font-weight: 800;
         }
 
-        /* Site Footer */
+        /* Preview Toolbar Below Canvas */
+        .preview-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 15px;
+            background-color: var(--input-bg);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tool-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .zoom-val {
+            font-size: 12px;
+            color: var(--text-muted);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        /* Page Bottom Footer */
         .site-footer {
             text-align: center;
-            padding: 20px;
-            font-size: 13px;
+            padding: 15px;
+            font-size: 12px;
             color: var(--text-muted);
             border-top: 1px solid var(--border-color);
-            background-color: rgba(15, 23, 42, 0.5);
         }
     </style>
 </head>
@@ -590,22 +468,17 @@
     <!-- Header Navigation -->
     <header class="top-navbar">
         <div class="nav-brand">
-            <div class="nav-logo-icon">
-                <i class="fa-solid fa-droplet"></i>
-            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/1297/1297136.png" class="nav-logo" alt="Logo">
             <div class="nav-title-group">
                 <h1>RAKTDATA.IN</h1>
-                <p>NATIONAL BLOOD DONATION MOVEMENT</p>
+                <p>National Blood Donation Movement</p>
             </div>
         </div>
-
         <div class="page-heading">रक्तदाता व संस्था सन्मान पोस्टर मेकर</div>
-
         <div class="lang-dropdown">
             <i class="fa-solid fa-globe"></i>
-            <span>भाषा / Language</span>
             <select>
-                <option value="mr" selected>मराठी</option>
+                <option value="mr">मराठी</option>
                 <option value="hi">हिंदी</option>
                 <option value="en">English</option>
             </select>
@@ -624,41 +497,44 @@
 
             <div class="form-group">
                 <label>स्वयंसेवक प्रकार निवडा</label>
-                <div class="input-wrapper select-wrapper">
-                    <i class="fa-solid fa-user-gear"></i>
-                    <select id="userTypeSelect" class="input-box" onchange="updatePoster()">
-                        <option value="volunteer">👤 अधिकृत स्वयंसेवक</option>
-                        <option value="donor">🩸 सन्माननीय रक्तदाता</option>
-                        <option value="organization">🤝 सहयोगी संस्था / संघटना</option>
-                    </select>
-                </div>
+                <select id="userTypeSelect" class="input-box" onchange="updatePoster()">
+                    <option value="volunteer">👤 अधिकृत स्वयंसेवक</option>
+                    <option value="donor">🩸 सन्माननीय रक्तदाता</option>
+                    <option value="organization">🤝 सहयोगी संस्था / संघटना</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label>पोस्टरची थीम निवडा</label>
-                <div class="input-wrapper select-wrapper">
-                    <i class="fa-solid fa-palette"></i>
-                    <select id="themeSelect" class="input-box" onchange="updatePoster()">
-                        <option value="red">🩸 ब्राईट रेड (आपत्कालीन मदत)</option>
-                        <option value="dark">🖤 प्रीमियम डार्क (विशेष सन्मान)</option>
-                    </select>
-                </div>
+                <select id="themeSelect" class="input-box" onchange="updatePoster()">
+                    <option value="red">🩸 ब्राईट रेड (आपत्कालीन मदत)</option>
+                    <option value="dark">🖤 प्रीमियम डार्क (विशेष सन्मान)</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label>व्यक्तीचे / संस्थेचे नाव</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-user"></i>
-                    <input type="text" id="inputName" class="input-box" value="अमोल पाटील" oninput="updatePoster()">
-                </div>
+                <input type="text" id="inputName" class="input-box" value="अमोल पाटील" oninput="updatePoster()">
+            </div>
+
+            <div class="form-group">
+                <label>रक्तगट निवडा (पर्यायी)</label>
+                <select id="inputBloodGroup" class="input-box" onchange="updatePoster()">
+                    <option value="">-- रक्तगट निवडा --</option>
+                    <option value="A+">A +ve</option>
+                    <option value="A-">A -ve</option>
+                    <option value="B+" selected>B +ve</option>
+                    <option value="B-">B -ve</option>
+                    <option value="AB+">AB +ve</option>
+                    <option value="AB-">AB -ve</option>
+                    <option value="O+">O +ve</option>
+                    <option value="O-">O -ve</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label>संपर्क नंबर (पर्यायी)</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-phone"></i>
-                    <input type="text" id="inputPhone" class="input-box" value="+91 8765432190" oninput="updatePoster()">
-                </div>
+                <input type="text" id="inputPhone" class="input-box" value="+91 8765432190" oninput="updatePoster()">
             </div>
 
             <div class="form-group">
@@ -672,12 +548,12 @@
                         </div>
                     </div>
                     <input type="file" id="photoInput" accept="image/*" style="display:none;" onchange="handlePhotoUpload(event)">
-                    <button class="btn-remove" onclick="document.getElementById('photoInput').click()"><i class="fa-solid fa-xmark"></i></button>
+                    <button class="btn-remove" onclick="document.getElementById('photoInput').click()"><i class="fa-solid fa-pen"></i></button>
                 </div>
             </div>
 
             <div class="form-group">
-                <label>संस्था / रक्तदान लोगो अपलोड करा (पर्यायी)</label>
+                <label>संस्था / लोगो अपलोड करा (पर्यायी)</label>
                 <div class="file-preview-card">
                     <div class="file-info">
                         <img id="thumbLogo" src="https://cdn-icons-png.flaticon.com/512/1297/1297136.png" class="file-thumb" alt="logo thumb">
@@ -687,7 +563,7 @@
                         </div>
                     </div>
                     <input type="file" id="logoInput" accept="image/*" style="display:none;" onchange="handleLogoUpload(event)">
-                    <button class="btn-remove" onclick="document.getElementById('logoInput').click()"><i class="fa-solid fa-xmark"></i></button>
+                    <button class="btn-remove" onclick="document.getElementById('logoInput').click()"><i class="fa-solid fa-pen"></i></button>
                 </div>
             </div>
 
@@ -703,70 +579,54 @@
 
         <!-- Preview Panel -->
         <section class="preview-panel">
-            <div class="preview-header">
-                <div class="preview-badge">
-                    <i class="fa-solid fa-bolt"></i> LIVE PREVIEW
+            <div class="preview-badge">
+                <i class="fa-solid fa-bolt"></i> LIVE PREVIEW
+            </div>
+
+            <!-- Poster Element to Convert to Image -->
+            <div id="poster-canvas">
+                <div class="poster-top">
+                    <img id="posterHeaderLogo" src="https://cdn-icons-png.flaticon.com/512/1297/1297136.png" class="poster-header-logo" alt="Logo">
+                    <div class="poster-title">RAKTDATA.IN</div>
+                    <div class="poster-subtitle">NATIONAL BLOOD DONATION MOVEMENT</div>
+                    <div class="poster-tagline">"आपली छोटी मदत, कोणाचा तरी मोठा श्वास"</div>
+
+                    <div class="poster-photo-frame">
+                        <img id="posterUserPhoto" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="User">
+                    </div>
+
+                    <div class="poster-user-info">
+                        <div class="badge-ribbon" id="displayBadge">★ अधिकृत स्वयंसेवक ★</div>
+                        <div class="poster-user-name" id="displayName">अमोल पाटील</div>
+                        <div class="poster-user-phone" id="displayPhone"><i class="fa-solid fa-phone"></i> +91 8765432190</div>
+                        <div class="poster-user-blood" id="displayBlood">रक्तगट: B+</div>
+                    </div>
+                </div>
+
+                <div class="poster-footer">
+                    <div class="footer-items">
+                        <div class="footer-item">
+                            <i class="fa-solid fa-hand-holding-droplet"></i>
+                            <div>रक्तदान करा<br>जीवन वाचवा</div>
+                        </div>
+                        <div class="footer-item">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                            <div>मानवतेची सेवा<br>हीच खरी सेवा</div>
+                        </div>
+                    </div>
+                    <div class="qr-section">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.raktdata.in" class="qr-code" alt="QR">
+                    </div>
+                    <div class="poster-url">www.raktdata.in</div>
                 </div>
             </div>
 
-            <!-- Poster Canvas Container -->
-            <div class="canvas-container">
-                <div id="poster-canvas">
-                    <div class="poster-top">
-                        <!-- Top Logo Section -->
-                        <div class="poster-logo-box">
-                            <svg class="poster-main-drop" viewBox="0 0 100 100">
-                                <path d="M50,5 C50,5 15,55 15,72 A35,35 0 0,0 85,72 C85,55 50,5 50,5 Z" fill="#ffffff"/>
-                                <path d="M50,12 C50,12 22,56 22,70 A28,28 0 0,0 78,70 C78,56 50,12 50,12 Z" fill="#e11d48"/>
-                                <path d="M50,22 C50,22 30,58 30,68 A20,20 0 0,0 70,68 C70,58 50,22 50,22 Z" fill="#ffffff"/>
-                                <circle cx="50" cy="65" r="12" fill="#10b981" />
-                            </svg>
-                        </div>
-                        <div class="poster-title-text">RAKTDATA.IN</div>
-                        <div class="poster-subtitle-text">NATIONAL BLOOD DONATION MOVEMENT</div>
-                        <div class="poster-tagline-text">"आपली छोटी मदत, कोणाचा तरी मोठा श्वास"</div>
-
-                        <!-- User Photo -->
-                        <div class="poster-photo-container">
-                            <div class="poster-photo-frame">
-                                <img id="posterUserPhoto" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="User">
-                            </div>
-                        </div>
-
-                        <!-- User Info -->
-                        <div class="poster-user-info">
-                            <div class="badge-ribbon" id="displayBadge">★ अधिकृत स्वयंसेवक ★</div>
-                            <div class="poster-user-name" id="displayName">अमोल पाटील</div>
-                            <div class="poster-user-phone" id="displayPhone"><i class="fa-solid fa-phone"></i> +91 8765432190</div>
-                        </div>
-                    </div>
-
-                    <!-- Footer Bar -->
-                    <div class="poster-footer">
-                        <div class="footer-items">
-                            <div class="footer-item">
-                                <i class="fa-solid fa-hand-holding-droplet"></i>
-                                <div>रक्तदान करा<br>जीवन वाचवा</div>
-                            </div>
-                            <div class="footer-item">
-                                <i class="fa-solid fa-hands-holding-child"></i>
-                                <div>मानवतेची सेवा<br>हीच खरी सेवा</div>
-                            </div>
-                        </div>
-                        <div class="qr-section">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.raktdata.in" class="qr-code" alt="QR">
-                        </div>
-                        <div class="poster-url">www.raktdata.in</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Preview Control Bar -->
+            <!-- Preview Control Controls -->
             <div class="preview-toolbar">
-                <button class="tool-btn" onclick="zoomPoster(-0.1)" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
-                <span class="zoom-text" id="zoomVal">100%</span>
-                <button class="tool-btn" onclick="zoomPoster(0.1)" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
-                <button class="tool-btn" onclick="toggleFullScreen()" title="Full Screen" style="margin-left: 10px;"><i class="fa-solid fa-expand"></i> पूर्ण स्क्रीन</button>
+                <button class="tool-btn" onclick="zoomPoster(-0.1)"><i class="fa-solid fa-minus"></i></button>
+                <span class="zoom-val" id="zoomVal">100%</span>
+                <button class="tool-btn" onclick="zoomPoster(0.1)"><i class="fa-solid fa-plus"></i></button>
+                <button class="tool-btn" onclick="toggleFullScreen()"><i class="fa-solid fa-expand"></i> पूर्ण स्क्रीन</button>
             </div>
         </section>
 
@@ -778,7 +638,7 @@
     </footer>
 
     <script>
-        let currentZoom = 1;
+        let zoomLevel = 1;
 
         function updatePoster() {
             // Update Name
@@ -788,6 +648,10 @@
             // Update Phone
             const phone = document.getElementById('inputPhone').value;
             document.getElementById('displayPhone').innerHTML = phone ? `<i class="fa-solid fa-phone"></i> ${phone}` : "";
+
+            // Update Blood Group
+            const blood = document.getElementById('inputBloodGroup').value;
+            document.getElementById('displayBlood').innerText = blood ? `रक्तगट: ${blood}` : "";
 
             // Update User Type Badge
             const userType = document.getElementById('userTypeSelect').value;
@@ -804,9 +668,9 @@
             const theme = document.getElementById('themeSelect').value;
             const poster = document.getElementById('poster-canvas');
             if(theme === 'dark') {
-                poster.style.background = 'radial-gradient(circle at top center, #1f2937 0%, #0f172a 100%)';
+                poster.style.background = 'radial-gradient(circle at top center, #1f2937 0%, #111827 100%)';
             } else {
-                poster.style.background = 'radial-gradient(circle at top center, #b91c1c 0%, #450a0a 100%)';
+                poster.style.background = 'radial-gradient(circle at top center, #991b1b 0%, #450a0a 100%)';
             }
         }
 
@@ -830,54 +694,46 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     document.getElementById('thumbLogo').src = e.target.result;
+                    document.getElementById('posterHeaderLogo').src = e.target.result;
                 }
                 reader.readAsDataURL(file);
             }
         }
 
         function zoomPoster(delta) {
-            currentZoom = Math.min(Math.max(0.6, currentZoom + delta), 1.4);
+            zoomLevel = Math.min(Math.max(0.6, zoomLevel + delta), 1.3);
             const poster = document.getElementById('poster-canvas');
-            poster.style.transform = `scale(${currentZoom})`;
-            document.getElementById('zoomVal').innerText = `${Math.round(currentZoom * 100)}%`;
+            poster.style.transform = `scale(${zoomLevel})`;
+            document.getElementById('zoomVal').innerText = `${Math.round(zoomLevel * 100)}%`;
         }
 
         function toggleFullScreen() {
             const poster = document.getElementById('poster-canvas');
             if (!document.fullscreenElement) {
-                if (poster.requestFullscreen) {
-                    poster.requestFullscreen();
-                } else if (poster.webkitRequestFullscreen) {
-                    poster.webkitRequestFullscreen();
-                }
+                poster.requestFullscreen().catch(err => {
+                    alert("फुल स्क्रीन मोड सुरू करता आला नाही.");
+                });
             } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
+                document.exitFullscreen();
             }
         }
 
         function downloadPoster() {
             const poster = document.getElementById('poster-canvas');
             
-            // Temporary reset scale for clean rendering
-            const prevTransform = poster.style.transform;
+            // Reset scale for image generation
+            const originalTransform = poster.style.transform;
             poster.style.transform = 'scale(1)';
 
-            html2canvas(poster, { 
-                scale: 3, 
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: null
-            }).then(canvas => {
-                poster.style.transform = prevTransform;
+            html2canvas(poster, { scale: 3, useCORS: true }).then(canvas => {
+                poster.style.transform = originalTransform;
                 const link = document.createElement('a');
-                link.download = `RaktData_Poster_${Date.now()}.png`;
+                link.download = `RaktData_Poster.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             }).catch(err => {
-                poster.style.transform = prevTransform;
-                alert('पोस्टर डाउनलोड करताना त्रुटी आली. कृपया नंतर पुन्हा प्रयत्न करा.');
+                poster.style.transform = originalTransform;
+                alert('पोस्टर डाऊनलोड करताना अडचण आली, कृपया पुन्हा प्रयत्न करा.');
             });
         }
 
