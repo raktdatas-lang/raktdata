@@ -164,7 +164,7 @@
 
         #poster-card {
             width: 380px;
-            height: 520px;
+            height: 540px;
             border-radius: 12px;
             position: relative;
             overflow: hidden;
@@ -188,22 +188,24 @@
 
         .poster-header {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
             width: 100%;
             justify-content: center;
         }
 
+        /* लोगो साईझ मोठी केली */
         .poster-logo-img {
-            width: 40px;
-            height: 40px;
+            width: 70px;
+            height: 70px;
             object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
         }
 
         .poster-brand-text h2 {
             margin: 0;
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 900;
             letter-spacing: 1px;
             color: #ffffff;
@@ -212,13 +214,12 @@
 
         .poster-brand-text p {
             margin: 3px 0 0 0;
-            font-size: 7.5px;
+            font-size: 8px;
             color: #f1f5f9;
             letter-spacing: 0.5px;
             font-weight: 600;
         }
 
-        /* 15th August theme text override */
         .theme-august15 .poster-brand-text h2, 
         .theme-august15 .poster-brand-text p,
         .theme-august15 .user-name,
@@ -228,10 +229,10 @@
         }
 
         .poster-slogan {
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 800;
             color: var(--gold-color);
-            margin: 6px 0 2px 0;
+            margin: 4px 0 2px 0;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
             padding: 0 10px;
         }
@@ -242,9 +243,9 @@
         }
 
         .poster-subtext {
-            font-size: 9.5px;
+            font-size: 9px;
             color: #e2e8f0;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             background: rgba(255,255,255,0.15);
             padding: 2px 8px;
             border-radius: 10px;
@@ -258,14 +259,15 @@
         }
 
         .photo-container {
-            width: 100px;
-            height: 100px;
+            width: 95px;
+            height: 95px;
             border-radius: 50%;
             border: 3px solid var(--gold-color);
             overflow: hidden;
             background: #ffffff;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
             margin: 2px 0;
+            position: relative;
         }
 
         .theme-august15 .photo-container {
@@ -283,12 +285,12 @@
         }
 
         .user-badge {
-            font-size: 10.5px;
+            font-size: 10px;
             color: #fef08a;
             font-weight: 700;
             margin-bottom: 2px;
             background: rgba(251, 191, 36, 0.15);
-            padding: 1px 6px;
+            padding: 2px 8px;
             border-radius: 8px;
             display: inline-block;
         }
@@ -298,11 +300,27 @@
             background: #0f172a;
         }
 
+        /* Blood Group Badge Styling */
+        .blood-group-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #dc2626;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+            border: 1px solid #fca5a5;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
         .user-name {
             font-size: 16px;
             font-weight: bold;
             color: #ffffff;
-            margin: 0;
+            margin: 2px 0;
             text-shadow: 0 2px 4px rgba(0,0,0,0.4);
             line-height: 1.2;
         }
@@ -403,6 +421,22 @@
                 <input type="text" id="inputName" value="अमोल पाटील" placeholder="नाव टाका" data-i18n-placeholder="namePlaceholder" oninput="updatePoster()">
             </div>
 
+            <!-- Blood Group Field Add Kele -->
+            <div class="form-group">
+                <label data-i18n="bloodGroupLabel">🩸 रक्तगट (Blood Group) :</label>
+                <select id="inputBloodGroup" onchange="updatePoster()">
+                    <option value="A+">A +ve</option>
+                    <option value="A-">A -ve</option>
+                    <option value="B+" selected>B +ve</option>
+                    <option value="B-">B -ve</option>
+                    <option value="O+">O +ve</option>
+                    <option value="O-">O -ve</option>
+                    <option value="AB+">AB +ve</option>
+                    <option value="AB-">AB -ve</option>
+                    <option value="Bombay Group">Bombay Blood Group</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <label data-i18n="phoneLabel">संपर्क नंबर (पर्यायी) :</label>
                 <input type="text" id="inputPhone" value="+९१ ९८७६५४३२१०" placeholder="मोबाईल नंबर टाका" data-i18n-placeholder="phonePlaceholder" oninput="updatePoster()">
@@ -455,6 +489,12 @@
                 <div class="user-details">
                     <div class="user-badge" id="displayBadge">★ अधिकृत स्वयंसेवक ★</div>
                     <div class="user-name" id="displayName">अमोल पाटील</div>
+                    
+                    <!-- Display Blood Group -->
+                    <div class="blood-group-badge" id="displayBloodGroupWrapper">
+                        <i class="fa-solid fa-droplet"></i> <span id="displayBloodGroup">B+</span>
+                    </div>
+
                     <div class="user-phone"><i class="fa-solid fa-phone" style="font-size:10px; color:var(--gold-color);"></i> <span id="displayPhone">+९१ ९८७६५४३२१०</span></div>
                 </div>
 
@@ -486,6 +526,7 @@
                 themeGreen: "🟢 एमराल्ड ग्रीन (१ युनिट रक्त = ३ जीवन)",
                 themeDark: "🖤 प्रीमियम डार्क (महा-रक्तदान जनजागृती)",
                 nameLabel: "व्यक्तीचे / संस्थेचे पूर्ण नाव :", namePlaceholder: "नाव टाका",
+                bloodGroupLabel: "🩸 रक्तगट (Blood Group) :",
                 phoneLabel: "संपर्क नंबर (पर्यायी) :", phonePlaceholder: "मोबाईल नंबर टाका",
                 photoLabel: "संबंधित फोटो अपलोड करा (फक्त व्यक्तीसाठी) :",
                 logoLabel: "संस्थेचा / स्वतःचा लोगो अपलोड करा (फक्त संस्थेसाठी) :",
@@ -504,6 +545,7 @@
                 themeGreen: "🟢 एमराल्ड ग्रीन (१ यूनिट रक्त = ३ जीवन)",
                 themeDark: "🖤 प्रीमियम डार्क (रक्तदान जागरूकता)",
                 nameLabel: "व्यक्ति / संस्था का पूरा नाम :", namePlaceholder: "नाम दर्ज करें",
+                bloodGroupLabel: "🩸 ब्लड ग्रुप (Blood Group) :",
                 phoneLabel: "संपर्क नंबर (वैकल्पिक) :", phonePlaceholder: "मोबाइल नंबर दर्ज करें",
                 photoLabel: "संबंधित फोटो अपलोड करें (केवल व्यक्ति के लिए) :",
                 logoLabel: "संस्था / अपना लोगो अपलोड करें (केवल संस्था के लिए) :",
@@ -522,6 +564,7 @@
                 themeGreen: "🟢 Emerald Green (1 Unit of Blood = 3 Lives)",
                 themeDark: "🖤 Premium Dark (Blood Donation Awareness)",
                 nameLabel: "Person / Organization Full Name:", namePlaceholder: "Enter name",
+                bloodGroupLabel: "🩸 Blood Group :",
                 phoneLabel: "Contact Number (Optional):", phonePlaceholder: "Enter mobile number",
                 photoLabel: "Upload related photo (for person only):",
                 logoLabel: "Upload organization / personal logo (for organization only):",
@@ -603,6 +646,10 @@
             document.getElementById('displayPhone').innerText =
                 document.getElementById('inputPhone').value || "";
 
+            // Blood Group Update
+            const bloodGroup = document.getElementById('inputBloodGroup').value;
+            document.getElementById('displayBloodGroup').innerText = bloodGroup;
+
             const selectedTheme = document.getElementById('themeSelect').value;
             document.getElementById('poster-card').className = selectedTheme;
             document.getElementById('displaySlogan').innerText =
@@ -612,6 +659,14 @@
             const settings = userTypeSettings[currentLanguage][selectedType];
             document.getElementById('displayBadge').innerText = settings.badge;
             document.getElementById('displaySubtext').innerText = settings.subtext;
+
+            // Organization निवडल्यास Blood group बॅज लपवण्यासाठी/दाखवण्यासाठी logic
+            const bgWrapper = document.getElementById('displayBloodGroupWrapper');
+            if (selectedType === 'organization') {
+                bgWrapper.style.display = 'none';
+            } else {
+                bgWrapper.style.display = 'inline-flex';
+            }
 
             const photoEl = document.getElementById('posterPhoto');
             if (photoEl.src.includes('cdn-icons-png')) {
