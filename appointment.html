@@ -13,206 +13,77 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif; }
+    body { background-color: #0d1117; color: #1e293b; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
 
-    body {
-      background-color: #0d1117;
-      color: #1e293b;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    /* Header */
-    .header-container {
-      background-color: #ffffff;
-      padding: 12px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #e2e8f0;
-    }
-
+    .header-container { background-color: #ffffff; padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; }
     .brand-text h1 { font-size: 22px; font-weight: 800; }
     .text-red { color: #C00000; }
     .text-blue { color: #0A2A66; }
     .brand-text p { color: #0A2A66; font-size: 9px; font-weight: 700; letter-spacing: 1px; }
 
-    .btn-nav {
-      background: #0A2A66;
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-    }
+    .btn-nav { background: #0A2A66; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; }
 
-    /* Main Container */
-    .main-wrapper {
-      padding: 30px 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    .main-wrapper { padding: 30px 15px; display: flex; flex-direction: column; align-items: center; }
 
-    .search-card {
-      background: #ffffff;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 600px;
-      overflow: hidden;
-      margin-bottom: 30px;
-    }
-
+    .search-card { background: #ffffff; border-radius: 12px; width: 100%; max-width: 600px; overflow: hidden; margin-bottom: 30px; }
     .search-header { background: #002347; color: #ffffff; text-align: center; padding: 20px; }
     .search-header h2 { font-size: 20px; font-weight: 800; }
     .search-body { padding: 20px; }
-    .input-box input { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; }
+    .input-box input { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px; text-align: center; font-weight: bold; }
 
-    .btn-search {
-      width: 100%; background: #C00000; color: #fff; border: none; padding: 12px;
-      border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 10px;
-    }
+    .btn-search { width: 100%; background: #C00000; color: #fff; border: none; padding: 12px; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 10px; font-size: 15px; }
 
-    /* PREMIUM APPOINTMENT LETTER DESIGN (IMAGE LOOKALIKE) */
+    /* PREVIEW APPOINTMENT LETTER */
     .letter-container {
-      display: none;
-      width: 100%;
-      max-width: 800px;
-      background: #fff;
-      border: 8px solid #0a0a0a;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      position: relative;
-      background-color: #ffffff;
+      display: none; width: 100%; max-width: 800px; background: #fff;
+      border: 6px solid #0a0a0a; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative;
     }
 
-    /* Golden Top Banner */
-    .top-banner {
-      background: linear-gradient(135deg, #000000 0%, #1a1a1a 60%, #b8860b 100%);
-      color: #d4af37;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 4px solid #d4af37;
-    }
-
+    .top-banner { background: linear-gradient(135deg, #000000 0%, #1a1a1a 60%, #b8860b 100%); color: #d4af37; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid #d4af37; }
     .logo-sec { display: flex; align-items: center; gap: 15px; }
-    .logo-badge {
-      width: 70px; height: 70px; border-radius: 50%;
-      border: 2px solid #d4af37; display: flex; align-items: center; justify-content: center;
-      background: #000; color: #d4af37; font-size: 32px;
-    }
-
-    .brand-title h1 { font-size: 32px; font-weight: 900; color: #f39c12; letter-spacing: 2px; }
-    .brand-title p { font-size: 11px; color: #fff; letter-spacing: 1px; }
+    .logo-badge { width: 65px; height: 65px; border-radius: 50%; border: 2px solid #d4af37; display: flex; align-items: center; justify-content: center; background: #000; color: #c00000; font-size: 30px; }
+    .brand-title h1 { font-size: 30px; font-weight: 900; color: #f39c12; letter-spacing: 2px; }
+    .brand-title p { font-size: 10px; color: #fff; letter-spacing: 1px; }
 
     .contact-info-top { font-size: 11px; color: #fff; text-align: right; line-height: 1.6; }
     .contact-info-top i { color: #d4af37; margin-right: 5px; }
 
-    /* Sub Banner Tagline */
-    .tagline-bar {
-      background: #f39c12; color: #000; text-align: center;
-      font-weight: 800; font-size: 12px; padding: 4px 0; letter-spacing: 1px;
-    }
+    .tagline-bar { background: #f39c12; color: #000; text-align: center; font-weight: 800; font-size: 12px; padding: 4px 0; letter-spacing: 1px; }
+    .ref-bar { display: flex; justify-content: space-between; padding: 15px 30px 5px 30px; font-size: 13px; font-weight: 700; color: #333; }
 
-    /* Ref & Date Bar */
-    .ref-bar {
-      display: flex; justify-content: space-between; padding: 15px 30px 5px 30px;
-      font-size: 13px; font-weight: 700; color: #333;
-    }
-
-    /* Heading Box */
     .heading-box { text-align: center; margin: 10px 0; }
-    .heading-title {
-      background: #000; color: #f39c12; display: inline-block;
-      padding: 6px 30px; border-radius: 20px; font-size: 20px; font-weight: 800;
-      border: 2px solid #d4af37;
-    }
+    .heading-title { background: #000; color: #f39c12; display: inline-block; padding: 6px 30px; border-radius: 20px; font-size: 20px; font-weight: 800; border: 2px solid #d4af37; }
 
-    /* Main Letter Content Layout */
-    .letter-body-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 20px;
-      padding: 15px 30px 30px 30px;
-    }
-
+    .letter-body-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; padding: 15px 30px 30px 30px; }
     .left-content { font-size: 13px; line-height: 1.8; color: #111; }
     .left-content .recipient-name { font-size: 18px; color: #c00000; font-weight: 800; }
     .subject-line { background: #fef3c7; padding: 6px 10px; border-left: 4px solid #f39c12; font-weight: 700; margin: 10px 0; }
 
-    /* Right Sidebar (Photo & Details Table) */
-    .right-sidebar {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .photo-frame {
-      width: 140px; height: 160px;
-      border: 3px solid #d4af37;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      background: #e2e8f0;
-    }
+    .right-sidebar { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+    
+    /* Photo Frame Fix */
+    .photo-frame { width: 140px; height: 160px; border: 3px solid #d4af37; border-radius: 8px; overflow: hidden; background: #e2e8f0; display: flex; align-items: center; justify-content: center; }
     .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-    .details-card {
-      width: 100%;
-      background: #fff8f0;
-      border: 1px solid #f39c12;
-      border-radius: 8px;
-      padding: 10px;
-      font-size: 11px;
-    }
-
+    .details-card { width: 100%; background: #fff8f0; border: 1px solid #f39c12; border-radius: 8px; padding: 10px; font-size: 11px; }
     .details-row { display: flex; justify-content: space-between; margin-bottom: 6px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 3px; }
     .details-label { font-weight: 700; color: #555; }
     .details-val { font-weight: 800; color: #c00000; text-align: right; }
 
-    .motive-box {
-      background: #000; color: #fff; padding: 10px; border-radius: 8px; text-align: center; width: 100%;
-    }
+    .motive-box { background: #000; color: #fff; padding: 10px; border-radius: 8px; text-align: center; width: 100%; }
     .motive-box h4 { color: #f39c12; font-size: 12px; margin-bottom: 5px; }
     .motive-box ul { list-style: none; text-align: left; font-size: 10px; line-height: 1.5; }
     .motive-box li::before { content: "✔ "; color: #f39c12; }
 
-    /* Footer Stamp & Signature Area */
-    .letter-footer-area {
-      display: flex; justify-content: space-between; align-items: flex-end; margin-top: 15px;
-    }
-
-    .stamp-box {
-      width: 90px; height: 90px; border: 2px dashed #0A2A66; border-radius: 50%;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: #0A2A66; font-size: 9px; font-weight: 800; text-align: center; transform: rotate(-10deg);
-    }
-
+    .letter-footer-area { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 15px; }
+    .stamp-box { width: 85px; height: 85px; border: 2px dashed #0A2A66; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #0A2A66; font-size: 8px; font-weight: 800; text-align: center; transform: rotate(-10deg); }
     .sig-box { text-align: center; }
-    .sig-box p { font-size: 11px; font-weight: 700; }
 
-    /* Bottom Dark Footer Strip */
-    .bottom-strip {
-      background: #000; color: #fff; display: flex; justify-content: space-around;
-      padding: 8px; font-size: 11px; font-weight: 700; border-top: 2px solid #d4af37;
-    }
+    .bottom-strip { background: #000; color: #fff; display: flex; justify-content: space-around; padding: 8px; font-size: 11px; font-weight: 700; border-top: 2px solid #d4af37; }
     .bottom-strip span { color: #f39c12; }
 
-    /* Download Button */
-    .btn-download-letter {
-      display: none; margin-top: 20px; background: #10b981; color: #fff;
-      border: none; padding: 12px 25px; border-radius: 6px; font-size: 16px; font-weight: 700; cursor: pointer;
-    }
+    .btn-download-letter { display: none; margin-top: 20px; background: #10b981; color: #fff; border: none; padding: 12px 25px; border-radius: 6px; font-size: 16px; font-weight: 700; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -231,21 +102,22 @@
         <h2>नियुक्ती पत्र पडताळणी</h2>
       </div>
       <div class="search-body">
-        <label>Volunteer ID टाका:</label>
+        <label style="font-weight: bold; margin-bottom: 5px; display: block;">Volunteer ID टाका:</label>
         <div class="input-box">
-          <input type="text" id="searchId" value="RD00001">
+          <input type="text" id="searchId" placeholder="उदा. RD00001" value="RD00001">
         </div>
-        <button class="btn-search" onclick="generateAppointmentLetter()">शोध घ्या आणि पत्र पहा</button>
+        <button class="btn-search" id="btnSearch" onclick="generateAppointmentLetter()">
+          <i class="fa-solid fa-magnifying-glass"></i> शोध घ्या आणि पत्र पहा
+        </button>
       </div>
     </div>
 
     <!-- PREVIEW LETTER DESIGN -->
     <div class="letter-container" id="appointmentLetter">
       
-      <!-- Top Banner -->
       <div class="top-banner">
         <div class="logo-sec">
-          <div class="logo-badge"><i class="fa-solid fa-droplet" style="color: #c00000;"></i></div>
+          <div class="logo-badge"><i class="fa-solid fa-droplet"></i></div>
           <div class="brand-title">
             <h1>RAKTDATA</h1>
             <p>ONE NAME • ONE IDENTITY • ONE FAMILY</p>
@@ -263,64 +135,58 @@
         TOGETHER FOR LIFE, TOGETHER FOR BLOOD DONATION
       </div>
 
-      <!-- Ref & Date Bar -->
       <div class="ref-bar">
-        <div>पत्र क्र. : RAKTDATA/APPOINTMENT/2026/0147</div>
-        <div>दिनांक : 26/07/2026</div>
+        <div>पत्र क्र. : <span id="dispRef">RAKTDATA/APPOINTMENT/2026/0147</span></div>
+        <div>दिनांक : <span id="dispDate">26/07/2026</span></div>
       </div>
 
-      <!-- Heading Title -->
       <div class="heading-box">
         <span class="heading-title">❖ नियुक्ती पत्र ❖</span>
       </div>
 
-      <!-- Letter Body Grid -->
       <div class="letter-body-grid">
         
-        <!-- Left Text Area -->
         <div class="left-content">
           <p>प्रति,</p>
           <p class="recipient-name" id="dispName">सौ. किशोरीताई तृषांत आरडे (पाटील)</p>
           <p id="dispCity">मुंबई, महाराष्ट्र</p>
-          <p>मो. : +91 8657808578</p>
+          <p id="dispMobile">मो. : +91 8657808578</p>
 
           <div class="subject-line">
-            विषय : RAKTDATA.IN मध्ये "महाराष्ट्र महिला प्रदेश अध्यक्ष" पदावर नियुक्ती.
+            विषय : RAKTDATA.IN मध्ये "<span id="dispRoleSubject">महाराष्ट्र महिला प्रदेश अध्यक्ष</span>" पदावर नियुक्ती.
           </div>
 
           <p>आदरणीय महोदया,</p>
           <p>
-            RAKTDATA परिवारास अत्यंत आनंद होत आहे की, आपल्या समाजाभिमुख विचारसरणी, नेतृत्वगुण, आणि सामाजिक कार्यक्षमता यांची दखल घेऊन आपणास RAKTDATA मध्ये <strong>"महाराष्ट्र महिला प्रदेश अध्यक्ष"</strong> या महत्त्वपूर्ण पदावर नियुक्ती करण्यात येत आहे.
+            RAKTDATA परिवारास अत्यंत आनंद होत आहे की, आपल्या समाजाभिमुख विचारसरणी, नेतृत्वगुण, आणि सामाजिक कार्यक्षमता यांची दखल घेऊन आपणास RAKTDATA मध्ये <strong>"<span id="dispRoleBody">महाराष्ट्र महिला प्रदेश अध्यक्ष</span>"</strong> या महत्त्वपूर्ण पदावर नियुक्ती करण्यात येत आहे.
           </p>
           <br>
           <p>
             आपण आपल्या कार्य क्षेत्रातील नागरिकांना रक्तदान चळवळीशी जोडून सामाजिक एकता आणि आरोग्य सहाय्यासाठी प्रामाणिकपणे कार्य कराल, असा आम्हाला पूर्ण विश्वास आहे.
           </p>
 
-          <!-- Footer Stamp and Sig inside Grid -->
           <div class="letter-footer-area">
             <div class="stamp-box">
               <i class="fa-solid fa-shield-halved fa-2x"></i>
               RAKTDATA<br>VERIFIED
             </div>
             <div class="sig-box">
-              <p style="font-family: cursive; font-size: 16px; color:#0A2A66;">दिलीप गायकवाड</p>
-              <p>संस्थापक - RAKTDATA</p>
+              <p style="font-family: cursive; font-size: 16px; color:#0A2A66; font-weight: bold;">दिलीप गायकवाड</p>
+              <p style="font-size: 11px; font-weight: bold;">संस्थापक - RAKTDATA</p>
             </div>
           </div>
         </div>
 
-        <!-- Right Side Frame & Details -->
         <div class="right-sidebar">
           <div class="photo-frame">
-            <img src="https://via.placeholder.com/140x160" id="userPhoto" alt="Volunteer Photo">
+            <img id="userPhoto" src="https://via.placeholder.com/140x160?text=No+Image" alt="Volunteer Photo" crossorigin="anonymous">
           </div>
 
           <div class="details-card">
-            <div class="details-row"><span class="details-label">नियुक्ती पद :</span><span class="details-val">प्रदेश अध्यक्ष</span></div>
-            <div class="details-row"><span class="details-label">नियुक्ती दिनांक :</span><span class="details-val">26/07/2026</span></div>
+            <div class="details-row"><span class="details-label">नियुक्ती पद :</span><span class="details-val" id="tblRole">प्रदेश अध्यक्ष</span></div>
+            <div class="details-row"><span class="details-label">नियुक्ती दिनांक :</span><span class="details-val" id="tblAppDate">26/07/2026</span></div>
             <div class="details-row"><span class="details-label">सदस्य क्रमांक :</span><span class="details-val" id="tblId">RD-0145</span></div>
-            <div class="details-row"><span class="details-label">सदस्य प्रकार :</span><span class="details-val">ACTIVE</span></div>
+            <div class="details-row"><span class="details-label">सदस्य प्रकार :</span><span class="details-val" id="tblStatus">ACTIVE</span></div>
           </div>
 
           <div class="motive-box">
@@ -335,7 +201,6 @@
 
       </div>
 
-      <!-- Bottom Dark Strip -->
       <div class="bottom-strip">
         <div>★ राष्ट्रहित सर्वोपरि</div>
         <div>★ <span>समाजहित आमचे कर्तव्य</span></div>
@@ -344,7 +209,6 @@
 
     </div>
 
-    <!-- Download Button -->
     <button class="btn-download-letter" id="btnDownload" onclick="downloadLetter()">
       <i class="fa-solid fa-file-arrow-down"></i> नियुक्ती पत्र डाऊनलोड करा (PNG)
     </button>
@@ -352,24 +216,67 @@
   </div>
 
   <script>
-    function generateAppointmentLetter() {
+    async function generateAppointmentLetter() {
       const inputVal = document.getElementById('searchId').value.trim();
-      if (!inputVal) { alert('कृपया ID टाका!'); return; }
+      const btnSearch = document.getElementById('btnSearch');
 
-      document.getElementById('tblId').innerText = inputVal.toUpperCase();
-      document.getElementById('appointmentLetter').style.display = 'block';
-      document.getElementById('btnDownload').style.display = 'inline-flex';
-      document.getElementById('appointmentLetter').scrollIntoView({ behavior: 'smooth' });
+      if (!inputVal) {
+        alert('कृपया Volunteer ID टाका!');
+        return;
+      }
+
+      btnSearch.innerText = "शोधाशोध सुरू आहे...";
+      btnSearch.disabled = true;
+
+      // तुमच्या Google Apps Script Web App ची URL इथे टाका
+      const SCRIPT_URL = `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?id=${inputVal}`;
+
+      try {
+        /* Google Sheet API चा पर्याय:
+        const response = await fetch(SCRIPT_URL);
+        const data = await response.json();
+        if (data.status === "success") {
+           // update values from data
+        }
+        */
+
+        // टेस्ट डेटा अपडेट:
+        document.getElementById('dispName').innerText = "सौ. किशोरीताई तृषांत आरडे (पाटील)";
+        document.getElementById('dispCity').innerText = "मुंबई, महाराष्ट्र";
+        document.getElementById('dispMobile').innerText = "मो. : +91 8657808578";
+        document.getElementById('dispRoleSubject').innerText = "महाराष्ट्र महिला प्रदेश अध्यक्ष";
+        document.getElementById('dispRoleBody').innerText = "महाराष्ट्र महिला प्रदेश अध्यक्ष";
+        document.getElementById('tblRole').innerText = "प्रदेश अध्यक्ष";
+        document.getElementById('tblId').innerText = inputVal.toUpperCase();
+
+        // फोटो सेट करा (डिफॉल्ट किंवा Google Drive Direct Link)
+        const photoImg = document.getElementById('userPhoto');
+        photoImg.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300"; 
+
+        document.getElementById('appointmentLetter').style.display = 'block';
+        document.getElementById('btnDownload').style.display = 'inline-flex';
+        document.getElementById('appointmentLetter').scrollIntoView({ behavior: 'smooth' });
+
+      } catch (err) {
+        alert("माहिती शोधताना अडचण आली!");
+      } finally {
+        btnSearch.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> शोध घ्या आणि पत्र पहा';
+        btnSearch.disabled = false;
+      }
     }
 
     function downloadLetter() {
       const letterArea = document.getElementById('appointmentLetter');
       const filename = document.getElementById('tblId').innerText;
 
-      html2canvas(letterArea, { scale: 2, useCORS: true }).then(canvas => {
+      html2canvas(letterArea, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: false
+      }).then(canvas => {
         const a = document.createElement('a');
         a.href = canvas.toDataURL('image/png');
-        a.download = `Appointment_Letter_${filename}.png`;
+        a.download = `RAKTDATA_Appointment_${filename}.png`;
         a.click();
       });
     }
