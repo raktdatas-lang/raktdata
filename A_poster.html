@@ -123,8 +123,8 @@
         }
 
         #poster-card {
-            width: 360px;
-            height: 480px;
+            width: 380px;
+            height: 520px;
             border-radius: 12px;
             position: relative;
             overflow: hidden;
@@ -133,7 +133,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            padding: 20px;
+            padding: 15px;
             box-sizing: border-box;
             text-align: center;
             transition: all 0.4s ease;
@@ -148,20 +148,21 @@
         .poster-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 5px;
+            gap: 8px;
+            width: 100%;
+            justify-content: center;
         }
 
         .poster-logo-img {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
         .poster-brand-text h2 {
             margin: 0;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 900;
             letter-spacing: 1px;
             color: #ffffff;
@@ -170,40 +171,41 @@
 
         .poster-brand-text p {
             margin: 3px 0 0 0;
-            font-size: 8px;
+            font-size: 7.5px;
             color: #f1f5f9;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             font-weight: 600;
         }
 
         .poster-slogan {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 800;
             color: var(--gold-color);
-            margin: 12px 0 5px 0;
+            margin: 6px 0 2px 0;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
             padding: 0 10px;
         }
 
         .poster-subtext {
-            font-size: 10px;
+            font-size: 9.5px;
             color: #e2e8f0;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             background: rgba(255,255,255,0.15);
-            padding: 2px 10px;
-            border-radius: 12px;
+            padding: 2px 8px;
+            border-radius: 10px;
             font-weight: 600;
+            display: inline-block;
         }
 
         .photo-container {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            border: 4px solid var(--gold-color);
+            border: 3px solid var(--gold-color);
             overflow: hidden;
             background: #ffffff;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
-            margin: 5px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            margin: 2px 0;
         }
 
         .photo-container img {
@@ -213,21 +215,22 @@
         }
 
         .user-details {
-            margin-top: 5px;
+            margin-top: 2px;
         }
 
         .user-badge {
-            font-size: 11px;
+            font-size: 10.5px;
             color: #fef08a;
             font-weight: 700;
             margin-bottom: 2px;
             background: rgba(251, 191, 36, 0.15);
-            padding: 1px 8px;
-            border-radius: 10px;
+            padding: 1px 6px;
+            border-radius: 8px;
+            display: inline-block;
         }
 
         .user-name {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             color: #ffffff;
             margin: 0;
@@ -236,25 +239,54 @@
         }
 
         .user-phone {
-            font-size: 12px;
+            font-size: 11px;
             color: #ffffff;
-            margin-top: 4px;
+            margin-top: 2px;
             font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 4px;
         }
 
+        /* Poster Footer with QR Code Integration */
         .poster-footer {
             background: #ffffff;
             color: #0f172a;
             width: 100%;
-            padding: 8px 0;
-            border-radius: 6px;
-            font-size: 10.5px;
-            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+        }
+
+        .footer-text {
+            text-align: left;
+        }
+
+        .footer-text p {
+            margin: 0;
+            font-size: 9px;
+            font-weight: bold;
+            color: #1e293b;
+        }
+
+        .footer-text span {
+            font-size: 8px;
+            color: #e11d48;
+            font-weight: 700;
+        }
+
+        .footer-qr img {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            padding: 2px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -344,9 +376,16 @@
                     <div class="user-phone"><i class="fa-solid fa-phone" style="font-size:10px; color:var(--gold-color);"></i> <span id="displayPhone">+९१ ९८७६५४३२१०</span></div>
                 </div>
 
-                <!-- Poster Footer -->
+                <!-- Poster Footer with QR Code -->
                 <div class="poster-footer">
-                    रक्तदानासाठी आजच नोंदणी करा: www.raktdata.in
+                    <div class="footer-text">
+                        <p>रक्तदानासाठी आजच भेट द्या:</p>
+                        <span>www.raktdata.in</span>
+                    </div>
+                    <div class="footer-qr">
+                        <!-- येथे तुम्ही तुमच्या वेबसाईटचा किंवा फॉर्मचा QR कोड इमेज वापरू शकता -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.raktdata.in" alt="QR Code">
+                    </div>
                 </div>
 
             </div>
@@ -355,7 +394,6 @@
     </div>
 
     <script>
-        // Slogans based on Design Theme
         const themeSlogans = {
             'theme-red': '"आपत्कालीन मदतीसाठी तत्पर!"',
             'theme-blue': '"रक्तदान हेच श्रेष्ठ दान, वाचवा कोणाचेही प्राण!"',
@@ -363,7 +401,6 @@
             'theme-dark': '"चला एकत्र येऊया, रक्तदान चळवळ वाढवूया!"'
         };
 
-        // Text settings based on User Type सन्मान
         const userTypeSettings = {
             'volunteer': {
                 badge: '★ अधिकृत स्वयंसेवक ★',
@@ -378,35 +415,30 @@
             'organization': {
                 badge: '🤝 सहयोगी संस्था 🤝',
                 subtext: 'आमचा आधार - मोहिमेत सहभागी संस्था',
-                defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/1297/1297136.png' // Organization icon
+                defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/1297/1297136.png'
             }
         };
 
         function updatePoster() {
-            // 1. Update Personal/Org Text Data
             document.getElementById('displayName').innerText = document.getElementById('inputName').value || "नाव टाईप करा";
             document.getElementById('displayPhone').innerText = document.getElementById('inputPhone').value || "";
             
-            // 2. Handle Design Theme & Slogan
             const selectedTheme = document.getElementById('themeSelect').value;
             document.getElementById('poster-card').className = selectedTheme;
             document.getElementById('displaySlogan').innerText = themeSlogans[selectedTheme];
 
-            // 3. Handle User Type सन्मान (Volunteer/Donor/Org)
             const selectedType = document.getElementById('userTypeSelect').value;
             const settings = userTypeSettings[selectedType];
             
             document.getElementById('displayBadge').innerText = settings.badge;
             document.getElementById('displaySubtext').innerText = settings.subtext;
 
-            // संस्थेसाठी डीफॉल्ट फोटो बदलणे (जर संस्थेचा लोगो अपलोड नाही केला)
             const photoEl = document.getElementById('posterPhoto');
-            if (photoEl.src.includes('cdn-icons-png')) { // Only if not a user-uploaded image
+            if (photoEl.src.includes('cdn-icons-png')) {
                 photoEl.src = settings.defaultPhoto;
             }
         }
 
-        // Handle User Photo
         function handlePhoto(event) {
             const file = event.target.files[0];
             if (file) {
@@ -418,7 +450,6 @@
             }
         }
 
-        // Handle Organization/Brand Logo
         function handleLogo(event) {
             const file = event.target.files[0];
             if (file) {
@@ -430,13 +461,12 @@
             }
         }
 
-        // Download High-Res Poster
         function downloadPoster() {
             const poster = document.getElementById('poster-card');
             const userName = document.getElementById('inputName').value || 'Honored';
 
             html2canvas(poster, {
-                scale: 3, // High Resolution 3x
+                scale: 3,
                 useCORS: true,
                 allowTaint: true
             }).then(canvas => {
