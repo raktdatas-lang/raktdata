@@ -115,6 +115,30 @@
             transform: translateY(-2px);
         }
 
+        .btn-whatsapp {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
         /* Poster Preview Styling */
         .poster-wrapper {
             display: flex;
@@ -144,6 +168,7 @@
         .theme-blue { background: linear-gradient(180deg, #1e3a8a 0%, #0f172a 100%); }
         .theme-green { background: linear-gradient(180deg, #047857 0%, #064e3b 100%); }
         .theme-dark { background: linear-gradient(180deg, #18181b 0%, #09090b 100%); border: 2px solid var(--gold-color); }
+        .theme-august15 { background: linear-gradient(180deg, #ff9933 0%, #ffffff 50%, #138808 100%); color: #000000 !important; }
 
         .poster-header {
             display: flex;
@@ -177,6 +202,15 @@
             font-weight: 600;
         }
 
+        /* 15th August theme text override */
+        .theme-august15 .poster-brand-text h2, 
+        .theme-august15 .poster-brand-text p,
+        .theme-august15 .user-name,
+        .theme-august15 .user-phone {
+            color: #0f172a !important;
+            text-shadow: none;
+        }
+
         .poster-slogan {
             font-size: 14px;
             font-weight: 800;
@@ -184,6 +218,11 @@
             margin: 6px 0 2px 0;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
             padding: 0 10px;
+        }
+
+        .theme-august15 .poster-slogan {
+            color: #0f172a !important;
+            text-shadow: none;
         }
 
         .poster-subtext {
@@ -197,6 +236,11 @@
             display: inline-block;
         }
 
+        .theme-august15 .poster-subtext {
+            background: rgba(0,0,0,0.15);
+            color: #0f172a;
+        }
+
         .photo-container {
             width: 100px;
             height: 100px;
@@ -206,6 +250,10 @@
             background: #ffffff;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
             margin: 2px 0;
+        }
+
+        .theme-august15 .photo-container {
+            border-color: #000066;
         }
 
         .photo-container img {
@@ -227,6 +275,11 @@
             padding: 1px 6px;
             border-radius: 8px;
             display: inline-block;
+        }
+
+        .theme-august15 .user-badge {
+            color: #ffffff;
+            background: #0f172a;
         }
 
         .user-name {
@@ -314,6 +367,7 @@
                 <label>पोस्टरची डिझाईन थीम निवडा :</label>
                 <select id="themeSelect" onchange="updatePoster()">
                     <option value="theme-red">🔴 ब्राईट रेड (आपत्कालीन मदत)</option>
+                    <option value="theme-august15">🇮🇳 १५ ऑगस्ट - स्वातंत्र्य दिन विशेष</option>
                     <option value="theme-blue">💙 रॉयल् ब्लू (रक्तदान हेच श्रेष्ठ दान)</option>
                     <option value="theme-green">🟢 एमराल्ड ग्रीन (१ युनिट रक्त = ३ जीवन)</option>
                     <option value="theme-dark">🖤 प्रीमियम डार्क (महा-रक्तदान जनजागृती)</option>
@@ -342,6 +396,10 @@
 
             <button class="btn-download" onclick="downloadPoster()">
                 <i class="fa-solid fa-download"></i> पोस्टर डाऊनलोड करा (Download Image)
+            </button>
+
+            <button class="btn-whatsapp" onclick="shareOnWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp वर शेअर करा (Share)
             </button>
         </div>
 
@@ -383,7 +441,6 @@
                         <span>www.raktdata.in</span>
                     </div>
                     <div class="footer-qr">
-                        <!-- येथे तुम्ही तुमच्या वेबसाईटचा किंवा फॉर्मचा QR कोड इमेज वापरू शकता -->
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.raktdata.in" alt="QR Code">
                     </div>
                 </div>
@@ -396,6 +453,7 @@
     <script>
         const themeSlogans = {
             'theme-red': '"आपत्कालीन मदतीसाठी तत्पर!"',
+            'theme-august15': '"स्वातंत्र्याचा अमृत महोत्सव - रक्तदान हेच देशसेवा!"',
             'theme-blue': '"रक्तदान हेच श्रेष्ठ दान, वाचवा कोणाचेही प्राण!"',
             'theme-green': '"१ युनिट रक्त वाचवू शकते ३ जणांचे जीवन!"',
             'theme-dark': '"चला एकत्र येऊया, रक्तदान चळवळ वाढवूया!"'
@@ -475,6 +533,12 @@
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             });
+        }
+
+        function shareOnWhatsApp() {
+            var message = encodeURIComponent("मी RAKTDATA.IN राष्ट्रीय रक्तदान चळवळीत सहभाग घेतला आहे! आपणही आजच जोडले जा: www.raktdata.in");
+            var whatsappUrl = `https://api.whatsapp.com/send?text=${message}`;
+            window.open(whatsappUrl, '_blank');
         }
     </script>
 
