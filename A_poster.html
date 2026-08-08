@@ -3,212 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>स्वयंसेवक जनजागृती पोस्टर जनरेटर - RaktData.in</title>
-    <!-- Google Fonts & FontAwesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- HTML2Canvas Library for Image Downloading -->
+    <title>स्वयंसेवक माहिती व जनजागृती पोस्टर | RaktData.in</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Html2Canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+        :root {
+            --bg-dark: #0f172a;
+            --card-dark: #1e293b;
+            --input-dark: #0f172a;
+            --accent-red: #e11d48;
+            --gold-color: #fbbf24;
         }
 
         body {
-            background-color: #0f172a;
-            color: #ffffff;
-            padding: 30px 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: #f8fafc;
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            box-sizing: border-box;
         }
 
-        .container {
-            max-width: 1100px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            background: #1e293b;
-            padding: 30px;
+        .main-container {
+            background-color: var(--card-dark);
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid #334155;
-        }
-
-        @media (max-width: 850px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Form Inputs Styling */
-        .form-section {
+            padding: 30px;
             display: flex;
-            flex-direction: column;
-            gap: 18px;
+            gap: 40px;
+            max-width: 950px;
+            width: 100%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Form Styling */
+        .form-section {
+            flex: 1;
+            min-width: 300px;
         }
 
         .form-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #ff4d4d;
-            border-bottom: 2px solid #ff4d4d;
-            padding-bottom: 8px;
+            color: #f8fafc;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
+            border-bottom: 2px solid var(--accent-red);
+            padding-bottom: 10px;
         }
 
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
+        .form-group {
+            margin-bottom: 16px;
         }
 
-        .input-group label {
-            font-size: 14px;
-            font-weight: 600;
+        label {
+            display: block;
+            font-size: 13px;
             color: #cbd5e1;
+            margin-bottom: 6px;
+            font-weight: 500;
         }
 
-        .input-group input, .input-group select {
+        input, select {
+            width: 100%;
             padding: 12px;
+            background-color: var(--input-dark);
+            border: 1px solid #334155;
             border-radius: 8px;
-            border: 1px solid #475569;
-            background: #0f172a;
             color: #ffffff;
-            font-size: 15px;
+            font-size: 14px;
+            box-sizing: border-box;
             outline: none;
         }
 
-        .input-group input:focus, .input-group select:focus {
-            border-color: #ff4d4d;
+        input:focus, select:focus {
+            border-color: var(--accent-red);
         }
 
         .btn-download {
-            background: linear-gradient(135deg, #e11d48, #9f1239);
-            color: #ffffff;
+            width: 100%;
             padding: 14px;
-            font-size: 16px;
-            font-weight: 700;
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+            color: white;
             border: none;
             border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
             transition: 0.3s;
         }
 
         .btn-download:hover {
+            opacity: 0.9;
             transform: translateY(-2px);
-            background: linear-gradient(135deg, #f43f5e, #be123c);
         }
 
-        /* Poster Preview Card Container */
-        .preview-section {
+        /* Poster Preview Styling */
+        .poster-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
         }
 
-        /* The Poster Area */
-        #posterArea {
-            width: 420px;
-            height: 560px;
-            background: linear-gradient(180deg, #8b0000 0%, #4a0000 60%, #1a0000 100%);
+        #poster-card {
+            width: 360px;
+            height: 480px;
             border-radius: 12px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-            border: 3px solid #ffd700;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: space-between;
             padding: 20px;
+            box-sizing: border-box;
             text-align: center;
             transition: all 0.4s ease;
         }
 
-        /* Poster Header */
+        /* Poster Themes */
+        .theme-red { background: linear-gradient(180deg, #b91c1c 0%, #881337 100%); }
+        .theme-blue { background: linear-gradient(180deg, #1e3a8a 0%, #0f172a 100%); }
+        .theme-green { background: linear-gradient(180deg, #047857 0%, #064e3b 100%); }
+        .theme-dark { background: linear-gradient(180deg, #18181b 0%, #09090b 100%); border: 2px solid var(--gold-color); }
+
         .poster-header {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 10px;
-            border-bottom: 2px solid rgba(255, 215, 0, 0.4);
-            padding-bottom: 10px;
+            margin-top: 5px;
         }
 
-        .poster-logo-icon {
-            font-size: 32px;
-            color: #ff4d4d;
-            background: #ffffff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #ffd700;
+        .poster-logo-img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
-        .poster-brand-name {
-            font-family: 'Poppins', sans-serif;
-            font-size: 26px;
-            font-weight: 800;
-            color: #ffffff;
+        .poster-brand-text h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 900;
             letter-spacing: 1px;
+            color: #ffffff;
+            line-height: 1;
         }
 
-        .poster-tagline {
-            font-size: 11px;
-            color: #ffd700;
+        .poster-brand-text p {
+            margin: 3px 0 0 0;
+            font-size: 8px;
+            color: #f1f5f9;
+            letter-spacing: 1px;
             font-weight: 600;
         }
 
-        /* Main Slogan Section */
         .poster-slogan {
-            font-size: 22px;
+            font-size: 15px;
             font-weight: 800;
-            color: #ffffff;
-            margin: 10px 0 5px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--gold-color);
+            margin: 12px 0 5px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            padding: 0 10px;
         }
 
         .poster-subtext {
-            font-size: 13px;
-            color: #f1f5f9;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 4px 12px;
-            border-radius: 20px;
-            display: inline-block;
+            font-size: 10px;
+            color: #e2e8f0;
             margin-bottom: 10px;
+            background: rgba(255,255,255,0.15);
+            padding: 2px 10px;
+            border-radius: 12px;
         }
 
-        /* Volunteer Photo Box */
         .photo-container {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 4px solid #ffd700;
+            border: 4px solid var(--gold-color);
             overflow: hidden;
             background: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+            margin: 5px 0;
         }
 
         .photo-container img {
@@ -217,120 +210,127 @@
             object-fit: cover;
         }
 
-        /* Volunteer Details Overlay */
-        .volunteer-info {
-            margin-top: 8px;
+        .user-details {
+            margin-top: 5px;
         }
 
-        .volunteer-badge {
+        .user-badge {
             font-size: 11px;
-            color: #ffd700;
+            color: #fef08a;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 2px;
         }
 
-        .volunteer-name {
-            font-size: 20px;
-            font-weight: 800;
+        .user-name {
+            font-size: 18px;
+            font-weight: bold;
             color: #ffffff;
-            margin-top: 2px;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
         }
 
-        .volunteer-phone {
-            font-size: 14px;
-            color: #ffd700;
-            font-weight: 700;
-            margin-top: 2px;
+        .user-phone {
+            font-size: 12px;
+            color: #ffffff;
+            margin-top: 4px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
 
-        /* Poster Footer Line */
         .poster-footer {
-            background: #ffd700;
-            color: #4a0000;
-            padding: 8px;
+            background: #ffffff;
+            color: #0f172a;
+            width: 100%;
+            padding: 8px 0;
             border-radius: 6px;
-            font-size: 13px;
-            font-weight: 800;
-            margin-top: 10px;
+            font-size: 10.5px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="main-container">
         
-        <!-- Form Left Section -->
+        <!-- Form Section -->
         <div class="form-section">
             <div class="form-title">
-                <i class="fa-solid fa-id-card"></i> स्वयंसेवक माहिती व पोस्टर थीम
+                <i class="fa-solid fa-address-card" style="color: var(--accent-red);"></i>
+                स्वयंसेवक माहिती व पोस्टर थीम
             </div>
 
-            <!-- १. थीम निवडण्याचा ड्रॉपडाऊन -->
-            <div class="input-group">
+            <div class="form-group">
                 <label>पोस्टरची डिझाईन थीम निवडा :</label>
-                <select id="themeSelect" onchange="changePosterTheme()">
-                    <option value="theme1">१. क्लासिक लाल-सोनेरी (रक्तदान श्रेष्ठ दान)</option>
-                    <option value="theme2">२. रॉयल नेव्ही ब्लू (जीवनरक्षक मोहीम)</option>
-                    <option value="theme3">३. ब्राइट रेड (आपत्कालीन मदत)</option>
+                <select id="themeSelect" onchange="updatePoster()">
+                    <option value="theme-red">१. ब्राईट रेड (आपत्कालीन मदत)</option>
+                    <option value="theme-blue">२. रॉयल ब्लू (रक्तदान हेच श्रेष्ठ दान)</option>
+                    <option value="theme-green">३. एमराल्ड ग्रीन (१ युनिट रक्त = ३ जीवन)</option>
+                    <option value="theme-dark">४. प्रीमियम डार्क (महा-रक्तदान जनजागृती)</option>
                 </select>
             </div>
 
-            <div class="input-group">
+            <div class="form-group">
                 <label>तुमचे पूर्ण नाव :</label>
-                <input type="text" id="inputName" placeholder="उदा. अमोल पाटील" oninput="updatePoster()" value="अमोल पाटील">
+                <input type="text" id="inputName" value="अमोल पाटील" placeholder="नाव टाका" oninput="updatePoster()">
             </div>
 
-            <div class="input-group">
+            <div class="form-group">
                 <label>मोबाईल नंबर :</label>
-                <input type="text" id="inputPhone" placeholder="उदा. +९१ ९८७६५४३२१०" oninput="updatePoster()" value="+९१ ९८७६५४३२१०">
+                <input type="text" id="inputPhone" value="+९१ ९८७६५४३२१०" placeholder="मोबाईल नंबर टाका" oninput="updatePoster()">
             </div>
 
-            <div class="input-group">
+            <div class="form-group">
                 <label>तुमचा फोटो अपलोड करा :</label>
-                <input type="file" id="inputPhoto" accept="image/*" onchange="previewImage(event)">
+                <input type="file" id="inputPhoto" accept="image/*" onchange="handlePhoto(event)">
             </div>
 
-            <button class="btn-download" onclick="generatePoster()">
+            <div class="form-group">
+                <label>संस्थेचा / स्वतःचा लोगो अपलोड करा (पर्यायी) :</label>
+                <input type="file" id="inputLogo" accept="image/*" onchange="handleLogo(event)">
+            </div>
+
+            <button class="btn-download" onclick="downloadPoster()">
                 <i class="fa-solid fa-download"></i> पोस्टर डाऊनलोड करा (Download Image)
             </button>
         </div>
 
-        <!-- Poster Preview Right Section -->
-        <div class="preview-section">
-            <div id="posterArea">
+        <!-- Poster Preview Section -->
+        <div class="poster-wrapper">
+            <div id="poster-card" class="theme-red">
                 
-                <!-- Brand Header -->
+                <!-- Poster Header (Logo + Brand) -->
                 <div class="poster-header">
-                    <div class="poster-logo-icon">
-                        <i class="fa-solid fa-hand-holding-droplet"></i>
-                    </div>
-                    <div>
-                        <div class="poster-brand-name">RAKTDATA.IN</div>
-                        <div class="poster-tagline">National Blood Donation Movement</div>
+                    <img id="posterLogo" class="poster-logo-img" src="logo.png" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1297/1297136.png'">
+                    <div class="poster-brand-text">
+                        <h2>RAKTDATA.IN</h2>
+                        <p>NATIONAL BLOOD DONATION MOVEMENT</p>
                     </div>
                 </div>
 
-                <!-- Main Campaign Slogan -->
+                <!-- Slogan Area -->
                 <div>
-                    <div class="poster-slogan" id="displaySlogan">"रक्तदान हेच श्रेष्ठ दान!"</div>
-                    <div class="poster-subtext" id="displaySubtext">सक्रिय स्वयंसेवक - जीवनरक्षक मोहीम</div>
+                    <div class="poster-slogan" id="displaySlogan">"आपत्कालीन मदतीसाठी तत्पर!"</div>
+                    <div class="poster-subtext">सदैव सेवेत - RaktData स्वयंसेवक</div>
                 </div>
 
-                <!-- Volunteer Photo -->
-                <div class="photo-container" id="displayPhotoBorder">
-                    <img id="volunteerImg" src="https://via.placeholder.com/150?text=Photo" alt="Volunteer Photo">
+                <!-- User Photo -->
+                <div class="photo-container">
+                    <img id="posterPhoto" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Photo">
                 </div>
 
-                <!-- Volunteer Info -->
-                <div class="volunteer-info">
-                    <div class="volunteer-badge" id="displayBadge">★ अधिकृत स्वयंसेवक ★</div>
-                    <div class="volunteer-name" id="displayVolunteerName">अमोल पाटील</div>
-                    <div class="volunteer-phone" id="displayVolunteerPhone"><i class="fa-solid fa-phone"></i> +९१ ९८७६५४३२१०</div>
+                <!-- User Details -->
+                <div class="user-details">
+                    <div class="user-badge">★ अधिकृत स्वयंसेवक ★</div>
+                    <div class="user-name" id="displayName">अमोल पाटील</div>
+                    <div class="user-phone"><i class="fa-solid fa-phone" style="font-size:10px; color:var(--gold-color);"></i> <span id="displayPhone">+९१ ९८७६५४३२१०</span></div>
                 </div>
 
-                <!-- Footer Call to Action -->
-                <div class="poster-footer" id="displayFooter">
+                <!-- Poster Footer -->
+                <div class="poster-footer">
                     रक्तदानासाठी आजच नोंदणी करा: www.raktdata.in
                 </div>
 
@@ -339,79 +339,63 @@
 
     </div>
 
-    <!-- JavaScript Logic -->
     <script>
-        // १. नाव व मोबाईल नंबर लाईव्ह अपडेट करणे
+        const slogans = {
+            'theme-red': '"आपत्कालीन मदतीसाठी तत्पर!"',
+            'theme-blue': '"रक्तदान हेच श्रेष्ठ दान, वाचवा कोणाचेही प्राण!"',
+            'theme-green': '"१ युनिट रक्त वाचवू शकते ३ जणांचे जीवन!"',
+            'theme-dark': '"चला एकत्र येऊया, रक्तदान चळवळ वाढवूया!"'
+        };
+
         function updatePoster() {
-            const name = document.getElementById('inputName').value;
-            const phone = document.getElementById('inputPhone').value;
-
-            document.getElementById('displayVolunteerName').innerText = name || "तुमचे नाव";
-            document.getElementById('displayVolunteerPhone').innerHTML = `<i class="fa-solid fa-phone"></i> ${phone || "+९१ XXXXXXXXXX"}`;
-        }
-
-        // २. थीम बदलण्याचे लॉजिक
-        function changePosterTheme() {
-            const theme = document.getElementById('themeSelect').value;
-            const poster = document.getElementById('posterArea');
-            const slogan = document.getElementById('displaySlogan');
-            const subtext = document.getElementById('displaySubtext');
-            const footer = document.getElementById('displayFooter');
-            const badge = document.getElementById('displayBadge');
-            const photoBorder = document.getElementById('displayPhotoBorder');
-
-            if (theme === 'theme1') {
-                poster.style.background = 'linear-gradient(180deg, #8b0000 0%, #4a0000 60%, #1a0000 100%)';
-                poster.style.borderColor = '#ffd700';
-                slogan.innerText = '"रक्तदान हेच श्रेष्ठ दान!"';
-                subtext.innerText = 'सक्रिय स्वयंसेवक - जीवनरक्षक मोहीम';
-                footer.style.background = '#ffd700';
-                footer.style.color = '#4a0000';
-                badge.style.color = '#ffd700';
-                photoBorder.style.borderColor = '#ffd700';
-            } else if (theme === 'theme2') {
-                poster.style.background = 'linear-gradient(180deg, #0A2A66 0%, #051838 100%)';
-                poster.style.borderColor = '#38bdf8';
-                slogan.innerText = '"एक पाऊल जीव वाचवण्यासाठी!"';
-                subtext.innerText = 'RaktData राष्ट्रीय रक्तदान चळवळ';
-                footer.style.background = '#38bdf8';
-                footer.style.color = '#051838';
-                badge.style.color = '#38bdf8';
-                photoBorder.style.borderColor = '#38bdf8';
-            } else if (theme === 'theme3') {
-                poster.style.background = 'linear-gradient(180deg, #dc2626 0%, #7f1d1d 100%)';
-                poster.style.borderColor = '#ffffff';
-                slogan.innerText = '"आपत्कालीन मदतीसाठी तत्पर!"';
-                subtext.innerText = 'सदैव सेवेत - RaktData स्वयंसेवक';
-                footer.style.background = '#ffffff';
-                footer.style.color = '#7f1d1d';
-                badge.style.color = '#ffffff';
-                photoBorder.style.borderColor = '#ffffff';
-            }
-        }
-
-        // ३. अपलोड केलेला फोटो दाखवणे
-        function previewImage(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                const output = document.getElementById('volunteerImg');
-                output.src = reader.result;
-            };
-            if(event.target.files[0]) {
-                reader.readAsDataURL(event.target.files[0]);
-            }
-        }
-
-        // ४. पोस्टर फोटो (PNG) म्हणून डाऊनलोड करणे
-        function generatePoster() {
-            const posterElement = document.getElementById('posterArea');
+            // Update Text
+            document.getElementById('displayName').innerText = document.getElementById('inputName').value || "तुमचे नाव";
+            document.getElementById('displayPhone').innerText = document.getElementById('inputPhone').value || "";
             
-            html2canvas(posterElement, {
-                scale: 2, // हाय क्वालिटी फोटोसाठी
-                useCORS: true
+            // Update Theme & Slogan
+            const selectedTheme = document.getElementById('themeSelect').value;
+            const posterCard = document.getElementById('poster-card');
+            
+            posterCard.className = selectedTheme;
+            document.getElementById('displaySlogan').innerText = slogans[selectedTheme];
+        }
+
+        // Handle User Photo
+        function handlePhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('posterPhoto').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Handle Dynamic Logo
+        function handleLogo(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('posterLogo').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Download Poster Image
+        function downloadPoster() {
+            const poster = document.getElementById('poster-card');
+            const userName = document.getElementById('inputName').value || 'Volunteer';
+
+            html2canvas(poster, {
+                scale: 3, // High Resolution Download
+                useCORS: true,
+                allowTaint: true
             }).then(canvas => {
-                let link = document.createElement('a');
-                link.download = 'RaktData-Volunteer-Poster.png';
+                const link = document.createElement('a');
+                link.download = `RaktData_Poster_${userName}.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             });
