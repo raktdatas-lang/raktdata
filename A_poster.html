@@ -3,745 +3,667 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>रक्तदाता व संस्था सन्मान पोस्टर मेकर | RAKTDATA.IN</title>
+    <title>रक्तदाता व संस्था सन्मान पोस्टर मेकर | RaktData.in</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Html2Canvas for downloading poster -->
+    <!-- Html2Canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <style>
         :root {
-            --bg-dark: #0b1120;
-            --card-bg: #111827;
-            --input-bg: #1f2937;
-            --border-color: #374151;
-            --primary-red: #e11d48;
-            --whatsapp-green: #10b981;
+            --bg-dark: #0f172a;
+            --card-dark: #1e293b;
+            --input-dark: #0f172a;
+            --accent-red: #e11d48;
             --gold-color: #fbbf24;
-            --text-light: #f3f4f6;
-            --text-muted: #9ca3af;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --success-color: #10b981;
         }
 
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-dark);
-            color: var(--text-light);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Top Header Navigation */
-        .top-navbar {
-            background-color: rgba(17, 24, 39, 0.95);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-logo {
-            width: 36px;
-            height: 36px;
-        }
-
-        .nav-title-group h1 {
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            color: #ffffff;
-            line-height: 1;
-        }
-
-        .nav-title-group p {
-            font-size: 9px;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-            margin-top: 2px;
-        }
-
-        .page-heading {
-            font-size: 18px;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        .lang-dropdown select {
-            background-color: var(--input-bg);
-            color: #ffffff;
-            border: 1px solid var(--border-color);
-            padding: 6px 12px;
-            border-radius: 6px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        /* Main Workspace Container */
-        .workspace {
-            display: flex;
-            flex: 1;
-            padding: 24px;
-            gap: 24px;
-            max-width: 1300px;
-            margin: 0 auto;
-            width: 100%;
-            flex-wrap: wrap;
-        }
-
-        /* Form Controls Panel */
-        .control-panel {
-            flex: 1;
-            min-width: 340px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            color: #f8fafc;
+            margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
 
-        .panel-header {
+        .main-container {
+            background-color: var(--card-dark);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            gap: 40px;
+            max-width: 950px;
+            width: 100%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Form Styling */
+        .form-section {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .form-title {
+            color: #f8fafc;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 16px;
-            font-weight: 700;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        .panel-header i {
-            color: var(--primary-red);
+            border-bottom: 2px solid var(--accent-red);
+            padding-bottom: 10px;
         }
 
         .form-group {
             margin-bottom: 16px;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            color: var(--text-muted);
+        .language-switcher {
+            margin-bottom: 18px;
+            padding: 10px;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.55);
+        }
+
+        .language-switcher label {
             margin-bottom: 6px;
         }
 
-        .input-box {
-            width: 100%;
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 10px 14px;
-            color: #ffffff;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.2s;
+        .language-switcher select {
+            border-color: var(--accent-red);
         }
 
-        .input-box:focus {
-            border-color: var(--primary-red);
+        label {
+            display: block;
+            font-size: 13px;
+            color: #cbd5e1;
+            margin-bottom: 6px;
+            font-weight: 500;
         }
 
-        .file-preview-card {
-            background-color: var(--input-bg);
-            border: 1px dashed var(--border-color);
-            border-radius: 8px;
-            padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .file-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .file-thumb {
-            width: 40px;
-            height: 40px;
-            border-radius: 6px;
-            object-fit: cover;
-            background-color: #374151;
-        }
-
-        .file-details h4 {
-            font-size: 12px;
-            color: #ffffff;
-        }
-
-        .file-details p {
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-
-        .btn-remove {
-            color: var(--primary-red);
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-size: 16px;
-        }
-
-        .action-btns {
-            margin-top: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .btn {
+        input, select {
             width: 100%;
             padding: 12px;
+            background-color: var(--input-dark);
+            border: 1px solid #334155;
             border-radius: 8px;
-            border: none;
+            color: #ffffff;
             font-size: 14px;
-            font-weight: 700;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--accent-red);
+        }
+
+        .btn-download {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
             cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            transition: opacity 0.2s;
+            transition: 0.3s;
         }
 
-        .btn-download {
-            background-color: var(--primary-red);
-            color: #ffffff;
-        }
-
-        .btn-share {
-            background-color: var(--whatsapp-green);
-            color: #ffffff;
-        }
-
-        .btn:hover {
+        .btn-download:hover {
             opacity: 0.9;
+            transform: translateY(-2px);
         }
 
-        /* Poster Live Preview Panel */
-        .preview-panel {
-            flex: 1;
-            min-width: 340px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
+        .btn-whatsapp {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
+            gap: 8px;
+            transition: 0.3s;
         }
 
-        .preview-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: var(--primary-red);
-            color: #ffffff;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 4px 8px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            z-index: 10;
+        .btn-whatsapp:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
 
-        /* ACTUAL POSTER CANVAS DESIGN */
-        #poster-canvas {
-            width: 380px;
-            height: 520px;
-            background: radial-gradient(circle at top center, #991b1b 0%, #450a0a 100%);
-            border-radius: 8px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        /* Poster Preview Styling */
+        .poster-wrapper {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
+            align-items: center;
+        }
+
+        #poster-card {
+            width: 380px;
+            height: 520px;
+            border-radius: 12px;
             position: relative;
-            transform-origin: center center;
-            transition: transform 0.2s ease;
-        }
-
-        .poster-top {
-            padding: 15px 15px 0 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            box-sizing: border-box;
             text-align: center;
+            transition: all 0.4s ease;
         }
 
-        .poster-header-logo {
-            width: 46px;
-            height: 46px;
-            margin: 0 auto 4px auto;
+        /* Poster Themes */
+        .theme-red { background: linear-gradient(180deg, #b91c1c 0%, #881337 100%); }
+        .theme-blue { background: linear-gradient(180deg, #1e3a8a 0%, #0f172a 100%); }
+        .theme-green { background: linear-gradient(180deg, #047857 0%, #064e3b 100%); }
+        .theme-dark { background: linear-gradient(180deg, #18181b 0%, #09090b 100%); border: 2px solid var(--gold-color); }
+        .theme-august15 { background: linear-gradient(180deg, #ff9933 0%, #ffffff 50%, #138808 100%); color: #000000 !important; }
+
+        .poster-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .poster-logo-img {
+            width: 40px;
+            height: 40px;
             object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
-        .poster-title {
-            color: #ffffff;
-            font-size: 20px;
+        .poster-brand-text h2 {
+            margin: 0;
+            font-size: 18px;
             font-weight: 900;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            color: #ffffff;
             line-height: 1;
         }
 
-        .poster-subtitle {
-            color: #fca5a5;
-            font-size: 8px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
+        .poster-brand-text p {
+            margin: 3px 0 0 0;
+            font-size: 7.5px;
+            color: #f1f5f9;
+            letter-spacing: 0.5px;
+            font-weight: 600;
         }
 
-        .poster-tagline {
-            color: #fef08a;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 10px;
+        /* 15th August theme text override */
+        .theme-august15 .poster-brand-text h2, 
+        .theme-august15 .poster-brand-text p,
+        .theme-august15 .user-name,
+        .theme-august15 .user-phone {
+            color: #0f172a !important;
+            text-shadow: none;
         }
 
-        /* Circular Frame for User Image */
-        .poster-photo-frame {
-            width: 110px;
-            height: 110px;
+        .poster-slogan {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--gold-color);
+            margin: 6px 0 2px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            padding: 0 10px;
+        }
+
+        .theme-august15 .poster-slogan {
+            color: #0f172a !important;
+            text-shadow: none;
+        }
+
+        .poster-subtext {
+            font-size: 9.5px;
+            color: #e2e8f0;
+            margin-bottom: 5px;
+            background: rgba(255,255,255,0.15);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .theme-august15 .poster-subtext {
+            background: rgba(0,0,0,0.15);
+            color: #0f172a;
+        }
+
+        .photo-container {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            border: 4px solid var(--gold-color);
-            margin: 0 auto;
+            border: 3px solid var(--gold-color);
             overflow: hidden;
-            background-color: #ffffff;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            margin: 2px 0;
         }
 
-        .poster-photo-frame img {
+        .theme-august15 .photo-container {
+            border-color: #000066;
+        }
+
+        .photo-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* User Info Box */
-        .poster-user-info {
-            text-align: center;
-            margin-top: 8px;
+        .user-details {
+            margin-top: 2px;
         }
 
-        .badge-ribbon {
-            background-color: var(--gold-color);
-            color: #000000;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 3px 14px;
-            border-radius: 12px;
+        .user-badge {
+            font-size: 10.5px;
+            color: #fef08a;
+            font-weight: 700;
+            margin-bottom: 2px;
+            background: rgba(251, 191, 36, 0.15);
+            padding: 1px 6px;
+            border-radius: 8px;
             display: inline-block;
-            margin-bottom: 4px;
         }
 
-        .poster-user-name {
+        .theme-august15 .user-badge {
             color: #ffffff;
-            font-size: 19px;
-            font-weight: 800;
+            background: #0f172a;
+        }
+
+        .user-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
             line-height: 1.2;
         }
 
-        .poster-user-phone {
+        .user-phone {
+            font-size: 11px;
             color: #ffffff;
-            font-size: 12px;
             margin-top: 2px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
         }
 
-        .poster-user-blood {
-            color: #fecdd3;
-            font-size: 11px;
-            font-weight: 700;
-            margin-top: 2px;
-        }
-
-        /* Poster White Footer Bar */
+        /* Poster Footer with QR Code Integration */
         .poster-footer {
-            background-color: #ffffff;
-            padding: 8px 12px;
+            background: #ffffff;
+            color: #0f172a;
+            width: 100%;
+            padding: 6px 10px;
+            border-radius: 8px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            position: relative;
-        }
-
-        .footer-items {
-            display: flex;
-            gap: 10px;
-        }
-
-        .footer-item {
-            display: flex;
             align-items: center;
-            gap: 5px;
-            color: #881337;
-            font-size: 9px;
-            font-weight: 700;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+        }
+
+        .footer-text {
             text-align: left;
-            line-height: 1.2;
         }
 
-        .footer-item i {
-            font-size: 14px;
-            color: var(--primary-red);
+        .footer-text p {
+            margin: 0;
+            font-size: 9px;
+            font-weight: bold;
+            color: #1e293b;
         }
 
-        .qr-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .qr-code {
-            width: 36px;
-            height: 36px;
-        }
-
-        .poster-url {
-            position: absolute;
-            bottom: 2px;
-            left: 12px;
+        .footer-text span {
             font-size: 8px;
-            color: var(--primary-red);
-            font-weight: 800;
+            color: #e11d48;
+            font-weight: 700;
         }
 
-        /* Preview Toolbar Below Canvas */
-        .preview-toolbar {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 15px;
-            background-color: var(--input-bg);
-            padding: 6px 16px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-        }
-
-        .tool-btn {
-            background: none;
-            border: none;
-            color: #ffffff;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .zoom-val {
-            font-size: 12px;
-            color: var(--text-muted);
-            min-width: 40px;
-            text-align: center;
-        }
-
-        /* Page Bottom Footer */
-        .site-footer {
-            text-align: center;
-            padding: 15px;
-            font-size: 12px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
+        .footer-qr img {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            padding: 2px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header class="top-navbar">
-        <div class="nav-brand">
-            <img src="https://cdn-icons-png.flaticon.com/512/1297/1297136.png" class="nav-logo" alt="Logo">
-            <div class="nav-title-group">
-                <h1>RAKTDATA.IN</h1>
-                <p>National Blood Donation Movement</p>
-            </div>
-        </div>
-        <div class="page-heading">रक्तदाता व संस्था सन्मान पोस्टर मेकर</div>
-        <div class="lang-dropdown">
-            <i class="fa-solid fa-globe"></i>
-            <select>
-                <option value="mr">मराठी</option>
-                <option value="hi">हिंदी</option>
-                <option value="en">English</option>
-            </select>
-        </div>
-    </header>
-
-    <!-- Workspace -->
-    <main class="workspace">
+    <div class="main-container">
         
-        <!-- Controls Panel -->
-        <section class="control-panel">
-            <div class="panel-header">
-                <i class="fa-solid fa-users"></i>
-                <span>माहिती व पोस्टर तयार करा</span>
+        <!-- Form Section -->
+        <div class="form-section">
+            <div class="form-title">
+                <i class="fa-solid fa-people-arrows" style="color: var(--accent-red);"></i>
+                <span data-i18n="formTitle">माहिती व पोस्टर सन्मान प्रकार</span>
             </div>
-
-            <div class="form-group">
-                <label>स्वयंसेवक प्रकार निवडा</label>
-                <select id="userTypeSelect" class="input-box" onchange="updatePoster()">
-                    <option value="volunteer">👤 अधिकृत स्वयंसेवक</option>
-                    <option value="donor">🩸 सन्माननीय रक्तदाता</option>
-                    <option value="organization">🤝 सहयोगी संस्था / संघटना</option>
+            <div class="language-switcher">
+                <label for="languageSelect" data-i18n="languageLabel">🌐 भाषा / Language</label>
+                <select id="languageSelect" onchange="changeLanguage(this.value)">
+                    <option value="mr">🇮🇳 मराठी</option>
+                    <option value="hi">🇮🇳 हिंदी</option>
+                    <option value="en">🇬🇧 English</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>पोस्टरची थीम निवडा</label>
-                <select id="themeSelect" class="input-box" onchange="updatePoster()">
-                    <option value="red">🩸 ब्राईट रेड (आपत्कालीन मदत)</option>
-                    <option value="dark">🖤 प्रीमियम डार्क (विशेष सन्मान)</option>
+                <label data-i18n="typeLabel">पोस्टरचा सन्मान प्रकार निवडा :</label>
+                <select id="userTypeSelect" onchange="updatePoster()">
+                    <option value="volunteer" data-i18n="typeVolunteer">👤 अधिकृत स्वयंसेवक</option>
+                    <option value="donor" data-i18n="typeDonor">🩸 सन्माननीय रक्तदाता</option>
+                    <option value="organization" data-i18n="typeOrganization">🤝 सहयोगी संस्था / संघटना</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>व्यक्तीचे / संस्थेचे नाव</label>
-                <input type="text" id="inputName" class="input-box" value="अमोल पाटील" oninput="updatePoster()">
-            </div>
-
-            <div class="form-group">
-                <label>रक्तगट निवडा (पर्यायी)</label>
-                <select id="inputBloodGroup" class="input-box" onchange="updatePoster()">
-                    <option value="">-- रक्तगट निवडा --</option>
-                    <option value="A+">A +ve</option>
-                    <option value="A-">A -ve</option>
-                    <option value="B+" selected>B +ve</option>
-                    <option value="B-">B -ve</option>
-                    <option value="AB+">AB +ve</option>
-                    <option value="AB-">AB -ve</option>
-                    <option value="O+">O +ve</option>
-                    <option value="O-">O -ve</option>
+                <label data-i18n="themeLabel">पोस्टरची डिझाईन थीम निवडा :</label>
+                <select id="themeSelect" onchange="updatePoster()">
+                    <option value="theme-red" data-i18n="themeRed">🔴 ब्राईट रेड (आपत्कालीन मदत)</option>
+                    <option value="theme-august15" data-i18n="themeAugust15">🇮🇳 १५ ऑगस्ट - स्वातंत्र्य दिन विशेष</option>
+                    <option value="theme-blue" data-i18n="themeBlue">💙 रॉयल् ब्लू (रक्तदान हेच श्रेष्ठ दान)</option>
+                    <option value="theme-green" data-i18n="themeGreen">🟢 एमराल्ड ग्रीन (१ युनिट रक्त = ३ जीवन)</option>
+                    <option value="theme-dark" data-i18n="themeDark">🖤 प्रीमियम डार्क (महा-रक्तदान जनजागृती)</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>संपर्क नंबर (पर्यायी)</label>
-                <input type="text" id="inputPhone" class="input-box" value="+91 8765432190" oninput="updatePoster()">
+                <label id="labelName" data-i18n="nameLabel">व्यक्तीचे / संस्थेचे पूर्ण नाव :</label>
+                <input type="text" id="inputName" value="अमोल पाटील" placeholder="नाव टाका" data-i18n-placeholder="namePlaceholder" oninput="updatePoster()">
             </div>
 
             <div class="form-group">
-                <label>संलग्न फोटो अपलोड करा (एकच फोटो)</label>
-                <div class="file-preview-card">
-                    <div class="file-info">
-                        <img id="thumbPhoto" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="file-thumb" alt="thumb">
-                        <div class="file-details">
-                            <h4 id="fileName">amol.jpg</h4>
-                            <p>(JPG, PNG)</p>
-                        </div>
-                    </div>
-                    <input type="file" id="photoInput" accept="image/*" style="display:none;" onchange="handlePhotoUpload(event)">
-                    <button class="btn-remove" onclick="document.getElementById('photoInput').click()"><i class="fa-solid fa-pen"></i></button>
-                </div>
+                <label data-i18n="phoneLabel">संपर्क नंबर (पर्यायी) :</label>
+                <input type="text" id="inputPhone" value="+९१ ९८७६५४३२१०" placeholder="मोबाईल नंबर टाका" data-i18n-placeholder="phonePlaceholder" oninput="updatePoster()">
             </div>
 
             <div class="form-group">
-                <label>संस्था / लोगो अपलोड करा (पर्यायी)</label>
-                <div class="file-preview-card">
-                    <div class="file-info">
-                        <img id="thumbLogo" src="https://cdn-icons-png.flaticon.com/512/1297/1297136.png" class="file-thumb" alt="logo thumb">
-                        <div class="file-details">
-                            <h4 id="logoFileName">logo.png</h4>
-                            <p>(PNG)</p>
-                        </div>
-                    </div>
-                    <input type="file" id="logoInput" accept="image/*" style="display:none;" onchange="handleLogoUpload(event)">
-                    <button class="btn-remove" onclick="document.getElementById('logoInput').click()"><i class="fa-solid fa-pen"></i></button>
-                </div>
+                <label data-i18n="photoLabel">संबंधित फोटो अपलोड करा (फक्त व्यक्तीसाठी) :</label>
+                <input type="file" id="inputPhoto" accept="image/*" onchange="handlePhoto(event)">
             </div>
 
-            <div class="action-btns">
-                <button class="btn btn-download" onclick="downloadPoster()">
-                    <i class="fa-solid fa-download"></i> पोस्टर डाऊनलोड करा (Download Image)
-                </button>
-                <button class="btn btn-share" onclick="shareWhatsApp()">
-                    <i class="fa-brands fa-whatsapp"></i> WhatsApp वर शेअर करा (Share)
-                </button>
-            </div>
-        </section>
-
-        <!-- Preview Panel -->
-        <section class="preview-panel">
-            <div class="preview-badge">
-                <i class="fa-solid fa-bolt"></i> LIVE PREVIEW
+            <div class="form-group">
+                <label data-i18n="logoLabel">संस्थेचा / स्वतःचा लोगो अपलोड करा (फक्त संस्थेसाठी) :</label>
+                <input type="file" id="inputLogo" accept="image/*" onchange="handleLogo(event)">
             </div>
 
-            <!-- Poster Element to Convert to Image -->
-            <div id="poster-canvas">
-                <div class="poster-top">
-                    <img id="posterHeaderLogo" src="https://cdn-icons-png.flaticon.com/512/1297/1297136.png" class="poster-header-logo" alt="Logo">
-                    <div class="poster-title">RAKTDATA.IN</div>
-                    <div class="poster-subtitle">NATIONAL BLOOD DONATION MOVEMENT</div>
-                    <div class="poster-tagline">"आपली छोटी मदत, कोणाचा तरी मोठा श्वास"</div>
+            <button class="btn-download" onclick="downloadPoster()">
+                <i class="fa-solid fa-download"></i> <span data-i18n="downloadButton">पोस्टर डाऊनलोड करा</span>
+            </button>
 
-                    <div class="poster-photo-frame">
-                        <img id="posterUserPhoto" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="User">
-                    </div>
+            <button class="btn-whatsapp" onclick="shareOnWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> <span data-i18n="whatsappButton">WhatsApp वर शेअर करा</span>
+            </button>
+        </div>
 
-                    <div class="poster-user-info">
-                        <div class="badge-ribbon" id="displayBadge">★ अधिकृत स्वयंसेवक ★</div>
-                        <div class="poster-user-name" id="displayName">अमोल पाटील</div>
-                        <div class="poster-user-phone" id="displayPhone"><i class="fa-solid fa-phone"></i> +91 8765432190</div>
-                        <div class="poster-user-blood" id="displayBlood">रक्तगट: B+</div>
+        <!-- Poster Preview Section -->
+        <div class="poster-wrapper">
+            <div id="poster-card" class="theme-red">
+                
+                <!-- Poster Header (Logo + Brand) -->
+                <div class="poster-header">
+                    <img id="posterLogo" class="poster-logo-img" src="logo.png" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1297/1297136.png'">
+                    <div class="poster-brand-text">
+                        <h2>RAKTDATA.IN</h2>
+                        <p data-i18n="brandSubtitle">NATIONAL BLOOD DONATION MOVEMENT</p>
                     </div>
                 </div>
 
+                <!-- Slogan Area -->
+                <div>
+                    <div class="poster-slogan" id="displaySlogan">"आपत्कालीन मदतीसाठी तत्पर!"</div>
+                    <div class="poster-subtext" id="displaySubtext">सदैव सेवेत - RaktData स्वयंसेवक</div>
+                </div>
+
+                <!-- User Photo -->
+                <div class="photo-container">
+                    <img id="posterPhoto" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Photo">
+                </div>
+
+                <!-- User Details -->
+                <div class="user-details">
+                    <div class="user-badge" id="displayBadge">★ अधिकृत स्वयंसेवक ★</div>
+                    <div class="user-name" id="displayName">अमोल पाटील</div>
+                    <div class="user-phone"><i class="fa-solid fa-phone" style="font-size:10px; color:var(--gold-color);"></i> <span id="displayPhone">+९१ ९८७६५४३२१०</span></div>
+                </div>
+
+                <!-- Poster Footer with QR Code -->
                 <div class="poster-footer">
-                    <div class="footer-items">
-                        <div class="footer-item">
-                            <i class="fa-solid fa-hand-holding-droplet"></i>
-                            <div>रक्तदान करा<br>जीवन वाचवा</div>
-                        </div>
-                        <div class="footer-item">
-                            <i class="fa-solid fa-hands-holding-child"></i>
-                            <div>मानवतेची सेवा<br>हीच खरी सेवा</div>
-                        </div>
+                    <div class="footer-text">
+                        <p data-i18n="footerVisit">रक्तदानासाठी आजच भेट द्या:</p>
+                        <span>www.raktdata.in</span>
                     </div>
-                    <div class="qr-section">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.raktdata.in" class="qr-code" alt="QR">
+                    <div class="footer-qr">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.raktdata.in" alt="QR Code">
                     </div>
-                    <div class="poster-url">www.raktdata.in</div>
                 </div>
+
             </div>
+        </div>
 
-            <!-- Preview Control Controls -->
-            <div class="preview-toolbar">
-                <button class="tool-btn" onclick="zoomPoster(-0.1)"><i class="fa-solid fa-minus"></i></button>
-                <span class="zoom-val" id="zoomVal">100%</span>
-                <button class="tool-btn" onclick="zoomPoster(0.1)"><i class="fa-solid fa-plus"></i></button>
-                <button class="tool-btn" onclick="toggleFullScreen()"><i class="fa-solid fa-expand"></i> पूर्ण स्क्रीन</button>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        © 2026 RaktData.in | सर्व हक्क राखीव ❤️
-    </footer>
+    </div>
 
     <script>
-        let zoomLevel = 1;
+        const translations = {
+            mr: {
+                formTitle: "माहिती व पोस्टर सन्मान प्रकार", languageLabel: "🌐 भाषा / Language",
+                typeLabel: "पोस्टरचा सन्मान प्रकार निवडा :", typeVolunteer: "👤 अधिकृत स्वयंसेवक",
+                typeDonor: "🩸 सन्माननीय रक्तदाता", typeOrganization: "🤝 सहयोगी संस्था / संघटना",
+                themeLabel: "पोस्टरची डिझाईन थीम निवडा :", themeRed: "🔴 ब्राईट रेड (आपत्कालीन मदत)",
+                themeAugust15: "🇮🇳 १५ ऑगस्ट - स्वातंत्र्य दिन विशेष",
+                themeBlue: "💙 रॉयल् ब्लू (रक्तदान हेच श्रेष्ठ दान)",
+                themeGreen: "🟢 एमराल्ड ग्रीन (१ युनिट रक्त = ३ जीवन)",
+                themeDark: "🖤 प्रीमियम डार्क (महा-रक्तदान जनजागृती)",
+                nameLabel: "व्यक्तीचे / संस्थेचे पूर्ण नाव :", namePlaceholder: "नाव टाका",
+                phoneLabel: "संपर्क नंबर (पर्यायी) :", phonePlaceholder: "मोबाईल नंबर टाका",
+                photoLabel: "संबंधित फोटो अपलोड करा (फक्त व्यक्तीसाठी) :",
+                logoLabel: "संस्थेचा / स्वतःचा लोगो अपलोड करा (फक्त संस्थेसाठी) :",
+                downloadButton: "पोस्टर डाऊनलोड करा", whatsappButton: "WhatsApp वर शेअर करा",
+                brandSubtitle: "NATIONAL BLOOD DONATION MOVEMENT", footerVisit: "रक्तदानासाठी आजच भेट द्या:",
+                defaultName: "नाव टाईप करा", downloadDone: "पोस्टर यशस्वीरित्या डाउनलोड झाला!",
+                shareMessage: "मी RAKTDATA.IN राष्ट्रीय रक्तदान चळवळीत सहभाग घेतला आहे! आपणही आजच जोडले जा: www.raktdata.in"
+            },
+            hi: {
+                formTitle: "जानकारी व पोस्टर सम्मान प्रकार", languageLabel: "🌐 भाषा / Language",
+                typeLabel: "पोस्टर का सम्मान प्रकार चुनें :", typeVolunteer: "👤 अधिकृत स्वयंसेवक",
+                typeDonor: "🩸 सम्माननीय रक्तदाता", typeOrganization: "🤝 सहयोगी संस्था / संगठन",
+                themeLabel: "पोस्टर की डिज़ाइन थीम चुनें :", themeRed: "🔴 ब्राइट रेड (आपातकालीन सहायता)",
+                themeAugust15: "🇮🇳 १५ अगस्त - स्वतंत्रता दिवस विशेष",
+                themeBlue: "💙 रॉयल ब्लू (रक्तदान ही श्रेष्ठ दान)",
+                themeGreen: "🟢 एमराल्ड ग्रीन (१ यूनिट रक्त = ३ जीवन)",
+                themeDark: "🖤 प्रीमियम डार्क (रक्तदान जागरूकता)",
+                nameLabel: "व्यक्ति / संस्था का पूरा नाम :", namePlaceholder: "नाम दर्ज करें",
+                phoneLabel: "संपर्क नंबर (वैकल्पिक) :", phonePlaceholder: "मोबाइल नंबर दर्ज करें",
+                photoLabel: "संबंधित फोटो अपलोड करें (केवल व्यक्ति के लिए) :",
+                logoLabel: "संस्था / अपना लोगो अपलोड करें (केवल संस्था के लिए) :",
+                downloadButton: "पोस्टर डाउनलोड करें", whatsappButton: "WhatsApp पर शेयर करें",
+                brandSubtitle: "NATIONAL BLOOD DONATION MOVEMENT", footerVisit: "रक्तदान के लिए आज ही आएँ:",
+                defaultName: "नाम टाइप करें", downloadDone: "पोस्टर सफलतापूर्वक डाउनलोड हुआ!",
+                shareMessage: "मैं RAKTDATA.IN राष्ट्रीय रक्तदान आंदोलन में शामिल हुआ हूँ! आप भी आज ही जुड़ें: www.raktdata.in"
+            },
+            en: {
+                formTitle: "Information & Poster Honor Type", languageLabel: "🌐 Language",
+                typeLabel: "Select poster honor type:", typeVolunteer: "👤 Authorized Volunteer",
+                typeDonor: "🩸 Honored Blood Donor", typeOrganization: "🤝 Partner Organization / Group",
+                themeLabel: "Select poster design theme:", themeRed: "🔴 Bright Red (Emergency Support)",
+                themeAugust15: "🇮🇳 15 August - Independence Day Special",
+                themeBlue: "💙 Royal Blue (Blood Donation is the Greatest Gift)",
+                themeGreen: "🟢 Emerald Green (1 Unit of Blood = 3 Lives)",
+                themeDark: "🖤 Premium Dark (Blood Donation Awareness)",
+                nameLabel: "Person / Organization Full Name:", namePlaceholder: "Enter name",
+                phoneLabel: "Contact Number (Optional):", phonePlaceholder: "Enter mobile number",
+                photoLabel: "Upload related photo (for person only):",
+                logoLabel: "Upload organization / personal logo (for organization only):",
+                downloadButton: "Download Poster", whatsappButton: "Share on WhatsApp",
+                brandSubtitle: "NATIONAL BLOOD DONATION MOVEMENT", footerVisit: "Visit today to donate blood:",
+                defaultName: "Type name", downloadDone: "Poster downloaded successfully!",
+                shareMessage: "I have joined the RAKTDATA.IN National Blood Donation Movement! You can join today too: www.raktdata.in"
+            }
+        };
+
+        const themeSlogans = {
+            mr: {
+                'theme-red': '"आपत्कालीन मदतीसाठी तत्पर!"',
+                'theme-august15': '"स्वातंत्र्याचा अमृत महोत्सव - रक्तदान हेच देशसेवा!"',
+                'theme-blue': '"रक्तदान हेच श्रेष्ठ दान, वाचवा कोणाचेही प्राण!"',
+                'theme-green': '"१ युनिट रक्त वाचवू शकते ३ जणांचे जीवन!"',
+                'theme-dark': '"चला एकत्र येऊया, रक्तदान चळवळ वाढवूया!"'
+            },
+            hi: {
+                'theme-red': '"आपातकालीन सहायता के लिए तत्पर!"',
+                'theme-august15': '"स्वतंत्रता का अमृत महोत्सव - रक्तदान ही देशसेवा!"',
+                'theme-blue': '"रक्तदान ही श्रेष्ठ दान, किसी की जान बचाएँ!"',
+                'theme-green': '"१ यूनिट रक्त ३ लोगों का जीवन बचा सकता है!"',
+                'theme-dark': '"आइए साथ आएँ, रक्तदान आंदोलन को बढ़ाएँ!"'
+            },
+            en: {
+                'theme-red': '"Always Ready for Emergency Support!"',
+                'theme-august15': '"Freedom Celebration - Blood Donation is Nation Service!"',
+                'theme-blue': '"Blood Donation is the Greatest Gift — Save a Life!"',
+                'theme-green': '"1 Unit of Blood Can Save 3 Lives!"',
+                'theme-dark': '"Come Together and Grow the Blood Donation Movement!"'
+            }
+        };
+
+        const userTypeSettings = {
+            mr: {
+                volunteer: { badge: '★ अधिकृत स्वयंसेवक ★', subtext: 'सदैव सेवेत - RaktData स्वयंसेवक', defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' },
+                donor: { badge: '🩸 सन्माननीय रक्तदाता 🩸', subtext: '"रक्तदान करून वाचवले जीवन!"', defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' },
+                organization: { badge: '🤝 सहयोगी संस्था 🤝', subtext: 'आमचा आधार - मोहिमेत सहभागी संस्था', defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/1297/1297136.png' }
+            },
+            hi: {
+                volunteer: { badge: '★ अधिकृत स्वयंसेवक ★', subtext: 'सदैव सेवा में - RaktData स्वयंसेवक', defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' },
+                donor: { badge: '🩸 सम्माननीय रक्तदाता 🩸', subtext: '"रक्तदान करके जीवन बचाया!"', defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' },
+                organization: { badge: '🤝 सहयोगी संस्था 🤝', subtext: 'हमारा सहयोग - अभियान में सहभागी संस्था', defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/1297/1297136.png' }
+            },
+            en: {
+                volunteer: { badge: '★ Authorized Volunteer ★', subtext: 'Always in Service - RaktData Volunteer', defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' },
+                donor: { badge: '🩸 Honored Blood Donor 🩸', subtext: '"Saved a Life by Donating Blood!"', defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' },
+                organization: { badge: '🤝 Partner Organization 🤝', subtext: 'Our Support - Participating Organization', defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/1297/1297136.png' }
+            }
+        };
+
+        let currentLanguage = localStorage.getItem('raktdataLanguage') || 'mr';
+
+        function changeLanguage(lang) {
+            currentLanguage = translations[lang] ? lang : 'mr';
+            localStorage.setItem('raktdataLanguage', currentLanguage);
+            document.documentElement.lang = currentLanguage;
+            const t = translations[currentLanguage];
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) el.textContent = t[key];
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (t[key]) el.placeholder = t[key];
+            });
+
+            document.getElementById('languageSelect').value = currentLanguage;
+            updatePoster();
+        }
 
         function updatePoster() {
-            // Update Name
-            const name = document.getElementById('inputName').value;
-            document.getElementById('displayName').innerText = name || "नाव प्रविष्ट करा";
+            const t = translations[currentLanguage];
+            document.getElementById('displayName').innerText =
+                document.getElementById('inputName').value || t.defaultName;
+            document.getElementById('displayPhone').innerText =
+                document.getElementById('inputPhone').value || "";
 
-            // Update Phone
-            const phone = document.getElementById('inputPhone').value;
-            document.getElementById('displayPhone').innerHTML = phone ? `<i class="fa-solid fa-phone"></i> ${phone}` : "";
+            const selectedTheme = document.getElementById('themeSelect').value;
+            document.getElementById('poster-card').className = selectedTheme;
+            document.getElementById('displaySlogan').innerText =
+                themeSlogans[currentLanguage][selectedTheme];
 
-            // Update Blood Group
-            const blood = document.getElementById('inputBloodGroup').value;
-            document.getElementById('displayBlood').innerText = blood ? `रक्तगट: ${blood}` : "";
+            const selectedType = document.getElementById('userTypeSelect').value;
+            const settings = userTypeSettings[currentLanguage][selectedType];
+            document.getElementById('displayBadge').innerText = settings.badge;
+            document.getElementById('displaySubtext').innerText = settings.subtext;
 
-            // Update User Type Badge
-            const userType = document.getElementById('userTypeSelect').value;
-            const badgeEl = document.getElementById('displayBadge');
-            if(userType === 'volunteer') {
-                badgeEl.innerText = "★ अधिकृत स्वयंसेवक ★";
-            } else if(userType === 'donor') {
-                badgeEl.innerText = "🩸 सन्माननीय रक्तदाता 🩸";
-            } else {
-                badgeEl.innerText = "🤝 सहयोगी संस्था 🤝";
-            }
-
-            // Update Theme Background
-            const theme = document.getElementById('themeSelect').value;
-            const poster = document.getElementById('poster-canvas');
-            if(theme === 'dark') {
-                poster.style.background = 'radial-gradient(circle at top center, #1f2937 0%, #111827 100%)';
-            } else {
-                poster.style.background = 'radial-gradient(circle at top center, #991b1b 0%, #450a0a 100%)';
+            const photoEl = document.getElementById('posterPhoto');
+            if (photoEl.src.includes('cdn-icons-png')) {
+                photoEl.src = settings.defaultPhoto;
             }
         }
 
-        function handlePhotoUpload(event) {
+        function handlePhoto(event) {
             const file = event.target.files[0];
             if (file) {
-                document.getElementById('fileName').innerText = file.name;
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    document.getElementById('thumbPhoto').src = e.target.result;
-                    document.getElementById('posterUserPhoto').src = e.target.result;
+                    document.getElementById('posterPhoto').src = e.target.result;
                 }
                 reader.readAsDataURL(file);
             }
         }
 
-        function handleLogoUpload(event) {
+        function handleLogo(event) {
             const file = event.target.files[0];
             if (file) {
-                document.getElementById('logoFileName').innerText = file.name;
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    document.getElementById('thumbLogo').src = e.target.result;
-                    document.getElementById('posterHeaderLogo').src = e.target.result;
+                    document.getElementById('posterLogo').src = e.target.result;
                 }
                 reader.readAsDataURL(file);
-            }
-        }
-
-        function zoomPoster(delta) {
-            zoomLevel = Math.min(Math.max(0.6, zoomLevel + delta), 1.3);
-            const poster = document.getElementById('poster-canvas');
-            poster.style.transform = `scale(${zoomLevel})`;
-            document.getElementById('zoomVal').innerText = `${Math.round(zoomLevel * 100)}%`;
-        }
-
-        function toggleFullScreen() {
-            const poster = document.getElementById('poster-canvas');
-            if (!document.fullscreenElement) {
-                poster.requestFullscreen().catch(err => {
-                    alert("फुल स्क्रीन मोड सुरू करता आला नाही.");
-                });
-            } else {
-                document.exitFullscreen();
             }
         }
 
         function downloadPoster() {
-            const poster = document.getElementById('poster-canvas');
-            
-            // Reset scale for image generation
-            const originalTransform = poster.style.transform;
-            poster.style.transform = 'scale(1)';
+            const poster = document.getElementById('poster-card');
+            const userName = document.getElementById('inputName').value || 'Honored';
 
-            html2canvas(poster, { scale: 3, useCORS: true }).then(canvas => {
-                poster.style.transform = originalTransform;
+            html2canvas(poster, {
+                scale: 3,
+                useCORS: true,
+                allowTaint: true
+            }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `RaktData_Poster.png`;
+                link.download = `RaktData_HonoredPoster_${userName}.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
-            }).catch(err => {
-                poster.style.transform = originalTransform;
-                alert('पोस्टर डाऊनलोड करताना अडचण आली, कृपया पुन्हा प्रयत्न करा.');
+                alert(translations[currentLanguage].downloadDone);
             });
         }
 
-        function shareWhatsApp() {
-            const name = document.getElementById('inputName').value;
-            const text = encodeURIComponent(`माझे RaktData.in पोस्टर पहा - ${name}\nरक्तदानासाठी आजच नोंदणी करा: https://www.raktdata.in`);
-            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        function shareOnWhatsApp() {
+            var message = encodeURIComponent(translations[currentLanguage].shareMessage);
+            var whatsappUrl = `https://api.whatsapp.com/send?text=${message}`;
+            window.open(whatsappUrl, '_blank');
         }
     </script>
+
 </body>
 </html>
