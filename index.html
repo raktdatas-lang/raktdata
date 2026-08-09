@@ -6,6 +6,8 @@
   <title>RAKTDATA.IN | National Blood Donation Movement</title>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Swiper CSS for Sliders -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   
   <style>
     /* Global Styles */
@@ -103,7 +105,6 @@
       gap: 12px;
     }
 
-    /* 🔥 लोगो साईझ नियंत्रित करणारा फिक्स CSS 🔥 */
     .poster-logo-img {
       max-height: 55px;
       width: auto;
@@ -122,6 +123,33 @@
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.5px;
+    }
+
+    /* Header Right Actions (State & Lang) */
+    .header-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .state-dropdown-box, .lang-switcher {
+      display: flex;
+      align-items: center;
+      background: #f8f9fa;
+      padding: 5px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+    }
+
+    .state-dropdown-box select, .lang-switcher select {
+      border: none;
+      background: transparent;
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+      font-size: 14px;
+      color: #0A2A66;
     }
 
     /* Main Navigation Bar */
@@ -154,7 +182,7 @@
     .hero-wrapper {
       background: linear-gradient(135deg, #0A2A66 0%, #05183d 100%);
       color: white;
-      padding: 50px 5%;
+      padding: 40px 5%;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 30px;
@@ -162,7 +190,7 @@
     }
 
     .hero-text h1 {
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 800;
       line-height: 1.3;
       margin-bottom: 15px;
@@ -171,7 +199,7 @@
     .hero-text h1 span {
       color: #FFD700;
       display: block;
-      font-size: 24px;
+      font-size: 22px;
       margin-top: 5px;
     }
 
@@ -232,6 +260,104 @@
 
     .hero-banner-box h3 { color: #FFD700; font-size: 20px; margin-bottom: 8px; }
     .hero-banner-box p { color: #FFFFFF; font-size: 13px; line-height: 1.5; }
+
+    /* --- 🏢 संस्था स्लायडर आणि शतकवीर रक्तदाते सेक्शन CSS --- */
+    .section-container {
+      padding: 40px 5%;
+      background-color: #0A2A66;
+      border-top: 3px solid #FFD700;
+    }
+
+    .section-title {
+      color: #FFD700;
+      font-size: 24px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* संस्था कार्ड डिझाइन */
+    .org-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border: 2px solid #FFD700;
+    }
+
+    .org-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #f0f0f0;
+      padding: 5px;
+    }
+
+    .org-info h4 {
+      font-size: 16px;
+      color: #0A2A66;
+      margin-bottom: 4px;
+    }
+
+    .org-info p {
+      font-size: 13px;
+      color: #555;
+      font-weight: 600;
+    }
+
+    /* शतकवीर रक्तदाते कार्ड डिझाइन */
+    .donor-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border-top: 4px solid #C00000;
+    }
+
+    .donor-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 10px auto;
+      border: 3px solid #FFD700;
+    }
+
+    .donor-card h4 {
+      font-size: 16px;
+      color: #0A2A66;
+      margin-bottom: 4px;
+    }
+
+    .donor-card p {
+      font-size: 13px;
+      color: #C00000;
+      font-weight: 700;
+    }
+
+    .badge-centurion {
+      background: #FFD700;
+      color: #0A2A66;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+      color: #FFD700 !important;
+    }
 
     /* Statistics Counter Section */
     .stats-section {
@@ -310,6 +436,7 @@
       .hero-wrapper { grid-template-columns: 1fr; text-align: center; }
       .hero-buttons { justify-content: center; }
       .header-container { flex-direction: column; gap: 15px; }
+      .header-right-actions { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -325,14 +452,29 @@
       </div>
     </div>
        
-    <!-- भाषा निवडीचा कोड -->
-    <div class="lang-switcher" style="display: flex; align-items: center;">
-      <i class="fa-solid fa-globe" style="color: #0A2A66; margin-right: 8px; font-size: 18px;"></i>
-      <select id="languageSelect" onchange="translatePage(this.value)" style="border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 6px; font-weight: bold; cursor: pointer;">
-        <option value="mr">मराठी</option>
-        <option value="hi">हिंदी</option>
-        <option value="en">English</option>
-      </select>
+    <!-- उजव्या बाजूला राज्य आणि भाषा निवडण्याचा पर्याय -->
+    <div class="header-right-actions">
+      <!-- नवीन राज्य निवडीचा पर्याय -->
+      <div class="state-dropdown-box">
+        <i class="fa-solid fa-location-dot" style="color: #C00000; margin-right: 6px;"></i>
+        <select id="stateSelect" onchange="filterByState()">
+          <option value="all">सर्व राज्ये (All States)</option>
+          <option value="maharashtra">महाराष्ट्र</option>
+          <option value="gujarat">गुजरात</option>
+          <option value="karnataka">कर्नाटक</option>
+          <option value="delhi">दिल्ली</option>
+        </select>
+      </div>
+
+      <!-- भाषा निवडीचा पर्याय -->
+      <div class="lang-switcher">
+        <i class="fa-solid fa-globe" style="color: #0A2A66; margin-right: 6px;"></i>
+        <select id="languageSelect" onchange="translatePage(this.value)">
+          <option value="mr">मराठी</option>
+          <option value="hi">हिंदी</option>
+          <option value="en">English</option>
+        </select>
+      </div>
     </div>
   </header>
 
@@ -352,6 +494,12 @@
         selectElement.value = lang;
         selectElement.dispatchEvent(new Event('change'));
       }
+    }
+
+    function filterByState() {
+      const selectedState = document.getElementById('stateSelect').value;
+      // येथे तुम्ही निवडलेल्या राज्यानुसार डेटा फिल्टर करण्याचे लॉजिक लिहू शकता
+      console.log("Selected State:", selectedState);
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -403,6 +551,87 @@
       <i class="fa-solid fa-hand-holding-droplet"></i>
       <h3>एक जीवन वाचवा!</h3>
       <p>तुमच्या भागात आयोजित होणाऱ्या आगामी रक्तदान शिबिरांची माहिती मिळवा आणि एका क्लिकवर सहभागी व्हा.</p>
+    </div>
+  </section>
+
+  <!-- --- 🏢 आमच्याशी जोडलेल्या संस्था (Organizations Slider Section) --- -->
+  <section class="section-container">
+    <h3 class="section-title"><i class="fa-solid fa-building-ngo"></i> आमच्याशी जोडलेल्या संस्था व मंडळे</h3>
+    
+    <div class="swiper orgSwiper">
+      <div class="swiper-wrapper">
+        <!-- संस्था १ -->
+        <div class="swiper-slide">
+          <div class="org-card">
+            <img src="logo.png" alt="Logo" class="org-logo">
+            <div class="org-info">
+              <h4>सेवाभावी रक्तदाता संघ, पुणे</h4>
+              <p>अध्यक्ष: श्री. राजेश कुलकर्णी</p>
+            </div>
+          </div>
+        </div>
+        <!-- संस्था २ -->
+        <div class="swiper-slide">
+          <div class="org-card">
+            <img src="logo.png" alt="Logo" class="org-logo">
+            <div class="org-info">
+              <h4>युवा ब्लड फाउंडेशन, मुंबई</h4>
+              <p>अध्यक्ष: श्री. आप्साहेब पाटील</p>
+            </div>
+          </div>
+        </div>
+        <!-- संस्था ३ -->
+        <div class="swiper-slide">
+          <div class="org-card">
+            <img src="logo.png" alt="Logo" class="org-logo">
+            <div class="org-info">
+              <h4>जीवनज्योत संस्था, नागपूर</h4>
+              <p>अध्यक्ष: श्री. सुनील देशपांडे</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+  <!-- --- 🏅 शतकवीर रक्तदाते (Centurion Donors Slider Section) --- -->
+  <section class="section-container" style="background-color: #05183d;">
+    <h3 class="section-title"><i class="fa-solid fa-medal"></i> १००+ वेळा रक्तदान केलेले शतकवीर रक्तदाते</h3>
+    
+    <div class="swiper donorSwiper">
+      <div class="swiper-wrapper">
+        <!-- रक्तदाता १ -->
+        <div class="swiper-slide">
+          <div class="donor-card">
+            <img src="logo.png" alt="Donor" class="donor-img">
+            <h4>श्री. सुरेश पवार</h4>
+            <p>११५ वेळा रक्तदान</p>
+            <span class="badge-centurion"><i class="fa-solid fa-award"></i> शतकवीर</span>
+          </div>
+        </div>
+        <!-- रक्तदाता २ -->
+        <div class="swiper-slide">
+          <div class="donor-card">
+            <img src="logo.png" alt="Donor" class="donor-img">
+            <h4>श्री. रमेश मगर</h4>
+            <p>१२८ वेळा रक्तदान</p>
+            <span class="badge-centurion"><i class="fa-solid fa-award"></i> शतकवीर</span>
+          </div>
+        </div>
+        <!-- रक्तदाता ३ -->
+        <div class="swiper-slide">
+          <div class="donor-card">
+            <img src="logo.png" alt="Donor" class="donor-img">
+            <h4>श्री. प्रकाश जाधव</h4>
+            <p>१४० वेळा रक्तदान</p>
+            <span class="badge-centurion"><i class="fa-solid fa-award"></i> शतकवीर</span>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
   </section>
 
@@ -471,6 +700,48 @@
       &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
     </div>
   </footer>
+
+  <!-- Swiper JS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // संस्था स्लायडर इनिशियलाइज (Initialize) करणे
+    var orgSwiper = new Swiper(".orgSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+    });
+
+    // शतकवीर रक्तदाते स्लायडर इनिशियलाइज (Initialize) करणे
+    var donorSwiper = new Swiper(".donorSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 4 },
+      },
+    });
+  </script>
 
   <!-- 🔗 Google Sheet बातम्या कनेक्ट करणारी Script -->
   <script>
