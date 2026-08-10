@@ -261,6 +261,54 @@
     .hero-banner-box h3 { color: #FFD700; font-size: 20px; margin-bottom: 8px; }
     .hero-banner-box p { color: #FFFFFF; font-size: 13px; line-height: 1.5; }
 
+    /* 📖 E-Book Section CSS */
+    .ebook-section {
+      padding: 50px 5%;
+      background: #ffffff;
+      border-top: 3px solid #C00000;
+    }
+
+    .ebook-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+      border: 2px solid #ffccd5;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(192, 0, 0, 0.08);
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .ebook-badge {
+      background: #C00000;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .ebook-price {
+      font-size: 26px;
+      font-weight: 800;
+      color: #C00000;
+      margin: 10px 0;
+    }
+
+    .payment-info-box {
+      background: #f8f9fa;
+      border-left: 4px solid #25D366;
+      padding: 15px;
+      border-radius: 6px;
+      margin: 15px 0;
+      font-size: 14px;
+    }
+
     /* --- 🏢 संस्था स्लायडर आणि शतकवीर रक्तदाते सेक्शन CSS --- */
     .section-container {
       padding: 40px 5%;
@@ -437,6 +485,7 @@
       .hero-buttons { justify-content: center; }
       .header-container { flex-direction: column; gap: 15px; }
       .header-right-actions { width: 100%; justify-content: center; }
+      .ebook-container { grid-template-columns: 1fr; text-align: center; }
     }
   </style>
 </head>
@@ -451,56 +500,56 @@
         <div class="poster-tagline">National Blood Donation Movement</div>
       </div>
     </div>
-       
+        
     <!-- उजव्या बाजूला राज्य आणि भाषा निवडण्याचा पर्याय -->
     <div class="header-right-actions">
       <!-- नवीन राज्य निवडीचा पर्याय -->
       <div class="state-dropdown-box">
         <i class="fa-solid fa-location-dot" style="color: #C00000; margin-right: 6px;"></i>
         <select id="stateSelect" class="form-control">
-    <!-- सर्व राज्ये (All States) -->
-    <option value="all">सर्व राज्ये (All States)</option>
+          <!-- सर्व राज्ये (All States) -->
+          <option value="all">सर्व राज्ये (All States)</option>
 
-    <!-- २८ राज्ये (28 States) -->
-    <option value="andhra_pradesh">आंध्र प्रदेश (Andhra Pradesh)</option>
-    <option value="arunachal_pradesh">अरुणाचल प्रदेश (Arunachal Pradesh)</option>
-    <option value="assam">आसाम (Assam)</option>
-    <option value="bihar">बिहार (Bihar)</option>
-    <option value="chhattisgarh">छत्तीसगड (Chhattisgarh)</option>
-    <option value="goa">गोवा (Goa)</option>
-    <option value="gujarat">गुजरात (Gujarat)</option>
-    <option value="haryana">हरियाणा (Haryana)</option>
-    <option value="himachal_pradesh">हिमाचल प्रदेश (Himachal Pradesh)</option>
-    <option value="jharkhand">झारखंड (Jharkhand)</option>
-    <option value="karnataka">कर्नाटक (Karnataka)</option>
-    <option value="kerala">केरळ (Kerala)</option>
-    <option value="madhya_pradesh">मध्य प्रदेश (Madhya Pradesh)</option>
-    <option value="maharashtra" selected>महाराष्ट्र (Maharashtra)</option>
-    <option value="manipur">मणिपूर (Manipur)</option>
-    <option value="meghalaya">मेघालय (Meghalaya)</option>
-    <option value="mizoram">मिझोरम (Mizoram)</option>
-    <option value="nagaland">नागालँड (Nagaland)</option>
-    <option value="odisha">ओडिशा (Odisha)</option>
-    <option value="punjab">पंजाब (Punjab)</option>
-    <option value="rajasthan">राजस्थान (Rajasthan)</option>
-    <option value="sikkim">सिक्कीम (Sikkim)</option>
-    <option value="tamil_nadu">तामिळनाडू (Tamil Nadu)</option>
-    <option value="telangana">तेलंगणा (Telangana)</option>
-    <option value="tripura">त्रिपुरा (Tripura)</option>
-    <option value="uttar_pradesh">उत्तर प्रदेश (Uttar Pradesh)</option>
-    <option value="uttarakhand">उत्तराखंड (Uttarakhand)</option>
-    <option value="west_bengal">पश्चिम बंगाल (West Bengal)</option>
+          <!-- २८ राज्ये (28 States) -->
+          <option value="andhra_pradesh">आंध्र प्रदेश (Andhra Pradesh)</option>
+          <option value="arunachal_pradesh">अरुणाचल प्रदेश (Arunachal Pradesh)</option>
+          <option value="assam">आसाम (Assam)</option>
+          <option value="bihar">बिहार (Bihar)</option>
+          <option value="chhattisgarh">छत्तीसगड (Chhattisgarh)</option>
+          <option value="goa">गोवा (Goa)</option>
+          <option value="gujarat">गुजरात (Gujarat)</option>
+          <option value="haryana">हरियाणा (Haryana)</option>
+          <option value="himachal_pradesh">हिमाचल प्रदेश (Himachal Pradesh)</option>
+          <option value="jharkhand">झारखंड (Jharkhand)</option>
+          <option value="karnataka">कर्नाटक (Karnataka)</option>
+          <option value="kerala">केरळ (Kerala)</option>
+          <option value="madhya_pradesh">मध्य प्रदेश (Madhya Pradesh)</option>
+          <option value="maharashtra" selected>महाराष्ट्र (Maharashtra)</option>
+          <option value="manipur">मणिपूर (Manipur)</option>
+          <option value="meghalaya">मेघालय (Meghalaya)</option>
+          <option value="mizoram">मिझोरम (Mizoram)</option>
+          <option value="nagaland">नागालँड (Nagaland)</option>
+          <option value="odisha">ओडिशा (Odisha)</option>
+          <option value="punjab">पंजाब (Punjab)</option>
+          <option value="rajasthan">राजस्थान (Rajasthan)</option>
+          <option value="sikkim">सिक्कीम (Sikkim)</option>
+          <option value="tamil_nadu">तामिळनाडू (Tamil Nadu)</option>
+          <option value="telangana">तेलंगणा (Telangana)</option>
+          <option value="tripura">त्रिपुरा (Tripura)</option>
+          <option value="uttar_pradesh">उत्तर प्रदेश (Uttar Pradesh)</option>
+          <option value="uttarakhand">उत्तराखंड (Uttarakhand)</option>
+          <option value="west_bengal">पश्चिम बंगाल (West Bengal)</option>
 
-    <!-- ८ केंद्रशासित प्रदेश (8 Union Territories) -->
-    <option value="andaman_nicobar">अंदमान आणि निकोबार (Andaman & Nicobar)</option>
-    <option value="chandigarh">चंदिगढ (Chandigarh)</option>
-    <option value="dadra_nagar_haveli_daman_diu">दादरा व नगर हवेली आणि दमण व दीव</option>
-    <option value="delhi">दिल्ली (Delhi - NCT)</option>
-    <option value="jammu_kashmir">जम्मू आणि काश्मीर (Jammu & Kashmir)</option>
-    <option value="ladakh">लडाख (Ladakh)</option>
-    <option value="lakshadweep">लक्षद्वीप (Lakshadweep)</option>
-    <option value="puducherry">पुडुचेरी (Puducherry)</option>
-</select>
+          <!-- ८ केंद्रशासित प्रदेश (8 Union Territories) -->
+          <option value="andaman_nicobar">अंदमान आणि निकोबार (Andaman & Nicobar)</option>
+          <option value="chandigarh">चंदिगढ (Chandigarh)</option>
+          <option value="dadra_nagar_haveli_daman_diu">दादरा व नगर हवेली आणि दमण व दीव</option>
+          <option value="delhi">दिल्ली (Delhi - NCT)</option>
+          <option value="jammu_kashmir">जम्मू आणि काश्मीर (Jammu & Kashmir)</option>
+          <option value="ladakh">लडाख (Ladakh)</option>
+          <option value="lakshadweep">लक्षद्वीप (Lakshadweep)</option>
+          <option value="puducherry">पुडुचेरी (Puducherry)</option>
+        </select>
       </div>
 
       <!-- भाषा निवडीचा पर्याय -->
@@ -535,7 +584,6 @@
 
     function filterByState() {
       const selectedState = document.getElementById('stateSelect').value;
-      // येथे तुम्ही निवडलेल्या राज्यानुसार डेटा फिल्टर करण्याचे लॉजिक लिहू शकता
       console.log("Selected State:", selectedState);
     }
   </script>
@@ -544,6 +592,7 @@
   <!-- Main Navigation Bar -->
   <nav class="nav-bar">
     <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a>
+    <a href="#ebook-section" class="nav-link" style="color: #FFD700;"><i class="fa-solid fa-book"></i> ई-बुक</a>
     <a href="about.html" class="nav-link"><i class="fa-solid fa-heart"></i> आमच्याबद्दल</a>
     <a href="volunteer-mr.html" class="nav-link"><i class="fa-solid fa-hand-holding-hand"></i> स्वयंसेवक</a>
     <a href="donors.html" class="nav-link"><i class="fa-solid fa-hand-holding-medical"></i> रक्तदाते</a>
@@ -588,6 +637,48 @@
       <i class="fa-solid fa-hand-holding-droplet"></i>
       <h3>एक जीवन वाचवा!</h3>
       <p>तुमच्या भागात आयोजित होणाऱ्या आगामी रक्तदान शिबिरांची माहिती मिळवा आणि एका क्लिकवर सहभागी व्हा.</p>
+    </div>
+  </section>
+
+  <!-- 📖 E-Book Section (नवीन जोडलेला ई-बुक विभाग) -->
+  <section id="ebook-section" class="ebook-section">
+    <div class="ebook-container">
+      <div style="text-align: center;">
+        <i class="fa-solid fa-book-bookmark" style="font-size: 80px; color: #C00000; margin-bottom: 15px;"></i>
+        <div>
+          <span class="ebook-badge"><i class="fa-solid fa-star"></i> नवीन ई-बुक आवृत्ती</span>
+        </div>
+      </div>
+      <div>
+        <h2 style="color: #0A2A66; font-size: 26px; font-weight: 800;">रक्तदाता - मानवतेचा संदेश</h2>
+        <p style="color: #666; font-size: 14px; font-weight: 600; margin-top: 5px;">
+          लेखक: डॉ. एम. गायकवाड <span style="font-size:12px; color:#888;">(B.A., L.L.B., D.J.M.C., D.N.Y.S.)</span>
+        </p>
+        
+        <div class="ebook-price">किंमत: ₹३००/-</div>
+        
+        <p style="font-size: 14px; color: #444; line-height: 1.5;">
+          रक्तदानाचे महत्त्व, सामाजिक जनजागृती आणि मानवतेचा संदेश देणारे विशेष डिजिटल पुस्तक. हे पुस्तक ऑनलाईन वाचण्यासाठी उपलब्ध आहे.
+        </p>
+
+        <div class="payment-info-box">
+          <p style="font-weight: bold; color: #0A2A66; margin-bottom: 5px;">💳 खरेदी कशी करावी?</p>
+          <p style="margin-bottom: 3px;"><strong>GPay / PhonePe / Paytm Number:</strong> ९३२१४३०५३५</p>
+          <p style="margin-bottom: 5px;"><strong>UPI ID:</strong> 9321430535@paytm</p>
+          <p style="font-size: 12px; color: #555;">
+            १. वरील नंबरवर ₹३०० चे पेमेंट करा.<br>
+            २. पेमेंट स्क्रीनशॉट WhatsApp वर पाठवा.<br>
+            ३. तुम्हाला तात्काळ ऑनलाईन वाचनाची लिंक पाठवली जाईल.
+          </p>
+        </div>
+
+        <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20ई-बुकसाठी%20₹300%20पेमेंट%20केले%20आहे.%20कृपया%20ऑनलाईन%20वाचनाची%20लिंक%20पाठवा." 
+           target="_blank" 
+           class="btn-main btn-red-main" 
+           style="width: 100%; justify-content: center; background-color: #25D366; border-color: #25D366;">
+           <i class="fa-brands fa-whatsapp" style="font-size: 18px;"></i> WhatsApp वर स्क्रीनशॉट पाठवा
+        </a>
+      </div>
     </div>
   </section>
 
