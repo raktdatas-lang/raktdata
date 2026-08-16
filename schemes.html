@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>शासकीय आरोग्य योजना | RAKTDATA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-red: #D32F2F;
+      --primary-blue: #1976D2;
+      --primary-yellow: #FFC107;
+      --dark-blue: #0D47A1;
+      --bg-light: #F4F6F9;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-light);
+      color: #333;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .schemes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .scheme-card {
+      background: #ffffff;
+      border-radius: 10px;
+      border-top: 5px solid var(--primary-red);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .scheme-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .scheme-card.yellow-border {
+      border-top-color: var(--primary-yellow);
+    }
+
+    .scheme-card.blue-border {
+      border-top-color: var(--primary-blue);
+    }
+
+    .scheme-title {
+      color: var(--dark-blue);
+      font-size: 1.25rem;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-read {
+      background-color: var(--primary-red);
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+      display: inline-block;
+    }
+
+    .btn-read:hover {
+      background-color: #B71C1C;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="page-header">
+      <h1><i class="fa-solid fa-landmark"></i> शासकीय आरोग्य योजना</h1>
+      <p>केंद्र व राज्य शासनाच्या विविध आरोग्य योजनांची अधिकृत व सविस्तर माहिती</p>
+    </div>
+
+    <div class="schemes-grid">
+      
+      <!-- कार्ड १: आयुष्मान भारत -->
+      <div class="scheme-card">
+        <div>
+          <h3 class="scheme-title"><i class="fa-solid fa-heart-pulse" style="color: var(--primary-red);"></i> आयुष्मान भारत (PM-JAY)</h3>
+          <p>दरवर्षी प्रति कुटुंब ₹५ लाखांपर्यंत मोफत उपचाराची सुविधा. पात्रता, कार्ड काढणे व संलग्न रुग्णालयांची माहिती.</p>
+        </div>
+        <a href="ayushman.html" class="btn-read">सविस्तर माहिती पहा <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <!-- कार्ड २: महात्मा ज्योतिराव फुले जन आरोग्य योजना -->
+      <div class="scheme-card yellow-border">
+        <div>
+          <h3 class="scheme-title"><i class="fa-solid fa-hospital-user" style="color: #D97706;"></i> महात्मा ज्योतिराव फुले योजना</h3>
+          <p>महाराष्ट्रातील नागरिकांसाठी ५ लाखांपर्यंत कॅशलेस उपचाराची सुविधा व ९९६ प्रकारच्या आजारांवर मोफत उपचार.</p>
+        </div>
+        <a href="#" class="btn-read" style="background-color: #D97706;">लवकरच येत आहे...</a>
+      </div>
+
+      <!-- कार्ड ३: ज्येष्ठ नागरिक आरोग्य योजना -->
+      <div class="scheme-card blue-border">
+        <div>
+          <h3 class="scheme-title"><i class="fa-solid fa-person-cane" style="color: var(--primary-blue);"></i> ७० वर्षे व त्यावरील ज्येष्ठांसाठी योजना</h3>
+          <p>उत्पन्नाची अट न ठेवता ७० वर्षांवरील सर्व ज्येष्ठ नागरिकांना ५ लाखांचे मोफत कवच.</p>
+        </div>
+        <a href="#" class="btn-read" style="background-color: var(--primary-blue);">लवकरच येत आहे...</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
