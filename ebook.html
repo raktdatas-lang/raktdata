@@ -50,7 +50,6 @@
       margin-right: auto;
     }
 
-    /* 📜 शुभेच्छा संदेश बॉक्स */
     .message-card {
       background: #ffffff;
       border: 2px solid #FFD700;
@@ -95,7 +94,6 @@
       padding-top: 15px;
     }
 
-    /* 📦 तिन्ही पर्यायांचे कार्ड्स (Pricing Grid) */
     .options-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -162,6 +160,21 @@
       margin: 15px 0 10px 0;
     }
 
+    .qr-box {
+      background: #fff;
+      padding: 8px;
+      border: 1px dashed #ccc;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .qr-box img {
+      width: 140px;
+      height: 140px;
+      display: block;
+    }
+
     .btn-group {
       display: flex;
       flex-direction: column;
@@ -181,6 +194,8 @@
       border-radius: 8px;
       font-size: 13px;
       transition: background 0.3s;
+      cursor: pointer;
+      border: none;
     }
 
     .buy-btn:hover {
@@ -193,6 +208,17 @@
 
     .gpay-btn:hover {
       background-color: #071d47;
+    }
+
+    .upi-info {
+      font-size: 12px;
+      color: #333;
+      background: #eef2f7;
+      padding: 6px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      word-break: break-all;
     }
 
     .note-box {
@@ -258,14 +284,21 @@
         </div>
         <div>
           <div class="card-price">₹९९/- मात्र</div>
+          
+          <!-- Dynamic QR Code -->
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=dmgaikwad0103-2@okicici%26pn=RAKTDATA%26am=99%26cu=INR" alt="QR Code ₹99">
+            <span style="font-size: 11px; color: #666;">स्कॅन करून पे करा</span>
+          </div>
+
+          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
+
           <div class="btn-group">
-            <!-- GPay Direct Payment -->
-            <a href="upi://pay?pa=dmgaikwad0103-2@okicici&pn=RAKTDATA&am=99&cu=INR&tn=Raktdata%20Ebook" class="buy-btn gpay-btn">
-              <i class="fa-solid fa-mobile-screen"></i> GPay ने ₹99 पे करा
-            </a>
-            <!-- WhatsApp Link -->
-            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20E-Book%20(₹99)%20खरेदी%20करू%20इच्छितो." target="_blank" class="buy-btn">
-              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर ऑर्डर करा
+            <button onclick="copyUPI()" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-copy"></i> UPI ID कॉपी करा
+            </button>
+            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20E-Book%20(₹99)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
             </a>
           </div>
         </div>
@@ -284,14 +317,21 @@
         </div>
         <div>
           <div class="card-price">₹१४९/- मात्र</div>
+          
+          <!-- Dynamic QR Code -->
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=dmgaikwad0103-2@okicici%26pn=RAKTDATA%26am=149%26cu=INR" alt="QR Code ₹149">
+            <span style="font-size: 11px; color: #666;">स्कॅन करून पे करा</span>
+          </div>
+
+          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
+
           <div class="btn-group">
-            <!-- GPay Direct Payment -->
-            <a href="upi://pay?pa=dmgaikwad0103-2@okicici&pn=RAKTDATA&am=149&cu=INR&tn=Raktdata%20AudioBook" class="buy-btn gpay-btn">
-              <i class="fa-solid fa-mobile-screen"></i> GPay ने ₹149 पे करा
-            </a>
-            <!-- WhatsApp Link -->
-            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Audio%20Book%20(₹149)%20खरेदी%20करू%20इच्छितो." target="_blank" class="buy-btn">
-              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर ऑर्डर करा
+            <button onclick="copyUPI()" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-copy"></i> UPI ID कॉपी करा
+            </button>
+            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Audio%20Book%20(₹149)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
             </a>
           </div>
         </div>
@@ -310,14 +350,21 @@
         </div>
         <div>
           <div class="card-price">₹३००/- मात्र</div>
+          
+          <!-- Dynamic QR Code -->
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=dmgaikwad0103-2@okicici%26pn=RAKTDATA%26am=300%26cu=INR" alt="QR Code ₹300">
+            <span style="font-size: 11px; color: #666;">स्कॅन करून पे करा</span>
+          </div>
+
+          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
+
           <div class="btn-group">
-            <!-- GPay Direct Payment -->
-            <a href="upi://pay?pa=dmgaikwad0103-2@okicici&pn=RAKTDATA&am=300&cu=INR&tn=Raktdata%20HardBook" class="buy-btn gpay-btn">
-              <i class="fa-solid fa-mobile-screen"></i> GPay ने ₹300 पे करा
-            </a>
-            <!-- WhatsApp Link -->
-            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Printed%20Hard%20Book%20(₹300)%20घरपोच%20मागवू%20इच्छितो." target="_blank" class="buy-btn">
-              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर ऑर्डर करा
+            <button onclick="copyUPI()" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-copy"></i> UPI ID कॉपी करा
+            </button>
+            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Hard%20Book%20(₹300)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
             </a>
           </div>
         </div>
@@ -326,9 +373,18 @@
     </div>
 
     <div class="note-box">
-      🛡️ <strong>टीप:</strong> GPay ने पेमेंट केल्यानंतर त्याचा स्क्रीनशॉट WhatsApp वर पाठवा. ई-बुक व ऑडिओ बुकचा डिजिटल ॲक्सेस तात्काळ दिला जाईल. हार्ड बुक ३ ते ५ दिवसांत घरपोच पाठवले जाईल.
+      🛡️ <strong>टीप:</strong> QR Code स्कॅन करून किंवा UPI ID द्वारे पेमेंट केल्यानंतर त्याचा स्क्रीनशॉट WhatsApp वर पाठवा. ई-बुक व ऑडिओ बुकचा ॲक्सेस तात्काळ पाठवला जाईल आणि हार्ड बुक ३ ते ५ दिवसांत घरपोच डिलिव्हर केले जाईल.
     </div>
   </div>
+
+  <script>
+    function copyUPI() {
+      const upiId = "dmgaikwad0103-2@okicici";
+      navigator.clipboard.writeText(upiId).then(() => {
+        alert("UPI ID (dmgaikwad0103-2@okicici) कॉपी झाला आहे! तुमचे GPay किंवा PhonePe उघडून पेस्ट करा.");
+      });
+    }
+  </script>
 
 </body>
 </html>
