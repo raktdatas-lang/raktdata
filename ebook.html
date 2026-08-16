@@ -159,7 +159,13 @@
       font-size: 24px;
       font-weight: 800;
       color: #C00000;
-      margin: 15px 0;
+      margin: 15px 0 10px 0;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .buy-btn {
@@ -171,14 +177,22 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
-      padding: 12px;
+      padding: 10px;
       border-radius: 8px;
-      font-size: 14px;
+      font-size: 13px;
       transition: background 0.3s;
     }
 
     .buy-btn:hover {
       background-color: #1eb954;
+    }
+
+    .gpay-btn {
+      background-color: #0A2A66;
+    }
+
+    .gpay-btn:hover {
+      background-color: #071d47;
     }
 
     .note-box {
@@ -244,9 +258,16 @@
         </div>
         <div>
           <div class="card-price">₹९९/- मात्र</div>
-          <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20E-Book%20(₹99)%20खरेदी%20करू%20इच्छितो." target="_blank" class="buy-btn">
-            <i class="fa-brands fa-whatsapp"></i> ई-बुक खरेदी करा
-          </a>
+          <div class="btn-group">
+            <!-- GPay Direct Payment -->
+            <a href="upi://pay?pa=dmgaikwad0103-2@okicici&pn=RAKTDATA&am=99&cu=INR&tn=Raktdata%20Ebook" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-mobile-screen"></i> GPay ने ₹99 पे करा
+            </a>
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20E-Book%20(₹99)%20खरेदी%20करू%20इच्छितो." target="_blank" class="buy-btn">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर ऑर्डर करा
+            </a>
+          </div>
         </div>
       </div>
 
@@ -263,9 +284,16 @@
         </div>
         <div>
           <div class="card-price">₹१४९/- मात्र</div>
-          <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Audio%20Book%20(₹149)%20खरेदी%20करू%20इच्छितो." target="_blank" class="buy-btn">
-            <i class="fa-brands fa-whatsapp"></i> ऑडिओ बुक खरेदी करा
-          </a>
+          <div class="btn-group">
+            <!-- GPay Direct Payment -->
+            <a href="upi://pay?pa=dmgaikwad0103-2@okicici&pn=RAKTDATA&am=149&cu=INR&tn=Raktdata%20AudioBook" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-mobile-screen"></i> GPay ने ₹149 पे करा
+            </a>
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Audio%20Book%20(₹149)%20खरेदी%20करू%20इच्छितो." target="_blank" class="buy-btn">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर ऑर्डर करा
+            </a>
+          </div>
         </div>
       </div>
 
@@ -282,16 +310,23 @@
         </div>
         <div>
           <div class="card-price">₹३००/- मात्र</div>
-          <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Printed%20Hard%20Book%20(₹300)%20घरपोच%20मागवू%20इच्छितो." target="_blank" class="buy-btn" style="background-color: #0A2A66;">
-            <i class="fa-brands fa-whatsapp"></i> हार्ड बुक ऑर्डर करा
-          </a>
+          <div class="btn-group">
+            <!-- GPay Direct Payment -->
+            <a href="upi://pay?pa=dmgaikwad0103-2@okicici&pn=RAKTDATA&am=300&cu=INR&tn=Raktdata%20HardBook" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-mobile-screen"></i> GPay ने ₹300 पे करा
+            </a>
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Printed%20Hard%20Book%20(₹300)%20घरपोच%20मागवू%20इच्छितो." target="_blank" class="buy-btn">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर ऑर्डर करा
+            </a>
+          </div>
         </div>
       </div>
 
     </div>
 
     <div class="note-box">
-      🛡️ <strong>टीप:</strong> ई-बुक व ऑडिओ बुक खरेदी केल्यानंतर त्यांचा डिजिटल ॲक्सेस WhatsApp वर तात्काळ दिला जाईल. हार्ड बुकची डिलिव्हरी पत्त्यानुसार ३ ते ५ दिवसांत केली जाईल.
+      🛡️ <strong>टीप:</strong> GPay ने पेमेंट केल्यानंतर त्याचा स्क्रीनशॉट WhatsApp वर पाठवा. ई-बुक व ऑडिओ बुकचा डिजिटल ॲक्सेस तात्काळ दिला जाईल. हार्ड बुक ३ ते ५ दिवसांत घरपोच पाठवले जाईल.
     </div>
   </div>
 
