@@ -294,8 +294,8 @@
           <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
 
           <div class="btn-group">
-            <button onclick="copyUPI()" class="buy-btn gpay-btn">
-              <i class="fa-solid fa-copy"></i> UPI ID कॉपी करा
+            <button onclick="payViaUPI(99)" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-mobile-screen-button"></i> GPay / UPI द्वारे पे करा
             </button>
             <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20E-Book%20(₹99)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
               <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
@@ -327,8 +327,8 @@
           <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
 
           <div class="btn-group">
-            <button onclick="copyUPI()" class="buy-btn gpay-btn">
-              <i class="fa-solid fa-copy"></i> UPI ID कॉपी करा
+            <button onclick="payViaUPI(149)" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-mobile-screen-button"></i> GPay / UPI द्वारे पे करा
             </button>
             <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Audio%20Book%20(₹149)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
               <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
@@ -360,8 +360,8 @@
           <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
 
           <div class="btn-group">
-            <button onclick="copyUPI()" class="buy-btn gpay-btn">
-              <i class="fa-solid fa-copy"></i> UPI ID कॉपी करा
+            <button onclick="payViaUPI(300)" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-mobile-screen-button"></i> GPay / UPI द्वारे पे करा
             </button>
             <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Hard%20Book%20(₹300)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
               <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
@@ -378,11 +378,25 @@
   </div>
 
   <script>
-    function copyUPI() {
+    function payViaUPI(amount) {
       const upiId = "dmgaikwad0103-2@okicici";
-      navigator.clipboard.writeText(upiId).then(() => {
-        alert("UPI ID (dmgaikwad0103-2@okicici) कॉपी झाला आहे! तुमचे GPay किंवा PhonePe उघडून पेस्ट करा.");
-      });
+      const name = "RAKTDATA";
+      
+      // UPI Intent Deep Link URL
+      const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+
+      // युझर मोबाईलवरून वापरत आहे का ते तपासणे
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        // मोबाईलवर असल्यास GPay/PhonePe थेट उघडेल आणि रक्कम आपोआप येईल
+        window.location.href = upiUrl;
+      } else {
+        // लॅपटॉपवरून क्लिक केल्यास UPI ID कॉपी होईल
+        navigator.clipboard.writeText(upiId).then(() => {
+          alert("UPI ID (" + upiId + ") कॉपी झाला आहे! तुमच्या मोबाईलमधील GPay किंवा PhonePe मध्ये पेस्ट करून ₹" + amount + " पे करा.");
+        });
+      }
     }
   </script>
 
