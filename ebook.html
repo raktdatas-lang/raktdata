@@ -268,7 +268,7 @@
       </div>
     </div>
 
-    <!-- 🛍️ खरेदी पर्याय -->
+  <!-- 🛍️ खरेदी पर्याय -->
     <div class="options-grid">
       
       <!-- १. ई-बुक (E-Book) -->
@@ -284,14 +284,7 @@
         </div>
         <div>
           <div class="card-price">₹९९/- मात्र</div>
-          
-          <!-- Dynamic QR Code -->
-          <div class="qr-box">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=dmgaikwad0103-2@okicici%26pn=RAKTDATA%26am=99%26cu=INR" alt="QR Code ₹99">
-            <span style="font-size: 11px; color: #666;">स्कॅन करून पे करा</span>
-          </div>
-
-          <div class="btn-group">
+<div class="btn-group">
             <button onclick="openGPay(99)" class="buy-btn gpay-btn">
               <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
             </button>
@@ -315,14 +308,7 @@
         </div>
         <div>
           <div class="card-price">₹१४९/- मात्र</div>
-          
-          <!-- Dynamic QR Code -->
-          <div class="qr-box">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=dmgaikwad0103-2@okicici%26pn=RAKTDATA%26am=149%26cu=INR" alt="QR Code ₹149">
-            <span style="font-size: 11px; color: #666;">स्कॅन करून पे करा</span>
-          </div>
-
-          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
+<div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
 
           <div class="btn-group">
             <button onclick="openGPay(149)" class="buy-btn gpay-btn">
@@ -348,14 +334,7 @@
         </div>
         <div>
           <div class="card-price">₹३००/- मात्र</div>
-          
-          <!-- Dynamic QR Code -->
-          <div class="qr-box">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=dmgaikwad0103-2@okicici%26pn=RAKTDATA%26am=300%26cu=INR" alt="QR Code ₹300">
-            <span style="font-size: 11px; color: #666;">स्कॅन करून पे करा</span>
-          </div>
-
-          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
+<div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
 
           <div class="btn-group">
             <button onclick="openGPay(300)" class="buy-btn gpay-btn">
@@ -371,29 +350,52 @@
     </div>
 
     <div class="note-box">
-      🛡️ <strong>टीप:</strong> 'GPay ने पेमेंट करा' वर क्लिक करून किंवा QR Code स्कॅन करून पेमेंट केल्यानंतर त्याचा स्क्रीनशॉट WhatsApp वर पाठवा. ई-बुक व ऑडिओ बुकचा ॲक्सेस तात्काळ पाठवला जाईल आणि हार्ड बुक ३ ते ५ दिवसांत घरपोच डिलिव्हर केले जाईल.
+      🛡️ <strong>टीप:</strong> 'GPay ने पेमेंट करा' वर क्लिक करून पेमेंट केल्यानंतर त्याचा स्क्रीनशॉट WhatsApp वर पाठवा. ई-बुक व ऑडिओ बुकचा ॲक्सेस तात्काळ पाठवला जाईल आणि हार्ड बुक ३ ते ५ दिवसांत घरपोच डिलिव्हर केले जाईल.
     </div>
   </div>
 
 <script>
-    function openGPay(amount) {
-      const upiId = "dmgaikwad0103-2@okicici";
-      const name = "RAKTDATA";
-      
-      // सर्व मोबाईल उपकरणांसाठी मानक UPI Deep Link
-      const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
-      
-      // फक्त Android वर Direct GPay ॲप उघडण्यासाठी Intent Link
-      const gpayAndroidUrl = `intent://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nfc.phone;end`;
+function openGPay(amount) {
 
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const upiId = "dmgaikwad0103-2@okicici";
+    const name = "RAKTDATA";
+    const note = "Raktdata Book Payment";
 
-      if (isMobile) {
-        // मोबाईलवर थेट GPay / UPI ॲप उघडेल
-        window.location.href = gpayAndroidUrl;
-      } else {
-        // लॅपटॉप / कॉम्प्युटरवर असल्यास युझरला सूचना न दाखवता QR Code स्कॅन करण्यास सुचवा
-        alert(`लॅपटॉपवरून थेट ॲप उघडता येत नाही. कृपया दिलेला QR Code मोबाईलने स्कॅन करा किंवा UPI ID (${upiId}) वापरा.`);
-      }
+    // Standard UPI payment URL
+    const upiUrl =
+        "upi://pay" +
+        "?pa=" + encodeURIComponent(upiId) +
+        "&pn=" + encodeURIComponent(name) +
+        "&am=" + encodeURIComponent(amount) +
+        "&cu=INR" +
+        "&tn=" + encodeURIComponent(note);
+
+    // Android: Google Pay package
+    const gpayIntent =
+        "intent://pay" +
+        "?pa=" + encodeURIComponent(upiId) +
+        "&pn=" + encodeURIComponent(name) +
+        "&am=" + encodeURIComponent(amount) +
+        "&cu=INR" +
+        "&tn=" + encodeURIComponent(note) +
+        "#Intent;" +
+        "scheme=upi;" +
+        "package=com.google.android.apps.nbu.paisa.user;" +
+        "end";
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Android mobile: open Google Pay directly
+    if (/android/i.test(ua)) {
+        window.location.href = gpayIntent;
     }
-  </script>
+
+    // iPhone / iPad: use standard UPI deep link
+    else if (/iPhone|iPad|iPod/i.test(ua)) {
+        window.location.href = upiUrl;
+    }
+
+    // Desktop / Laptop
+    else {
+        alert(
+            "कृपया हा पर्याय Android मोबाइलवर वापरा.\n\n" +
