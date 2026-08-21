@@ -291,7 +291,8 @@
             <span style="font-size: 11px; color: #666;">स्कॅन करून पे करा</span>
           </div>
 
-          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
+       // १. Android उपकरणांसाठी थेट GPay Intent URL
+    const gpayAndroidUrl = `intent://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nfc.phone;end`;
 
           <div class="btn-group">
             <button onclick="openGPay(99)" class="buy-btn gpay-btn">
