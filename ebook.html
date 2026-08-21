@@ -291,9 +291,6 @@
             <span style="font-size: 11px; color: #666;">स्कॅन करून पे करा</span>
           </div>
 
-       // १. Android उपकरणांसाठी थेट GPay Intent URL
-    const gpayAndroidUrl = `intent://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nfc.phone;end`;
-
           <div class="btn-group">
             <button onclick="openGPay(99)" class="buy-btn gpay-btn">
               <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
@@ -378,31 +375,26 @@
     </div>
   </div>
 
-  <script>
+<script>
     function openGPay(amount) {
       const upiId = "dmgaikwad0103-2@okicici";
       const name = "RAKTDATA";
       
-      // Android साठी Direct Google Pay Intent link
       const gpayAndroidUrl = `intent://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nfc.phone;end`;
-      
-      // iOS (iPhone) साठी GPay Direct Link
       const gpayIosUrl = `gpay://upi/pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
 
       const isAndroid = /Android/i.test(navigator.userAgent);
       const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
       if (isAndroid) {
-        window.location.href = gpayAndroidUrl; // थेट Android वर GPay ॲप उघडेल
+        window.location.href = gpayAndroidUrl;
       } else if (isIOS) {
-        window.location.href = gpayIosUrl; // थेट iPhone वर GPay ॲप उघडेल
+        window.location.href = gpayIosUrl;
       } else {
-        // लॅपटॉप किंवा पीसीवर असल्यास UPI कॉपी करून सूचना देईल
         navigator.clipboard.writeText(upiId);
-        alert(`UPI ID (${upiId}) कॉपी झाला आहे! मोबाईलवर Google Pay उघडून ₹${amount} पाठवा.`);
+        alert(`UPI ID (${upiId}) कॉपी झाला आहे! मोबाईलवर Google Pay उघडून ₹${amount} पे करा.`);
       }
     }
   </script>
-
 </body>
 </html>
