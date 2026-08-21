@@ -380,21 +380,20 @@
       const upiId = "dmgaikwad0103-2@okicici";
       const name = "RAKTDATA";
       
+      // सर्व मोबाईल उपकरणांसाठी मानक UPI Deep Link
+      const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+      
+      // फक्त Android वर Direct GPay ॲप उघडण्यासाठी Intent Link
       const gpayAndroidUrl = `intent://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nfc.phone;end`;
-      const gpayIosUrl = `gpay://upi/pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
 
-      const isAndroid = /Android/i.test(navigator.userAgent);
-      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-      if (isAndroid) {
+      if (isMobile) {
+        // मोबाईलवर थेट GPay / UPI ॲप उघडेल
         window.location.href = gpayAndroidUrl;
-      } else if (isIOS) {
-        window.location.href = gpayIosUrl;
       } else {
-        navigator.clipboard.writeText(upiId);
-        alert(`UPI ID (${upiId}) कॉपी झाला आहे! मोबाईलवर Google Pay उघडून ₹${amount} पे करा.`);
+        // लॅपटॉप / कॉम्प्युटरवर असल्यास युझरला सूचना न दाखवता QR Code स्कॅन करण्यास सुचवा
+        alert(`लॅपटॉपवरून थेट ॲप उघडता येत नाही. कृपया दिलेला QR Code मोबाईलने स्कॅन करा किंवा UPI ID (${upiId}) वापरा.`);
       }
     }
   </script>
-</body>
-</html>
