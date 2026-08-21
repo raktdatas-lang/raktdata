@@ -268,304 +268,124 @@
       </div>
     </div>
 
-   <!DOCTYPE html>
-<html lang="mr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>पुस्तक खरेदी | RAKTDATA.IN</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
+    <!-- 🛍️ खरेदी पर्याय -->
+    <div class="options-grid">
+      
+      <!-- १. ई-बुक (E-Book) -->
+      <div class="option-card">
+        <div>
+          <i class="fa-solid fa-tablet-screen-button card-icon"></i>
+          <div class="card-type">📱 ई-बुक (E-Book)</div>
+          <ul class="card-features">
+            <li><i class="fa-solid fa-check"></i> मोबाईल / लॅपटॉपवर ऑनलाईन वाचन</li>
+            <li><i class="fa-solid fa-check"></i> खरेदीनंतर झटपट डिजिटल ॲक्सेस</li>
+            <li><i class="fa-solid fa-check"></i> कुठेही, कधीही वाचनाची सोय</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card-price">₹९९/- मात्र</div>
+          
+          <!-- Dynamic QR Code -->
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=dmgaikwad0103-2@okicici%26pn=RAKTDATA%26am=99%26cu=INR" alt="QR Code ₹99">
+            <span style="font-size: 11px; color: #666;">स्कॅन करून पे करा</span>
+          </div>
 
-    body {
-      background-color: #121212;
-      color: #ffffff;
-      padding: 20px 15px;
-      display: flex;
-      justify-content: center;
-    }
+          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
 
-    .form-container {
-      width: 100%;
-      max-width: 500px;
-      background-color: #1a1a1a;
-      padding: 25px 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
+          <div class="btn-group">
+            <button onclick="copyUPI()" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-copy"></i> UPI ID कॉपी करा
+            </button>
+            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20E-Book%20(₹99)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
+            </a>
+          </div>
+        </div>
+      </div>
 
-    .header-box {
-      text-align: center;
-      margin-bottom: 25px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 15px;
-    }
+      <!-- २. ऑडिओ बुक (Audio Book) -->
+      <div class="option-card">
+        <div>
+          <i class="fa-solid fa-headphones card-icon"></i>
+          <div class="card-type">🎧 ऑडिओ बुक (Audio Book)</div>
+          <ul class="card-features">
+            <li><i class="fa-solid fa-check"></i> पूर्ण पुस्तकाचे स्पष्ट आवाज रेकॉर्डिंग</li>
+            <li><i class="fa-solid fa-check"></i> प्रवासात किंवा मोकळ्या वेळेत ऐकण्याची सोय</li>
+            <li><i class="fa-solid fa-check"></i> ऑनलाईन ऑडिओ प्लेयर ॲक्सेस</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card-price">₹१४९/- मात्र</div>
+          
+          <!-- Dynamic QR Code -->
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=dmgaikwad0103-2@okicici%26pn=RAKTDATA%26am=149%26cu=INR" alt="QR Code ₹149">
+            <span style="font-size: 11px; color: #666;">स्कॅन करून पे करा</span>
+          </div>
 
-    .header-box h2 {
-      color: #ff4d4d;
-      font-size: 22px;
-      margin-bottom: 5px;
-    }
+          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
 
-    .header-box p {
-      color: #aaa;
-      font-size: 13px;
-    }
+          <div class="btn-group">
+            <button onclick="copyUPI()" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-copy"></i> UPI ID कॉपी करा
+            </button>
+            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Audio%20Book%20(₹149)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
+            </a>
+          </div>
+        </div>
+      </div>
 
-    .form-group {
-      margin-bottom: 18px;
-    }
+      <!-- ३. हार्ड प्रिंटेड बुक (Hard Book) -->
+      <div class="option-card" style="border-color: #FFD700; background: #fffdf0;">
+        <div>
+          <i class="fa-solid fa-book-open card-icon" style="color: #0A2A66;"></i>
+          <div class="card-type">📖 हार्ड बुक (Printed Copy)</div>
+          <ul class="card-features">
+            <li><i class="fa-solid fa-check"></i> छापील मूळ पुस्तकाची प्रत</li>
+            <li><i class="fa-solid fa-check"></i> भारतीय पोस्ट / कुरिअरद्वारे घरपोच डिलिव्हरी</li>
+            <li><i class="fa-solid fa-check"></i> वैयक्तिक संग्रहासाठी किंवा भेट देण्यासाठी उत्तम</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card-price">₹३००/- मात्र</div>
+          
+          <!-- Dynamic QR Code -->
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=dmgaikwad0103-2@okicici%26pn=RAKTDATA%26am=300%26cu=INR" alt="QR Code ₹300">
+            <span style="font-size: 11px; color: #666;">स्कॅन करून पे करा</span>
+          </div>
 
-    label {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 8px;
-      color: #e0e0e0;
-      font-weight: 500;
-    }
+          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
 
-    label span.required {
-      color: #ff4d4d;
-    }
+          <div class="btn-group">
+            <button onclick="copyUPI()" class="buy-btn gpay-btn">
+              <i class="fa-solid fa-copy"></i> UPI ID कॉपी करा
+            </button>
+            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Hard%20Book%20(₹300)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
+            </a>
+          </div>
+        </div>
+      </div>
 
-    input[type="text"], select, textarea {
-      width: 100%;
-      padding: 14px;
-      background-color: #262626;
-      border: 1px solid #404040;
-      border-radius: 10px;
-      color: #ffffff;
-      font-size: 15px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    input[type="text"]:focus, select:focus, textarea:focus {
-      border-color: #25D366;
-    }
-
-    input::placeholder, textarea::placeholder {
-      color: #888888;
-    }
-
-    select {
-      cursor: pointer;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    /* 💳 Advance Payment Section Style */
-    .payment-card {
-      border: 1px solid #1f6e3c;
-      background-color: #0d2116;
-      border-radius: 14px;
-      padding: 18px;
-      margin-top: 25px;
-      margin-bottom: 20px;
-    }
-
-    .payment-title {
-      color: #25D366;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .payment-desc {
-      font-size: 13px;
-      color: #dddddd;
-      line-height: 1.5;
-      margin-bottom: 10px;
-    }
-
-    .upi-number {
-      font-size: 22px;
-      font-weight: bold;
-      color: #ffffff;
-      margin: 10px 0;
-      word-break: break-all;
-    }
-
-    /* 🔘 Buttons */
-    .btn {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: background 0.2s, transform 0.1s;
-      text-decoration: none;
-    }
-
-    .btn:active {
-      transform: scale(0.98);
-    }
-
-    .btn-upi {
-      background-color: #25D366;
-      color: #ffffff;
-      margin-top: 15px;
-    }
-
-    .btn-whatsapp {
-      background-color: #25D366;
-      color: #ffffff;
-      font-size: 17px;
-    }
-
-    .footer-note {
-      text-align: center;
-      font-size: 12px;
-      color: #aaaaaa;
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="form-container">
-    <div class="header-box">
-      <h2>📖 "रक्तदाता: मानवतेचा संदेश"</h2>
-      <p>लेखक: मा. दिलीप म. गायकवाड | RAKTDATA.IN</p>
     </div>
 
-    <form id="orderForm">
-      
-      <!-- ग्राहक नाव -->
-      <div class="form-group">
-        <label>👤 तुमचे पूर्ण नाव <span class="required">*</span></label>
-        <input type="text" id="custName" placeholder="उदा. राहुल शर्मा" required>
-      </div>
-
-      <!-- पुस्तक प्रकार निवड -->
-      <div class="form-group">
-        <label>📚 पुस्तकाचा प्रकार निवडा <span class="required">*</span></label>
-        <select id="bookType" onchange="updatePrice()" required>
-          <option value="99">📱 ई-बुक (E-Book) - ₹99</option>
-          <option value="149">🎧 ऑडिओ बुक (Audio Book) - ₹149</option>
-          <option value="300">📖 हार्ड बुक (Printed Copy) - ₹300</option>
-        </select>
-      </div>
-
-      <!-- पत्ता / डिलिव्हरी लोकेशन -->
-      <div class="form-group">
-        <label>📍 पत्ता / डिलिव्हरी लोकेशन <span class="required">*</span></label>
-        <textarea id="address" placeholder="तुमचा पूर्ण पत्ता आणि पिनकोड लिहा" required></textarea>
-      </div>
-
-      <!-- विशेष सूचना -->
-      <div class="form-group">
-        <label>📝 काही विशेष सूचना असल्यास लिहा</label>
-        <textarea id="instructions" placeholder="उदा. कुरिअर किंवा डिलिव्हरीसाठी काही खास सूचना"></textarea>
-      </div>
-
-      <!-- Advance Payment Section -->
-      <div class="payment-card">
-        <div class="payment-title">💳 Advance Payment</div>
-        
-        <p class="payment-desc">
-          ऑर्डर confirm करण्यासाठी कृपया पेमेंट पूर्ण करा.
-        </p>
-
-        <div class="upi-number" id="upiDisplay">
-          📱 UPI ID: dmgaikwad0103-2@okicici
-        </div>
-
-        <p class="payment-desc">
-          Advance payment केल्यानंतर त्याचा screenshot WhatsApp वर पाठवा. Payment verify झाल्यावर ऑर्डर confirm केली जाईल.
-        </p>
-
-        <button type="button" onclick="makeUPIPayment()" class="btn btn-upi">
-          📲 UPI Payment करा (<span id="btnAmount">₹99</span>)
-        </button>
-      </div>
-
-      <!-- WhatsApp Submit Button -->
-      <button type="button" onclick="sendToWhatsApp()" class="btn btn-whatsapp">
-        📲 WhatsApp वर ऑर्डर पाठवा
-      </button>
-
-      <div class="footer-note">
-        ऑर्डर पाठवल्यानंतर आम्ही तुम्हाला कॉल करून ऑर्डर कन्फर्म करू.
-      </div>
-
-    </form>
+    <div class="note-box">
+      🛡️ <strong>टीप:</strong> QR Code स्कॅन करून किंवा UPI ID द्वारे पेमेंट केल्यानंतर त्याचा स्क्रीनशॉट WhatsApp वर पाठवा. ई-बुक व ऑडिओ बुकचा ॲक्सेस तात्काळ पाठवला जाईल आणि हार्ड बुक ३ ते ५ दिवसांत घरपोच डिलिव्हर केले जाईल.
+    </div>
   </div>
 
   <script>
-    // 💰 १. पुस्तकाची किंमत अपडेट करणे
-    function updatePrice() {
-      const price = document.getElementById("bookType").value;
-      document.getElementById("btnAmount").innerText = "₹" + price;
-    }
-
-    // 📲 २. GPay / UPI Payment उघडणे
-    function makeUPIPayment() {
+    function copyUPI() {
       const upiId = "dmgaikwad0103-2@okicici";
-      const name = "RAKTDATA";
-      const amount = document.getElementById("bookType").value;
-      
-      const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
-
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-      if (isMobile) {
-        window.location.href = upiUrl;
-      } else {
-        navigator.clipboard.writeText(upiId);
-        alert(`UPI ID (${upiId}) कॉपी झाला आहे! तुमच्या GPay किंवा PhonePe मध्ये पेस्ट करून ₹${amount} पे करा.`);
-      }
-    }
-
-    // 💬 ३. फॉर्मची माहिती WhatsApp वर पाठवणे
-    function sendToWhatsApp() {
-      const name = document.getElementById("custName").value.trim();
-      const bookSelect = document.getElementById("bookType");
-      const bookText = bookSelect.options[bookSelect.selectedIndex].text;
-      const address = document.getElementById("address").value.trim();
-      const instructions = document.getElementById("instructions").value.trim();
-
-      if (!name || !address) {
-        alert("कृपया नाव आणि पत्ता पूर्ण भरा.");
-        return;
-      }
-
-      const whatsappNumber = "919321430535"; // तुमचा WhatsApp नंबर
-      
-      let message = `*नवी पुस्तक ऑर्डर!* 📖\n\n`;
-      message += `👤 *नाव:* ${name}\n`;
-      message += `📚 *प्रकार:* ${bookText}\n`;
-      message += `📍 *पत्ता:* ${address}\n`;
-      
-      if (instructions) {
-        message += `📝 *विशेष सूचना:* ${instructions}\n`;
-      }
-      
-      message += `\n--------------------------\n`;
-      message += `*टीप:* मी पेमेंट पूर्ण केले असून स्क्रीनशॉट खाली शेअर करत आहे.`;
-
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, "_blank");
+      navigator.clipboard.writeText(upiId).then(() => {
+        alert("UPI ID (dmgaikwad0103-2@okicici) कॉपी झाला आहे! तुमचे GPay किंवा PhonePe उघडून पेस्ट करा.");
+      });
     }
   </script>
 
 </body>
 </html>
+
