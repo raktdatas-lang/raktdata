@@ -210,6 +210,30 @@
       background-color: #071d47;
     }
 
+    .phonepe-btn {
+      background-color: #5f259f;
+    }
+
+    .phonepe-btn:hover {
+      background-color: #4b1d7d;
+    }
+
+    .paytm-btn {
+      background-color: #00baf2;
+    }
+
+    .paytm-btn:hover {
+      background-color: #0098c7;
+    }
+
+    .upi-btn {
+      background-color: #374151;
+    }
+
+    .upi-btn:hover {
+      background-color: #1f2937;
+    }
+
     .upi-info {
       font-size: 12px;
       color: #333;
@@ -268,7 +292,7 @@
       </div>
     </div>
 
-  <!-- 🛍️ खरेदी पर्याय -->
+    <!-- 🛍️ खरेदी पर्याय -->
     <div class="options-grid">
       
       <!-- १. ई-बुक (E-Book) -->
@@ -285,13 +309,22 @@
         <div>
           <div class="card-price">₹९९/- मात्र</div>
 <div class="btn-group">
-            <button onclick="openGPay(99)" class="buy-btn gpay-btn">
-              <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
-            </button>
-            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20E-Book%20(₹99)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
-              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
-            </a>
-          </div>
+              <button onclick="payWithGPay(99)" class="buy-btn gpay-btn">
+                <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
+              </button>
+              <button onclick="payWithPhonePe(99)" class="buy-btn phonepe-btn">
+                <i class="fa-solid fa-mobile-screen-button"></i> PhonePe ने पेमेंट करा
+              </button>
+              <button onclick="payWithPaytm(99)" class="buy-btn paytm-btn">
+                <i class="fa-solid fa-mobile-screen-button"></i> Paytm ने पेमेंट करा
+              </button>
+              <button onclick="payWithAnyUPI(99)" class="buy-btn upi-btn">
+                <i class="fa-solid fa-building-columns"></i> इतर UPI App
+              </button>
+              <a href="https://wa.me/919321430535?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%AE%E0%A5%80%20%27%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%A6%E0%A4%BE%E0%A4%A4%E0%A4%BE%27%20E-Book%20%28%E2%82%B999%29%20%E0%A4%AA%E0%A5%87%E0%A4%AE%E0%A5%87%E0%A4%82%E0%A4%9F%20%E0%A4%95%E0%A5%87%E0%A4%B2%E0%A5%87%20%E0%A4%86%E0%A4%B9%E0%A5%87.%20%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%A8%E0%A4%B6%E0%A5%89%E0%A4%9F%20%E0%A4%B8%E0%A5%8B%E0%A4%A1%E0%A4%A4%20%E0%A4%86%E0%A4%B9%E0%A5%87." target="_blank" rel="noopener" class="buy-btn">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
+              </a>
+            </div>
         </div>
       </div>
 
@@ -311,13 +344,22 @@
 <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
 
           <div class="btn-group">
-            <button onclick="openGPay(149)" class="buy-btn gpay-btn">
-              <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
-            </button>
-            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Audio%20Book%20(₹149)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
-              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
-            </a>
-          </div>
+              <button onclick="payWithGPay(149)" class="buy-btn gpay-btn">
+                <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
+              </button>
+              <button onclick="payWithPhonePe(149)" class="buy-btn phonepe-btn">
+                <i class="fa-solid fa-mobile-screen-button"></i> PhonePe ने पेमेंट करा
+              </button>
+              <button onclick="payWithPaytm(149)" class="buy-btn paytm-btn">
+                <i class="fa-solid fa-mobile-screen-button"></i> Paytm ने पेमेंट करा
+              </button>
+              <button onclick="payWithAnyUPI(149)" class="buy-btn upi-btn">
+                <i class="fa-solid fa-building-columns"></i> इतर UPI App
+              </button>
+              <a href="https://wa.me/919321430535?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%AE%E0%A5%80%20%27%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%A6%E0%A4%BE%E0%A4%A4%E0%A4%BE%27%20Audio%20Book%20%28%E2%82%B9149%29%20%E0%A4%AA%E0%A5%87%E0%A4%AE%E0%A5%87%E0%A4%82%E0%A4%9F%20%E0%A4%95%E0%A5%87%E0%A4%B2%E0%A5%87%20%E0%A4%86%E0%A4%B9%E0%A5%87.%20%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%A8%E0%A4%B6%E0%A5%89%E0%A4%9F%20%E0%A4%B8%E0%A5%8B%E0%A4%A1%E0%A4%A4%20%E0%A4%86%E0%A4%B9%E0%A5%87." target="_blank" rel="noopener" class="buy-btn">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
+              </a>
+            </div>
         </div>
       </div>
 
@@ -337,57 +379,156 @@
 <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
 
           <div class="btn-group">
-            <button onclick="openGPay(300)" class="buy-btn gpay-btn">
-              <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
-            </button>
-            <a href="https://wa.me/919321430535?text=नमस्कार,%20मी%20'रक्तदाता'%20Hard%20Book%20(₹300)%20पेमेंट%20केले%20आहे.%20स्क्रीनशॉट%20सोडत%20आहे." target="_blank" class="buy-btn">
-              <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
-            </a>
-          </div>
+              <button onclick="payWithGPay(300)" class="buy-btn gpay-btn">
+                <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
+              </button>
+              <button onclick="payWithPhonePe(300)" class="buy-btn phonepe-btn">
+                <i class="fa-solid fa-mobile-screen-button"></i> PhonePe ने पेमेंट करा
+              </button>
+              <button onclick="payWithPaytm(300)" class="buy-btn paytm-btn">
+                <i class="fa-solid fa-mobile-screen-button"></i> Paytm ने पेमेंट करा
+              </button>
+              <button onclick="payWithAnyUPI(300)" class="buy-btn upi-btn">
+                <i class="fa-solid fa-building-columns"></i> इतर UPI App
+              </button>
+              <a href="https://wa.me/919321430535?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%AE%E0%A5%80%20%27%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%A6%E0%A4%BE%E0%A4%A4%E0%A4%BE%27%20Hard%20Book%20%28%E2%82%B9300%29%20%E0%A4%AA%E0%A5%87%E0%A4%AE%E0%A5%87%E0%A4%82%E0%A4%9F%20%E0%A4%95%E0%A5%87%E0%A4%B2%E0%A5%87%20%E0%A4%86%E0%A4%B9%E0%A5%87.%20%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%A8%E0%A4%B6%E0%A5%89%E0%A4%9F%20%E0%A4%B8%E0%A5%8B%E0%A4%A1%E0%A4%A4%20%E0%A4%86%E0%A4%B9%E0%A5%87." target="_blank" rel="noopener" class="buy-btn">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
+              </a>
+            </div>
         </div>
       </div>
 
     </div>
 
     <div class="note-box">
-      🛡️ <strong>टीप:</strong> 'GPay ने पेमेंट करा' वर क्लिक करून पेमेंट केल्यानंतर त्याचा स्क्रीनशॉट WhatsApp वर पाठवा. ई-बुक व ऑडिओ बुकचा ॲक्सेस तात्काळ पाठवला जाईल आणि हार्ड बुक ३ ते ५ दिवसांत घरपोच डिलिव्हर केले जाईल.
+      🛡️ <strong>टीप:</strong> GPay, PhonePe, Paytm किंवा इतर UPI App मधून पेमेंट केल्यानंतर त्याचा स्क्रीनशॉट WhatsApp वर पाठवा. ई-बुक व ऑडिओ बुकचा ॲक्सेस तात्काळ पाठवला जाईल आणि हार्ड बुक ३ ते ५ दिवसांत घरपोच डिलिव्हर केले जाईल.
     </div>
   </div>
 
 <script>
-function openGPay(amount) {
+/*
+  RAKTDATA.IN - UPI Payment System
+  Primary: selected UPI app
+  Fallback: generic UPI Intent (shows available UPI apps)
+*/
 
-    const upiId = "dmgaikwad0103-2@okicici";
-    const name = "RAKTDATA";
-    const note = "Raktdata Book Payment";
+const RAKTDATA_UPI_ID = "dmgaikwad0103-2@okicici";
+const RAKTDATA_NAME = "RAKTDATA";
 
-    const upiUrl =
-        "upi://pay" +
-        "?pa=" + encodeURIComponent(upiId) +
-        "&pn=" + encodeURIComponent(name) +
-        "&am=" + encodeURIComponent(amount) +
-        "&cu=INR" +
-        "&tn=" + encodeURIComponent(note);
+function createUpiUrl(amount) {
+    const transactionRef = "RKT" + Date.now();
 
-    // Android Mobile
-    if (/Android/i.test(navigator.userAgent)) {
+    return "upi://pay" +
+        "?pa=" + encodeURIComponent(RAKTDATA_UPI_ID) +
+        "&pn=" + encodeURIComponent(RAKTDATA_NAME) +
+        "&tr=" + encodeURIComponent(transactionRef) +
+        "&tn=" + encodeURIComponent("Raktdata Book Payment") +
+        "&am=" + encodeURIComponent(Number(amount).toFixed(2)) +
+        "&cu=INR";
+}
 
-        window.location.href = upiUrl;
+function isAndroid() {
+    return /Android/i.test(navigator.userAgent);
+}
 
+function isMobile() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+/*
+  Opens a selected Android UPI app first.
+  If the app does not open, the page falls back to the standard
+  UPI Intent so the customer can choose another installed UPI app.
+*/
+function openSelectedUPI(amount, packageName, appName) {
+
+    if (!isMobile()) {
+        showPCMessage();
         return;
     }
 
-    // iPhone / iPad
-    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    const upiUrl = createUpiUrl(amount);
 
+    // iPhone/iPad: generic UPI URL
+    if (!isAndroid()) {
         window.location.href = upiUrl;
-
         return;
     }
 
-    // Computer / Laptop
+    // Android: try selected app first.
+    const intentUrl =
+        "intent://pay" +
+        upiUrl.substring("upi://pay".length) +
+        "#Intent;" +
+        "scheme=upi;" +
+        "package=" + packageName + ";" +
+        "end";
+
+    let appOpened = false;
+
+    const onVisibilityChange = () => {
+        if (document.hidden) {
+            appOpened = true;
+            document.removeEventListener("visibilitychange", onVisibilityChange);
+        }
+    };
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    window.location.href = intentUrl;
+
+    // Fallback if the selected app did not open.
+    setTimeout(() => {
+        document.removeEventListener("visibilitychange", onVisibilityChange);
+
+        if (!appOpened && !document.hidden) {
+            window.location.href = upiUrl;
+        }
+    }, 1400);
+}
+
+function payWithGPay(amount) {
+    openSelectedUPI(
+        amount,
+        "com.google.android.apps.nbu.paisa.user",
+        "Google Pay"
+    );
+}
+
+function payWithPhonePe(amount) {
+    openSelectedUPI(
+        amount,
+        "com.phonepe.app",
+        "PhonePe"
+    );
+}
+
+function payWithPaytm(amount) {
+    openSelectedUPI(
+        amount,
+        "net.one97.paytm",
+        "Paytm"
+    );
+}
+
+function payWithAnyUPI(amount) {
+
+    if (!isMobile()) {
+        showPCMessage();
+        return;
+    }
+
+    // Standard UPI Intent:
+    // Android should show installed UPI apps.
+    window.location.href = createUpiUrl(amount);
+}
+
+function showPCMessage() {
     alert(
-        "कृपया हे बटण Android मोबाइलवर वापरा."
+        "💳 ऑनलाइन UPI पेमेंट\n\n" +
+        "ही पेमेंट लिंक Android / Mobile वर वापरा.\n\n" +
+        "कृपया आपल्या मोबाईलवर RAKTDATA.IN चे हे पेज उघडून " +
+        "GPay, PhonePe, Paytm किंवा इतर UPI App निवडा."
     );
 }
 </script>
