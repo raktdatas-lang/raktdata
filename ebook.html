@@ -361,7 +361,6 @@ function openGPay(amount) {
     const name = "RAKTDATA";
     const note = "Raktdata Book Payment";
 
-    // Standard UPI payment URL
     const upiUrl =
         "upi://pay" +
         "?pa=" + encodeURIComponent(upiId) +
@@ -370,32 +369,25 @@ function openGPay(amount) {
         "&cu=INR" +
         "&tn=" + encodeURIComponent(note);
 
-    // Android: Google Pay package
-    const gpayIntent =
-        "intent://pay" +
-        "?pa=" + encodeURIComponent(upiId) +
-        "&pn=" + encodeURIComponent(name) +
-        "&am=" + encodeURIComponent(amount) +
-        "&cu=INR" +
-        "&tn=" + encodeURIComponent(note) +
-        "#Intent;" +
-        "scheme=upi;" +
-        "package=com.google.android.apps.nbu.paisa.user;" +
-        "end";
+    // Android Mobile
+    if (/Android/i.test(navigator.userAgent)) {
 
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-
-    // Android mobile: open Google Pay directly
-    if (/android/i.test(ua)) {
-        window.location.href = gpayIntent;
-    }
-
-    // iPhone / iPad: use standard UPI deep link
-    else if (/iPhone|iPad|iPod/i.test(ua)) {
         window.location.href = upiUrl;
+
+        return;
     }
 
-    // Desktop / Laptop
-    else {
-        alert(
-            "कृपया हा पर्याय Android मोबाइलवर वापरा.\n\n" +
+    // iPhone / iPad
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+
+        window.location.href = upiUrl;
+
+        return;
+    }
+
+    // Computer / Laptop
+    alert(
+        "कृपया हे बटण Android मोबाइलवर वापरा."
+    );
+}
+</script>
