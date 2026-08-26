@@ -160,21 +160,6 @@
       margin: 15px 0 10px 0;
     }
 
-    .qr-box {
-      background: #fff;
-      padding: 8px;
-      border: 1px dashed #ccc;
-      border-radius: 8px;
-      display: inline-block;
-      margin-bottom: 12px;
-    }
-
-    .qr-box img {
-      width: 140px;
-      height: 140px;
-      display: block;
-    }
-
     .btn-group {
       display: flex;
       flex-direction: column;
@@ -308,7 +293,8 @@
         </div>
         <div>
           <div class="card-price">₹९९/- मात्र</div>
-<div class="btn-group">
+          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
+          <div class="btn-group">
               <button onclick="payWithGPay(99)" class="buy-btn gpay-btn">
                 <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
               </button>
@@ -341,8 +327,7 @@
         </div>
         <div>
           <div class="card-price">₹१४९/- मात्र</div>
-<div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
-
+          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
           <div class="btn-group">
               <button onclick="payWithGPay(149)" class="buy-btn gpay-btn">
                 <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
@@ -376,8 +361,7 @@
         </div>
         <div>
           <div class="card-price">₹३००/- मात्र</div>
-<div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
-
+          <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
           <div class="btn-group">
               <button onclick="payWithGPay(300)" class="buy-btn gpay-btn">
                 <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
@@ -407,128 +391,63 @@
 
 <script>
 /*
-  RAKTDATA.IN - UPI Payment System
-  Primary: selected UPI app
-  Fallback: generic UPI Intent (shows available UPI apps)
+  RAKTDATA.IN - Standard Safe UPI Payment System
 */
 
 const RAKTDATA_UPI_ID = "dmgaikwad0103-2@okicici";
-const RAKTDATA_NAME = "RAKTDATA";
-
-function createUpiUrl(amount) {
-    const transactionRef = "RKT" + Date.now();
-
-    return "upi://pay" +
-        "?pa=" + encodeURIComponent(RAKTDATA_UPI_ID) +
-        "&pn=" + encodeURIComponent(RAKTDATA_NAME) +
-        "&tr=" + encodeURIComponent(transactionRef) +
-        "&tn=" + encodeURIComponent("Raktdata Book Payment") +
-        "&am=" + encodeURIComponent(Number(amount).toFixed(2)) +
-        "&cu=INR";
-}
-
-function isAndroid() {
-    return /Android/i.test(navigator.userAgent);
-}
+const RAKTDATA_NAME = "DEELIP MACHCHINDRANATH GAIKWAD";
 
 function isMobile() {
     return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 }
 
-/*
-  Opens a selected Android UPI app first.
-  If the app does not open, the page falls back to the standard
-  UPI Intent so the customer can choose another installed UPI app.
-*/
-function openSelectedUPI(amount, packageName, appName) {
+// युनिव्हर्सल सुरक्षित UPI पेमेंट कॉल (सर्व UPI ॲप्ससाठी चालेल)
+function openUniversalUPI(amount) {
+    if (!isMobile()) {
+        showPCMessage();
+        return;
+    }
+    const upiUrl = `upi://pay?pa=${encodeURIComponent(RAKTDATA_UPI_ID)}&pn=${encodeURIComponent(RAKTDATA_NAME)}&am=${amount}&cu=INR&tn=Raktdata%20Book%20Payment`;
+    window.location.href = upiUrl;
+}
 
+// Android साठी डायरेक्ट GPay Intent
+function payWithGPay(amount) {
     if (!isMobile()) {
         showPCMessage();
         return;
     }
 
-    const upiUrl = createUpiUrl(amount);
-
-    // iPhone/iPad: generic UPI URL
-    if (!isAndroid()) {
-        window.location.href = upiUrl;
-        return;
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    
+    if (isAndroid) {
+        // GPay Official Package Intent (Block होणार नाही)
+        const gpayIntent = `intent://pay?pa=${encodeURIComponent(RAKTDATA_UPI_ID)}&pn=${encodeURIComponent(RAKTDATA_NAME)}&am=${amount}&cu=INR&tn=Raktdata%20Book%20Payment#Intent;scheme=upi;package=com.google.android.apps.nfc.phone;end`;
+        window.location.href = gpayIntent;
+    } else {
+        openUniversalUPI(amount);
     }
-
-    // Android: try selected app first.
-    const intentUrl =
-        "intent://pay" +
-        upiUrl.substring("upi://pay".length) +
-        "#Intent;" +
-        "scheme=upi;" +
-        "package=" + packageName + ";" +
-        "end";
-
-    let appOpened = false;
-
-    const onVisibilityChange = () => {
-        if (document.hidden) {
-            appOpened = true;
-            document.removeEventListener("visibilitychange", onVisibilityChange);
-        }
-    };
-
-    document.addEventListener("visibilitychange", onVisibilityChange);
-
-    window.location.href = intentUrl;
-
-    // Fallback if the selected app did not open.
-    setTimeout(() => {
-        document.removeEventListener("visibilitychange", onVisibilityChange);
-
-        if (!appOpened && !document.hidden) {
-            window.location.href = upiUrl;
-        }
-    }, 1400);
-}
-
-function payWithGPay(amount) {
-    openSelectedUPI(
-        amount,
-        "com.google.android.apps.nbu.paisa.user",
-        "Google Pay"
-    );
 }
 
 function payWithPhonePe(amount) {
-    openSelectedUPI(
-        amount,
-        "com.phonepe.app",
-        "PhonePe"
-    );
+    openUniversalUPI(amount);
 }
 
 function payWithPaytm(amount) {
-    openSelectedUPI(
-        amount,
-        "net.one97.paytm",
-        "Paytm"
-    );
+    openUniversalUPI(amount);
 }
 
 function payWithAnyUPI(amount) {
-
-    if (!isMobile()) {
-        showPCMessage();
-        return;
-    }
-
-    // Standard UPI Intent:
-    // Android should show installed UPI apps.
-    window.location.href = createUpiUrl(amount);
+    openUniversalUPI(amount);
 }
 
 function showPCMessage() {
     alert(
         "💳 ऑनलाइन UPI पेमेंट\n\n" +
-        "ही पेमेंट लिंक Android / Mobile वर वापरा.\n\n" +
-        "कृपया आपल्या मोबाईलवर RAKTDATA.IN चे हे पेज उघडून " +
-        "GPay, PhonePe, Paytm किंवा इतर UPI App निवडा."
+        "ही पेमेंट लिंक मोबाईलवर वापरण्यासाठी आहे.\n\n" +
+        "कृपया तुमच्या मोबाईल ब्राऊझरमध्ये हे पेज उघडा आणि हवे ते पेमेंट ॲप निवडा."
     );
 }
 </script>
+</body>
+</html>
