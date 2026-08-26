@@ -187,37 +187,14 @@
       background-color: #1eb954;
     }
 
-    .gpay-btn {
-      background-color: #0A2A66;
-    }
-
-    .gpay-btn:hover {
-      background-color: #071d47;
-    }
-
-    .phonepe-btn {
-      background-color: #5f259f;
-    }
-
-    .phonepe-btn:hover {
-      background-color: #4b1d7d;
-    }
-
-    .paytm-btn {
-      background-color: #00baf2;
-    }
-
-    .paytm-btn:hover {
-      background-color: #0098c7;
-    }
-
-    .upi-btn {
-      background-color: #374151;
-    }
-
-    .upi-btn:hover {
-      background-color: #1f2937;
-    }
+    .gpay-btn { background-color: #0A2A66; }
+    .gpay-btn:hover { background-color: #071d47; }
+    .phonepe-btn { background-color: #5f259f; }
+    .phonepe-btn:hover { background-color: #4b1d7d; }
+    .paytm-btn { background-color: #00baf2; }
+    .paytm-btn:hover { background-color: #0098c7; }
+    .upi-btn { background-color: #374151; }
+    .upi-btn:hover { background-color: #1f2937; }
 
     .upi-info {
       font-size: 12px;
@@ -238,6 +215,50 @@
       font-size: 13px;
       color: #4a5568;
       border-radius: 0 8px 8px 0;
+    }
+
+    /* 📌 PAYMENT MODAL STYLES */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 350px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .qr-image {
+      width: 180px;
+      height: 180px;
+      margin: 15px 0;
+      border: 2px dashed #0A2A66;
+      padding: 5px;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -295,17 +316,8 @@
           <div class="card-price">₹९९/- मात्र</div>
           <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
           <div class="btn-group">
-              <button onclick="payWithGPay(99)" class="buy-btn gpay-btn">
-                <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
-              </button>
-              <button onclick="payWithPhonePe(99)" class="buy-btn phonepe-btn">
-                <i class="fa-solid fa-mobile-screen-button"></i> PhonePe ने पेमेंट करा
-              </button>
-              <button onclick="payWithPaytm(99)" class="buy-btn paytm-btn">
-                <i class="fa-solid fa-mobile-screen-button"></i> Paytm ने पेमेंट करा
-              </button>
-              <button onclick="payWithAnyUPI(99)" class="buy-btn upi-btn">
-                <i class="fa-solid fa-building-columns"></i> इतर UPI App
+              <button onclick="openPaymentModal(99)" class="buy-btn gpay-btn">
+                <i class="fa-solid fa-qrcode"></i> QR Code / UPI ने पेमेंट करा (₹99)
               </button>
               <a href="https://wa.me/919321430535?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%AE%E0%A5%80%20%27%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%A6%E0%A4%BE%E0%A4%A4%E0%A4%BE%27%20E-Book%20%28%E2%82%B999%29%20%E0%A4%AA%E0%A5%87%E0%A4%AE%E0%A5%87%E0%A4%82%E0%A4%9F%20%E0%A4%95%E0%A5%87%E0%A4%B2%E0%A5%87%20%E0%A4%86%E0%A4%B9%E0%A5%87.%20%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%A8%E0%A4%B6%E0%A5%89%E0%A4%9F%20%E0%A4%B8%E0%A5%8B%E0%A4%A1%E0%A4%A4%20%E0%A4%86%E0%A4%B9%E0%A5%87." target="_blank" rel="noopener" class="buy-btn">
                 <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
@@ -329,17 +341,8 @@
           <div class="card-price">₹१४९/- मात्र</div>
           <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
           <div class="btn-group">
-              <button onclick="payWithGPay(149)" class="buy-btn gpay-btn">
-                <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
-              </button>
-              <button onclick="payWithPhonePe(149)" class="buy-btn phonepe-btn">
-                <i class="fa-solid fa-mobile-screen-button"></i> PhonePe ने पेमेंट करा
-              </button>
-              <button onclick="payWithPaytm(149)" class="buy-btn paytm-btn">
-                <i class="fa-solid fa-mobile-screen-button"></i> Paytm ने पेमेंट करा
-              </button>
-              <button onclick="payWithAnyUPI(149)" class="buy-btn upi-btn">
-                <i class="fa-solid fa-building-columns"></i> इतर UPI App
+              <button onclick="openPaymentModal(149)" class="buy-btn gpay-btn">
+                <i class="fa-solid fa-qrcode"></i> QR Code / UPI ने पेमेंट करा (₹149)
               </button>
               <a href="https://wa.me/919321430535?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%AE%E0%A5%80%20%27%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%A6%E0%A4%BE%E0%A4%A4%E0%A4%BE%27%20Audio%20Book%20%28%E2%82%B9149%29%20%E0%A4%AA%E0%A5%87%E0%A4%AE%E0%A5%87%E0%A4%82%E0%A4%9F%20%E0%A4%95%E0%A5%87%E0%A4%B2%E0%A5%87%20%E0%A4%86%E0%A4%B9%E0%A5%87.%20%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%A8%E0%A4%B6%E0%A5%89%E0%A4%9F%20%E0%A4%B8%E0%A5%8B%E0%A4%A1%E0%A4%A4%20%E0%A4%86%E0%A4%B9%E0%A5%87." target="_blank" rel="noopener" class="buy-btn">
                 <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
@@ -363,17 +366,8 @@
           <div class="card-price">₹३००/- मात्र</div>
           <div class="upi-info">UPI ID: dmgaikwad0103-2@okicici</div>
           <div class="btn-group">
-              <button onclick="payWithGPay(300)" class="buy-btn gpay-btn">
-                <i class="fa-brands fa-google-pay" style="font-size: 18px;"></i> GPay ने पेमेंट करा
-              </button>
-              <button onclick="payWithPhonePe(300)" class="buy-btn phonepe-btn">
-                <i class="fa-solid fa-mobile-screen-button"></i> PhonePe ने पेमेंट करा
-              </button>
-              <button onclick="payWithPaytm(300)" class="buy-btn paytm-btn">
-                <i class="fa-solid fa-mobile-screen-button"></i> Paytm ने पेमेंट करा
-              </button>
-              <button onclick="payWithAnyUPI(300)" class="buy-btn upi-btn">
-                <i class="fa-solid fa-building-columns"></i> इतर UPI App
+              <button onclick="openPaymentModal(300)" class="buy-btn gpay-btn">
+                <i class="fa-solid fa-qrcode"></i> QR Code / UPI ने पेमेंट करा (₹300)
               </button>
               <a href="https://wa.me/919321430535?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%AE%E0%A5%80%20%27%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%A6%E0%A4%BE%E0%A4%A4%E0%A4%BE%27%20Hard%20Book%20%28%E2%82%B9300%29%20%E0%A4%AA%E0%A5%87%E0%A4%AE%E0%A5%87%E0%A4%82%E0%A4%9F%20%E0%A4%95%E0%A5%87%E0%A4%B2%E0%A5%87%20%E0%A4%86%E0%A4%B9%E0%A5%87.%20%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%A8%E0%A4%B6%E0%A5%89%E0%A4%9F%20%E0%A4%B8%E0%A5%8B%E0%A4%A1%E0%A4%A4%20%E0%A4%86%E0%A4%B9%E0%A5%87." target="_blank" rel="noopener" class="buy-btn">
                 <i class="fa-brands fa-whatsapp"></i> WhatsApp वर स्क्रीनशॉट पाठवा
@@ -389,50 +383,61 @@
     </div>
   </div>
 
-<script>
-/*
-  RAKTDATA.IN - Standard Working UPI Intent System
-*/
+  <!-- 📌 PAYMENT POPUP MODAL -->
+  <div id="paymentModal" class="modal-overlay">
+    <div class="modal-box">
+      <span class="close-btn" onclick="closePaymentModal()">&times;</span>
+      <h3 style="color: #0A2A66; margin: 0;">UPI पेमेंट करा</h3>
+      <p style="font-size: 13px; color: #666; margin: 5px 0;">रक्कम: <strong id="modalAmount" style="color:#C00000;">₹0</strong></p>
+      
+      <!-- Auto Generated UPI QR Code -->
+      <img id="qrCodeImg" class="qr-image" src="" alt="UPI QR Code">
+      
+      <p style="font-size: 12px; color: #444; margin: 5px 0;">
+        📌 <strong>QR Code स्कॅन करा</strong> किंवा <strong>स्क्रीनशॉट काढून</strong> तुमच्या Payment App वरून स्कॅन करा.
+      </p>
 
+      <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+        <button id="directUpiBtn" onclick="" class="buy-btn upi-btn">
+          <i class="fa-solid fa-mobile-screen-button"></i> मोबाईल ॲपवर थेट जा
+        </button>
+      </div>
+    </div>
+  </div>
+
+<script>
 const RAKTDATA_UPI_ID = "dmgaikwad0103-2@okicici";
 const RAKTDATA_NAME = "DEELIP MACHCHINDRANATH GAIKWAD";
 
-function isMobile() {
-    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-}
-
-// युनिव्हर्सल आणि सुरक्षित UPI लिंक (ही एरर देत नाही)
-function openUPI(amount) {
-    if (!isMobile()) {
-        showPCMessage();
-        return;
-    }
+function openPaymentModal(amount) {
+    document.getElementById('modalAmount').innerText = "₹" + amount;
+    
+    // Dynamic UPI URL Generate
     const upiUrl = `upi://pay?pa=${encodeURIComponent(RAKTDATA_UPI_ID)}&pn=${encodeURIComponent(RAKTDATA_NAME)}&am=${amount}&cu=INR&tn=Raktdata%20Book%20Payment`;
-    window.location.href = upiUrl;
+    
+    // Automatic QR Code Generation API
+    const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
+    document.getElementById('qrCodeImg').src = qrApi;
+
+    // Set Direct Redirect Function
+    document.getElementById('directUpiBtn').onclick = function() {
+        window.location.href = upiUrl;
+    };
+
+    document.getElementById('paymentModal').style.display = 'flex';
 }
 
-// सर्व बटन्ससाठी युनिव्हर्सल UPI च वापरणे सर्वात सुरक्षित आहे
-function payWithGPay(amount) {
-    openUPI(amount);
+function closePaymentModal() {
+    document.getElementById('paymentModal').style.display = 'none';
 }
 
-function payWithPhonePe(amount) {
-    openUPI(amount);
-}
-
-function payWithPaytm(amount) {
-    openUPI(amount);
-}
-
-function payWithAnyUPI(amount) {
-    openUPI(amount);
-}
-
-function showPCMessage() {
-    alert(
-        "💳 ऑनलाइन UPI पेमेंट\n\n" +
-        "ही पेमेंट लिंक मोबाईलवर वापरण्यासाठी आहे.\n\n" +
-        "कृपया तुमच्या मोबाईल ब्राऊझरमध्ये हे पेज उघडा आणि हवे ते पेमेंट ॲप निवडा."
-    );
+// Window बाहेर क्लिक केल्यास Modal बंद होणे
+window.onclick = function(event) {
+    const modal = document.getElementById('paymentModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 </script>
+</body>
+</html>
