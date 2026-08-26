@@ -405,6 +405,39 @@
     </div>
   </div>
 
+<!-- 📌 PAYMENT POPUP MODAL -->
+<div id="paymentModal" class="modal-overlay">
+  <div class="modal-box">
+    <span class="close-btn" onclick="closePaymentModal()">&times;</span>
+    <h3 style="color: #0A2A66; margin: 0;">UPI द्वारे सुरक्षित पेमेंट करा</h3>
+    <p style="font-size: 13px; color: #666; margin: 5px 0;">रक्कम: <strong id="modalAmount" style="color:#C00000;">₹0</strong></p>
+    
+    <!-- Dynamic UPI QR Code -->
+    <img id="qrCodeImg" class="qr-image" src="" alt="UPI QR Code">
+    
+    <p style="font-size: 12px; color: #444; margin: 5px 0 10px 0;">
+      📌 <strong>QR Code चा स्क्रीनशॉट काढा</strong> आणि Google Pay / PhonePe वरून Scan करा.
+    </p>
+
+    <!-- Copy UPI Box -->
+    <div style="background: #f1f5f9; padding: 10px; border-radius: 8px; border: 1px dashed #0A2A66; margin-bottom: 10px;">
+      <p style="font-size: 11px; color: #555; margin: 0 0 5px 0;">किंवा खालील UPI ID कॉपी करा:</p>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span id="upiIdText" style="font-size: 13px; font-weight: bold; color: #0A2A66;">dmgaikwad0103-2@okicici</span>
+        <button onclick="copyUPI()" style="background: #0A2A66; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 11px; cursor: pointer;">
+          <i class="fa-regular fa-copy"></i> कॉपी करा
+        </button>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <button id="directUpiBtn" onclick="" class="buy-btn upi-btn" style="font-size: 12px; padding: 8px;">
+        <i class="fa-solid fa-mobile-screen-button"></i> ॲप उघडून प्रयत्न करा
+      </button>
+    </div>
+  </div>
+</div>
+
 <script>
 const RAKTDATA_UPI_ID = "dmgaikwad0103-2@okicici";
 const RAKTDATA_NAME = "DEELIP MACHCHINDRANATH GAIKWAD";
@@ -412,14 +445,13 @@ const RAKTDATA_NAME = "DEELIP MACHCHINDRANATH GAIKWAD";
 function openPaymentModal(amount) {
     document.getElementById('modalAmount').innerText = "₹" + amount;
     
-    // Dynamic UPI URL Generate
+    // Standard UPI Intent URL
     const upiUrl = `upi://pay?pa=${encodeURIComponent(RAKTDATA_UPI_ID)}&pn=${encodeURIComponent(RAKTDATA_NAME)}&am=${amount}&cu=INR&tn=Raktdata%20Book%20Payment`;
     
-    // Automatic QR Code Generation API
+    // Dynamic QR Generator
     const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
     document.getElementById('qrCodeImg').src = qrApi;
 
-    // Set Direct Redirect Function
     document.getElementById('directUpiBtn').onclick = function() {
         window.location.href = upiUrl;
     };
@@ -431,7 +463,13 @@ function closePaymentModal() {
     document.getElementById('paymentModal').style.display = 'none';
 }
 
-// Window बाहेर क्लिक केल्यास Modal बंद होणे
+function copyUPI() {
+    const upiText = document.getElementById('upiIdText').innerText;
+    navigator.clipboard.writeText(upiText).then(() => {
+        alert("UPI ID कॉपी झाला आहे! आता तुमच्या Payment App मध्ये पेस्ट करून पेमेंट करा.");
+    });
+}
+
 window.onclick = function(event) {
     const modal = document.getElementById('paymentModal');
     if (event.target == modal) {
@@ -439,5 +477,3 @@ window.onclick = function(event) {
     }
 }
 </script>
-</body>
-</html>
