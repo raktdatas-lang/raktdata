@@ -391,7 +391,7 @@
 
 <script>
 /*
-  RAKTDATA.IN - Standard Safe UPI Payment System
+  RAKTDATA.IN - Standard Working UPI Intent System
 */
 
 const RAKTDATA_UPI_ID = "dmgaikwad0103-2@okicici";
@@ -401,8 +401,8 @@ function isMobile() {
     return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 }
 
-// युनिव्हर्सल सुरक्षित UPI पेमेंट कॉल (सर्व UPI ॲप्ससाठी चालेल)
-function openUniversalUPI(amount) {
+// युनिव्हर्सल आणि सुरक्षित UPI लिंक (ही एरर देत नाही)
+function openUPI(amount) {
     if (!isMobile()) {
         showPCMessage();
         return;
@@ -411,34 +411,21 @@ function openUniversalUPI(amount) {
     window.location.href = upiUrl;
 }
 
-// Android साठी डायरेक्ट GPay Intent
+// सर्व बटन्ससाठी युनिव्हर्सल UPI च वापरणे सर्वात सुरक्षित आहे
 function payWithGPay(amount) {
-    if (!isMobile()) {
-        showPCMessage();
-        return;
-    }
-
-    const isAndroid = /Android/i.test(navigator.userAgent);
-    
-    if (isAndroid) {
-        // GPay Official Package Intent (Block होणार नाही)
-        const gpayIntent = `intent://pay?pa=${encodeURIComponent(RAKTDATA_UPI_ID)}&pn=${encodeURIComponent(RAKTDATA_NAME)}&am=${amount}&cu=INR&tn=Raktdata%20Book%20Payment#Intent;scheme=upi;package=com.google.android.apps.nfc.phone;end`;
-        window.location.href = gpayIntent;
-    } else {
-        openUniversalUPI(amount);
-    }
+    openUPI(amount);
 }
 
 function payWithPhonePe(amount) {
-    openUniversalUPI(amount);
+    openUPI(amount);
 }
 
 function payWithPaytm(amount) {
-    openUniversalUPI(amount);
+    openUPI(amount);
 }
 
 function payWithAnyUPI(amount) {
-    openUniversalUPI(amount);
+    openUPI(amount);
 }
 
 function showPCMessage() {
@@ -449,5 +436,3 @@ function showPCMessage() {
     );
 }
 </script>
-</body>
-</html>
