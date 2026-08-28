@@ -15,12 +15,16 @@
             --card-dark: #1e293b;
             --input-dark: #0f172a;
             --accent-red: #b91c1c;
-            --gold-color: #fbbf24;
-            --maroon-dark: #7f1d1d;
+            --gold-color: #d97706;
+            --gold-light: #fef3c7;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-dark);
             color: #f8fafc;
             margin: 0;
@@ -29,7 +33,6 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            box-sizing: border-box;
         }
 
         .main-container {
@@ -38,7 +41,7 @@
             padding: 25px;
             display: flex;
             gap: 30px;
-            max-width: 1050px;
+            max-width: 1000px;
             width: 100%;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
             flex-wrap: wrap;
@@ -90,7 +93,7 @@
         }
 
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .form-group { margin-bottom: 12px; }
+        .form-group { margin-bottom: 8px; }
         .full-width { grid-column: span 2; }
 
         label {
@@ -109,7 +112,6 @@
             border-radius: 6px;
             color: #ffffff;
             font-size: 13px;
-            box-sizing: border-box;
             outline: none;
         }
 
@@ -125,7 +127,7 @@
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
             box-shadow: 0 4px 12px rgba(185, 28, 28, 0.4);
             display: flex;
             align-items: center;
@@ -140,74 +142,74 @@
             justify-content: center;
         }
 
-        /* 🪪 1. VERTICAL ID CARD STYLES */
+        /* ---------------- FIXED VERTICAL ID CARD ---------------- */
         #card-vertical {
-            width: 360px;
-            height: 520px;
+            width: 380px;
+            height: 570px;
             background: #ffffff;
             border: 2px solid var(--accent-red);
             border-radius: 12px;
             overflow: hidden;
-            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             color: #000;
-            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .v-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
+            padding: 10px 12px;
             background: #fff;
-            border-bottom: 1px solid #eee;
         }
-        .v-brand-box { text-align: center; width: 30%; }
-        .v-brand-box img { width: 40px; height: 40px; object-fit: contain; }
-        .v-brand-box span { font-size: 8px; font-weight: bold; display: block; color: #b91c1c; }
+        .v-brand-box { text-align: center; width: 28%; }
+        .v-brand-box img { width: 42px; height: 42px; object-fit: contain; }
+        .v-brand-box span { font-size: 9px; font-weight: bold; display: block; color: #b91c1c; margin-top: 2px; }
 
-        .v-center-title { text-align: center; width: 40%; }
-        .v-center-title h3 { margin: 0; font-size: 14px; color: #b91c1c; font-weight: 900; }
-        .v-center-title h2 { margin: 0; font-size: 16px; color: #000; font-weight: 900; }
-        .v-center-title p { margin: 0; font-size: 7px; color: #444; }
+        .v-center-title { text-align: center; width: 44%; }
+        .v-center-title h3 { margin: 0; font-size: 13px; color: #b91c1c; font-weight: 800; }
+        .v-center-title h2 { margin: 1px 0; font-size: 17px; color: #000; font-weight: 900; letter-spacing: 0.5px; }
+        .v-center-title p { margin: 0; font-size: 7.5px; color: #444; font-weight: 600; }
 
         .v-banner-bar {
             background: linear-gradient(90deg, #7f1d1d, #b91c1c, #7f1d1d);
             color: #fff;
             text-align: center;
-            padding: 4px;
-            font-size: 11px;
+            padding: 5px;
+            font-size: 11.5px;
             font-weight: bold;
-            border-top: 1px solid var(--gold-color);
-            border-bottom: 1px solid var(--gold-color);
+            border-top: 1px solid #f59e0b;
+            border-bottom: 1px solid #f59e0b;
         }
 
-        .v-body { padding: 10px; display: flex; gap: 10px; align-items: flex-start; }
-        .v-photo-box { width: 100px; height: 110px; border: 2px solid #ccc; border-radius: 6px; overflow: hidden; }
+        .v-body { padding: 12px; display: flex; gap: 12px; align-items: flex-start; }
+        .v-photo-box { width: 110px; height: 130px; border: 2px solid #b91c1c; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
         .v-photo-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        .v-details { flex: 1; font-size: 10.5px; text-align: left; }
-        .v-details h2 { margin: 0 0 4px 0; font-size: 16px; color: #000; font-weight: 800; }
-        .v-blood-badge { display: inline-block; background: #b91c1c; color: #fff; padding: 2px 8px; border-radius: 12px; font-weight: bold; font-size: 10px; margin-bottom: 6px; }
+        .v-details { flex: 1; text-align: left; }
+        .v-details h2 { margin: 0 0 4px 0; font-size: 17px; color: #000; font-weight: 800; }
+        .v-blood-badge { display: inline-block; background: #b91c1c; color: #fff; padding: 2px 8px; border-radius: 12px; font-weight: bold; font-size: 10.5px; margin-bottom: 8px; }
         .v-details table { width: 100%; border-collapse: collapse; }
-        .v-details td { padding: 1.5px 0; font-size: 10px; font-weight: 600; color: #1e293b; }
+        .v-details td { padding: 2px 0; font-size: 10.5px; font-weight: 600; color: #1e293b; vertical-align: top; }
+        .v-details td:first-child { color: #475569; width: 45%; }
 
         .v-org-box {
-            background: #fffbe3;
+            background: var(--gold-light);
             border: 1px dashed var(--gold-color);
-            border-radius: 6px;
-            margin: 0 10px;
-            padding: 6px;
+            border-radius: 8px;
+            margin: 0 12px 10px 12px;
+            padding: 8px;
             text-align: center;
-            font-size: 9px;
         }
+        .v-org-title { font-size: 9.5px; color: #475569; font-weight: bold; margin-bottom: 2px; }
+        .v-org-name { font-size: 13px; font-weight: 800; color: #b91c1c; }
 
-        .v-footer-info { display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: #fafafa; font-size: 8px; }
-        .v-bottom-bar { background: #7f1d1d; color: var(--gold-color); text-align: center; padding: 4px; font-size: 10px; font-weight: bold; }
+        .v-footer-info { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #f8fafc; border-top: 1px solid #e2e8f0; }
+        .v-bottom-bar { background: #7f1d1d; color: #fef08a; text-align: center; padding: 5px; font-size: 11px; font-weight: bold; }
 
-        /* 💳 2. HORIZONTAL ID CARD STYLES */
+        /* ---------------- FIXED HORIZONTAL ID CARD ---------------- */
         #card-horizontal {
             width: 520px;
             height: 330px;
@@ -215,16 +217,15 @@
             border: 2px solid var(--accent-red);
             border-radius: 12px;
             overflow: hidden;
-            box-sizing: border-box;
             display: none;
             flex-direction: column;
             justify-content: space-between;
             color: #000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .h-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #fff; }
-        .h-body { padding: 6px 12px; display: flex; gap: 12px; }
-        .h-footer-info { display: flex; justify-content: space-between; align-items: center; padding: 4px 12px; font-size: 8px; background: #fafafa; }
+        .h-body { padding: 8px 12px; display: flex; gap: 12px; flex: 1; align-items: center; }
     </style>
 </head>
 <body>
@@ -313,7 +314,7 @@
         <!-- Preview Section -->
         <div class="preview-wrapper">
             
-            <!-- 📱 1. VERTICAL ID CARD PREVIEW -->
+            <!-- 📱 1. FIXED VERTICAL ID CARD PREVIEW -->
             <div id="card-vertical">
                 <div>
                     <div class="v-header">
@@ -344,28 +345,31 @@
                             <h2 id="vDisplayTitleName">अमोल पाटील</h2>
                             <div class="v-blood-badge">🩸 रक्तगट : <span id="vDisplayBlood">B +ve</span></div>
                             <table>
-                                <tr><td>🪪 आयडी क्रमांक</td><td>: <span id="vDisplayID">RD-2026-8942</span></td></tr>
-                                <tr><td>📞 संपर्क क्रमांक</td><td>: <span id="vDisplayPhone">+91 98765 43210</span></td></tr>
+                                <tr><td>🪪 आयडी क्र.</td><td>: <span id="vDisplayID">RD-2026-8942</span></td></tr>
+                                <tr><td>📞 संपर्क क्र.</td><td>: <span id="vDisplayPhone">+91 98765 43210</span></td></tr>
                                 <tr><td>📍 जिल्हा</td><td>: <span id="vDisplayDistrict">पुणे, महाराष्ट्र</span></td></tr>
-                                <tr><td>📅 सदस्यत्व दिनांक</td><td>: <span id="vDisplayJoinDate">28-08-2026</span></td></tr>
-                                <tr><td>🛡️ वैधता दिनांक</td><td>: <span id="vDisplayValidDate">28-08-2027</span></td></tr>
+                                <tr><td>📅 सदस्यत्व</td><td>: <span id="vDisplayJoinDate">28-08-2026</span></td></tr>
+                                <tr><td>🛡️ वैधता</td><td>: <span id="vDisplayValidDate">28-08-2027</span></td></tr>
                             </table>
                         </div>
                     </div>
 
                     <div class="v-org-box">
-                        <strong>सहयोगी संस्था / Partner Organization</strong><br>
-                        <span id="vDisplayOrg" style="font-size:11px; font-weight:bold; color:#b91c1c;">जय हिंद गणेश मंडळ, पुणे</span>
+                        <div class="v-org-title">सहयोगी संस्था / Partner Organization</div>
+                        <div class="v-org-name" id="vDisplayOrg">जय हिंद गणेश मंडळ, पुणे</div>
                     </div>
                 </div>
 
                 <div>
                     <div class="v-footer-info">
-                        <div style="display:flex; align-items:center; gap:6px;">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.raktdata.in" style="width:35px; height:35px;">
-                            <div>हा QR Code स्कॅन करून ओळख सत्यापित करा.<br><b style="color:#16a34a;">VERIFIED VOLUNTEER ✔</b></div>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.raktdata.in" style="width:40px; height:40px;">
+                            <div style="font-size:8px; line-height:1.2;">
+                                हा QR Code स्कॅन करून ओळख सत्यापित करा.<br>
+                                <b style="color:#16a34a; font-size:8.5px;">VERIFIED VOLUNTEER ✔</b>
+                            </div>
                         </div>
-                        <div style="text-align:right; font-weight:bold; color:#b91c1c;">
+                        <div style="text-align:right; font-weight:bold; color:#b91c1c; font-size:9.5px; line-height:1.3;">
                             रक्तदान हीच खरी सेवा<br>मानवतेची सर्वोच्च देवा!
                         </div>
                     </div>
@@ -376,7 +380,7 @@
                 </div>
             </div>
 
-            <!-- 💳 2. HORIZONTAL ID CARD PREVIEW -->
+            <!-- 💳 2. FIXED HORIZONTAL ID CARD PREVIEW -->
             <div id="card-horizontal">
                 <div>
                     <div class="h-header">
@@ -385,8 +389,8 @@
                             <span>RaktData.in</span>
                         </div>
                         <div class="v-center-title" style="width:60%;">
-                            <h3 style="font-size:16px;">राष्ट्रीय रक्तदान मोहीम</h3>
-                            <h2 style="font-size:18px;">RAKTDATA.IN</h2>
+                            <h3 style="font-size:15px;">राष्ट्रीय रक्तदान मोहीम</h3>
+                            <h2 style="font-size:19px;">RAKTDATA.IN</h2>
                             <p style="font-size:8px;">एकत्र येऊया • रक्तदान वाढवूया • जीवन वाचवूया</p>
                         </div>
                         <div class="v-brand-box">
@@ -400,21 +404,21 @@
                     </div>
 
                     <div class="h-body">
-                        <div class="v-photo-box" style="width:90px; height:95px;">
+                        <div class="v-photo-box" style="width:95px; height:110px;">
                             <img id="hUserPhoto" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User">
                         </div>
                         <div class="v-details" style="flex:1.2;">
-                            <h2 id="hDisplayTitleName" style="font-size:14px;">अमोल पाटील</h2>
-                            <div class="v-blood-badge" style="font-size:9px; padding:1px 6px;">🩸 रक्तगट : <span id="hDisplayBlood">B +ve</span></div>
+                            <h2 id="hDisplayTitleName" style="font-size:15px;">अमोल पाटील</h2>
+                            <div class="v-blood-badge" style="font-size:9.5px; padding:1px 6px;">🩸 रक्तगट : <span id="hDisplayBlood">B +ve</span></div>
                             <table>
-                                <tr><td>🪪 आयडी</td><td>: <span id="hDisplayID">RD-2026-8942</span></td></tr>
+                                <tr><td>🪪 आयडी क्र.</td><td>: <span id="hDisplayID">RD-2026-8942</span></td></tr>
                                 <tr><td>📞 संपर्क</td><td>: <span id="hDisplayPhone">+91 98765 43210</span></td></tr>
                                 <tr><td>📍 जिल्हा</td><td>: <span id="hDisplayDistrict">पुणे, महाराष्ट्र</span></td></tr>
                             </table>
                         </div>
                         <div style="flex:1; border-left:1px dashed #ccc; padding-left:10px;">
-                            <div style="font-size:8px; color:#666;">सहयोगी संस्था / Partner Organization</div>
-                            <div id="hDisplayOrg" style="font-size:10px; font-weight:bold; color:#b91c1c; margin-bottom:4px;">जय हिंद गणेश मंडळ, पुणे</div>
+                            <div style="font-size:8.5px; color:#666; font-weight:bold;">सहयोगी संस्था / Partner Org.</div>
+                            <div id="hDisplayOrg" style="font-size:11px; font-weight:bold; color:#b91c1c; margin-bottom:6px;">जय हिंद गणेश मंडळ, पुणे</div>
                             <table class="v-details">
                                 <tr><td>📅 सदस्यत्व</td><td>: <span id="hDisplayJoinDate">28-08-2026</span></td></tr>
                                 <tr><td>🛡️ वैधता</td><td>: <span id="hDisplayValidDate">28-08-2027</span></td></tr>
@@ -424,17 +428,17 @@
                 </div>
 
                 <div>
-                    <div class="h-footer-info">
-                        <div style="display:flex; align-items:center; gap:4px;">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.raktdata.in" style="width:28px; height:28px;">
-                            <div style="font-size:7px;">www.raktdata.in<br><b>VERIFIED VOLUNTEER ✔</b></div>
+                    <div class="v-footer-info">
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.raktdata.in" style="width:32px; height:32px;">
+                            <div style="font-size:7.5px;">www.raktdata.in<br><b style="color:#16a34a;">VERIFIED VOLUNTEER ✔</b></div>
                         </div>
-                        <div style="text-align:right; font-weight:bold; color:#b91c1c; font-size:9px;">
+                        <div style="text-align:right; font-weight:bold; color:#b91c1c; font-size:9.5px;">
                             रक्तदान हीच खरी सेवा, मानवतेची सर्वोच्च देवा!
                         </div>
                     </div>
 
-                    <div class="v-bottom-bar" style="font-size:9px; padding:2px;">
+                    <div class="v-bottom-bar" style="font-size:9.5px; padding:3px;">
                         ★ रक्तदान करा, जीवन वाचवा! ★
                     </div>
                 </div>
