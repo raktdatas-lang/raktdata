@@ -281,6 +281,9 @@
 
         .user-details {
             margin-top: 2px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .user-badge {
@@ -299,21 +302,24 @@
             background: #0f172a;
         }
 
-        /* Updated Blood Group Badge Styling for Clear Visibility */
+        /* Updated Blood Group Badge Styling */
         .blood-group-badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 6px;
             background: #ffffff;
-            color: #dc2626;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 3px 12px;
-            border-radius: 15px;
+            padding: 4px 14px;
+            border-radius: 20px;
             margin-top: 4px;
             border: 1.5px solid #dc2626;
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .blood-group-badge span {
+            color: #dc2626 !important;
+            font-size: 13px !important;
+            font-weight: 800 !important;
         }
 
         .user-name {
@@ -328,7 +334,7 @@
         .user-phone {
             font-size: 11px;
             color: #ffffff;
-            margin-top: 2px;
+            margin-top: 4px;
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -489,7 +495,7 @@
                     <div class="user-badge" id="displayBadge">★ अधिकृत स्वयंसेवक ★</div>
                     <div class="user-name" id="displayName">अमोल पाटील</div>
                     
-                    <!-- Updated Display Blood Group Structure -->
+                    <!-- Fixed Blood Group Wrapper -->
                     <div class="blood-group-badge" id="displayBloodGroupWrapper">
                         <i class="fa-solid fa-droplet" style="color:#dc2626;"></i> 
                         <span id="displayBloodGroup">B+</span>
@@ -646,9 +652,11 @@
             document.getElementById('displayPhone').innerText =
                 document.getElementById('inputPhone').value || "";
 
-            // Blood Group Update
-            const bloodGroup = document.getElementById('inputBloodGroup').value;
-            document.getElementById('displayBloodGroup').innerText = bloodGroup;
+            // Blood Group Update Fix (Explicitly Redraw Icon + Text)
+            const bloodGroupSelect = document.getElementById('inputBloodGroup');
+            const selectedBloodGroup = bloodGroupSelect.options[bloodGroupSelect.selectedIndex].text;
+            document.getElementById('displayBloodGroupWrapper').innerHTML = 
+                `<i class="fa-solid fa-droplet" style="color:#dc2626;"></i> <span>${selectedBloodGroup}</span>`;
 
             const selectedTheme = document.getElementById('themeSelect').value;
             document.getElementById('poster-card').className = selectedTheme;
@@ -660,7 +668,7 @@
             document.getElementById('displayBadge').innerText = settings.badge;
             document.getElementById('displaySubtext').innerText = settings.subtext;
 
-            // Hide blood group if organization is selected
+            // Hide blood group badge for Organization type
             const bgWrapper = document.getElementById('displayBloodGroupWrapper');
             if (selectedType === 'organization') {
                 bgWrapper.style.display = 'none';
