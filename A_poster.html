@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>रक्तदाता व संस्था सन्मान पोस्टर मेकर | RaktData.in</title>
+    
+    <!-- Google Devanagari Font (Mukta) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Html2Canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
@@ -20,7 +27,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Mukta', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-dark);
             color: #f8fafc;
             margin: 0;
@@ -48,13 +55,13 @@
         /* Form Styling */
         .form-section {
             flex: 1;
-            min-width: 320px;
+            min-width: 300px;
         }
 
         .form-title {
             color: #f8fafc;
             font-size: 20px;
-            font-weight: bold;
+            font-weight: 700;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -85,10 +92,10 @@
 
         label {
             display: block;
-            font-size: 13px;
+            font-size: 14px;
             color: #cbd5e1;
             margin-bottom: 6px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         input, select {
@@ -98,7 +105,8 @@
             border: 1px solid #334155;
             border-radius: 8px;
             color: #ffffff;
-            font-size: 14px;
+            font-size: 15px;
+            font-family: 'Mukta', sans-serif;
             box-sizing: border-box;
             outline: none;
         }
@@ -114,8 +122,9 @@
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 15px;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Mukta', sans-serif;
             cursor: pointer;
             margin-top: 10px;
             box-shadow: 0 4px 12px rgba(225, 29, 72, 0.4);
@@ -127,7 +136,7 @@
         }
 
         .btn-download:hover {
-            opacity: 0.9;
+            opacity: 0.95;
             transform: translateY(-2px);
         }
 
@@ -138,8 +147,9 @@
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 15px;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Mukta', sans-serif;
             cursor: pointer;
             margin-top: 10px;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
@@ -151,7 +161,7 @@
         }
 
         .btn-whatsapp:hover {
-            opacity: 0.9;
+            opacity: 0.95;
             transform: translateY(-2px);
         }
 
@@ -160,10 +170,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            max-width: 380px;
         }
 
         #poster-card {
-            width: 380px;
+            width: 100%;
+            max-width: 380px;
             height: 540px;
             border-radius: 12px;
             position: relative;
@@ -204,8 +217,8 @@
 
         .poster-brand-text h2 {
             margin: 0;
-            font-size: 19px;
-            font-weight: 900;
+            font-size: 20px;
+            font-weight: 800;
             letter-spacing: 1px;
             color: #ffffff;
             line-height: 1;
@@ -213,7 +226,7 @@
 
         .poster-brand-text p {
             margin: 3px 0 0 0;
-            font-size: 8px;
+            font-size: 9px;
             color: #f1f5f9;
             letter-spacing: 0.5px;
             font-weight: 600;
@@ -228,12 +241,13 @@
         }
 
         .poster-slogan {
-            font-size: 13.5px;
+            font-size: 15px;
             font-weight: 800;
             color: var(--gold-color);
             margin: 4px 0 2px 0;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
             padding: 0 10px;
+            line-height: 1.2;
         }
 
         .theme-august15 .poster-slogan {
@@ -242,7 +256,7 @@
         }
 
         .poster-subtext {
-            font-size: 9px;
+            font-size: 10px;
             color: #e2e8f0;
             margin-bottom: 4px;
             background: rgba(255,255,255,0.15);
@@ -287,12 +301,12 @@
         }
 
         .user-badge {
-            font-size: 10px;
+            font-size: 11px;
             color: #fef08a;
             font-weight: 700;
             margin-bottom: 2px;
             background: rgba(251, 191, 36, 0.15);
-            padding: 2px 8px;
+            padding: 2px 10px;
             border-radius: 8px;
             display: inline-block;
         }
@@ -302,7 +316,6 @@
             background: #0f172a;
         }
 
-        /* Updated Blood Group Badge Styling */
         .blood-group-badge {
             display: inline-flex;
             align-items: center;
@@ -318,13 +331,13 @@
 
         .blood-group-badge span {
             color: #dc2626 !important;
-            font-size: 13px !important;
+            font-size: 14px !important;
             font-weight: 800 !important;
         }
 
         .user-name {
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 18px;
+            font-weight: 800;
             color: #ffffff;
             margin: 2px 0;
             text-shadow: 0 2px 4px rgba(0,0,0,0.4);
@@ -332,7 +345,7 @@
         }
 
         .user-phone {
-            font-size: 11px;
+            font-size: 12px;
             color: #ffffff;
             margin-top: 4px;
             font-weight: 600;
@@ -342,7 +355,6 @@
             gap: 4px;
         }
 
-        /* Poster Footer with QR Code Integration */
         .poster-footer {
             background: #ffffff;
             color: #0f172a;
@@ -362,13 +374,13 @@
 
         .footer-text p {
             margin: 0;
-            font-size: 9px;
-            font-weight: bold;
+            font-size: 10px;
+            font-weight: 700;
             color: #1e293b;
         }
 
         .footer-text span {
-            font-size: 8px;
+            font-size: 9px;
             color: #e11d48;
             font-weight: 700;
         }
@@ -393,6 +405,7 @@
                 <i class="fa-solid fa-people-arrows" style="color: var(--accent-red);"></i>
                 <span data-i18n="formTitle">माहिती व पोस्टर सन्मान प्रकार</span>
             </div>
+            
             <div class="language-switcher">
                 <label for="languageSelect" data-i18n="languageLabel">🌐 भाषा / Language</label>
                 <select id="languageSelect" onchange="changeLanguage(this.value)">
@@ -470,7 +483,6 @@
         <div class="poster-wrapper">
             <div id="poster-card" class="theme-red">
                 
-                <!-- Poster Header (Logo + Brand) -->
                 <div class="poster-header">
                     <img id="posterLogo" class="poster-logo-img" src="logo.png" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1297/1297136.png'">
                     <div class="poster-brand-text">
@@ -479,23 +491,19 @@
                     </div>
                 </div>
 
-                <!-- Slogan Area -->
                 <div>
                     <div class="poster-slogan" id="displaySlogan">"आपत्कालीन मदतीसाठी तत्पर!"</div>
                     <div class="poster-subtext" id="displaySubtext">सदैव सेवेत - RaktData स्वयंसेवक</div>
                 </div>
 
-                <!-- User Photo -->
                 <div class="photo-container">
                     <img id="posterPhoto" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Photo">
                 </div>
 
-                <!-- User Details -->
                 <div class="user-details">
                     <div class="user-badge" id="displayBadge">★ अधिकृत स्वयंसेवक ★</div>
                     <div class="user-name" id="displayName">अमोल पाटील</div>
                     
-                    <!-- Fixed Blood Group Wrapper -->
                     <div class="blood-group-badge" id="displayBloodGroupWrapper">
                         <i class="fa-solid fa-droplet" style="color:#dc2626;"></i> 
                         <span id="displayBloodGroup">B+</span>
@@ -504,7 +512,6 @@
                     <div class="user-phone"><i class="fa-solid fa-phone" style="font-size:10px; color:var(--gold-color);"></i> <span id="displayPhone">+९१ ९८७६५४३२१०</span></div>
                 </div>
 
-                <!-- Poster Footer with QR Code -->
                 <div class="poster-footer">
                     <div class="footer-text">
                         <p data-i18n="footerVisit">रक्तदानासाठी आजच भेट द्या:</p>
@@ -652,7 +659,6 @@
             document.getElementById('displayPhone').innerText =
                 document.getElementById('inputPhone').value || "";
 
-            // Blood Group Update Fix (Explicitly Redraw Icon + Text)
             const bloodGroupSelect = document.getElementById('inputBloodGroup');
             const selectedBloodGroup = bloodGroupSelect.options[bloodGroupSelect.selectedIndex].text;
             document.getElementById('displayBloodGroupWrapper').innerHTML = 
@@ -668,7 +674,6 @@
             document.getElementById('displayBadge').innerText = settings.badge;
             document.getElementById('displaySubtext').innerText = settings.subtext;
 
-            // Hide blood group badge for Organization type
             const bgWrapper = document.getElementById('displayBloodGroupWrapper');
             if (selectedType === 'organization') {
                 bgWrapper.style.display = 'none';
@@ -730,6 +735,5 @@
         // Initialize Poster on Load
         updatePoster();
     </script>
-
 </body>
 </html>
