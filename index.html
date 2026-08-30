@@ -1,1078 +1,565 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RAKTDATA.IN | National Blood Donation Movement</title>
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Swiper CSS for Sliders -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  
-  <style>
-    /* Global Styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: #f4f6f9;
-      color: #333;
-      top: 0px !important;
-      position: static !important;
-    }
-
-    /* 📰 Breaking News Ticker CSS */
-    .news-ticker-container {
-      background: #000000;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      height: 42px;
-      border-top: 2px solid #C00000;
-      border-bottom: 3px solid #FFD700;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-
-    .news-ticker-badge {
-      background: linear-gradient(135deg, #C00000 0%, #8B0000 100%);
-      color: #ffffff;
-      padding: 0 20px;
-      height: 100%;
-      font-weight: 800;
-      font-size: 14px;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      z-index: 2;
-      box-shadow: 4px 0 10px rgba(0,0,0,0.4);
-    }
-
-    .live-dot {
-      width: 10px;
-      height: 10px;
-      background-color: #FFD700;
-      border-radius: 50%;
-      display: inline-block;
-      animation: blinker 1s linear infinite;
-    }
-
-    @keyframes blinker {
-      50% { opacity: 0; }
-    }
-
-    .news-ticker-content {
-      flex: 1;
-      overflow: hidden;
-    }
-
-    .news-ticker-content marquee {
-      font-size: 15px;
-      font-weight: 700;
-      color: #FFFFFF;
-      line-height: 42px;
-    }
-
-    .news-item {
-      display: inline-block;
-      margin-right: 50px;
-    }
-
-    .news-item i {
-      color: #FFD700;
-      margin-right: 8px;
-    }
-
-    /* Top Header Container */
-    .header-container {
-      background-color: #ffffff;
-      padding: 12px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #e5e7eb;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .poster-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .poster-logo-img {
-      max-height: 55px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    .poster-brand-name {
-      color: #C00000;
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-
-    .poster-tagline {
-      color: #0A2A66;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    .motto-header-tag {
-      color: #C00000;
-      font-size: 13px;
-      font-weight: 800;
-      margin-top: 2px;
-    }
-
-    /* Header Right Actions (State & Lang) */
-    .header-right-actions {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .state-dropdown-box, .lang-switcher {
-      display: flex;
-      align-items: center;
-      background: #f8f9fa;
-      padding: 5px 10px;
-      border: 1px solid #cbd5e1;
-      border-radius: 6px;
-    }
-
-    .state-dropdown-box select, .lang-switcher select {
-      border: none;
-      background: transparent;
-      font-weight: bold;
-      cursor: pointer;
-      outline: none;
-      font-size: 14px;
-      color: #0A2A66;
-    }
-
-    /* Main Navigation Bar */
-    .nav-bar {
-      background-color: #0A2A66;
-      padding: 0 5%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .nav-link {
-      color: #ffffff;
-      text-decoration: none;
-      padding: 14px 18px;
-      font-size: 14px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: background 0.3s;
-    }
-
-    .nav-link:hover {
-      background-color: #05183d;
-      color: #FFD700;
-    }
-
-    /* Hero Section */
-    .hero-wrapper {
-      background: linear-gradient(135deg, #0A2A66 0%, #05183d 100%);
-      color: white;
-      padding: 40px 5%;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .hero-text h1 {
-      font-size: 34px;
-      font-weight: 800;
-      line-height: 1.3;
-      margin-bottom: 8px;
-    }
-
-    .hero-text h1 span {
-      color: #FFD700;
-      display: block;
-      font-size: 20px;
-      margin-top: 5px;
-    }
-
-    .hero-motto-box {
-      background: rgba(255, 255, 255, 0.1);
-      border-left: 4px solid #FFD700;
-      padding: 10px 15px;
-      margin: 15px 0 20px 0;
-      border-radius: 0 8px 8px 0;
-    }
-
-    .hero-motto-title {
-      color: #FFD700;
-      font-size: 20px;
-      font-weight: 800;
-    }
-
-    .hero-motto-sub {
-      color: #FFFFFF;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-top: 3px;
-    }
-
-    .hero-text p {
-      font-size: 15px;
-      color: #E5E7EB;
-      margin-bottom: 25px;
-      line-height: 1.6;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn-main {
-      padding: 12px 22px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .btn-red-main { background: #C00000; color: white; border: 1px solid #C00000; }
-    .btn-red-main:hover { background: #990000; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAKTDATA.IN - National Blood Donation Movement</title>
     
-    .btn-outline-gold { background: transparent; color: #FFD700; border: 1.5px solid #FFD700; }
-    .btn-outline-gold:hover { background: #FFD700; color: #0A2A66; }
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #d9534f;
+            --secondary-color: #c9302c;
+            --dark-color: #333;
+            --light-color: #f8f9fa;
+        }
 
-    /* Visual Banner Box */
-    .hero-banner-box {
-      background: rgba(255, 255, 255, 0.08);
-      border: 2px dashed #FFD700;
-      border-radius: 16px;
-      padding: 30px 20px;
-      text-align: center;
-      backdrop-filter: blur(5px);
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    .hero-banner-box i {
-      font-size: 60px;
-      color: #E53935;
-      margin-bottom: 15px;
-      animation: pulse 2s infinite;
-    }
+        body {
+            background-color: #f4f4f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .hero-banner-box h3 { color: #FFD700; font-size: 20px; margin-bottom: 8px; }
-    .hero-banner-box p { color: #FFFFFF; font-size: 13px; line-height: 1.5; }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            border-bottom: 1px solid #eee;
+        }
 
-    /* 📖 E-BOOK PREVIEW & LOGIN SECTION CSS */
-    .ebook-section {
-      padding: 40px 5%;
-      background: #ffffff;
-      border-top: 3px solid #C00000;
-    }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-    .ebook-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      max-width: 1100px;
-      margin: 0 auto;
-      align-items: start;
-    }
+        .logo-container img {
+            height: 50px;
+        }
 
-    .ebook-preview-card, .ebook-login-card {
-      background: #f8f9fa;
-      border-radius: 12px;
-      padding: 20px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    }
+        .brand-title h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
 
-    .section-head-title {
-      font-size: 18px;
-      font-weight: 800;
-      color: #0A2A66;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        .brand-title p {
+            font-size: 0.85rem;
+            color: #666;
+        }
 
-    .pdf-preview-frame {
-      width: 100%;
-      height: 420px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background: #fff;
-    }
+        .header-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
 
-    .input-group {
-      margin-bottom: 15px;
-    }
+        select {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
 
-    .input-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 5px;
-    }
+        nav {
+            background-color: var(--primary-color);
+        }
 
-    .input-field-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            padding: 0 5%;
+        }
 
-    .input-field-wrapper i.left-icon {
-      position: absolute;
-      left: 12px;
-      color: #888;
-    }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            display: block;
+            font-size: 0.95rem;
+            transition: background 0.3s;
+        }
 
-    .input-field-wrapper input {
-      width: 100%;
-      padding: 10px 40px 10px 35px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-      outline: none;
-    }
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+        }
 
-    .toggle-password {
-      position: absolute;
-      right: 12px;
-      cursor: pointer;
-      color: #888;
-    }
+        /* Ticker Bar */
+        .ticker-bar {
+            background-color: #fff3cd;
+            color: #856404;
+            display: flex;
+            padding: 8px 5%;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #ffeeba;
+        }
 
-    .login-submit-btn {
-      width: 100%;
-      background: #0A2A66;
-      color: white;
-      border: none;
-      padding: 11px;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+        .ticker-title {
+            font-weight: bold;
+            white-space: nowrap;
+            margin-right: 15px;
+        }
 
-    .login-submit-btn:hover {
-      background: #071d47;
-    }
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
 
-    .buy-whatsapp-btn {
-      display: block;
-      text-align: center;
-      margin-top: 15px;
-      background: #25D366;
-      color: white;
-      padding: 11px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-    }
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
 
-    .error-msg {
-      background: #ffe6e6;
-      color: #d93025;
-      padding: 8px;
-      border-radius: 6px;
-      font-size: 13px;
-      margin-bottom: 12px;
-      display: none;
-      text-align: center;
-    }
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 25px;
+        }
 
-    .full-pdf-container {
-      display: none;
-      max-width: 1100px;
-      margin: 0 auto;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
 
-    .logout-btn {
-      background: #C00000;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: bold;
-      float: right;
-    }
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
 
-    /* --- 🏢 संस्था स्लायडर आणि शतकवीर रक्तदाते सेक्शन CSS --- */
-    .section-container {
-      padding: 40px 5%;
-      background-color: #0A2A66;
-      border-top: 3px solid #FFD700;
-    }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
 
-    .section-title {
-      color: #FFD700;
-      font-size: 24px;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
+        .btn-secondary {
+            background-color: white;
+            color: var(--dark-color);
+        }
 
-    .section-sub-motto {
-      text-align: center;
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 25px;
-    }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
 
-    .org-card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 15px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      border: 2px solid #FFD700;
-    }
+        /* Section Styling */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
 
-    .org-logo {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      border-radius: 50%;
-      background: #f0f0f0;
-      padding: 5px;
-    }
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            position: relative;
+        }
 
-    .org-info h4 {
-      font-size: 16px;
-      color: #0A2A66;
-      margin-bottom: 4px;
-    }
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            display: block;
+            margin: 8px auto 0;
+        }
 
-    .org-info p {
-      font-size: 13px;
-      color: #555;
-      font-weight: 600;
-    }
+        /* E-Book Section */
+        .ebook-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
 
-    .donor-card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      border-top: 4px solid #C00000;
-    }
+        .iframe-container {
+            width: 100%;
+            height: 350px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
 
-    .donor-img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 10px auto;
-      border: 3px solid #FFD700;
-    }
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
 
-    .donor-card h4 {
-      font-size: 16px;
-      color: #0A2A66;
-      margin-bottom: 4px;
-    }
+        .login-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
 
-    .donor-card p {
-      font-size: 13px;
-      color: #C00000;
-      font-weight: 700;
-    }
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-    .badge-centurion {
-      background: #FFD700;
-      color: #0A2A66;
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 20px;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 6px;
-    }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-    .swiper-button-next, .swiper-button-prev {
-      color: #FFD700 !important;
-    }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-    /* Statistics Counter Section */
-    .stats-section {
-      background: #FFFFFF;
-      padding: 35px 5%;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    }
+        /* Sliders */
+        .swiper {
+            width: 100%;
+            padding: 20px 0 40px;
+        }
 
-    .stat-card {
-      padding: 20px;
-      border-radius: 10px;
-      background: #F8F9FA;
-      border: 1px solid #E5E7EB;
-    }
+        .swiper-slide {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: center;
+        }
 
-    .stat-card i { font-size: 30px; color: #C00000; margin-bottom: 10px; }
-    .stat-number { font-size: 26px; font-weight: 800; color: #0A2A66; }
-    .stat-label { font-size: 13px; color: #6B7280; font-weight: 600; margin-top: 4px; }
+        .donor-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
 
-    /* Footer Section */
-    footer {
-      background-color: #05183d;
-      color: #ffffff;
-      padding: 40px 5% 20px;
-    }
+        /* Stats Counter */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      margin-bottom: 30px;
-    }
+        .stat-item h3 {
+            font-size: 2.2rem;
+        }
 
-    .footer-col h4 {
-      color: #FFD700;
-      margin-bottom: 15px;
-      font-size: 16px;
-    }
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #eee;
+            padding: 40px 5% 20px;
+            margin-top: 50px;
+        }
 
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 8px; }
-    .footer-col ul li a { color: #D1D5DB; text-decoration: none; font-size: 13px; }
-    .footer-col ul li a:hover { color: #FFFFFF; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
 
-    .social-icons { display: flex; gap: 12px; }
-    .social-icons a {
-      color: #ffffff;
-      background: rgba(255,255,255,0.1);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-    }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
 
-    .footer-bottom {
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 20px;
-      font-size: 12px;
-      color: #9CA3AF;
-    }
+        .footer-col ul {
+            list-style: none;
+        }
 
-    /* Google Translate Hide Banner */
-    .goog-te-banner-frame.skiptranslate, iframe.skiptranslate { display: none !important; }
-    .goog-te-gadget span, .goog-te-gadget-icon { display: none !important; }
-    .goog-te-gadget { color: transparent !important; font-size: 0px !important; }
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
 
-    @media (max-width: 768px) {
-      .hero-wrapper { grid-template-columns: 1fr; text-align: center; }
-      .hero-buttons { justify-content: center; }
-      .header-container { flex-direction: column; gap: 15px; }
-      .header-right-actions { width: 100%; justify-content: center; }
-      .ebook-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .ebook-card {
+                grid-template-columns: 1fr;
+            }
+            .header-top {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Top Header -->
-  <header class="header-container">
-    <div class="poster-header">
-      <img src="logo.png" alt="RaktData Logo" class="poster-logo-img">
-      <div>
-        <div class="poster-brand-name" style="line-height: 1.1;">RAKTDATA.IN</div>
-        <div class="poster-tagline">National Blood Donation Movement</div>
-        <div class="motto-header-tag">रक्तदानासाठी एकत्र – संस्था स्वतंत्र</div>
-      </div>
+    <!-- Header Section -->
+    <header>
+        <div class="header-top">
+            <div class="logo-container">
+                <i class="fa-solid fa-droplet fa-2x" style="color: #d9534f;"></i>
+                <div class="brand-title">
+                    <h1>RAKTDATA.IN</h1>
+                    <p>National Blood Donation Movement | रक्तदानासाठी एकत्र – संस्था स्वतंत्र</p>
+                </div>
+            </div>
+            <div class="header-controls">
+                <select id="stateSelect">
+                    <option value="">राज्य निवडा (Select State)</option>
+                    <option value="MH">Maharashtra</option>
+                    <option value="DL">Delhi</option>
+                    <option value="KA">Karnataka</option>
+                    <option value="GJ">Gujarat</option>
+                </select>
+                <div id="google_translate_element"></div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a></li>
+                <li><a href="#about">आमच्याबद्दल</a></li>
+                <li><a href="#register">स्वयंसेवक नोंदणी</a></li>
+                <li><a href="#donors">रक्तदाते</a></li>
+                <li><a href="#banks">ब्लड बँक्स</a></li>
+                <li><a href="#ebook">ई-बुक</a></li>
+                <li><a href="#contact">संपर्क</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- News Ticker -->
+    <div class="ticker-bar">
+        <span class="ticker-title"><i class="fa-solid fa-bullhorn"></i> अपडेट्स:</span>
+        <marquee behavior="scroll" direction="left">
+            राष्ट्रीय रक्तदान मोहिमेत सामील व्हा! जवळच्या रक्तदान शिबिराची माहिती मिळवण्यासाठी तुमच्या राज्याची निवड करा.
+        </marquee>
     </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h2>"रक्तदान हेच श्रेष्ठ दान"</h2>
+        <p>तुमचे एक पाऊल आणि एका बाटलीचे दान कोणाचे तरी आयुष्य वाचवू शकते. आजच आपल्या नावनोंदणीद्वारे मोहिमेचा भाग बना.</p>
+        <div class="cta-buttons">
+            <a href="#register" class="btn btn-primary"><i class="fa-solid fa-heart"></i> रक्तदान नोंदणी</a>
+            <a href="#banks" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i> रक्त शोधा</a>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
         
-    <div class="header-right-actions">
-      <div class="state-dropdown-box">
-        <i class="fa-solid fa-location-dot" style="color: #C00000; margin-right: 6px;"></i>
-        <select id="stateSelect" class="form-control">
-          <option value="all">सर्व राज्ये (All States)</option>
-          <option value="andhra_pradesh">आंध्र प्रदेश (Andhra Pradesh)</option>
-          <option value="arunachal_pradesh">अरुणाचल प्रदेश (Arunachal Pradesh)</option>
-          <option value="assam">आसाम (Assam)</option>
-          <option value="bihar">बिहार (Bihar)</option>
-          <option value="chhattisgarh">छत्तीसगड (Chhattisgarh)</option>
-          <option value="goa">गोवा (Goa)</option>
-          <option value="gujarat">गुजरात (Gujarat)</option>
-          <option value="haryana">हरियाणा (Haryana)</option>
-          <option value="himachal_pradesh">हिमाचल प्रदेश (Himachal Pradesh)</option>
-          <option value="jharkhand">झारखंड (Jharkhand)</option>
-          <option value="karnataka">कर्नाटक (Karnataka)</option>
-          <option value="kerala">केरळ (Kerala)</option>
-          <option value="madhya_pradesh">मध्य प्रदेश (Madhya Pradesh)</option>
-          <option value="maharashtra" selected>महाराष्ट्र (Maharashtra)</option>
-          <option value="manipur">मणिपूर (Manipur)</option>
-          <option value="meghalaya">मेघालय (Meghalaya)</option>
-          <option value="mizoram">मिझोरम (Mizoram)</option>
-          <option value="nagaland">नागालँड (Nagaland)</option>
-          <option value="odisha">ओडिशा (Odisha)</option>
-          <option value="punjab">पंजाब (Punjab)</option>
-          <option value="rajasthan">राजस्थान (Rajasthan)</option>
-          <option value="sikkim">सिक्कीम (Sikkim)</option>
-          <option value="tamil_nadu">तामिळनाडू (Tamil Nadu)</option>
-          <option value="telangana">तेलंगणा (Telangana)</option>
-          <option value="tripura">त्रिपुरा (Tripura)</option>
-          <option value="uttar_pradesh">उत्तर प्रदेश (Uttar Pradesh)</option>
-          <option value="uttarakhand">उत्तराखंड (Uttarakhand)</option>
-          <option value="west_bengal">पश्चिम बंगाल (West Bengal)</option>
-          <option value="andaman_nicobar">अंदमान आणि निकोबार (Andaman & Nicobar)</option>
-          <option value="chandigarh">चंदिगढ (Chandigarh)</option>
-          <option value="dadra_nagar_haveli_daman_diu">दादरा व नगर हवेली आणि दमण व दीव</option>
-          <option value="delhi">दिल्ली (Delhi - NCT)</option>
-          <option value="jammu_kashmir">जम्मू आणि काश्मीर (Jammu & Kashmir)</option>
-          <option value="ladakh">लडाख (Ladakh)</option>
-          <option value="lakshadweep">लक्षद्वीप (Lakshadweep)</option>
-          <option value="puducherry">पुडुचेरी (Puducherry)</option>
-        </select>
-      </div>
-
-      <div class="lang-switcher">
-        <i class="fa-solid fa-globe" style="color: #0A2A66; margin-right: 6px;"></i>
-        <select id="languageSelect" onchange="translatePage(this.value)">
-          <option value="mr">मराठी</option>
-          <option value="hi">हिंदी</option>
-          <option value="en">English</option>
-        </select>
-      </div>
-    </div>
-  </header>
-
-  <div id="google_translate_element" style="display:none;"></div>
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'mr',
-        autoDisplay: false
-      }, 'google_translate_element');
-    }
-
-    function translatePage(lang) {
-      var selectElement = document.querySelector('.goog-te-combo');
-      if (selectElement) {
-        selectElement.value = lang;
-        selectElement.dispatchEvent(new Event('change'));
-      }
-    }
-  </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-  <!-- Main Navigation Bar -->
-  <nav class="nav-bar">
-    <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a>
-    <a href="about.html" class="nav-link"><i class="fa-solid fa-heart"></i> आमच्याबद्दल</a>
-    <a href="volunteer-mr.html" class="nav-link"><i class="fa-solid fa-hand-holding-hand"></i> स्वयंसेवक</a>
-    <a href="donors.html" class="nav-link"><i class="fa-solid fa-hand-holding-medical"></i> रक्तदाते</a>
-    <a href="blood-banks.html" class="nav-link"><i class="fa-solid fa-hospital"></i> रक्तपेढी</a>
-    <a href="organizations.html" class="nav-link"><i class="fa-solid fa-building-ngo"></i> संस्था</a>
-    <a href="knowledge.html" class="nav-link"><i class="fa-solid fa-book-open"></i> माहिती केंद्र</a>
-    <a href="schemes.html" class="nav-link"><i class="fa-solid fa-landmark"></i> शासकीय योजना</a>
-    <a href="#ebookSection" class="nav-link" style="color: #FFD700;"><i class="fa-solid fa-book"></i> ई-बुक</a>
-    <a href="news-events.html" class="nav-link"><i class="fa-solid fa-newspaper"></i> बातम्या व कार्यक्रम</a>
-    <a href="A_poster.html" class="nav-link"><i class="fa-solid fa-image"></i> जनजागृती पोस्टर</a>
-    <a href="verify.html" class="nav-link"><i class="fa-solid fa-circle-check"></i> Verify</a>
-    <a href="contact.html" class="nav-link"><i class="fa-solid fa-envelope"></i> संपर्क करा</a>
-  </nav>
-
-  <!-- 📢 Breaking News Ticker -->
-  <div class="news-ticker-container">
-    <div class="news-ticker-badge">
-      <span class="live-dot"></span> 
-      <i class="fa-solid fa-bolt"></i> ताजी बातमी
-    </div>
-
-    <div class="news-ticker-content">
-      <marquee id="dynamicNewsMarquee" behavior="scroll" direction="left" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">
-        <span class="news-item"><i class="fa-solid fa-spinner fa-spin"></i> बातम्या लोड होत आहेत...</span>
-      </marquee>
-    </div>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="hero-wrapper">
-    <div class="hero-text">
-      <h1>"रक्तदान हेच श्रेष्ठ दान!"<span>National Blood Donation Movement</span></h1>
-      
-      <div class="hero-motto-box">
-        <div class="hero-motto-title">रक्तदानासाठी एकत्र – संस्था स्वतंत्र</div>
-        <div class="hero-motto-sub">ज्ञान &bull; जनजागृती &bull; सहकार्य</div>
-      </div>
-
-      <p>तुमचे एक लहानसे पाऊल कोणाचा तरी जीव वाचवू शकते. आजच RAKTDATA.IN प्लॅटफॉर्मवर नोंदणी करा आणि अधिकृत <b>सक्रिय रक्तदाता / स्वयंसेवक</b> व्हा!</p>
-      
-      <div class="hero-buttons">
-        <a href="donors.html" class="btn-main btn-red-main"><i class="fa-solid fa-heart-pulse"></i> १. रक्तदाता नोंदणी</a>
-        <a href="organizations.html" class="btn-main btn-outline-gold"><i class="fa-solid fa-sitemap"></i> २. संस्था नोंदणी</a>
-        <a href="appointment.html" class="btn-main btn-outline-gold"><i class="fa-solid fa-certificate"></i> ३. नियुक्ती पत्र डाउनलोड</a>
-      </div>
-    </div>
-    
-    <div class="hero-banner-box">
-      <i class="fa-solid fa-hand-holding-droplet"></i>
-      <h3>एक जीवन वाचवा!</h3>
-      <p>तुमच्या भागात आयोजित होणाऱ्या आगामी रक्तदान शिबिरांची माहिती मिळवा आणि एका क्लिकवर सहभागी व्हा.</p>
-    </div>
-  </section>
-
-  <!-- 📖 ---------------- E-BOOK PREVIEW & LOGIN SECTION ---------------- -->
-  <section id="ebookSection" class="ebook-section">
-    <h2 style="text-align:center; color:#0A2A66; margin-bottom: 25px;">📖 'रक्तदाता: मानवतेचा संदेश' (E-Book)</h2>
-
-    <!-- 1. PUBLIC VIEW (फ्री सॅम्पल + लॉगिन बॉक्स) -->
-    <div id="ebookPublicView" class="ebook-grid">
-      
-      <!-- डावी बाजू: मोफत झलक (अनुक्रमणिका पर्यंत) -->
-      <div class="ebook-preview-card">
-        <div class="section-head-title">
-          <i class="fa-solid fa-book-open" style="color:#C00000;"></i> मोफत झलक (Free Preview & Index):
-        </div>
-        <iframe class="pdf-preview-frame" src="https://drive.google.com/file/d/1KrIQWykghiYOcVK0xAoVmWcd2cqbOunb/preview"></iframe>
-      </div>
-
-      <!-- उजवी बाजू: लॉगिन फॉर्म -->
-      <div class="ebook-login-card">
-        <div class="section-head-title">
-          <i class="fa-solid fa-lock" style="color:#0A2A66;"></i> संपूर्ण पुस्तक वाचण्यासाठी लॉगिन करा
-        </div>
-
-        <div id="errorMsg" class="error-msg">
-          ❌ चुकीचा User ID किंवा Password!
-        </div>
-
-        <form onsubmit="handleEbookLogin(event)">
-          <div class="input-group">
-            <label>👤 User ID</label>
-            <div class="input-field-wrapper">
-              <i class="fa-solid fa-user left-icon"></i>
-              <input type="text" id="userId" placeholder="User ID टाका" required>
+        <!-- E-Book Section -->
+        <h2 class="section-title" id="ebook">मार्गदर्शिका ई-बुक (E-Book)</h2>
+        <div class="ebook-card">
+            <div>
+                <h3>ई-बुक नमुना (Preview)</h3>
+                <p style="margin-bottom: 10px; font-size:0.9rem; color:#666;">खाली दिलेल्या फ्रेममध्ये ई-बुकची काही पाने उपलब्ध आहेत.</p>
+                <div class="iframe-container">
+                    <iframe src="https://drive.google.com/file/d/1v6B0p9wT0B8U4J6L5mK8_xQ0RzL5P0M1/preview" allow="autoplay"></iframe>
+                </div>
             </div>
-          </div>
+            
+            <div class="login-box">
+                <h3>पूर्ण ई-बुक ॲक्सेस करा</h3>
+                <p style="margin-bottom:15px; font-size:0.85rem;">पूर्ण ई-बुक वाचण्यासाठी लॉगिन करा किंवा खरेदी करा.</p>
+                
+                <form id="ebookLoginForm">
+                    <div class="form-group">
+                        <label for="username">युझरनाव (Username):</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">पासवर्ड (Password):</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">लॉगिन करा</button>
+                </form>
 
-          <div class="input-group">
-            <label>🔑 Password</label>
-            <div class="input-field-wrapper">
-              <i class="fa-solid fa-lock left-icon"></i>
-              <input type="password" id="password" placeholder="Password टाका" required>
-              <i class="fa-solid fa-eye toggle-password" id="togglePass" onclick="togglePasswordVisibility()"></i>
+                <hr style="margin: 20px 0; border:0; border-top: 1px solid #ccc;">
+
+                <p style="text-align:center;">किंवा पासवर्ड नसेल तर:</p>
+                <a href="https://wa.me/919876543210?text=I%20want%20to%20buy%20Blood%20Donation%20E-Book" target="_blank" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 10px; background:#25D366; color:white;">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp वर ई-बुक खरेदी करा
+                </a>
             </div>
-          </div>
+        </div>
 
-          <button type="submit" class="login-submit-btn">🔐 लॉगिन करा</button>
-        </form>
-
-        <a href="https://wa.me/919321430535?text=Hi,%20I%20want%20to%20buy%20Raktdata%20Ebook" target="_blank" class="buy-whatsapp-btn">
-          💳 ई-बुक खरेदी करा (₹९९) / पासवर्ड मिळवा
-        </a>
-      </div>
-
-    </div>
-
-    <!-- 2. FULL BOOK DASHBOARD (फक्त योग्य लॉगिन झाल्यावरच दिसेल) -->
-    <div id="ebookDashboard" class="full-pdf-container">
-      <button onclick="handleEbookLogout()" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
-      <h3 style="color:#0A2A66; margin-bottom:15px;">✅ संपूर्ण पुस्तक (Full Access)</h3>
-      <iframe class="pdf-preview-frame" style="height: 80vh;" src="https://drive.google.com/file/d/1KrIQWykghiYOcVK0xAoVmWcd2cqbOunb/preview"></iframe>
-    </div>
-  </section>
-
-  <!-- --- 🏢 आमच्याशी जोडलेल्या संस्था (Organizations Slider Section) --- -->
-  <section class="section-container">
-    <h3 class="section-title"><i class="fa-solid fa-building-ngo"></i> आमच्याशी जोडलेल्या संस्था व मंडळे</h3>
-    <div class="section-sub-motto">रक्तदानासाठी एकत्र – संस्था स्वतंत्र | ज्ञान • जनजागृती • सहकार्य</div>
-    
-    <div class="swiper orgSwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="org-card">
-            <img src="logo.png" alt="Logo" class="org-logo">
-            <div class="org-info">
-              <h4>हर्ष फाऊंडेशन, पुणे</h4>
-              <p>अध्यक्ष: श्री. आप्पा घोरपडे</p>
+        <!-- Centurion Donors Section -->
+        <h2 class="section-title" id="donors" style="margin-top: 50px;">शतकवीर रक्तदाते (Centurion Donors)</h2>
+        <div class="swiper donorSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://via.placeholder.com/80" alt="Donor" class="donor-img">
+                    <h4>सुरेश रेवणकर</h4>
+                    <p style="color:var(--primary-color); font-weight:bold;">१०२ वेळा रक्तदान</p>
+                    <small>मुंबई, महाराष्ट्र</small>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://via.placeholder.com/80" alt="Donor" class="donor-img">
+                    <h4>वैशाली पांडिया</h4>
+                    <p style="color:var(--primary-color); font-weight:bold;">१०५ वेळा रक्तदान</p>
+                    <small>पुणे, महाराष्ट्र</small>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://via.placeholder.com/80" alt="Donor" class="donor-img">
+                    <h4>प्रकाश जाधव</h4>
+                    <p style="color:var(--primary-color); font-weight:bold;">११५ वेळा रक्तदान</p>
+                    <small>नाशिक, महाराष्ट्र</small>
+                </div>
             </div>
-          </div>
+            <div class="swiper-pagination"></div>
         </div>
-        <div class="swiper-slide">
-          <div class="org-card">
-            <img src="logo.png" alt="Logo" class="org-logo">
-            <div class="org-info">
-              <h4>भारती फाऊंडेशन, ठाणे</h4>
-              <p>अध्यक्ष: श्री. सूर्यकांत पारधे</p>
+
+        <!-- Dynamic Statistics -->
+        <div class="stats-grid" style="margin-top: 30px;">
+            <div class="stat-item">
+                <h3>५,०००+</h3>
+                <p>नोंदणीकृत दाते</p>
             </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="org-card">
-            <img src="logo.png" alt="Logo" class="org-logo">
-            <div class="org-info">
-              <h4>गणराज्य ग्रुप, मुंबई</h4>
-              <p>अध्यक्ष: श्री. दिलीप गायकवाड</p>
+            <div class="stat-item">
+                <h3>१,२००+</h3>
+                <p>सक्रिय स्वयंसेवक</p>
             </div>
-          </div>
+            <div class="stat-item">
+                <h3>१५०+</h3>
+                <p>भागीदार संस्था</p>
+            </div>
+            <div class="stat-item">
+                <h3>८,५००+</h3>
+                <p>वाचवलेले प्राण</p>
+            </div>
         </div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-  </section>
 
-  <!-- --- 🏅 शतकवीर रक्तदाते (Centurion Donors Slider Section) --- -->
-  <section class="section-container" style="background-color: #05183d;">
-    <h3 class="section-title"><i class="fa-solid fa-medal"></i> १००+ वेळा रक्तदान केलेले शतकवीर रक्तदाते</h3>
-    
-    <div class="swiper donorSwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="donor-card">
-            <img src="logo.png" alt="Donor" class="donor-img">
-            <h4>श्री. सुरेश रेवणकर, मुंबई</h4>
-            <p>१७९ वेळा रक्तदान</p>
-            <span class="badge-centurion"><i class="fa-solid fa-award"></i> शतकवीर</span>
-          </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>RAKTDATA.IN</h4>
+                <p>राष्ट्रीय स्तरावरील रक्तदान चळवळ. आमचा उद्देश गरजूंना वेळेत रक्त मिळवून देणे हा आहे.</p>
+            </div>
+            <div class="footer-col">
+                <h4>महत्वाच्या लिंक्स</h4>
+                <ul>
+                    <li><a href="#about">आमच्याबद्दल</a></li>
+                    <li><a href="#register">स्वयंसेवक नोंदणी</a></li>
+                    <li><a href="#ebook">ई-बुक डाउनलोड</a></li>
+                    <li><a href="#privacy">गोपनीयता धोरण</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>सोशल मीडिया</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="swiper-slide">
-          <div class="donor-card">
-            <img src="logo.png" alt="Donor" class="donor-img">
-            <h4>सौ. वैशाली पांडिया, गुजरात</h4>
-            <p>१४४ वेळा रक्तदान</p>
-            <span class="badge-centurion"><i class="fa-solid fa-award"></i> शतकवीर</span>
-          </div>
+        <div class="copyright">
+            <p>&copy; 2026 RAKTDATA.IN - सर्व हक्क सुरक्षित.</p>
         </div>
-        <div class="swiper-slide">
-          <div class="donor-card">
-            <img src="logo.png" alt="Donor" class="donor-img">
-            <h4>श्री. प्रकाश जाधव</h4>
-            <p>१४० वेळा रक्तदान</p>
-            <span class="badge-centurion"><i class="fa-solid fa-award"></i> शतकवीर</span>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- Live Statistics Section -->
-  <section class="stats-section">
-    <div class="stat-card">
-      <i class="fa-solid fa-users"></i>
-      <div class="stat-number">5,000+</div>
-      <div class="stat-label">नोंदणीकृत रक्तदाते (Donors)</div>
-    </div>
-    <div class="stat-card">
-      <i class="fa-solid fa-handshake-angle"></i>
-      <div class="stat-number">1,200+</div>
-      <div class="stat-label">सक्रिय स्वयंसेवक (Volunteers)</div>
-    </div>
-    <div class="stat-card">
-      <i class="fa-solid fa-building-ngo"></i>
-      <div class="stat-number">150+</div>
-      <div class="stat-label">संलग्न संस्था / मंडळे</div>
-    </div>
-    <div class="stat-card">
-      <i class="fa-solid fa-heart-circle-check"></i>
-      <div class="stat-number">8,500+</div>
-      <div class="stat-label">मदत मिळालेले रुग्ण (Lives Saved)</div>
-    </div>
-  </section>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  <!-- Footer Section -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>RAKTDATA.IN</h4>
-        <p style="font-size:12px; color:#D1D5DB; line-height:1.6;">National Blood Donation Movement. Uniting donors and saving lives across India.</p>
-        <p style="font-size:12px; color:#FFD700; margin-top:8px; font-weight:bold;">रक्तदानासाठी एकत्र – संस्था स्वतंत्र</p>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="about.html">Mission & Vision</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Disclaimer</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Sitemap</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Social Media</h4>
-        <div class="social-icons">
-          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="#"><i class="fa-brands fa-telegram"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
-    </div>
-  </footer>
+    <!-- Custom Script -->
+    <script>
+        // Swiper Slider Initialization
+        const swiper = new Swiper('.donorSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
 
-  <!-- Swiper JS Library -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    var orgSwiper = new Swiper(".orgSwiper", {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      loop: true,
-      autoplay: { delay: 3000, disableOnInteraction: false },
-      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-      breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
-    });
+        // Mock Users Database for E-Book Access Demo
+        const usersDatabase = {
+            "user101": "pass123",
+            "admin": "admin@2026"
+        };
 
-    var donorSwiper = new Swiper(".donorSwiper", {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      loop: true,
-      autoplay: { delay: 2500, disableOnInteraction: false },
-      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-      breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 4 } },
-    });
-  </script>
+        // E-Book Form Handling Logic
+        const ebookForm = document.getElementById('ebookLoginForm');
+        if (ebookForm) {
+            ebookForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const userVal = document.getElementById('username').value.trim();
+                const passVal = document.getElementById('password').value.trim();
 
-  <!-- 🔗 Ebook Login Script & Database -->
-  <script>
-    /* ग्राहकांची यादी (User Database) */
-    const usersDatabase = {
-      "user101": "pass123",
-      "9321430535": "rakt99"
-    };
-
-    window.addEventListener('DOMContentLoaded', () => {
-      fetchLiveNews();
-      if (sessionStorage.getItem("isEbookLoggedIn") === "true") {
-        showEbookDashboard();
-      }
-    });
-
-    function togglePasswordVisibility() {
-      const passInput = document.getElementById("password");
-      const toggleIcon = document.getElementById("togglePass");
-      if (passInput.type === "password") {
-        passInput.type = "text";
-        toggleIcon.classList.replace("fa-eye", "fa-eye-slash");
-      } else {
-        passInput.type = "password";
-        toggleIcon.classList.replace("fa-eye-slash", "fa-eye");
-      }
-    }
-
-    function handleEbookLogin(event) {
-      event.preventDefault();
-      const user = document.getElementById("userId").value.trim();
-      const pass = document.getElementById("password").value.trim();
-      const errorMsg = document.getElementById("errorMsg");
-
-      if (usersDatabase[user] && usersDatabase[user] === pass) {
-        errorMsg.style.display = "none";
-        sessionStorage.setItem("isEbookLoggedIn", "true");
-        showEbookDashboard();
-      } else {
-        errorMsg.style.display = "block";
-      }
-    }
-
-    function showEbookDashboard() {
-      document.getElementById("ebookPublicView").style.display = "none";
-      document.getElementById("ebookDashboard").style.display = "block";
-    }
-
-    function handleEbookLogout() {
-      sessionStorage.removeItem("isEbookLoggedIn");
-      window.location.reload();
-    }
-  </script>
-
-  <!-- Google Sheet News Script -->
-  <script>
-    const NEWS_API_URL = "https://script.google.com/macros/s/AKfycbwNpv6JE40xLRQW90MqXACgapMlV7FdHtThOIZ3tcct128m415uer74oxT7.../exec?type=news";
-
-    async function fetchLiveNews() {
-      const marquee = document.getElementById('dynamicNewsMarquee');
-      try {
-        const response = await fetch(NEWS_API_URL, { redirect: "follow" });
-        const newsData = await response.json();
-
-        if (newsData) {
-          let newsHTML = "";
-          if (Array.isArray(newsData) && newsData.length > 0) {
-            newsData.forEach(item => {
-              let text = typeof item === 'object' ? (item.news || item.text || item[0] || Object.values(item)[0]) : item;
-              newsHTML += `<span class="news-item"><i class="fa-solid fa-circle-dot"></i> ${text}</span>`;
+                if (usersDatabase[userVal] && usersDatabase[userVal] === passVal) {
+                    alert('लॉगिन यशस्वी झाले! ई-बुक लोड होत आहे...');
+                    sessionStorage.setItem('ebook_authenticated', 'true');
+                    window.location.href = "#ebook";
+                } else {
+                    alert('चुकीचा युझरनाव किंवा पासवर्ड! कृपया पुन्हा प्रयत्न करा.');
+                }
             });
-          } else if (typeof newsData === 'object') {
-            let text = newsData.news || newsData.text || Object.values(newsData)[0];
-            newsHTML = `<span class="news-item"><i class="fa-solid fa-circle-dot"></i> ${text}</span>`;
-          }
-
-          marquee.innerHTML = newsHTML || `<span class="news-item">RAKTDATA.IN मध्ये आपले स्वागत आहे!</span>`;
         }
-      } catch (error) {
-        console.error("News Fetch Error:", error);
-        marquee.innerHTML = `<span class="news-item">RAKTDATA.IN मध्ये आपले स्वागत आहे!</span>`;
-      }
-    }
-  </script>
+    </script>
 </body>
 </html>
