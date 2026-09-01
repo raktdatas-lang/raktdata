@@ -1,217 +1,1124 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>जागरूक रक्तदाता पुस्तक | Raktdata.in</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary-red: #D32F2F;
-            --dark-red: #9A0007;
-            --gold-accent: #FFD700;
-            --bg-light: #F8F9FA;
-            --text-dark: #1E293B;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>पुस्तक खरेदी | RAKTDATA.IN</title>
 
-        body {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-        }
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        .book-hero {
-            background: linear-gradient(135deg, #FFF5F5 0%, #FFE3E3 100%);
-            padding: 60px 0;
-            border-bottom: 3px solid var(--primary-red);
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        .book-cover-mockup {
-            background: linear-gradient(135deg, #D32F2F 0%, #9A0007 100%);
-            color: white;
-            border-radius: 12px;
-            padding: 40px 25px;
-            box-shadow: 0 15px 35px rgba(211, 47, 47, 0.3);
-            border-left: 8px solid #FFD700;
-            position: relative;
-        }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
 
-        .chapter-card {
-            background: white;
-            border-radius: 12px;
-            padding: 18px 20px;
-            border: 1px solid #E2E8F0;
-            transition: all 0.2s ease;
-        }
+    .book-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
 
-        .chapter-card:hover {
-            border-color: var(--primary-red);
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.1);
-        }
+    .book-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-        .chapter-num {
-            background-color: #FFE3E3;
-            color: var(--primary-red);
-            font-weight: 700;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
+    .book-title {
+      color: #C00000;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .book-author {
+      color: #0A2A66;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .book-desc {
+      color: #555;
+      font-size: 14px;
+      margin-top: 10px;
+      line-height: 1.6;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .message-card {
+      background: #ffffff;
+      border: 2px solid #FFD700;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .message-header {
+      text-align: center;
+      border-bottom: 2px solid #0A2A66;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .message-title {
+      color: #C00000;
+      font-size: 22px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .message-sub {
+      color: #0A2A66;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    .message-body {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #333;
+      text-align: justify;
+    }
+
+    .message-footer {
+      margin-top: 25px;
+      text-align: right;
+      border-top: 1px dashed #ccc;
+      padding-top: 15px;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .option-card {
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      background: #fafafa;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .option-card:hover {
+      border-color: #C00000;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(192,0,0,0.1);
+      background: #ffffff;
+    }
+
+    .card-icon {
+      font-size: 40px;
+      color: #C00000;
+      margin-bottom: 12px;
+    }
+
+    .card-type {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0A2A66;
+      margin-bottom: 8px;
+    }
+
+    .card-features {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0;
+      font-size: 13px;
+      color: #666;
+      text-align: left;
+    }
+
+    .card-features li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-features li i {
+      color: #25D366;
+    }
+
+    .card-price {
+      font-size: 24px;
+      font-weight: 800;
+      color: #C00000;
+      margin: 15px 0 10px 0;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .buy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 11px;
+      border-radius: 8px;
+      font-size: 13px;
+      transition: background 0.3s;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+    }
+
+    .buy-btn:hover {
+      background-color: #1eb954;
+    }
+
+    .gpay-btn {
+      background-color: #0A2A66;
+    }
+
+    .gpay-btn:hover {
+      background-color: #071d47;
+    }
+
+    .upi-btn {
+      background-color: #374151;
+    }
+
+    .upi-btn:hover {
+      background-color: #1f2937;
+    }
+
+    .whatsapp-btn {
+      background-color: #25D366;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #1eb954;
+    }
+
+    .upi-info {
+      font-size: 12px;
+      color: #333;
+      background: #eef2f7;
+      padding: 7px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .note-box {
+      margin-top: 30px;
+      background: #fff5f5;
+      border-left: 4px solid #C00000;
+      padding: 12px 15px;
+      font-size: 13px;
+      color: #4a5568;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* ================= PAYMENT MODAL ================= */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 15px;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      padding: 22px;
+      border-radius: 15px;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.30);
+      position: relative;
+      animation: popup 0.2s ease-out;
+    }
+
+    @keyframes popup {
+      from {
+        transform: scale(0.92);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 7px;
+      right: 13px;
+      font-size: 27px;
+      font-weight: bold;
+      color: #888;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .close-btn:hover {
+      color: #C00000;
+    }
+
+    .qr-image {
+      width: 220px;
+      height: 220px;
+      max-width: 80vw;
+      margin: 12px auto;
+      display: block;
+      border: 2px dashed #0A2A66;
+      padding: 5px;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .payment-amount {
+      font-size: 20px;
+      color: #C00000;
+      font-weight: 800;
+      margin: 5px 0;
+    }
+
+    .upi-copy-box {
+      background: #f1f5f9;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px dashed #0A2A66;
+      margin: 10px 0;
+    }
+
+    .upi-copy-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .upi-id-text {
+      font-size: 13px;
+      font-weight: bold;
+      color: #0A2A66;
+      word-break: break-all;
+      text-align: left;
+    }
+
+    .copy-btn {
+      background: #0A2A66;
+      color: white;
+      border: none;
+      padding: 6px 9px;
+      border-radius: 5px;
+      font-size: 11px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .payment-status {
+      display: none;
+      margin-top: 10px;
+      padding: 9px;
+      border-radius: 7px;
+      background: #fff8e1;
+      color: #6b4f00;
+      font-size: 12px;
+    }
+
+    .mobile-help {
+      display: none;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 600px) {
+      body {
+        padding: 8px;
+      }
+
+      .book-container {
+        padding: 15px;
+        border-radius: 10px;
+      }
+
+      .book-title {
+        font-size: 23px;
+      }
+
+      .book-author {
+        font-size: 14px;
+      }
+
+      .book-desc {
+        font-size: 13px;
+      }
+
+      .message-card {
+        padding: 16px;
+        margin: 18px auto;
+      }
+
+      .message-title {
+        font-size: 19px;
+      }
+
+      .message-body {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .card-type {
+        font-size: 18px;
+      }
+
+      .card-price {
+        font-size: 22px;
+      }
+
+      .modal-box {
+        padding: 20px 15px;
+        max-width: 360px;
+      }
+
+      .qr-image {
+        width: 200px;
+        height: 200px;
+      }
+
+      .mobile-help {
+        display: block;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- 🌐 Navigation Bar -->
-    <nav class="navbar navbar-expand-xl navbar-light bg-white sticky-top shadow-sm">
-        <div class="container-fluid px-lg-4">
-            <a class="navbar-brand text-danger fw-bold fs-4 d-flex align-items-center" href="index.html">
-                <i class="fa-solid fa-droplet fs-3 me-2 text-danger"></i>
-                <span>Raktdata<span class="text-dark">.in</span></span>
-            </a>
+  <div class="book-container">
 
-            <button class="navbar-toggler border-0" type="button" data-bs-target="#raktdataNavbar" data-bs-toggle="collapse">
-                <span class="navbar-toggler-icon"></span>
+    <!-- ================= HEADER ================= -->
+
+    <div class="book-header">
+
+      <div class="book-title">
+        📖 "रक्तदाता: मानवतेचा संदेश"
+      </div>
+
+      <div class="book-author">
+        लेखक: मा. दिलीप म. गायकवाड
+      </div>
+
+      <p class="book-desc">
+        हे पुस्तक केवळ माहिती देत नाही, तर समाजात रक्तदानाविषयी वैज्ञानिक दृष्टीकोन
+        आणि माणुसकीचा जागर घडवून आणते. अंधश्रद्धा आणि भीती दूर सारून प्रत्येकाला
+        सामाजिक बांधिलकीची प्रेरणा देणारे हे अभ्यासपूर्ण लेखन आहे.
+      </p>
+
+    </div>
+
+    <!-- ================= शुभेच्छा संदेश ================= -->
+
+    <div class="message-card">
+
+      <div class="message-header">
+
+        <h3 class="message-title">
+          !! शुभेच्छा संदेश !!
+        </h3>
+
+        <p class="message-sub">
+          उपमुख्यमंत्री कार्यालय, मंत्रालय, मुंबई
+        </p>
+
+      </div>
+
+      <div class="message-body">
+
+        <p>
+          रक्तदान ही केवळ एका व्यक्तीची गरज भागवणारी वैद्यकीय प्रक्रिया नसून,
+          माणुसकी जपणारी आणि समाजाला संवेदनशील बनवणारी एक महान सेवा आहे.
+          रक्ताचा प्रत्येक थेंब एखाद्या गरजू व्यक्तीला नवजीवन देऊ शकतो,
+          ही जाणीव समाजातील प्रत्येक घटकापर्यंत पोहोचणे आवश्यक आहे.
+        </p>
+
+        <p style="margin-top:12px;">
+          <strong>'रक्तदाता: मानवतेचा संदेश'</strong> या पुस्तकाच्या माध्यमातून
+          रक्तदानाविषयीची शास्त्रीय व वैद्यकीय माहिती, रक्तदानाचे सामाजिक महत्त्व,
+          प्रत्यक्ष अनुभव, जनजागृतीचे प्रयत्न आणि रक्तदान चळवळीतील विविध पैलू
+          सर्वसामान्य वाचकांसमोर मांडण्याचा स्तुत्य प्रयत्न करण्यात आला आहे.
+          रक्तदानाबाबत समाजात असलेले गैरसमज दूर करून, योग्य माहितीच्या माध्यमातून
+          नागरिकांमध्ये आत्मविश्वास निर्माण करणे आणि विशेषतः तरुण पिढीला
+          रक्तदानासाठी प्रेरित करणे, हे या पुस्तकाचे महत्त्वपूर्ण योगदान ठरेल,
+          असा मला विश्वास आहे.
+        </p>
+
+        <p style="margin-top:12px;">
+          ‘रक्तदान हेच महादान’ या विचाराला व्यापक स्वरूप देत अधिकाधिक नागरिकांना
+          स्वेच्छेने रक्तदान करण्यासाठी प्रेरणा मिळावी आणि या माध्यमातून अनेक
+          गरजू रुग्णांचे जीवन वाचावे, हीच अपेक्षा.
+        </p>
+
+        <p style="margin-top:12px;">
+          या मानवतावादी आणि सामाजिक उपक्रमासाठी लेखकाचे मनःपूर्वक अभिनंदन व
+          <strong>‘रक्तदाता : मानवतेचा संदेश’</strong> या पुस्तकाच्या यशस्वी
+          वाटचालीस हार्दिक शुभेच्छा!
+        </p>
+
+      </div>
+
+      <div class="message-footer">
+
+        <p style="font-size:14px;color:#666;margin:0;">
+          आपला नम्र,
+        </p>
+
+        <p style="font-size:16px;font-weight:bold;color:#0A2A66;margin:4px 0 0 0;">
+          मंगेश नरसिंह चिवटे
+        </p>
+
+        <p style="font-size:13px;color:#C00000;font-weight:bold;margin:2px 0 0 0;">
+          विशेष कार्य अधिकारी
+        </p>
+
+        <p style="font-size:12px;color:#555;margin:2px 0 0 0;">
+          मा. उपमुख्यमंत्री यांचे कार्यालय, मंत्रालय, मुंबई - ४०० ०३२
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- ================= खरेदी पर्याय ================= -->
+
+    <div class="options-grid">
+
+      <!-- E-BOOK -->
+
+      <div class="option-card">
+
+        <div>
+
+          <i class="fa-solid fa-tablet-screen-button card-icon"></i>
+
+          <div class="card-type">
+            📱 ई-बुक (E-Book)
+          </div>
+
+          <ul class="card-features">
+
+            <li>
+              <i class="fa-solid fa-check"></i>
+              मोबाईल / लॅपटॉपवर ऑनलाईन वाचन
+            </li>
+
+            <li>
+              <i class="fa-solid fa-check"></i>
+              खरेदीनंतर झटपट डिजिटल ॲक्सेस
+            </li>
+
+            <li>
+              <i class="fa-solid fa-check"></i>
+              कुठेही, कधीही वाचनाची सोय
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div>
+
+          <div class="card-price">
+            ₹९९/- मात्र
+          </div>
+
+          <div class="upi-info">
+            UPI ID: dmgaikwad0103-2@okicici
+          </div>
+
+          <div class="btn-group">
+
+            <button
+              type="button"
+              onclick="openPaymentModal(99, 'E-Book')"
+              class="buy-btn gpay-btn">
+
+              <i class="fa-solid fa-qrcode"></i>
+              QR Code / UPI ने पेमेंट करा (₹99)
+
             </button>
 
-            <div class="collapse navbar-collapse" id="raktdataNavbar">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold ms-xl-3">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-house me-1"></i> मुख्यपृष्ठ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="heroes.html"><i class="fa-solid fa-user-ninja text-danger me-1"></i> रक्तवीर</a></li>
-                    <li class="nav-item"><a class="nav-link" href="orgs.html"><i class="fa-solid fa-building-flag text-danger me-1"></i> संस्था</a></li>
-                    <li class="nav-item"><a class="nav-link" href="news.html"><i class="fa-solid fa-newspaper text-danger me-1"></i> बातम्या</a></li>
-                    <li class="nav-item"><a class="nav-link active text-danger" href="book.html"><i class="fa-solid fa-book-bookmark text-danger me-1"></i> पुस्तक</a></li>
-                    <li class="nav-item"><a class="nav-link" href="sanman.html"><i class="fa-solid fa-trophy text-warning me-1"></i> Raktdata सन्मान</a></li>
-                    <li class="nav-item"><a class="nav-link" href="awareness.html"><i class="fa-solid fa-lightbulb text-danger me-1"></i> जनजागृती</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+            <!-- UPDATE: WhatsApp link updated with preview link text -->
+            <a
+              href="https://wa.me/919321430535?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%AE%E0%A5%80%20%27%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%A6%E0%A4%BE%E0%A4%A4%E0%A4%BE%27%20E-Book%20%28%E2%82%B999%29%20%E0%A4%AA%E0%A5%87%E0%A4%AE%E0%A5%87%E0%A4%82%E0%A4%9F%20%E0%A4%95%E0%A5%87%E0%A4%B2%E0%A5%87%20%E0%A4%AE%E0%A4%BE%E0%A4%9D%E0%A4%BE%20%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%A8%E0%A4%B6%E0%A5%8C%E0%A4%9F%20%E0%A4%B8%E0%A5%8B%E0%A4%AC%E0%A4%A4%20%E0%A4%AA%E0%A4%BE%E0%A4%A0%E0%A4%B5%E0%A4%A4%20%E0%A4%AE%E0%A4%B2%E0%A4%BE%20E-Book%20%E0%A4%9A%E0%A5%80%20%E0%A4%B2%E0%A4%BF%E0%A4%82%E0%A4%95%20%E0%A4%AA%E0%A4%BE%E0%A4%A0%E0%A4%B5%E0%A4%BE."
+              target="_blank"
+              rel="noopener"
+              class="buy-btn whatsapp-btn">
 
-    <!-- 📚 Book Hero Section -->
-    <section class="book-hero">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-7">
-                    <span class="badge bg-danger mb-3 px-3 py-2 fs-6">📖 E-Book Edition</span>
-                    <h1 class="display-5 fw-bold mb-3">जागरूक रक्तदाता: <span class="text-danger">समाज सेवा का नया आयाम</span></h1>
-                    <p class="lead text-muted mb-4">
-                        रक्तदानाचे महत्त्व, सामाजिक प्रभाव आणि एका थेंबाचे मूल्य सांगणारे विशेष ई-पुस्तक. हे पुस्तक केवळ माहिती देत नाही, तर समाजसेवेची नवी दिशा दाखवते.
-                    </p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="#read-online" class="btn btn-danger btn-lg rounded-pill px-4 fw-bold">
-                            <i class="fa-solid fa-book-open me-2"></i>आताच वाचा (Read Online)
-                        </a>
-                        <button class="btn btn-outline-danger btn-lg rounded-pill px-4 fw-bold">
-                            <i class="fa-solid fa-download me-2"></i>PDF डाऊनलोड करा
-                        </button>
-                    </div>
-                </div>
+              <i class="fa-brands fa-whatsapp"></i>
+              WhatsApp वर स्क्रीनशॉट पाठवा
 
-                <!-- Book Mockup Card -->
-                <div class="col-lg-5 text-center">
-                    <div class="book-cover-mockup text-center mx-auto" style="max-width: 320px;">
-                        <i class="fa-solid fa-book-open-reader display-1 text-warning mb-3"></i>
-                        <h3 class="fw-bold mb-2">जागरूक रक्तदाता</h3>
-                        <p class="small text-light opacity-75 mb-4">समाज सेवा का नया आयाम</p>
-                        <div class="border-top border-warning pt-3">
-                            <span class="badge bg-warning text-dark fw-bold px-3 py-1">२५ अध्याय | सविस्तर मार्गदर्शक</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </a>
 
-    <!-- 📖 Chapters Index Section -->
-    <section class="py-5 container" id="read-online">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">पुस्तकातील अध्यायांची अनुक्रमणिका (Table of Contents)</h2>
-            <p class="text-muted">रक्तदान चळवळीचा सखोल वेध घेणारे २५ महत्त्वपूर्ण अध्याय</p>
+          </div>
+
         </div>
 
-        <div class="row g-3">
-            <!-- Chapter 1 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="chapter-card d-flex align-items-center gap-3">
-                    <div class="chapter-num">१</div>
-                    <div>
-                        <h6 class="fw-bold mb-0">प्रस्तावना: एक बूँद का महत्व</h6>
-                        <small class="text-muted">रक्तदानाचा पाया आणि महत्त्व</small>
-                    </div>
-                </div>
-            </div>
+      </div>
 
-            <!-- Chapter 2 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="chapter-card d-flex align-items-center gap-3">
-                    <div class="chapter-num">२</div>
-                    <div>
-                        <h6 class="fw-bold mb-0">रक्तदान: केवल दान नहीं, एक जीवन है</h6>
-                        <small class="text-muted">सामाजिक मूल्य आणि जीवनरक्षक कार्य</small>
-                    </div>
-                </div>
-            </div>
+      <!-- AUDIO BOOK -->
 
-            <!-- Chapter 3 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="chapter-card d-flex align-items-center gap-3">
-                    <div class="chapter-num">३</div>
-                    <div>
-                        <h6 class="fw-bold mb-0">रक्तदानाचे आरोग्यदायी फायदे</h6>
-                        <small class="text-muted">दात्याच्या शरीरावर होणारे सकारात्मक परिणाम</small>
-                    </div>
-                </div>
-            </div>
+      <div class="option-card">
 
-            <!-- Chapter 4 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="chapter-card d-flex align-items-center gap-3">
-                    <div class="chapter-num">४</div>
-                    <div>
-                        <h6 class="fw-bold mb-0">रक्तदानाविषयीचे गैरसमज व सत्य</h6>
-                        <small class="text-muted">समाजातील भ्रमांचे निरसन</small>
-                    </div>
-                </div>
-            </div>
+        <div>
 
-            <!-- Chapter 5 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="chapter-card d-flex align-items-center gap-3">
-                    <div class="chapter-num">५</div>
-                    <div>
-                        <h6 class="fw-bold mb-0">कोण रक्तदान करू शकते? (पात्रता)</h6>
-                        <small class="text-muted">रक्तदानासाठी आवश्यक शारीरिक निकष</small>
-                    </div>
-                </div>
-            </div>
+          <i class="fa-solid fa-headphones card-icon"></i>
 
-            <!-- Chapter 6 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="chapter-card d-flex align-items-center gap-3">
-                    <div class="chapter-num">६</div>
-                    <div>
-                        <h6 class="fw-bold mb-0">रक्तदान शिबिरांचे आयोजन व व्यवस्थापन</h6>
-                        <small class="text-muted">संस्थांसाठी सविस्तर मार्गदर्शक</small>
-                    </div>
-                </div>
-            </div>
+          <div class="card-type">
+            🎧 ऑडिओ बुक (Audio Book)
+          </div>
+
+          <ul class="card-features">
+
+            <li>
+              <i class="fa-solid fa-check"></i>
+              पूर्ण पुस्तकाचे स्पष्ट आवाज रेकॉर्डिंग
+            </li>
+
+            <li>
+              <i class="fa-solid fa-check"></i>
+              प्रवासात किंवा मोकळ्या वेळेत ऐकण्याची सोय
+            </li>
+
+            <li>
+              <i class="fa-solid fa-check"></i>
+              ऑनलाईन ऑडिओ प्लेयर ॲक्सेस
+            </li>
+
+          </ul>
+
         </div>
 
-        <div class="text-center mt-4">
-            <span class="text-muted small">* उर्वरित सर्व अध्याय ई-बुक डाऊनलोड करून वाचू शकता.</span>
-        </div>
-    </section>
+        <div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+          <div class="card-price">
+            ₹१४९/- मात्र
+          </div>
+
+          <div class="upi-info">
+            UPI ID: dmgaikwad0103-2@okicici
+          </div>
+
+          <div class="btn-group">
+
+            <button
+              type="button"
+              onclick="openPaymentModal(149, 'Audio Book')"
+              class="buy-btn gpay-btn">
+
+              <i class="fa-solid fa-qrcode"></i>
+              QR Code / UPI ने पेमेंट करा (₹149)
+
+            </button>
+
+            <a
+              href="https://wa.me/919321430535?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%AE%E0%A5%80%20%27%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%A6%E0%A4%BE%E0%A4%A4%E0%A4%BE%27%20Audio%20Book%20%28%E2%82%B9149%29%20%E0%A4%AA%E0%A5%87%E0%A4%AE%E0%A5%87%E0%A4%82%E0%A4%9F%20%E0%A4%95%E0%A5%87%E0%A4%B2%E0%A5%87%20%E0%A4%86%E0%A4%B9%E0%A5%87.%20%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%A8%E0%A4%B6%E0%A5%8C%E0%A4%9F%20%E0%A4%B8%E0%A5%8B%E0%A4%AC%E0%A4%A4%20%E0%A4%AA%E0%A4%BE%E0%A4%A0%E0%A4%B5%E0%A4%A4%20%E0%A4%86%E0%A4%B9%E0%A5%87."
+              target="_blank"
+              rel="noopener"
+              class="buy-btn whatsapp-btn">
+
+              <i class="fa-brands fa-whatsapp"></i>
+              WhatsApp वर स्क्रीनशॉट पाठवा
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- HARD BOOK -->
+
+      <div
+        class="option-card"
+        style="border-color:#FFD700;background:#fffdf0;">
+
+        <div>
+
+          <i
+            class="fa-solid fa-book-open card-icon"
+            style="color:#0A2A66;">
+          </i>
+
+          <div class="card-type">
+            📖 हार्ड बुक (Printed Copy)
+          </div>
+
+          <ul class="card-features">
+
+            <li>
+              <i class="fa-solid fa-check"></i>
+              छापील मूळ पुस्तकाची प्रत
+            </li>
+
+            <li>
+              <i class="fa-solid fa-check"></i>
+              भारतीय पोस्ट / कुरिअरद्वारे घरपोच डिलिव्हरी
+            </li>
+
+            <li>
+              <i class="fa-solid fa-check"></i>
+              वैयक्तिक संग्रहासाठी किंवा भेट देण्यासाठी उत्तम
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div>
+
+          <div class="card-price">
+            ₹३००/- मात्र
+          </div>
+
+          <div class="upi-info">
+            UPI ID: dmgaikwad0103-2@okicici
+          </div>
+
+          <div class="btn-group">
+
+            <button
+              type="button"
+              onclick="openPaymentModal(300, 'Hard Book')"
+              class="buy-btn gpay-btn">
+
+              <i class="fa-solid fa-qrcode"></i>
+              QR Code / UPI ने पेमेंट करा (₹300)
+
+            </button>
+
+            <a
+              href="https://wa.me/919321430535?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%2C%20%E0%A4%AE%E0%A5%80%20%27%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%A6%E0%A4%BE%E0%A4%A4%E0%A4%BE%27%20Hard%20Book%20%28%E2%82%B9300%29%20%E0%A4%AA%E0%A5%87%E0%A4%AE%E0%A5%87%E0%A4%82%E0%A4%9F%20%E0%A4%95%E0%A5%87%E0%A4%B2%E0%A5%87%20%E0%A4%86%E0%A4%B9%E0%A5%87.%20%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%A8%E0%A4%B6%E0%A5%8C%E0%A4%9F%20%E0%A4%B8%E0%A5%8B%E0%A4%AC%E0%A4%A4%20%E0%A4%AA%E0%A4%BE%E0%A4%A0%E0%A4%B5%E0%A4%A4%20%E0%A4%86%E0%A4%B9%E0%A5%87."
+              target="_blank"
+              rel="noopener"
+              class="buy-btn whatsapp-btn">
+
+              <i class="fa-brands fa-whatsapp"></i>
+              WhatsApp वर स्क्रीनशॉट पाठवा
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================= NOTE ================= -->
+
+    <div class="note-box">
+
+      🛡️ <strong>टीप:</strong>
+      GPay, PhonePe, Paytm किंवा इतर UPI App मधून पेमेंट केल्यानंतर
+      त्याचा स्क्रीनशॉट WhatsApp वर पाठवा.
+      ई-बुक व ऑडिओ बुकचा ॲक्सेस तात्काळ पाठवला जाईल आणि
+      हार्ड बुक ३ ते ५ दिवसांत घरपोच डिलिव्हर केले जाईल.
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= SINGLE PAYMENT POPUP ================= -->
+
+  <div id="paymentModal" class="modal-overlay">
+
+    <div class="modal-box">
+
+      <span
+        class="close-btn"
+        onclick="closePaymentModal()">
+        &times;
+      </span>
+
+      <h3 style="color:#0A2A66;margin:0;">
+        UPI द्वारे पेमेंट करा
+      </h3>
+
+      <p
+        id="modalProduct"
+        style="font-size:13px;color:#666;margin:6px 0;">
+        पुस्तक
+      </p>
+
+      <div
+        id="modalAmount"
+        class="payment-amount">
+        ₹0
+      </div>
+
+      <!-- QR CODE -->
+      <img
+        id="qrCodeImg"
+        class="qr-image"
+        src=""
+        alt="UPI QR Code">
+
+      <p style="font-size:12px;color:#444;margin:4px 0 10px;">
+        💻 <strong>Computer:</strong>
+        मोबाईलने QR Code Scan करा.
+        <br>
+        📱 <strong>Mobile:</strong>
+        खालील बटन दाबून UPI App उघडा.
+      </p>
+
+      <!-- UPI ID -->
+      <div class="upi-copy-box">
+
+        <div style="font-size:11px;color:#555;margin-bottom:5px;">
+          UPI ID
+        </div>
+
+        <div class="upi-copy-row">
+
+          <span
+            id="upiIdText"
+            class="upi-id-text">
+            dmgaikwad0103-2@okicici
+          </span>
+
+          <button
+            type="button"
+            onclick="copyUPI()"
+            class="copy-btn">
+
+            <i class="fa-regular fa-copy"></i>
+            कॉपी
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- DIRECT UPI -->
+      <button
+        type="button"
+        id="directUpiBtn"
+        class="buy-btn upi-btn">
+
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        📱 UPI App मधून पेमेंट करा
+
+      </button>
+
+      <div
+        id="paymentStatus"
+        class="payment-status">
+        UPI App उघडत आहे...
+      </div>
+
+      <!-- UPDATE: Added clear post-payment instruction -->
+      <div style="margin-top: 12px; background: #eefdf3; border: 1px dashed #25D366; padding: 8px; border-radius: 6px; font-size: 11px; color: #15803d;">
+        ✅ <strong>पेमेंट पूर्ण झाल्यावर:</strong> स्क्रीनशॉट काढून खालील 'WhatsApp वर स्क्रीनशॉट पाठवा' बटणावर क्लिक करा.
+      </div>
+
+      <div class="mobile-help">
+        बटन दाबल्यानंतर GPay / PhonePe / Paytm उपलब्ध असल्यास
+        UPI payment screen उघडेल. App उघडला नाही तर UPI ID
+        कॉपी करून तुमच्या UPI App मध्ये पेस्ट करा.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= PAYMENT JAVASCRIPT ================= -->
+
+  <script>
+
+    /* =====================================================
+       RAKTDATA UPI SETTINGS
+       ===================================================== */
+
+    const RAKTDATA_UPI_ID = "dmgaikwad0103-2@okicici";
+
+    const RAKTDATA_NAME =
+      "DEELIP MACHCHINDRANATH GAIKWAD";
+
+
+    /* =====================================================
+       CREATE UPI PAYMENT LINK
+       ===================================================== */
+
+    function createUPIUrl(amount, productName) {
+
+      const params = new URLSearchParams();
+
+      params.set("pa", RAKTDATA_UPI_ID);
+      params.set("pn", RAKTDATA_NAME);
+      params.set("am", Number(amount).toFixed(2));
+      params.set("cu", "INR");
+      params.set(
+        "tn",
+        "Raktdata - " + productName
+      );
+
+      return "upi://pay?" + params.toString();
+    }
+
+
+    /* =====================================================
+       OPEN PAYMENT MODAL
+       ===================================================== */
+
+    function openPaymentModal(amount, productName) {
+
+      const modal =
+        document.getElementById("paymentModal");
+
+      const amountElement =
+        document.getElementById("modalAmount");
+
+      const productElement =
+        document.getElementById("modalProduct");
+
+      const qrImage =
+        document.getElementById("qrCodeImg");
+
+      const directButton =
+        document.getElementById("directUpiBtn");
+
+      const status =
+        document.getElementById("paymentStatus");
+
+
+      /* Show amount */
+
+      amountElement.innerText =
+        "₹" + amount;
+
+
+      /* Show product */
+
+      productElement.innerText =
+        productName;
+
+
+      /* Create UPI link */
+
+      const upiUrl =
+        createUPIUrl(amount, productName);
+
+
+      /* Generate QR Code */
+
+      const qrApi =
+        "https://api.qrserver.com/v1/create-qr-code/" +
+        "?size=250x250" +
+        "&margin=10" +
+        "&data=" +
+        encodeURIComponent(upiUrl);
+
+
+      qrImage.src = qrApi;
+
+
+      /* Reset status */
+
+      status.style.display = "none";
+
+
+      /* Direct UPI button */
+
+      directButton.onclick = function () {
+
+        status.innerText =
+          "UPI App उघडत आहे...";
+
+        status.style.display = "block";
+
+
+        /*
+         * Important:
+         * This is a standard UPI Intent link.
+         * Android devices with a supported UPI app
+         * should open the payment screen.
+         */
+
+        window.location.href = upiUrl;
+
+      };
+
+
+      /* Show popup */
+
+      modal.style.display = "flex";
+
+
+      /* Mobile: direct payment button is primary */
+
+      if (isMobileDevice()) {
+
+        directButton.innerHTML =
+          '<i class="fa-solid fa-mobile-screen-button"></i> ' +
+          '📱 आता UPI App उघडा आणि ₹' +
+          amount +
+          ' भरा';
+
+      } else {
+
+        directButton.innerHTML =
+          '<i class="fa-solid fa-mobile-screen-button"></i> ' +
+          'मोबाईलमध्ये UPI Payment उघडा';
+
+      }
+
+    }
+
+
+    /* =====================================================
+       DETECT MOBILE
+       ===================================================== */
+
+    function isMobileDevice() {
+
+      return (
+        /Android|iPhone|iPad|iPod/i.test(
+          navigator.userAgent
+        )
+      );
+
+    }
+
+
+    /* =====================================================
+       CLOSE PAYMENT MODAL
+       ===================================================== */
+
+    function closePaymentModal() {
+
+      document.getElementById(
+        "paymentModal"
+      ).style.display = "none";
+
+    }
+
+
+    /* =====================================================
+       COPY UPI ID
+       ===================================================== */
+
+    async function copyUPI() {
+
+      const upiId =
+        RAKTDATA_UPI_ID;
+
+      try {
+
+        await navigator.clipboard.writeText(
+          upiId
+        );
+
+        alert(
+          "UPI ID कॉपी झाला आहे!\n\n" +
+          upiId +
+          "\n\n" +
+          "आता GPay / PhonePe / Paytm मध्ये " +
+          "UPI ID पेस्ट करून पेमेंट करा."
+        );
+
+      } catch (error) {
+
+        prompt(
+          "UPI ID कॉपी करा:",
+          upiId
+        );
+
+      }
+
+    }
+
+
+    /* =====================================================
+       CLOSE WHEN CLICK OUTSIDE MODAL
+       ===================================================== */
+
+    window.addEventListener(
+      "click",
+      function(event) {
+
+        const modal =
+          document.getElementById(
+            "paymentModal"
+          );
+
+        if (event.target === modal) {
+
+          closePaymentModal();
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       ESC KEY CLOSE
+       ===================================================== */
+
+    document.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (event.key === "Escape") {
+
+          closePaymentModal();
+
+        }
+
+      }
+    );
+
+  </script>
+
 </body>
 </html>
