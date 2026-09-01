@@ -195,9 +195,9 @@
                         <option>English</option>
                     </select>
 
-                    <a href="#register-donor" class="btn btn-sm btn-danger fw-bold rounded-pill px-3">
+                    <button class="btn btn-sm btn-danger fw-bold rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#donorModal">
                         <i class="fa-solid fa-heart me-1"></i> नोंदणी
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -216,17 +216,17 @@
                         Raktdata.in हे केवळ माहितीचे ठिकाण नाही; ही देशातील लाखो रक्तदाते आणि सामाजिक संस्थांना एकत्र आणणारी एक राष्ट्रीय सन्मान चळवळ आहे.
                     </p>
                     <div class="d-flex flex-column flex-sm-row gap-3">
-                        <a href="#register-donor" class="btn btn-raktdata-red">
+                        <button class="btn btn-raktdata-red" data-bs-toggle="modal" data-bs-target="#donorModal">
                             <i class="fa-solid fa-id-card me-2"></i>मी रक्तदाता आहे — प्रोफाइल बनवा
-                        </a>
-                        <a href="#register-org" class="btn btn-raktdata-outline">
+                        </button>
+                        <button class="btn btn-raktdata-outline" data-bs-toggle="modal" data-bs-target="#orgModal">
                             <i class="fa-solid fa-building-flag me-2"></i>आम्ही संस्था आहोत — नोंदणी करा
-                        </a>
+                        </button>
                     </div>
                 </div>
-                <!-- Corrected Blood Donation Vector Illustration -->
+                <!-- HD Blood Donation Image -->
                 <div class="col-lg-5 text-center mt-4 mt-lg-0">
-                    <img src="https://cdni.iconscout.com/illustration/premium/thumb/blood-donation-illustration-download-in-svg-png-gif-file-formats--donate-donor-save-life-pack-medical-illustrations-4860161.png" alt="Raktdata Blood Hero" class="img-fluid rounded-4" style="max-height: 360px;">
+                    <img src="https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=600&q=80" alt="Raktdata Blood Hero" class="img-fluid rounded-4 shadow" style="max-height: 360px; object-fit: cover;">
                 </div>
             </div>
         </div>
@@ -281,6 +281,92 @@
             </div>
         </div>
     </section>
+
+    <!-- 🩸 MODAL 1: Blood Donor Registration Form -->
+    <div class="modal fade" id="donorModal" tabindex="-1" aria-labelledby="donorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-header-title fw-bold" id="donorModalLabel"><i class="fa-solid fa-heart me-2"></i>रक्तवीर नोंदणी (Donor Registration)</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">पूर्ण नाव (Full Name)</label>
+                            <input type="text" class="form-control" placeholder="उदा. अमोल पाटील" required>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">मोबाइल नंबर</label>
+                                <input type="tel" class="form-control" placeholder="9876543210" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">रक्तगट (Blood Group)</label>
+                                <select class="form-select" required>
+                                    <option selected disabled>निवडा...</option>
+                                    <option>A +ve</option><option>A -ve</option>
+                                    <option>B +ve</option><option>B -ve</option>
+                                    <option>O +ve</option><option>O -ve</option>
+                                    <option>AB +ve</option><option>AB -ve</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">शहर (City)</label>
+                                <input type="text" class="form-control" placeholder="उदा. ठाणे" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">एकूण रक्तदान संख्या</label>
+                                <input type="number" class="form-control" placeholder="उदा. 10" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-danger w-100 fw-bold py-2 rounded-pill mt-2">
+                            <i class="fa-solid fa-id-card me-2"></i>डिजिटल कार्ड तयार करा
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🏢 MODAL 2: Organization Registration Form -->
+    <div class="modal fade" id="orgModal" tabindex="-1" aria-labelledby="orgModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-header-title fw-bold" id="orgModalLabel"><i class="fa-solid fa-building-flag me-2"></i>संस्था नोंदणी (Organization Registration)</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">संस्थेचे नाव (Organization Name)</label>
+                            <input type="text" class="form-control" placeholder="उदा. ABC सामाजिक संस्था" required>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">प्रमुख व्यक्तीचे नाव</label>
+                                <input type="text" class="form-control" placeholder="उदा. राहुल देशपांडे" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">मोबाइल नंबर</label>
+                                <input type="tel" class="form-control" placeholder="9876543210" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">शहर व जिल्हा</label>
+                            <input type="text" class="form-control" placeholder="उदा. पुणे" required>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100 fw-bold py-2 rounded-pill mt-2">
+                            <i class="fa-solid fa-check-circle me-2"></i>संस्था प्रोफाइल नोंदवा
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 📱 Mobile Bottom Navigation Menu -->
     <div class="mobile-bottom-nav text-center bg-white border-top shadow-lg py-2">
