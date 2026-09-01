@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raktdata सन्मान 2026 | Nomination Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-red: #D32F2F;
+            --dark-red: #9A0007;
+            --gold-accent: #FFD700;
+            --gold-dark: #B78103;
+            --bg-light: #F8F9FA;
+            --text-dark: #1E293B;
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Hero Banner */
+        .sanman-hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: white;
+            padding: 60px 0;
+            border-bottom: 4px solid var(--gold-accent);
+        }
+
+        .gold-text {
+            color: var(--gold-accent);
+        }
+
+        /* Card Styles */
+        .sanman-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #E2E8F0;
+            transition: transform 0.2s ease;
+        }
+
+        .sanman-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trophy-icon-box {
+            width: 70px;
+            height: 70px;
+            background: #FFF9C4;
+            color: var(--gold-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 15px;
+        }
+
+        .form-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--gold-accent);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-xl navbar-light bg-white sticky-top shadow-sm">
+        <div class="container-fluid px-lg-4">
+            <a class="navbar-brand text-danger fw-bold fs-4 d-flex align-items-center" href="index.html">
+                <i class="fa-solid fa-droplet fs-3 me-2 text-danger"></i>
+                <span>Raktdata<span class="text-dark">.in</span></span>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#raktdataNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="raktdataNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold ms-xl-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-house me-1"></i> मुख्यपृष्ठ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="heroes.html"><i class="fa-solid fa-user-ninja text-danger me-1"></i> रक्तवीर</a></li>
+                    <li class="nav-item"><a class="nav-link" href="orgs.html"><i class="fa-solid fa-building-flag text-danger me-1"></i> संस्था</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html"><i class="fa-solid fa-newspaper text-danger me-1"></i> बातम्या</a></li>
+                    <li class="nav-item"><a class="nav-link" href="book.html"><i class="fa-solid fa-book-bookmark text-danger me-1"></i> पुस्तक</a></li>
+                    <li class="nav-item"><a class="nav-link active text-warning fw-bold" href="sanman.html"><i class="fa-solid fa-trophy me-1"></i> Raktdata सन्मान</a></li>
+                    <li class="nav-item"><a class="nav-link" href="awareness.html"><i class="fa-solid fa-lightbulb text-danger me-1"></i> जनजागृती</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="sanman-hero text-center">
+        <div class="container">
+            <span class="badge bg-warning text-dark mb-3 px-3 py-2 fw-bold fs-6">
+                <i class="fa-solid fa-award me-1"></i> National Blood Donor Recognition 2026
+            </span>
+            <h1 class="display-5 fw-bold mb-3">
+                राष्ट्रीय <span class="gold-text">Raktdata सन्मान</span> अभियान
+            </h1>
+            <p class="lead opacity-75 col-lg-8 mx-auto">
+                ज्यांनी आपलं रक्त देऊन अनोळखी व्यक्तींचे प्राण वाचवले, अशा निस्वार्थी रक्तवीरांचा गौरव संपूर्ण भारतासमोर करण्याची वेळ आली आहे!
+            </p>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">सन्मान श्रेणी (Award Categories)</h2>
+                <p class="text-muted">रक्तदात्यांच्या योगदानानुसार दिले जाणारे राष्ट्रीय पुरस्कार</p>
+            </div>
+
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="sanman-card p-4">
+                        <div class="trophy-icon-box">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h4 class="fw-bold">रक्तवीर सन्मान</h4>
+                        <p class="text-muted small">१० पेक्षा जास्त वेळा नियमित रक्तदान करणाऱ्या दात्यांसाठी.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="sanman-card p-4">
+                        <div class="trophy-icon-box" style="background: #FFE0B2; color: #E65100;">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <h4 class="fw-bold">महा-रक्तवीर सन्मान</h4>
+                        <p class="text-muted small">२५ पेक्षा जास्त वेळा रक्तदान करून जीवनरक्षक ठरलेल्या दात्यांसाठी.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="sanman-card p-4">
+                        <div class="trophy-icon-box" style="background: #E1BEE7; color: #4A148C;">
+                            <i class="fa-solid fa-medal"></i>
+                        </div>
+                        <h4 class="fw-bold">जीवनदाता जीवनगौरव</h4>
+                        <p class="text-muted small">५०+ पेक्षा जास्त वेळा रक्तदान किंवा विशेष आपत्कालीन मदतीसाठी.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mb-5" id="nominate">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="form-section p-4 p-md-5">
+                    <div class="text-center mb-4">
+                        <i class="fa-solid fa-award text-warning fs-1 mb-2"></i>
+                        <h3 class="fw-bold">रक्तवीराला नामांकित करा (Nomination Form)</h3>
+                        <p class="text-muted">तुमच्या ओळखीच्या किंवा कुटुंबातील रक्तदात्याची माहिती येथे भरा</p>
+                    </div>
+
+                    <form>
+                        <h5 class="fw-bold text-danger mb-3 border-bottom pb-2">१. नामांकित करणाऱ्या व्यक्तीची माहिती (Nominator Info)</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">तुमचे नाव</label>
+                                <input type="text" class="form-control" placeholder="उदा. विशाल शिंदे" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">तुमचा मोबाइल नंबर</label>
+                                <input type="tel" class="form-control" placeholder="9876543210" required>
+                            </div>
+                        </div>
+
+                        <h5 class="fw-bold text-danger mb-3 border-bottom pb-2">२. रक्तवीराची माहिती (Hero Details)</h5>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">रक्तवीराचे संपूर्ण नाव (Hero's Full Name)</label>
+                            <input type="text" class="form-control" placeholder="उदा. संजय यशवंत पाटील" required>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">रक्तवीराचा मोबाइल नंबर</label>
+                                <input type="tel" class="form-control" placeholder="9876543210" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">रक्तगट (Blood Group)</label>
+                                <select class="form-select" required>
+                                    <option selected disabled>निवडा...</option>
+                                    <option>O +ve</option><option>O -ve</option>
+                                    <option>A +ve</option><option>A -ve</option>
+                                    <option>B +ve</option><option>B -ve</option>
+                                    <option>AB +ve</option><option>AB -ve</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">शहर व जिल्हा</label>
+                                <input type="text" class="form-control" placeholder="उदा. नाशिक" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">अंदाजे किती वेळा रक्तदान केले?</label>
+                                <input type="number" class="form-control" placeholder="उदा. 15" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">त्यांच्या योगदानाबद्दल थोडक्यात सांगा (का सन्मान व्हावा?)</label>
+                            <textarea class="form-control" rows="3" placeholder="उदा. त्यांनी अनेक आपत्कालीन प्रसंगी मोफत रक्तदान करून रुग्ण वाचवले आहेत..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-warning w-100 fw-bold py-3 fs-5 rounded-pill shadow-sm">
+                            <i class="fa-solid fa-paper-plane me-2"></i>नामांकन सादर करा (Submit Nomination)
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
