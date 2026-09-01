@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>बातम्या व प्रसारमाध्यमे | Raktdata.in</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-red: #D32F2F;
+            --dark-red: #9A0007;
+            --bg-light: #F8F9FA;
+            --text-dark: #1E293B;
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #E2E8F0;
+            overflow: hidden;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(211,47,47,0.12);
+        }
+
+        .news-img-placeholder {
+            height: 180px;
+            background: linear-gradient(135deg, #FFE3E3 0%, #FFF5F5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-red);
+        }
+
+        .date-badge {
+            font-size: 0.8rem;
+            color: #64748B;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🌐 Navigation Bar -->
+    <nav class="navbar navbar-expand-xl navbar-light bg-white sticky-top shadow-sm">
+        <div class="container-fluid px-lg-4">
+            <a class="navbar-brand text-danger fw-bold fs-4 d-flex align-items-center" href="index.html">
+                <i class="fa-solid fa-droplet fs-3 me-2 text-danger"></i>
+                <span>Raktdata<span class="text-dark">.in</span></span>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#raktdataNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="raktdataNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold ms-xl-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-house me-1"></i> मुख्यपृष्ठ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="heroes.html"><i class="fa-solid fa-user-ninja text-danger me-1"></i> रक्तवीर</a></li>
+                    <li class="nav-item"><a class="nav-link" href="orgs.html"><i class="fa-solid fa-building-flag text-danger me-1"></i> संस्था</a></li>
+                    <li class="nav-item"><a class="nav-link active text-danger" href="news.html"><i class="fa-solid fa-newspaper text-danger me-1"></i> बातम्या</a></li>
+                    <li class="nav-item"><a class="nav-link" href="book.html"><i class="fa-solid fa-book-bookmark text-danger me-1"></i> पुस्तक</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sanman.html"><i class="fa-solid fa-trophy text-warning me-1"></i> Raktdata सन्मान</a></li>
+                    <li class="nav-item"><a class="nav-link" href="awareness.html"><i class="fa-solid fa-lightbulb text-danger me-1"></i> जनजागृती</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 📰 Header Section -->
+    <section class="bg-danger text-white py-5 text-center">
+        <div class="container">
+            <h1 class="fw-bold"><i class="fa-solid fa-newspaper me-2"></i>रक्तदान बातम्या व वृत्तसंकलन</h1>
+            <p class="lead opacity-90 mb-0">रक्तदान चळवळीशी संबंधित ताज्या बातम्या, वृत्तपत्र कात्रणे आणि महत्त्वाच्या घडामोडी</p>
+        </div>
+    </section>
+
+    <!-- 📰 News Grid -->
+    <section class="container py-5">
+        <div class="row g-4">
+            
+            <!-- News Card 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="news-card">
+                    <div class="news-img-placeholder">
+                        <i class="fa-solid fa-newspaper display-3"></i>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-danger">विशेष वृत्त</span>
+                            <span class="date-badge"><i class="fa-regular fa-calendar me-1"></i>०२ सप्टेंबर २०२६</span>
+                        </div>
+                        <h5 class="fw-bold mb-2">ठाण्यात महा-रक्तदान शिबिराचे यशस्वी आयोजन</h5>
+                        <p class="text-muted small mb-3">
+                            स्थानिक संस्थांच्या सहकार्याने आयोजित केलेल्या शिबिरात एकाच दिवसात ५०० पेक्षा जास्त रक्तदात्यांनी सहभाग नोंदवला.
+                        </p>
+                        <button class="btn btn-outline-danger btn-sm rounded-pill fw-bold">सविस्तर वाचा</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Card 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="news-card">
+                    <div class="news-img-placeholder">
+                        <i class="fa-solid fa-hospital display-3"></i>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-warning text-dark">काळजी घ्या</span>
+                            <span class="date-badge"><i class="fa-regular fa-calendar me-1"></i>२८ ऑगस्ट २०२६</span>
+                        </div>
+                        <h5 class="fw-bold mb-2">पावसाळ्यात रक्ताचा तुटवडा टाळण्यासाठी आवाहन</h5>
+                        <p class="text-muted small mb-3">
+                            शासकीय रक्तपेढ्यांकडून नागरिकांना नियमित रक्तदान करण्याचे आणि आपत्कालीन परिस्थितीसाठी तयार राहण्याचे आवाहन.
+                        </p>
+                        <button class="btn btn-outline-danger btn-sm rounded-pill fw-bold">सविस्तर वाचा</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Card 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="news-card">
+                    <div class="news-img-placeholder">
+                        <i class="fa-solid fa-award display-3"></i>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-success">पुरस्कार</span>
+                            <span class="date-badge"><i class="fa-regular fa-calendar me-1"></i>२० ऑगस्ट २०२६</span>
+                        </div>
+                        <h5 class="fw-bold mb-2">५० वेळा रक्तदान करणाऱ्या रक्तवीरांचा सत्कार</h5>
+                        <p class="text-muted small mb-3">
+                            सामाजिक संस्थेकडून ५० पेक्षा जास्त वेळा रक्तदान केलेल्या जीवनदात्यांना राष्ट्रीय सन्मान प्रदान करण्यात आला.
+                        </p>
+                        <button class="btn btn-outline-danger btn-sm rounded-pill fw-bold">सविस्तर वाचा</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
