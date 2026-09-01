@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>जागरूक रक्तदाता पुस्तक | Raktdata.in</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-red: #D32F2F;
+            --dark-red: #9A0007;
+            --gold-accent: #FFD700;
+            --bg-light: #F8F9FA;
+            --text-dark: #1E293B;
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .book-hero {
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFE3E3 100%);
+            padding: 60px 0;
+            border-bottom: 3px solid var(--primary-red);
+        }
+
+        .book-cover-mockup {
+            background: linear-gradient(135deg, #D32F2F 0%, #9A0007 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 40px 25px;
+            box-shadow: 0 15px 35px rgba(211, 47, 47, 0.3);
+            border-left: 8px solid #FFD700;
+            position: relative;
+        }
+
+        .chapter-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px 20px;
+            border: 1px solid #E2E8F0;
+            transition: all 0.2s ease;
+        }
+
+        .chapter-card:hover {
+            border-color: var(--primary-red);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.1);
+        }
+
+        .chapter-num {
+            background-color: #FFE3E3;
+            color: var(--primary-red);
+            font-weight: 700;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🌐 Navigation Bar -->
+    <nav class="navbar navbar-expand-xl navbar-light bg-white sticky-top shadow-sm">
+        <div class="container-fluid px-lg-4">
+            <a class="navbar-brand text-danger fw-bold fs-4 d-flex align-items-center" href="index.html">
+                <i class="fa-solid fa-droplet fs-3 me-2 text-danger"></i>
+                <span>Raktdata<span class="text-dark">.in</span></span>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-target="#raktdataNavbar" data-bs-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="raktdataNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold ms-xl-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-house me-1"></i> मुख्यपृष्ठ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="heroes.html"><i class="fa-solid fa-user-ninja text-danger me-1"></i> रक्तवीर</a></li>
+                    <li class="nav-item"><a class="nav-link" href="orgs.html"><i class="fa-solid fa-building-flag text-danger me-1"></i> संस्था</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html"><i class="fa-solid fa-newspaper text-danger me-1"></i> बातम्या</a></li>
+                    <li class="nav-item"><a class="nav-link active text-danger" href="book.html"><i class="fa-solid fa-book-bookmark text-danger me-1"></i> पुस्तक</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sanman.html"><i class="fa-solid fa-trophy text-warning me-1"></i> Raktdata सन्मान</a></li>
+                    <li class="nav-item"><a class="nav-link" href="awareness.html"><i class="fa-solid fa-lightbulb text-danger me-1"></i> जनजागृती</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 📚 Book Hero Section -->
+    <section class="book-hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <span class="badge bg-danger mb-3 px-3 py-2 fs-6">📖 E-Book Edition</span>
+                    <h1 class="display-5 fw-bold mb-3">जागरूक रक्तदाता: <span class="text-danger">समाज सेवा का नया आयाम</span></h1>
+                    <p class="lead text-muted mb-4">
+                        रक्तदानाचे महत्त्व, सामाजिक प्रभाव आणि एका थेंबाचे मूल्य सांगणारे विशेष ई-पुस्तक. हे पुस्तक केवळ माहिती देत नाही, तर समाजसेवेची नवी दिशा दाखवते.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#read-online" class="btn btn-danger btn-lg rounded-pill px-4 fw-bold">
+                            <i class="fa-solid fa-book-open me-2"></i>आताच वाचा (Read Online)
+                        </a>
+                        <button class="btn btn-outline-danger btn-lg rounded-pill px-4 fw-bold">
+                            <i class="fa-solid fa-download me-2"></i>PDF डाऊनलोड करा
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book Mockup Card -->
+                <div class="col-lg-5 text-center">
+                    <div class="book-cover-mockup text-center mx-auto" style="max-width: 320px;">
+                        <i class="fa-solid fa-book-open-reader display-1 text-warning mb-3"></i>
+                        <h3 class="fw-bold mb-2">जागरूक रक्तदाता</h3>
+                        <p class="small text-light opacity-75 mb-4">समाज सेवा का नया आयाम</p>
+                        <div class="border-top border-warning pt-3">
+                            <span class="badge bg-warning text-dark fw-bold px-3 py-1">२५ अध्याय | सविस्तर मार्गदर्शक</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📖 Chapters Index Section -->
+    <section class="py-5 container" id="read-online">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">पुस्तकातील अध्यायांची अनुक्रमणिका (Table of Contents)</h2>
+            <p class="text-muted">रक्तदान चळवळीचा सखोल वेध घेणारे २५ महत्त्वपूर्ण अध्याय</p>
+        </div>
+
+        <div class="row g-3">
+            <!-- Chapter 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="chapter-card d-flex align-items-center gap-3">
+                    <div class="chapter-num">१</div>
+                    <div>
+                        <h6 class="fw-bold mb-0">प्रस्तावना: एक बूँद का महत्व</h6>
+                        <small class="text-muted">रक्तदानाचा पाया आणि महत्त्व</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="chapter-card d-flex align-items-center gap-3">
+                    <div class="chapter-num">२</div>
+                    <div>
+                        <h6 class="fw-bold mb-0">रक्तदान: केवल दान नहीं, एक जीवन है</h6>
+                        <small class="text-muted">सामाजिक मूल्य आणि जीवनरक्षक कार्य</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="chapter-card d-flex align-items-center gap-3">
+                    <div class="chapter-num">३</div>
+                    <div>
+                        <h6 class="fw-bold mb-0">रक्तदानाचे आरोग्यदायी फायदे</h6>
+                        <small class="text-muted">दात्याच्या शरीरावर होणारे सकारात्मक परिणाम</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="chapter-card d-flex align-items-center gap-3">
+                    <div class="chapter-num">४</div>
+                    <div>
+                        <h6 class="fw-bold mb-0">रक्तदानाविषयीचे गैरसमज व सत्य</h6>
+                        <small class="text-muted">समाजातील भ्रमांचे निरसन</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 5 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="chapter-card d-flex align-items-center gap-3">
+                    <div class="chapter-num">५</div>
+                    <div>
+                        <h6 class="fw-bold mb-0">कोण रक्तदान करू शकते? (पात्रता)</h6>
+                        <small class="text-muted">रक्तदानासाठी आवश्यक शारीरिक निकष</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 6 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="chapter-card d-flex align-items-center gap-3">
+                    <div class="chapter-num">६</div>
+                    <div>
+                        <h6 class="fw-bold mb-0">रक्तदान शिबिरांचे आयोजन व व्यवस्थापन</h6>
+                        <small class="text-muted">संस्थांसाठी सविस्तर मार्गदर्शक</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <span class="text-muted small">* उर्वरित सर्व अध्याय ई-बुक डाऊनलोड करून वाचू शकता.</span>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
