@@ -6,7 +6,7 @@
     <title>Raktdata.in | राष्ट्रीय रक्तदाता सन्मान व्यासपीठ</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts (Noto Sans Devanagari) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -26,14 +26,12 @@
             background-color: var(--bg-light);
         }
 
-        /* Header Branding */
         .navbar-brand {
             font-weight: 700;
             font-size: 1.5rem;
             color: var(--primary-red) !important;
         }
 
-        /* Hero Section */
         .hero-section {
             background: linear-gradient(135deg, #FFF5F5 0%, #FFE3E3 100%);
             padding: 60px 0;
@@ -70,7 +68,6 @@
             color: white;
         }
 
-        /* Stat Cards */
         .stat-card {
             background: white;
             border-radius: 15px;
@@ -79,7 +76,6 @@
             border-bottom: 4px solid var(--primary-red);
         }
 
-        /* Sanman Banner */
         .sanman-section {
             background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
             color: white;
@@ -94,7 +90,14 @@
             font-weight: 700;
         }
 
-        /* Mobile Sticky Footer */
+        .hero-graphic-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(211, 47, 47, 0.15);
+            border: 2px solid rgba(211, 47, 47, 0.1);
+        }
+
         .mobile-bottom-nav {
             position: fixed;
             bottom: 0;
@@ -118,21 +121,18 @@
 </head>
 <body>
 
-    <!-- 🌐 Fully Functional Raktdata Navigation Bar -->
+    <!-- 🌐 Navigation Bar -->
     <nav class="navbar navbar-expand-xl navbar-light bg-white sticky-top shadow-sm">
         <div class="container-fluid px-lg-4">
-            <!-- Brand Logo -->
             <a class="navbar-brand text-danger fw-bold fs-4 d-flex align-items-center" href="index.html">
                 <i class="fa-solid fa-droplet fs-3 me-2 text-danger"></i>
                 <span>Raktdata<span class="text-dark">.in</span></span>
             </a>
 
-            <!-- Mobile Toggle Button -->
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#raktdataNavbar" aria-controls="raktdataNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Navbar Menu Items -->
             <div class="collapse navbar-collapse" id="raktdataNavbar">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold ms-xl-3">
                     <li class="nav-item">
@@ -171,7 +171,6 @@
                         </a>
                     </li>
                     
-                    <!-- Hyper-Local Raktdata India Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-primary" href="#" id="indiaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-map-location-dot me-1"></i> Raktdata India
@@ -187,7 +186,6 @@
                     </li>
                 </ul>
 
-                <!-- Language & Quick Action Buttons -->
                 <div class="d-flex align-items-center gap-2 mt-3 mt-xl-0">
                     <select class="form-select form-select-sm border-danger text-danger fw-bold" style="width: auto;">
                         <option selected>मराठी</option>
@@ -224,9 +222,14 @@
                         </button>
                     </div>
                 </div>
-                <!-- HD Blood Donation Image -->
+
+                <!-- Safe SVG Vector Illustration -->
                 <div class="col-lg-5 text-center mt-4 mt-lg-0">
-                    <img src="https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=600&q=80" alt="Raktdata Blood Hero" class="img-fluid rounded-4 shadow" style="max-height: 360px; object-fit: cover;">
+                    <div class="hero-graphic-box text-center">
+                        <i class="fa-solid fa-hand-holding-heart text-danger display-1 mb-3"></i>
+                        <h4 class="fw-bold text-dark mb-1">एक जीवन वाचवा!</h4>
+                        <p class="text-muted small mb-0">तुमचे एक छोटेसे पाऊल कोणाचे तरी आयुष्य बदलू शकते.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -368,7 +371,7 @@
         </div>
     </div>
 
-    <!-- 📱 Mobile Bottom Navigation Menu -->
+    <!-- 📱 Mobile Navigation Menu -->
     <div class="mobile-bottom-nav text-center bg-white border-top shadow-lg py-2">
         <div class="d-flex justify-content-around align-items-center">
             <a href="index.html" class="text-danger text-decoration-none">
@@ -394,7 +397,7 @@
         </div>
     </div>
 
-    <!-- Bootstrap 5 JavaScript Bundle -->
+    <!-- Bootstrap 5 JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
