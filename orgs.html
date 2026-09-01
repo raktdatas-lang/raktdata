@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सहयोगी संस्था | Raktdata.in</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-red: #D32F2F;
+            --dark-red: #9A0007;
+            --bg-light: #F8F9FA;
+            --text-dark: #1E293B;
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .org-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #E2E8F0;
+        }
+
+        .org-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .org-icon-box {
+            width: 70px;
+            height: 70px;
+            background: #E2E8F0;
+            color: var(--text-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 15px;
+        }
+
+        .camp-count-badge {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🌐 Navigation Bar -->
+    <nav class="navbar navbar-expand-xl navbar-light bg-white sticky-top shadow-sm">
+        <div class="container-fluid px-lg-4">
+            <a class="navbar-brand text-danger fw-bold fs-4 d-flex align-items-center" href="index.html">
+                <i class="fa-solid fa-droplet fs-3 me-2 text-danger"></i>
+                <span>Raktdata<span class="text-dark">.in</span></span>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#raktdataNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="raktdataNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold ms-xl-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-house me-1"></i> मुख्यपृष्ठ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="heroes.html"><i class="fa-solid fa-user-ninja text-danger me-1"></i> रक्तवीर</a></li>
+                    <li class="nav-item"><a class="nav-link active text-danger" href="orgs.html"><i class="fa-solid fa-building-flag text-danger me-1"></i> संस्था</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html"><i class="fa-solid fa-newspaper text-danger me-1"></i> बातम्या</a></li>
+                    <li class="nav-item"><a class="nav-link" href="book.html"><i class="fa-solid fa-book-bookmark text-danger me-1"></i> पुस्तक</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sanman.html"><i class="fa-solid fa-trophy text-warning me-1"></i> Raktdata सन्मान</a></li>
+                    <li class="nav-item"><a class="nav-link" href="awareness.html"><i class="fa-solid fa-lightbulb text-danger me-1"></i> जनजागृती</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-2 mt-3 mt-xl-0">
+                    <button class="btn btn-sm btn-dark fw-bold rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#orgModal">
+                        <i class="fa-solid fa-plus me-1"></i> संस्था नोंदवा
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🏢 Header Section -->
+    <section class="bg-dark text-white py-5 text-center">
+        <div class="container">
+            <h1 class="fw-bold"><i class="fa-solid fa-building-flag me-2 text-danger"></i>सहयोगी संस्था (Partner Organizations)</h1>
+            <p class="lead opacity-75 mb-0">रक्तदान शिबिरे आयोजित करणाऱ्या आणि सामाजिक कार्य करणाऱ्या महाराष्ट्रातील अग्रगण्य संस्था</p>
+        </div>
+    </section>
+
+    <!-- 🔍 Filter Section -->
+    <section class="py-4 bg-white shadow-sm mb-4">
+        <div class="container">
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="संस्थेचे नाव शोधून काढा...">
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select">
+                        <option selected>सर्व शहरे (All Cities)</option>
+                        <option>मुंबई</option><option>ठाणे</option><option>पुणे</option><option>नाशिक</option><option>नागपूर</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-dark w-100 fw-bold"><i class="fa-solid fa-filter me-1"></i> शोधा</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- 🏢 Organizations Grid -->
+    <section class="container mb-5">
+        <div class="row g-4">
+            
+            <!-- Org Card 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="org-card p-4 text-center">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="camp-count-badge"><i class="fa-solid fa-tent me-1"></i>२५+ शिबिरे आयोजित</span>
+                        <span class="badge bg-danger">सक्रिय संस्था</span>
+                    </div>
+                    <div class="org-icon-box">
+                        <i class="fa-solid fa-building-ngo text-danger"></i>
+                    </div>
+                    <h5 class="fw-bold mb-1">जीवनधारा सोशल फाऊंडेशन</h5>
+                    <p class="text-muted small mb-2"><i class="fa-solid fa-user-tie me-1"></i>प्रमुख: राहुल देशपांडे</p>
+                    <p class="text-muted small mb-3"><i class="fa-solid fa-location-dot me-1 text-danger"></i>ठाणे वेस्ट, महाराष्ट्र</p>
+                    <button class="btn btn-outline-dark btn-sm rounded-pill px-3 fw-bold">
+                        <i class="fa-solid fa-circle-info me-1"></i>सविस्तर माहिती
+                    </button>
+                </div>
+            </div>
+
+            <!-- Org Card 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="org-card p-4 text-center">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="camp-count-badge"><i class="fa-solid fa-tent me-1"></i>५०+ शिबिरे आयोजित</span>
+                        <span class="badge bg-danger">सक्रिय संस्था</span>
+                    </div>
+                    <div class="org-icon-box">
+                        <i class="fa-solid fa-hand-holding-hand text-danger"></i>
+                    </div>
+                    <h5 class="fw-bold mb-1">सह्याद्री रक्तदाता संघ</h5>
+                    <p class="text-muted small mb-2"><i class="fa-solid fa-user-tie me-1"></i>प्रमुख: महेश शिंदे</p>
+                    <p class="text-muted small mb-3"><i class="fa-solid fa-location-dot me-1 text-danger"></i>पुणे, महाराष्ट्र</p>
+                    <button class="btn btn-outline-dark btn-sm rounded-pill px-3 fw-bold">
+                        <i class="fa-solid fa-circle-info me-1"></i>सविस्तर माहिती
+                    </button>
+                </div>
+            </div>
+
+            <!-- Org Card 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="org-card p-4 text-center">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="camp-count-badge"><i class="fa-solid fa-tent me-1"></i>१५+ शिबिरे आयोजित</span>
+                        <span class="badge bg-danger">सक्रिय संस्था</span>
+                    </div>
+                    <div class="org-icon-box">
+                        <i class="fa-solid fa-people-group text-danger"></i>
+                    </div>
+                    <h5 class="fw-bold mb-1">संवेदना जनसेवा ट्रस्ट</h5>
+                    <p class="text-muted small mb-2"><i class="fa-solid fa-user-tie me-1"></i>प्रमुख: स्वाती पाटील</p>
+                    <p class="text-muted small mb-3"><i class="fa-solid fa-location-dot me-1 text-danger"></i>नाशिक, महाराष्ट्र</p>
+                    <button class="btn btn-outline-dark btn-sm rounded-pill px-3 fw-bold">
+                        <i class="fa-solid fa-circle-info me-1"></i>सविस्तर माहिती
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 🏢 MODAL: Organization Registration Form -->
+    <div class="modal fade" id="orgModal" tabindex="-1" aria-labelledby="orgModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-header-title fw-bold" id="orgModalLabel"><i class="fa-solid fa-building-flag me-2"></i>संस्था नोंदणी (Organization Registration)</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">संस्थेचे नाव (Organization Name)</label>
+                            <input type="text" class="form-control" placeholder="उदा. ABC सामाजिक संस्था" required>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">प्रमुख व्यक्तीचे नाव</label>
+                                <input type="text" class="form-control" placeholder="उदा. राहुल देशपांडे" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">मोबाइल नंबर</label>
+                                <input type="tel" class="form-control" placeholder="9876543210" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">शहर व जिल्हा</label>
+                            <input type="text" class="form-control" placeholder="उदा. पुणे" required>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100 fw-bold py-2 rounded-pill mt-2">
+                            <i class="fa-solid fa-check-circle me-2"></i>संस्था प्रोफाइल नोंदवा
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
