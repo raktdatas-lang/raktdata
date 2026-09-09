@@ -17,7 +17,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
         body { background-color: var(--light-bg); color: #1f2937; line-height: 1.5; }
 
-        /* Top Branding Bar with New Tagline */
+        /* Top Header / Branding Bar */
         .top-brand-bar { background: #fff; padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e5e7eb; }
         .logo-box { display: flex; align-items: center; gap: 12px; }
         .logo-icon { font-size: 2.5rem; color: var(--brand-red); }
@@ -27,13 +27,15 @@
         .top-right-selectors { display: flex; gap: 15px; font-size: 0.85rem; font-weight: 600; }
         .select-btn { padding: 4px 10px; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-size: 0.85rem; }
 
-        /* Navigation Bar */
+        /* Full Width Navigation Bar */
         .main-nav { background: var(--header-blue); color: #fff; }
-        .nav-container { display: flex; flex-wrap: wrap; list-style: none; padding: 0 5%; }
-        .nav-container li a { display: block; padding: 10px 12px; color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.1); transition: background 0.2s; }
+        .nav-container { display: flex; justify-content: space-between; flex-wrap: wrap; list-style: none; padding: 0 5%; width: 100%; }
+        .nav-container li { flex-grow: 1; text-align: center; }
+        .nav-container li a { display: block; padding: 11px 10px; color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600; border-right: 1px solid rgba(255,255,255,0.15); white-space: nowrap; transition: background 0.2s; }
+        .nav-container li:last-child a { border-right: none; }
         .nav-container li a:hover, .nav-container li a.active { background: #002244; color: var(--brand-yellow); }
 
-        /* News Ticker Bar */
+        /* News Ticker */
         .ticker-bar { background: #000; color: #fff; display: flex; align-items: center; font-size: 0.85rem; padding-left: 5%; }
         .ticker-label { background: var(--brand-red); color: #fff; padding: 5px 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
         .ticker-text { padding: 4px 15px; color: #ffeb3b; font-weight: 600; }
@@ -59,7 +61,7 @@
         .hero-right-card h3 { color: var(--brand-yellow); font-size: 1.3rem; margin-bottom: 10px; }
         .hero-right-card p { font-size: 0.85rem; color: #e5e7eb; }
 
-        /* Main Container */
+        /* Main E-Book Section */
         .main-container { padding: 30px 5%; }
         .section-header { text-align: center; margin-bottom: 25px; }
         .section-header h2 { font-size: 1.5rem; color: #111827; font-weight: 800; }
@@ -72,13 +74,19 @@
         .login-card { background: #f8fafc; border: 1px solid var(--border-color); padding: 20px; border-radius: 4px; }
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; color: #374151; }
-        .form-input { width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9rem; }
-        .submit-btn { width: 100%; background: var(--header-blue); color: #fff; padding: 10px; border: none; font-weight: 700; border-radius: 4px; cursor: pointer; margin-top: 10px; }
-        .buy-btn { width: 100%; background: #10b981; color: #fff; padding: 8px; border: none; font-weight: 700; border-radius: 4px; cursor: pointer; margin-top: 10px; font-size: 0.85rem; text-align: center; display: block; text-decoration: none; }
+        .form-input { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem; outline: none; }
+        .form-input:focus { border-color: var(--header-blue); box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1); }
+        
+        .submit-btn { width: 100%; background: var(--header-blue); color: #fff; padding: 11px; border: none; font-weight: 700; border-radius: 6px; cursor: pointer; margin-top: 10px; transition: background 0.2s; }
+        .submit-btn:hover { background: #002244; }
+        
+        .buy-btn { width: 100%; background: #10b981; color: #fff; padding: 10px; border: none; font-weight: 700; border-radius: 6px; cursor: pointer; margin-top: 10px; font-size: 0.85rem; text-align: center; display: block; text-decoration: none; transition: background 0.2s; }
+        .buy-btn:hover { background: #059669; }
 
         @media (max-width: 768px) {
             .hero-section, .ebook-grid { grid-template-columns: 1fr; }
             .top-brand-bar { flex-direction: column; gap: 10px; text-align: center; }
+            .nav-container li { flex-grow: unset; width: 50%; }
         }
     </style>
 </head>
@@ -99,7 +107,7 @@
         </div>
     </div>
 
-    <!-- Nav Bar with Specified Menu Structure -->
+    <!-- Navigation Bar (12 Pages Menu) -->
     <nav class="main-nav">
         <ul class="nav-container">
             <li><a href="index.html" class="active">🏠 मुख्य पृष्ठ</a></li>
@@ -153,7 +161,7 @@
     <!-- E-Book Preview Section -->
     <main class="main-container">
         <div class="section-header">
-            <h2>📖 'रक्तदाता: मानवाचा संदेश' (E-Book)</h2>
+            <h2>📖 'रक्तदाता: मानवतेचा संदेश' (E-Book)</h2>
         </div>
 
         <div class="ebook-grid">
