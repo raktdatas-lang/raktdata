@@ -146,7 +146,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
-        /* Unsplash Reliable Images */
         .main-headline-img {
             width: 100%;
             height: 350px;
@@ -225,8 +224,11 @@
         .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
         .footer-bottom { text-align: center; border-top: 1px solid #333; padding-top: 15px; margin-top: 30px; font-size: 0.85rem; color: #777; }
 
+        /* TV Section Mobile Fix */
+        .tv-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+
         @media (max-width: 768px) {
-            .news-grid, .sub-news-grid { grid-template-columns: 1fr; }
+            .news-grid, .sub-news-grid, .tv-grid { grid-template-columns: 1fr; }
             .main-headline-img { height: 220px; }
             .header-container { flex-direction: column; gap: 15px; text-align: center; }
         }
@@ -238,7 +240,7 @@
     <div class="top-bar">
         <div class="ticker-title">🔴 ताजी बातमी</div>
         <div class="ticker-content">
-            पुण्यात एकाच दिवसात १२७ जणांचे रक्तदान... | नाशिकमध्ये रविवारी भव्य रक्तदान शिबिराचे आयोजन... | 'रक्तदाता : मानवतेचा संदेश' पुस्तकाचे लवकरच प्रकाशन...
+            पुण्यात एकाच दिवसात १२७ जणांचे रक्तदान... | नाशिकमध्ये रविवारी भव्य रक्तदान शिबिराचे आयोजन... | 'जागरूक रक्तदाता: समाज सेवा का नया आयाम' पुस्तकाचे लवकरच प्रकाशन...
         </div>
     </div>
 
@@ -265,6 +267,7 @@
             <li><a href="#">संस्था व उपक्रम</a></li>
             <li><a href="#">युवा व कँपस</a></li>
             <li><a href="#">पुस्तक विशेष</a></li>
+            <li><a href="#">Raktdata TV</a></li>
             <li><a href="#">Wall of Honour</a></li>
         </ul>
     </nav>
@@ -332,27 +335,97 @@
                     </ul>
                 </div>
 
+                <!-- BOOK SPECIAL SIDEBAR BLOCK -->
                 <div class="sidebar-block" style="background: #fff8f8; border-color: var(--news-red);">
                     <div class="block-title">📖 पुस्तक विशेष</div>
-                    <h4 style="font-size: 1.1rem; color: #111;">रक्तदाता : मानवतेचा संदेश</h4>
-                    <p style="font-size: 0.85rem; color: #555; margin: 8px 0;">
-                        रक्तदानाची संस्कृती प्रत्येक घराघरात पोहोचवण्यासाठी आणि समाजात जनजागृती करण्यासाठी लिहिलेले विशेष पुस्तक.
+                    
+                    <h4 style="font-size: 1.1rem; color: #111; font-weight: bold; line-height: 1.3;">
+                        जागरूक रक्तदाता: समाज सेवा का नया आयाम
+                    </h4>
+                    <p style="font-size: 0.85rem; color: #555; margin: 8px 0; line-height: 1.5;">
+                        रक्तदानाची संस्कृती प्रत्येक घराघरात पोहोचवण्यासाठी आणि समाजात जनजागृती करण्यासाठी लिहिलेले विशेष प्रेरणादायी पुस्तक.
                     </p>
-                    <button class="btn btn-red" style="width: 100%; font-size:0.85rem; justify-content: center; margin-top: 5px;">
+
+                    <div style="width: 100%; height: 150px; background: url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=500&q=80') center/cover no-repeat; border-radius: 4px; margin: 10px 0;"></div>
+
+                    <a href="#book" class="btn btn-red" style="width: 100%; font-size:0.85rem; justify-content: center; margin-top: 5px;">
                         <i class="fa-solid fa-book-open"></i> पुस्तकाबद्दल जाणून घ्या
-                    </button>
+                    </a>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- 5. CORE MOTTO RIBBON -->
+    <!-- 5. RAKTDATA TV SECTION -->
+    <section style="background: #ffffff; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 30px 0; margin-top: 30px;">
+        <div class="container" style="margin-top: 0; margin-bottom: 0;">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="font-size: 1.5rem; color: var(--news-red); font-weight: bold; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-circle-play"></i> RAKTDATA TV
+                </h3>
+                <a href="#videos" style="color: #222; font-size: 0.9rem; font-weight: bold; text-decoration: underline;">
+                    सर्व व्हिडिओ पाहा <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="tv-grid">
+                <!-- Left: Featured YouTube Embed -->
+                <div style="background: #000; border-radius: 8px; overflow: hidden; position: relative; width: 100%; padding-top: 56.25%;">
+                    <iframe 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        title="Raktdata Special Video" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- Right: Video Playlist Cards -->
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    
+                    <div style="display: flex; gap: 10px; background: #f8f9fa; padding: 10px; border-radius: 6px; border: 1px solid #eee;">
+                        <div style="width: 100px; height: 60px; background: #222; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; flex-shrink: 0;">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <div>
+                            <h5 style="font-size: 0.85rem; color: #111; line-height: 1.3;">१०० वेळा रक्तदान करणाऱ्या रक्तवीराची प्रेरणादायी मुलाखत</h5>
+                            <span style="font-size: 0.75rem; color: #777;">⏱️ ०५:४० मिनिटे</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; background: #f8f9fa; padding: 10px; border-radius: 6px; border: 1px solid #eee;">
+                        <div style="width: 100px; height: 60px; background: #222; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; flex-shrink: 0;">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <div>
+                            <h5 style="font-size: 0.85rem; color: #111; line-height: 1.3;">रक्तदानाविषयी महत्त्वाचे गैरसमज आणि तज्ज्ञांचे मार्गदर्शन</h5>
+                            <span style="font-size: 0.75rem; color: #777;">⏱️ ०८:१५ मिनिटे</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; background: #f8f9fa; padding: 10px; border-radius: 6px; border: 1px solid #eee;">
+                        <div style="width: 100px; height: 60px; background: #222; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; flex-shrink: 0;">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <div>
+                            <h5 style="font-size: 0.85rem; color: #111; line-height: 1.3;">महाविद्यालयांमध्ये 'रक्तदाता कँपस' मोहिमेचा विशेष रिपोर्ट</h5>
+                            <span style="font-size: 0.75rem; color: #777;">⏱️ ०३:५० मिनिटे</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CORE MOTTO RIBBON -->
     <div class="motto-bar">
         “आपण मागणारे नाही — आपण देणारे आहोत.”
     </div>
 
-    <!-- 6. FOOTER -->
+    <!-- 7. FOOTER -->
     <footer>
         <div class="footer-content">
             <div>
