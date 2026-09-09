@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAKTDATA NEWS — रक्तदान क्षेत्रातील पहिले वृत्त व जनजागृती व्यासपीठ</title>
     
-    <!-- Google Fonts & FontAwesome -->
+    <!-- Google Fonts & FontAwesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -14,7 +14,7 @@
             --news-red: #cc0000;
             --dark-red: #800000;
             --dark-bg: #111111;
-            --light-bg: #f4f4f4;
+            --light-bg: #f8f9fa;
             --text-color: #222222;
             --border-color: #e0e0e0;
             --font-main: 'Tiro Devanagari Marathi', serif;
@@ -43,6 +43,7 @@
             align-items: center;
             font-weight: bold;
             white-space: nowrap;
+            z-index: 2;
         }
 
         .ticker-content {
@@ -61,6 +62,7 @@
             background: #fff;
             border-bottom: 3px solid var(--news-red);
             padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .header-container {
@@ -80,24 +82,28 @@
             line-height: 1;
         }
 
-        .logo span { font-size: 0.85rem; color: #555; display: block; }
+        .logo span { font-size: 0.85rem; color: #555; display: block; margin-top: 4px; }
 
-        .header-actions .btn {
+        .header-actions { display: flex; gap: 10px; }
+
+        .btn {
             padding: 8px 16px;
             border-radius: 4px;
             font-weight: bold;
             font-size: 0.9rem;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .btn-red { background: var(--news-red); color: #fff; border: none; }
+        .btn-red:hover { background: var(--dark-red); }
         .btn-outline { border: 1px solid var(--news-red); color: var(--news-red); background: #fff; }
+        .btn-outline:hover { background: #ffebee; }
 
         /* NAV BAR */
-        nav {
-            background: #222;
-            color: #fff;
-        }
+        nav { background: #222; color: #fff; }
 
         .nav-links {
             max-width: 1200px;
@@ -113,6 +119,7 @@
             font-weight: bold;
             white-space: nowrap;
             border-bottom: 3px solid transparent;
+            transition: all 0.3s;
         }
 
         .nav-links li a:hover, .nav-links li a.active {
@@ -121,7 +128,7 @@
         }
 
         /* MAIN CONTENT GRID */
-        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
+        .container { max-width: 1200px; margin: 25px auto; padding: 0 15px; }
 
         .news-grid {
             display: grid;
@@ -136,12 +143,19 @@
             border-radius: 6px;
             overflow: hidden;
             margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
-        .main-headline img { width: 100%; height: 350px; object-fit: cover; }
+        /* Unsplash Reliable Images */
+        .main-headline-img {
+            width: 100%;
+            height: 350px;
+            background: url('https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+        }
+
         .main-headline-body { padding: 20px; }
         .category-tag { background: var(--news-red); color: #fff; padding: 3px 8px; font-size: 0.75rem; font-weight: bold; border-radius: 3px; }
-        .main-headline h2 { font-size: 1.8rem; margin: 10px 0; color: #111; }
+        .main-headline h2 { font-size: 1.8rem; margin: 10px 0; color: #111; line-height: 1.3; }
 
         /* SECONDARY NEWS GRID */
         .sub-news-grid {
@@ -156,11 +170,20 @@
             border-radius: 6px;
             padding: 12px;
             display: flex;
-            gap: 10px;
+            gap: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
         }
 
-        .news-card img { width: 90px; height: 75px; object-fit: cover; border-radius: 4px; }
-        .news-card h4 { font-size: 0.95rem; line-height: 1.3; }
+        .news-card-img {
+            width: 90px;
+            height: 75px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .news-card h4 { font-size: 0.95rem; line-height: 1.3; margin-top: 4px; color: #222; }
 
         /* SIDEBAR */
         .sidebar-block {
@@ -169,6 +192,7 @@
             border-radius: 6px;
             padding: 15px;
             margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
         }
 
         .block-title {
@@ -181,27 +205,30 @@
         }
 
         .trending-list { list-style: none; }
-        .trending-list li { padding: 8px 0; border-bottom: 1px dashed var(--border-color); font-weight: bold; font-size: 0.9rem; }
+        .trending-list li { padding: 10px 0; border-bottom: 1px dashed var(--border-color); font-weight: bold; font-size: 0.9rem; }
+        .trending-list li:last-child { border-bottom: none; }
 
         /* MOTTO RIBBON */
         .motto-bar {
             background: var(--news-red);
             color: #fff;
             text-align: center;
-            padding: 12px;
-            font-size: 1.2rem;
+            padding: 14px;
+            font-size: 1.3rem;
             font-weight: bold;
-            margin: 20px 0;
+            margin: 30px 0 0 0;
+            letter-spacing: 0.5px;
         }
 
         /* FOOTER */
-        footer { background: #111; color: #ccc; padding: 30px 15px 15px 15px; margin-top: 40px; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .footer-bottom { text-align: center; border-top: 1px solid #333; padding-top: 15px; margin-top: 20px; font-size: 0.85rem; }
+        footer { background: #111; color: #ccc; padding: 40px 15px 15px 15px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        .footer-bottom { text-align: center; border-top: 1px solid #333; padding-top: 15px; margin-top: 30px; font-size: 0.85rem; color: #777; }
 
         @media (max-width: 768px) {
             .news-grid, .sub-news-grid { grid-template-columns: 1fr; }
-            .main-headline img { height: 220px; }
+            .main-headline-img { height: 220px; }
+            .header-container { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
@@ -250,12 +277,12 @@
             <div>
                 <!-- Featured News -->
                 <div class="main-headline">
-                    <img src="https://via.placeholder.com/700x350" alt="Main News">
+                    <div class="main-headline-img"></div>
                     <div class="main-headline-body">
                         <span class="category-tag">मुख्य बातमी</span>
                         <h2>राज्यभरात युवा वर्गाचा रक्तदानात विक्रमी सहभाग; Raktdata कडून विशेष गौरव</h2>
-                        <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">
-                            राज्यभरातील महाविद्यालयांमध्ये राबवण्यात आलेल्या विशेष जनजागृती मोहिमेला मोठा प्रतिसाद मिळाला आहे...
+                        <p style="color: #666; font-size: 0.95rem; margin-top: 8px;">
+                            राज्यभरातील महाविद्यालयांमध्ये राबवण्यात आलेल्या विशेष जनजागृती मोहिमेला तरुणांचा मोठा प्रतिसाद मिळाला आहे. विविध संस्थांच्या सहकार्याने भव्य शिबिरांचे आयोजन करण्यात आले.
                         </p>
                     </div>
                 </div>
@@ -263,55 +290,57 @@
                 <!-- Sub News Cards -->
                 <div class="sub-news-grid">
                     <div class="news-card">
-                        <img src="https://via.placeholder.com/100" alt="News">
+                        <div class="news-card-img" style="background-image: url('https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=300&q=80');"></div>
                         <div>
                             <span class="category-tag" style="font-size:0.65rem;">शिबीर</span>
                             <h4>सोलापूर: जिल्हा रुग्णालयात १०० हून अधिक रक्तदात्यांचा सन्मान</h4>
                         </div>
                     </div>
                     <div class="news-card">
-                        <img src="https://via.placeholder.com/100" alt="News">
+                        <div class="news-card-img" style="background-image: url('https://images.unsplash.com/photo-1536856136534-bb679c52a9aa?auto=format&fit=crop&w=300&q=80');"></div>
                         <div>
                             <span class="category-tag" style="font-size:0.65rem;">रक्तवीर</span>
                             <h4>५० वेळा रक्तदान करणाऱ्या अमोल पाटील यांचा प्रेरणादायी प्रवास</h4>
                         </div>
                     </div>
                     <div class="news-card">
-                        <img src="https://via.placeholder.com/100" alt="News">
+                        <div class="news-card-img" style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=300&q=80');"></div>
                         <div>
                             <span class="category-tag" style="font-size:0.65rem;">संस्था</span>
                             <h4>शिवनेरी सामाजिक संस्थेचा रक्तदान जनजागृतीचा यशस्वी उपक्रम</h4>
                         </div>
                     </div>
                     <div class="news-card">
-                        <img src="https://via.placeholder.com/100" alt="News">
+                        <div class="news-card-img" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=300&q=80');"></div>
                         <div>
                             <span class="category-tag" style="font-size:0.65rem;">विशेष</span>
-                            <h4>रक्तदानाबाबतचे गैरसमज आणि वस्तुस्थिती: विशेष वृत्त</h4>
+                            <h4>रक्तदानाबाबतचे गैरसमज आणि वस्तुस्थिती: विशेष मार्गदर्शक वृत्त</h4>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN: SIDEBAR (TRENDING & WALL OF HONOUR) -->
+            <!-- RIGHT COLUMN: SIDEBAR -->
             <div>
                 <div class="sidebar-block">
                     <div class="block-title">🔥 आजच्या महत्त्वाच्या बातम्या</div>
                     <ul class="trending-list">
-                        <li>१. मुंबईत रविवारी ५ ठिकाणी मोफत रक्तदान शिबिरे</li>
-                        <li>२. महाविद्यालयांमध्ये 'रक्तदाता कँपस' मोहीम सुरू</li>
-                        <li>३. नियमित रक्तदान करण्याचे आरोग्याला होणारे ५ फायदे</li>
-                        <li>४. विशेष सन्मान: Raktdata Wall of Honour यादी जाहीर</li>
+                        <li><i class="fa-solid fa-chevron-right" style="color:var(--news-red); font-size:0.7rem;"></i> मुंबईत रविवारी ५ ठिकाणी मोफत रक्तदान शिबिरे</li>
+                        <li><i class="fa-solid fa-chevron-right" style="color:var(--news-red); font-size:0.7rem;"></i> महाविद्यालयांमध्ये 'रक्तदाता कँपस' मोहीम सुरू</li>
+                        <li><i class="fa-solid fa-chevron-right" style="color:var(--news-red); font-size:0.7rem;"></i> नियमित रक्तदान करण्याचे आरोग्याला होणारे ५ फायदे</li>
+                        <li><i class="fa-solid fa-chevron-right" style="color:var(--news-red); font-size:0.7rem;"></i> विशेष सन्मान: Raktdata Wall of Honour यादी जाहीर</li>
                     </ul>
                 </div>
 
                 <div class="sidebar-block" style="background: #fff8f8; border-color: var(--news-red);">
                     <div class="block-title">📖 पुस्तक विशेष</div>
-                    <h4>रक्तदाता : मानवतेचा संदेश</h4>
+                    <h4 style="font-size: 1.1rem; color: #111;">रक्तदाता : मानवतेचा संदेश</h4>
                     <p style="font-size: 0.85rem; color: #555; margin: 8px 0;">
-                        रक्तदानाची संस्कृती प्रत्येक घराघरात पोहोचवण्यासाठी लिहिलेले विशेष पुस्तक.
+                        रक्तदानाची संस्कृती प्रत्येक घराघरात पोहोचवण्यासाठी आणि समाजात जनजागृती करण्यासाठी लिहिलेले विशेष पुस्तक.
                     </p>
-                    <button class="btn btn-red" style="width: 100%; font-size:0.8rem;">पुस्तकाबद्दल जाणून घ्या</button>
+                    <button class="btn btn-red" style="width: 100%; font-size:0.85rem; justify-content: center; margin-top: 5px;">
+                        <i class="fa-solid fa-book-open"></i> पुस्तकाबद्दल जाणून घ्या
+                    </button>
                 </div>
             </div>
 
@@ -327,18 +356,26 @@
     <footer>
         <div class="footer-content">
             <div>
-                <h3 style="color: var(--news-red);">RAKTDATA NEWS</h3>
-                <p style="font-size: 0.85rem; margin-top: 8px;">
+                <h3 style="color: var(--news-red); font-size: 1.5rem;">RAKTDATA NEWS</h3>
+                <p style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
                     "तुमच्याकडून काही मागण्यासाठी Raktdata येथे नाही. तुम्ही केलेल्या चांगल्या कार्याला ओळख आणि सन्मान देण्यासाठी Raktdata येथे आहे."
                 </p>
             </div>
             <div>
-                <h4>विभाग</h4>
-                <p style="font-size:0.85rem; margin-top:5px;">बातम्या • रक्तवीर • संस्था • पुस्तक • सन्मान</p>
+                <h4 style="color: #fff; margin-bottom: 10px;">प्रमुख विभाग</h4>
+                <p style="font-size:0.85rem; line-height: 2;">
+                    • रक्तदान शिबिरे<br>
+                    • रक्तवीर कथा<br>
+                    • संस्था व उपक्रम<br>
+                    • Wall of Honour
+                </p>
             </div>
             <div>
-                <h4>संपर्क</h4>
-                <p style="font-size:0.85rem; margin-top:5px;">Email: news@raktdata.in</p>
+                <h4 style="color: #fff; margin-bottom: 10px;">संपर्क व बातमी पाठवा</h4>
+                <p style="font-size:0.85rem; line-height: 1.8;">
+                    Email: news@raktdata.in<br>
+                    आपल्या परिसरातील बातम्या व रक्तदान उपक्रमांची माहिती आम्हाला पाठवा.
+                </p>
             </div>
         </div>
         <div class="footer-bottom">
