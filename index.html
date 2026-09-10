@@ -3,333 +3,611 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>मुख्य पृष्ठ | RAKTDATA.IN</title>
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Raktdata.in | भारताचे पहिले रक्तदान न्यूज पोर्टल</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      --rd-red: #c80000;
+      --rd-red-dark: #8b0000;
+      --rd-navy: #0f172a;
+      --rd-bg: #f8fafc;
+      --rd-card: #ffffff;
+      --rd-text: #1e293b;
+      --rd-muted: #64748b;
+      --rd-border: #e2e8f0;
+      --rd-gold: #d97706;
     }
 
+    * { box-sizing: border-box; }
+    
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f6f9;
-      color: #333;
+      margin: 0;
+      font-family: "Noto Sans Devanagari", sans-serif;
+      background-color: var(--rd-bg);
+      color: var(--rd-text);
       line-height: 1.6;
+      top: 0 !important;
     }
 
-    /* HEADER / NAVBAR */
-    .header {
-      background-color: #0A2A66;
-      color: white;
-      padding: 15px 20px;
+    a { text-decoration: none; color: inherit; }
+
+    .rd-container {
+      width: min(1200px, calc(100% - 30px));
+      margin-inline: auto;
+    }
+
+    /* TOP BAR WITH LANGUAGE SWITCHER */
+    .news-topbar {
+      background: var(--rd-navy);
+      color: #fff;
+      font-size: 13px;
+      padding: 6px 0;
+    }
+
+    .news-topbar-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .logo {
-      font-size: 22px;
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .lang-switcher select {
+      background: transparent;
+      color: #fff;
+      border: none;
+      font-size: 13px;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .lang-switcher select option { background: #0f172a; color: #fff; }
+    .goog-te-banner-frame, .skiptranslate { display: none !important; }
+
+    /* BREAKING NEWS TICKER */
+    .breaking-bar {
+      background: #fff;
+      border-bottom: 2px solid var(--rd-red);
+      padding: 6px 0;
+      overflow: hidden;
+    }
+
+    .breaking-flex { display: flex; align-items: center; gap: 15px; }
+
+    .breaking-badge {
+      background: var(--rd-red);
+      color: #fff;
+      padding: 3px 10px;
       font-weight: 800;
-      color: #ffffff;
-      text-decoration: none;
+      font-size: 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(200, 0, 0, 0.3);
     }
 
-    .logo span {
-      color: #C00000;
-    }
-
-    .nav-btn {
-      background-color: #C00000;
-      color: white;
-      padding: 8px 16px;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
+    .breaking-text {
+      color: var(--rd-navy);
+      font-weight: 700;
       font-size: 14px;
-      transition: background 0.3s;
+      width: 100%;
     }
 
-    .nav-btn:hover {
-      background-color: #a00000;
+    /* MASTHEAD / HEADER */
+    .news-header {
+      background: #fff;
+      border-bottom: 1px solid var(--rd-border);
+      padding: 20px 0 0;
     }
 
-    /* MAIN CONTAINER */
-    .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 15px;
-    }
-
-    /* HERO SECTION */
-    .hero-section {
+    .masthead {
       text-align: center;
-      background: white;
-      padding: 30px 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 3px double var(--rd-navy);
     }
 
-    .hero-title {
-      color: #0A2A66;
-      font-size: 28px;
+    .masthead h1 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      color: var(--rd-red);
+    }
+
+    .masthead p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      color: var(--rd-muted);
+      font-weight: 600;
+    }
+
+    .news-nav {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .news-nav a {
+      padding: 6px 16px;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--rd-navy);
+      white-space: nowrap;
+    }
+
+    .news-nav a:hover, .news-nav a.active {
+      color: var(--rd-red);
+      border-bottom: 2px solid var(--rd-red);
+    }
+
+    /* MAIN GRID LAYOUT */
+    .news-grid-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin: 25px 0 40px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--rd-navy);
+      margin: 0 0 20px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--rd-red);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* MAIN STORY */
+    .main-story {
+      background: #fff;
+      border: 1px solid var(--rd-border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    .main-story-img {
+      width: 100%;
+      height: 350px;
+      overflow: hidden;
+      background: #e2e8f0;
+    }
+
+    .main-story-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .main-story-content { padding: 20px; }
+
+    .story-tag {
+      background: #fee2e2;
+      color: var(--rd-red);
+      font-size: 12px;
       font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
       margin-bottom: 10px;
     }
 
-    .hero-subtitle {
-      color: #555;
-      font-size: 16px;
-      max-width: 700px;
-      margin: 0 auto;
+    .main-story h2 {
+      margin: 0 0 10px;
+      font-size: 26px;
+      color: var(--rd-navy);
     }
 
-    /* BOOK OFFER PROMO CARD */
-    .book-promo-card {
-      background: #ffffff;
-      border: 2px solid #FFD700;
-      border-radius: 12px;
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    .main-story p { color: var(--rd-muted); margin: 0 0 15px; font-size: 15px; }
+
+    /* SUB STORIES */
+    .sub-stories {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .sub-story-card {
+      background: #fff;
+      border: 1px solid var(--rd-border);
+      border-radius: 8px;
+      padding: 15px;
+    }
+
+    .sub-story-card h3 { margin: 0 0 8px; font-size: 16px; color: var(--rd-navy); }
+    .sub-story-card p { margin: 0; font-size: 13px; color: var(--rd-muted); }
+
+    /* EDITORIAL CARDS */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .editorial-card {
+      background: #fff;
+      border: 1px solid var(--rd-border);
+      border-radius: 8px;
+      padding: 20px;
+      border-top: 4px solid var(--rd-red);
+    }
+
+    .editorial-card h3 { margin: 10px 0 8px; color: var(--rd-navy); font-size: 18px; }
+    .editorial-card p { font-size: 14px; color: var(--rd-muted); margin: 0 0 15px; }
+
+    /* SIDEBAR & WIDGETS */
+    .sidebar-widget {
+      background: #fff;
+      border: 1px solid var(--rd-border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .widget-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--rd-navy);
+      margin: 0 0 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--rd-red);
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%; border: 0;
+    }
+
+    .news-list { list-style: none; padding: 0; margin: 0; }
+    .news-list li {
+      padding: 8px 0 8px 18px;
+      border-bottom: 1px dashed var(--rd-border);
+      font-size: 14px;
+      font-weight: 600;
+      position: relative;
+    }
+    .news-list li::before {
+      content: "•"; color: var(--rd-red); font-weight: bold; font-size: 18px; position: absolute; left: 0; top: 4px;
+    }
+
+    /* 📚 BOOK SECTION (SPECIAL WIDGET) */
+    .book-widget {
+      background: #fff;
+      border: 2px solid var(--rd-gold);
+      border-radius: 8px;
+      padding: 20px;
       position: relative;
       overflow: hidden;
     }
 
-    .badge-offer {
-      position: absolute;
-      top: 15px;
-      right: -35px;
-      background: #C00000;
-      color: white;
-      padding: 5px 40px;
-      transform: rotate(45deg);
-      font-size: 12px;
-      font-weight: bold;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .book-promo-title {
-      color: #C00000;
-      font-size: 24px;
+    .book-badge {
+      background: var(--rd-gold);
+      color: #fff;
+      font-size: 11px;
       font-weight: 800;
-      margin-top: 10px;
-    }
-
-    .book-author {
-      color: #0A2A66;
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-
-    .price-box {
-      margin: 20px 0;
-    }
-
-    .old-price {
-      text-decoration: line-through;
-      color: #888;
-      font-size: 20px;
-      margin-right: 10px;
-    }
-
-    .new-price {
-      color: #C00000;
-      font-size: 32px;
-      font-weight: 800;
-    }
-
-    .offer-tag {
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
       display: inline-block;
-      background: #eefdf3;
-      color: #15803d;
-      border: 1px solid #25D366;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: bold;
-      margin-top: 5px;
-    }
-
-    .buy-now-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background-color: #25D366;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 18px;
-      padding: 14px 32px;
-      border-radius: 8px;
-      margin-top: 15px;
-      transition: background 0.3s, transform 0.2s;
-      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-    }
-
-    .buy-now-btn:hover {
-      background-color: #1eb954;
-      transform: translateY(-2px);
-    }
-
-    /* FEATURES GRID */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .feature-item {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .feature-icon {
-      font-size: 32px;
-      color: #0A2A66;
       margin-bottom: 10px;
     }
 
-    .feature-title {
-      font-size: 16px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 5px;
+    .book-flex {
+      display: flex;
+      gap: 15px;
+      align-items: center;
     }
 
-    .feature-desc {
+    .book-cover {
+      width: 100px;
+      height: 140px;
+      background: #fff;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--rd-red);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .book-details h4 { margin: 0 0 5px; font-size: 16px; color: var(--rd-navy); }
+    .book-price { font-size: 18px; font-weight: 900; color: var(--rd-red); margin-bottom: 8px; }
+
+    .btn-buy {
+      display: inline-block;
+      background: var(--rd-gold);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 800;
       font-size: 13px;
-      color: #666;
-    }
-
-    /* FOOTER */
-    .footer {
-      background-color: #0A2A66;
-      color: white;
       text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .btn-buy:hover { background: #b45309; }
+
+    /* CTA BANNER */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--rd-navy), #1e293b);
+      color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 40px 0;
+      border-left: 6px solid var(--rd-red);
     }
 
-    /* MOBILE RESPONSIVE */
-    @media (max-width: 600px) {
-      .hero-title {
-        font-size: 22px;
-      }
-      .book-promo-title {
-        font-size: 20px;
-      }
-      .new-price {
-        font-size: 26px;
-      }
-      .buy-now-btn {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-      }
+    .btn-news {
+      display: inline-block;
+      background: var(--rd-red);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 15px;
+      margin-top: 15px;
+    }
+
+    .news-footer {
+      background: var(--rd-navy);
+      color: #94a3b8;
+      padding: 30px 0 20px;
+      font-size: 13px;
+      border-top: 4px solid var(--rd-red);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .news-grid-layout, .sub-stories { grid-template-columns: 1fr; }
+      .main-story-img { height: 240px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ================= HEADER ================= -->
-  <header class="header">
-    <a href="#" class="logo">RAKT<span>DATA</span>.IN</a>
-    <a href="ebook.html" class="nav-btn">पुस्तके</a>
+  <!-- TOP BAR -->
+  <div class="news-topbar">
+    <div class="rd-container news-topbar-inner">
+      <div>🗓️ आजची तारीख: <span id="currentDate"></span></div>
+      <div class="topbar-right">
+        <span>Raktdata.in - भारताचे पहिले रक्तदान न्यूज पोर्टल</span>
+        <div class="lang-switcher">
+          <label for="langSelect">🌐</label>
+          <select id="langSelect" onchange="changeLanguage(this.value)">
+            <option value="mr" selected>मराठी</option>
+            <option value="hi">हिन्दी</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BREAKING NEWS TICKER -->
+  <div class="breaking-bar">
+    <div class="rd-container breaking-flex">
+      <span class="breaking-badge">🔴 महत्त्वाच्या बातम्या</span>
+      <marquee class="breaking-text" behavior="scroll" direction="left" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">
+        🩸 पुणे शहरात भव्य रक्तदान शिबिराचे आयोजन... &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; 🩸 ५० पेक्षा जास्त वेळा रक्तदान करणाऱ्या रक्तवीरांचा राज्यस्तरीय सन्मान... &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; 🩸 तातडीची गरज: O Negative रक्तगटाच्या दात्यांनी त्वरित संपर्क साधावा...
+      </marquee>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="news-header">
+    <div class="rd-container">
+      <div class="masthead">
+        <h1>Raktdata.in</h1>
+        <p>रक्तदान जनजागृती • रक्तदात्यांचा सन्मान • विशेष बातम्या</p>
+      </div>
+
+      <nav class="news-nav">
+        <a class="active" href="#">मुख्य बातमी</a>
+        <a href="#heroes">रक्तवीर</a>
+        <a href="#orgs">संस्था</a>
+        <a href="#news">ताज्या कथा</a>
+        <a href="#blessings">शुभेच्छा संदेश</a>
+        <a href="#book-section">📚 पुस्तक खरेदी (BOOK)</a>
+        <a href="#submit">कथा पाठवा (ACT)</a>
+      </nav>
+    </div>
   </header>
 
-  <div class="container">
-
-    <!-- ================= HERO SECTION ================= -->
-    <div class="hero-section">
-      <h1 class="hero-title">रक्तदानाविषयी शास्त्रीय व वैद्यकीय जनजागृती</h1>
-      <p class="hero-subtitle">
-        अंधश्रद्धा आणि भीती दूर सारून समाजात वैज्ञानिक दृष्टीकोन निर्माण करणारी अधिकृत माहिती आणि अभ्यासपूर्ण विचार.
-      </p>
-    </div>
-
-    <!-- ================= BOOK PROMO CARD ================= -->
-    <div class="book-promo-card">
+  <!-- MAIN CONTENT -->
+  <main class="rd-container">
+    
+    <div class="news-grid-layout">
       
-      <!-- OFFER BADGE -->
-      <div class="badge-offer">विशेष ऑफर</div>
+      <!-- LEFT COLUMN -->
+      <div>
+        <!-- आजची प्रमुख कथा -->
+        <h2 class="section-title">📰 आजची प्रमुख कथा</h2>
+        <article class="main-story">
+          <div class="main-story-img">
+            <img src="https://picsum.photos/800/400" alt="रक्तदान प्रमुख बातमी">
+          </div>
+          <div class="main-story-content">
+            <span class="story-tag">विशेष वृत्त</span>
+            <h2>रक्तदानातून मानवतेची सेवा: राज्यभरात १ हजारहून अधिक रक्तवीरांचा विशेष सन्मान</h2>
+            <p>Raktdata.in कडून सामाजिक बांधिलकी जपत सातत्याने रक्तदान करणाऱ्या रक्तदात्यांची दखल घेतली जात आहे. रक्तदान चळवळीला गती देण्यासाठी हे विशेष व्यासपीठ काम करत आहे...</p>
+            <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 14px;">संपूर्ण बातमी वाचा ➔</a>
+          </div>
+        </article>
 
-      <div class="book-promo-title">
-        📖 "रक्तदाता: मानवतेचा संदेश"
-      </div>
-      
-      <div class="book-author">
-        लेखक: मा. दिलीप म. गायकवाड
-      </div>
+        <!-- ताज्या कथा आणि बातम्या -->
+        <h2 class="section-title" id="news">📰 ताज्या कथा आणि बातम्या</h2>
+        <div class="sub-stories">
+          <article class="sub-story-card">
+            <span class="story-tag">जनजागृती</span>
+            <h3>रक्तदान करण्यापूर्वी आणि नंतर काय काळजी घ्यावी?</h3>
+            <p>योग्य आहार आणि पुरेशी झोप रक्तदान करण्यापूर्वी अत्यंत महत्त्वाची असते...</p>
+          </article>
 
-      <p style="color: #555; font-size: 14px; max-width: 600px; margin: 0 auto;">
-        रक्तदानाचे सामाजिक महत्त्व, शास्त्रीय माहिती आणि मानवी मूल्यांचा जागर घडवून आणणारे विशेष पुस्तक.
-      </p>
-
-      <!-- PRICE SECTION -->
-      <div class="price-box">
-        <span class="old-price">₹३००</span>
-        <span class="new-price">₹२००/- मात्र</span>
-        <br>
-        <div class="offer-tag">
-          🎉 मर्यादित कालावधीसाठी खास सवलत!
+          <article class="sub-story-card">
+            <span class="story-tag">सामाजिक उपक्रम</span>
+            <h3>स्थानिक तरुणांनी उभारले आपत्कालीन रक्तदाते नेटवर्क</h3>
+            <p>ग्रामीण भागातील रुग्णांना तातडीने रक्त उपलब्ध व्हावे यासाठी विशेष मोहीम...</p>
+          </article>
         </div>
       </div>
 
-      <!-- CALL TO ACTION BUTTON -->
-      <a href="ebook.html" class="buy-now-btn">
-        <i class="fa-solid fa-cart-shopping"></i>
-        आत्ताच खरेदी करा / Buy Now
-      </a>
+      <!-- RIGHT SIDEBAR -->
+      <aside>
+        
+        <!-- YOUTUBE LIVE TV -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">🔴 Raktdata TV (CONNECT)</h3>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Raktdata Live Stream" allowfullscreen></iframe>
+          </div>
+          <p style="font-size: 13px; color: var(--rd-muted); margin: 10px 0 0;">📹 रक्तदान जनजागृती आणि मुलाखतींचे विशेष व्हिडिओ थेट पाहा.</p>
+        </div>
 
-      <p style="font-size: 12px; color: #777; margin-top: 12px;">
-        (ई-बुक, ऑडिओ बुक आणि घरपोच प्रिंटेड कॉपी स्वरूपात उपलब्ध)
+        <!-- 📚 BOOK SECTION (SPECIAL WIDGET) -->
+        <div class="book-widget" id="book-section">
+          <span class="book-badge">📚 विशेष पुस्तक (BOOK)</span>
+          <div class="book-flex">
+            <div class="book-cover">
+              <img src="book-cover.jpg" alt="रक्तदाता : मानवतेचा संदेश">
+            </div>
+            <div class="book-details">
+              <h4>रक्तदाता : मानवतेचा संदेश</h4>
+              <p style="font-size:12px; color:var(--rd-muted); margin: 0 0 5px;"><strong>लेखक:</strong> डि. एम. गायकवाड</p>
+              <p style="font-size:11px; color:#16a34a; font-weight: bold; margin: 0 0 8px;">
+                ✨ मा. उपमुख्यमंत्री कार्यालयाकडून विशेष शुभेच्छा संदेश प्राप्त!
+              </p>
+              <div class="book-price">₹१९९ <span style="font-size: 12px; color: var(--rd-muted); text-decoration: line-through;">₹२९९</span></div>
+              <a href="javascript:void(0)" onclick="buyBookAlert()" class="btn-buy">🛒 पुस्तक खरेदी करा</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🏆 RECOGNIZE SECTION -->
+        <div class="sidebar-widget" id="honour" style="margin-top:25px;">
+          <h3 class="widget-title">🏆 विशेष सन्मान व अपडेट्स</h3>
+          <ul class="news-list">
+            <li><a href="#">रक्तदान शिबिर यशस्विसंपन्न; १०० बाटल्या रक्त जमा.</a></li>
+            <li><a href="#">दुर्मिळ 'O Negative' रक्तदात्यांची विशेष यादी प्रसिद्ध.</a></li>
+            <li><a href="#">कॉलेज तरुणांचा रक्तदान मोहिमेत उत्स्फूर्त सहभाग.</a></li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- शासकीय शुभेच्छा संदेश कार्ड -->
+    <div class="editorial-card" id="blessings" style="margin-bottom: 30px; border-top-color: #d97706; background: #fffcf5;">
+      <span class="story-tag" style="background: #fef3c7; color: #b45309;">📜 शासकीय शुभेच्छा संदेश</span>
+      <h3>"रक्तदाता : मानवतेचा संदेश" पुस्तकास उपमुख्यमंत्र्यांच्या कार्यालयाकडून हार्दिक शुभेच्छा!</h3>
+      <p style="font-style: italic; color: #334155; font-size: 15px;">
+        "रक्तदान ही केवळ एका व्यक्तीची गरज भागविणारी वैद्यकीय प्रक्रिया नसून, माणुसकी जपणारी आणि समाजाला संवेदनशील बनविणारी एक महान सेवा आहे... 'रक्तदाता : मानवतेचा संदेश' या पुस्तकाच्या माध्यमातून रक्तदानविषयक शास्त्रीय माहिती व गैरसमज दूर करण्याचा स्तुत्य प्रयत्न करण्यात आला आहे."
       </p>
-
+      <p style="margin: 0; font-weight: bold; color: var(--rd-navy); font-size: 14px;">
+        मा. मंगेश नरसिंह चिवटे (विशेष कार्य अधिकारी, मा. उपमुख्यमंत्री कार्यालय, मंत्रालय, मुंबई)
+      </p>
     </div>
 
-    <!-- ================= FEATURES ================= -->
-    <div class="features-grid">
-      
-      <div class="feature-item">
-        <i class="fa-solid fa-tablet-screen-button feature-icon"></i>
-        <div class="feature-title">📱 ई-बुक (E-Book)</div>
-        <div class="feature-desc">खरेदीनंतर मोबाईल किंवा लॅपटॉपवर झटपट ऑनलाईन ॲक्सेस.</div>
+    <!-- EDITORIAL CARDS (INSPIRE & SHOW) -->
+    <div class="editorial-grid">
+      <div class="editorial-card" id="heroes">
+        <span class="story-tag">गौरव गाथा (INSPIRE)</span>
+        <h3>❤️ आजचे रक्तवीर</h3>
+        <p>वयाच्या ५० व्या वर्षी ५० व्यांदा रक्तदान करणारे महेश जोशी यांची प्रेरणादायी गोष्ट.</p>
+        <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 13px;">रक्तवीर कथा वाचा ➔</a>
       </div>
 
-      <div class="feature-item">
-        <i class="fa-solid fa-headphones feature-icon"></i>
-        <div class="feature-title">🎧 ऑडिओ बुक</div>
-        <div class="feature-desc">प्रवासात किंवा मोकळ्या वेळेत स्पष्ट आवाजात ऐकण्याची सोय.</div>
+      <div class="editorial-card" id="orgs">
+        <span class="story-tag">संस्था परिचय (SHOW)</span>
+        <h3>🏢 आजची प्रेरणादायी संस्था</h3>
+        <p>'सेवाभावी रक्तदाता समूह' गेली १० वर्षे अविरतपणे रक्तदान शिबिरांचे आयोजन करत आहे.</p>
+        <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 13px;">संस्थेविषयी वाचा ➔</a>
       </div>
-
-      <div class="feature-item">
-        <i class="fa-solid fa-truck-ramps feature-icon"></i>
-        <div class="feature-title">📖 घरपोच प्रिंटेड कॉपी</div>
-        <div class="feature-desc">भारतीय पोस्टाद्वारे ३ ते ५ दिवसांत घरपोच डिलिव्हरी.</div>
-      </div>
-
     </div>
 
-  </div>
+    <!-- 📩 ACT (CALL TO ACTION) -->
+    <section class="cta-banner" id="submit">
+      <h2>📩 तुमची कथा / बातमी पाठवा (ACT)</h2>
+      <p style="margin: 0; opacity: 0.9;">तुम्ही किंवा तुमची संस्था रक्तदान क्षेत्रात कार्य करत असाल, तर तुमची बातमी किंवा अनुभव आमच्यापर्यंत पोहोचवा.</p>
+      <a href="#" class="btn-news">बातमी / कथा सबमिट करा</a>
+    </section>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer">
-    <p>&copy; 2026 RAKTDATA.IN | सर्व हक्क सुरक्षित.</p>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="news-footer">
+    <div class="rd-container">
+      <p>© Raktdata.in | सर्व हक्क सुरक्षित. भारतातील पहिले रक्तदान न्यूज पोर्टल.</p>
+    </div>
   </footer>
+
+  <div id="google_translate_element" style="display:none;"></div>
+
+  <script>
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('currentDate').innerText = new Date().toLocaleDateString('mr-IN', options);
+
+    function changeLanguage(lang) {
+      var selectField = document.querySelector('.goog-te-combo');
+      if (selectField) {
+        selectField.value = lang;
+        selectField.dispatchEvent(new Event('change'));
+      }
+    }
+
+    function buyBookAlert() {
+      alert("'रक्तदाता : मानवतेचा संदेश' (लेखक: डि. एम. गायकवाड) या पुस्तकाची ऑर्डर नोंदवण्यासाठी संपर्क करा.");
+    }
+  </script>
+
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'mr',
+        includedLanguages: 'mr,hi,en',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
 
 </body>
 </html>
