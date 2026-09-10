@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raktdata.in | रक्तदान बातम्या व जनजागृती पोर्टल</title>
+  <title>Raktdata.in | रक्तदान बातम्या व जनजागृती न्यूज पोर्टल</title>
   
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -22,6 +23,7 @@
     }
 
     * { box-sizing: border-box; }
+    
     body {
       margin: 0;
       font-family: "Noto Sans Devanagari", sans-serif;
@@ -37,7 +39,7 @@
       margin-inline: auto;
     }
 
-    /* TOP BAR & BREAKING NEWS */
+    /* 1. TOP BAR */
     .news-topbar {
       background: var(--rd-navy);
       color: #fff;
@@ -51,11 +53,12 @@
       align-items: center;
     }
 
+    /* 2. BREAKING NEWS TICKER (LIVE) */
     .breaking-bar {
       background: #fff;
       border-bottom: 2px solid var(--rd-red);
-      padding: 8px 0;
-      font-size: 14px;
+      padding: 6px 0;
+      overflow: hidden;
     }
 
     .breaking-flex {
@@ -67,23 +70,26 @@
     .breaking-badge {
       background: var(--rd-red);
       color: #fff;
-      padding: 2px 10px;
+      padding: 3px 10px;
       font-weight: 800;
       font-size: 12px;
-      border-radius: 3px;
-      text-transform: uppercase;
+      border-radius: 4px;
       white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(200, 0, 0, 0.3);
     }
 
     .breaking-text {
       color: var(--rd-navy);
-      font-weight: 600;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      font-weight: 700;
+      font-size: 14px;
+      width: 100%;
+      cursor: pointer;
     }
 
-    /* MASTHEAD & NAV */
+    /* 3. MASTHEAD / HEADER */
     .news-header {
       background: #fff;
       border-bottom: 1px solid var(--rd-border);
@@ -132,7 +138,7 @@
       border-bottom: 2px solid var(--rd-red);
     }
 
-    /* GRID LAYOUTS */
+    /* 4. MAIN GRID LAYOUT */
     .news-grid-layout {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -163,9 +169,10 @@
 
     .main-story-img {
       width: 100%;
-      height: 340px;
+      height: 350px;
       overflow: hidden;
       background: #e2e8f0;
+      position: relative;
     }
 
     .main-story-img img {
@@ -199,6 +206,7 @@
       font-size: 26px;
       line-height: 1.35;
       color: var(--rd-navy);
+      cursor: pointer;
     }
 
     .main-story h2:hover {
@@ -238,7 +246,7 @@
       color: var(--rd-muted);
     }
 
-    /* EDITORIAL CARDS (रक्तवीर व संस्था) */
+    /* EDITORIAL CARDS */
     .editorial-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -266,7 +274,7 @@
       margin: 0 0 15px;
     }
 
-    /* SIDEBAR */
+    /* SIDEBAR & YOUTUBE PLAYER */
     .sidebar-widget {
       background: #fff;
       border: 1px solid var(--rd-border);
@@ -284,6 +292,25 @@
       border-bottom: 2px solid var(--rd-red);
     }
 
+    /* YouTube Responsive Wrapper */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     .news-list {
       list-style: none;
       padding: 0;
@@ -291,10 +318,23 @@
     }
 
     .news-list li {
-      padding: 10px 0;
+      position: relative;
+      padding-left: 20px;
+      padding-top: 8px;
+      padding-bottom: 8px;
       border-bottom: 1px dashed var(--rd-border);
       font-size: 14px;
       font-weight: 600;
+    }
+
+    .news-list li::before {
+      content: "•";
+      color: var(--rd-red);
+      font-weight: bold;
+      font-size: 20px;
+      position: absolute;
+      left: 0;
+      top: 2px;
     }
 
     .news-list li:last-child {
@@ -346,7 +386,7 @@
       text-align: center;
     }
 
-    /* RESPONSIVE STYLES */
+    /* RESPONSIVE DESIGN */
     @media (max-width: 900px) {
       .news-grid-layout {
         grid-template-columns: 1fr;
@@ -373,14 +413,13 @@
     </div>
   </div>
 
-  <!-- BREAKING NEWS TICKER -->
+  <!-- BREAKING NEWS TICKER (LIVE SCROLLING) -->
   <div class="breaking-bar">
     <div class="rd-container breaking-flex">
-      <span class="breaking-badge">महत्त्वाच्या बातम्या</span>
-      <div class="breaking-text">
-        🩸 पुणे शहरात भव्य रक्तदान शिबिराचे आयोजन... 
-        • ५० पेक्षा जास्त वेळा रक्तदान करणाऱ्या रक्तवीरांचा राज्यस्तरीय सन्मान...
-      </div>
+      <span class="breaking-badge">🔴 महत्त्वाच्या बातम्या</span>
+      <marquee class="breaking-text" behavior="scroll" direction="left" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">
+        🩸 पुणे शहरात भव्य रक्तदान शिबिराचे आयोजन... &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; 🩸 ५० पेक्षा जास्त वेळा रक्तदान करणाऱ्या रक्तवीरांचा राज्यस्तरीय सन्मान... &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; 🩸 तातडीची गरज: O Negative रक्तगटाच्या दात्यांनी त्वरित संपर्क साधवा...
+      </marquee>
     </div>
   </div>
 
@@ -404,19 +443,18 @@
     </div>
   </header>
 
-  <!-- MAIN NEWS LAYOUT -->
+  <!-- MAIN NEWS CONTENT LAYOUT -->
   <main class="rd-container">
     
     <div class="news-grid-layout">
       
-      <!-- LEFT COLUMN: FEATURED STORY & SIDE STORIES -->
+      <!-- LEFT COLUMN: MAIN FEATURED STORY & SUB STORIES -->
       <div>
         
-        <!-- 📰 आजची प्रमुख कथा (FEATURED STORY) -->
+        <!-- 📰 आजची प्रमुख कथा -->
         <h2 class="section-title">📰 आजची प्रमुख कथा</h2>
         <article class="main-story">
           <div class="main-story-img">
-            <!-- फोटो बदलण्यासाठी src मध्ये तुमच्या इमेजचा मार्ग द्या -->
             <img src="images/featured-news.jpg" alt="रक्तदान प्रमुख बातमी" onerror="this.src='https://via.placeholder.com/800x400/c80000/ffffff?text=Raktdata.in+News+Photo'">
           </div>
           <div class="main-story-content">
@@ -430,7 +468,7 @@
           </div>
         </article>
 
-        <!-- 📰 ताज्या कथा आणि बातम्या (SIDE STORIES) -->
+        <!-- 📰 ताज्या कथा आणि बातम्या -->
         <h2 class="section-title" id="news">📰 ताज्या कथा आणि बातम्या</h2>
         <div class="sub-stories">
           
@@ -450,17 +488,34 @@
 
       </div>
 
-      <!-- RIGHT COLUMN: SIDEBAR -->
+      <!-- RIGHT COLUMN: SIDEBAR (LIVE TV + UPDATES) -->
       <aside>
         
-        <!-- 🏆 सन्मान & ताज्या अपडेट्स -->
+        <!-- 📺 YOUTUBE LIVE / RAKTDATA TV WIDGET -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">🔴 Raktdata TV (थेट प्रक्षेपण)</h3>
+          <div class="video-container">
+            <!-- युट्यूब व्हिडिओ किंवा लाईव्ह स्ट्रीमसाठी खालील src मधील VIDEO_ID बदला -->
+            <iframe 
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              title="Raktdata Live News Stream" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p style="font-size: 13px; color: var(--rd-muted); margin: 10px 0 0;">
+            📹 रक्तदान जनजागृती आणि मुलाखतींचे विशेष व्हिडिओ थेट पाहा.
+          </p>
+        </div>
+
+        <!-- 🏆 विशेष सन्मान व अपडेट्स -->
         <div class="sidebar-widget" id="honour">
           <h3 class="widget-title">🏆 विशेष सन्मान व अपडेट्स</h3>
           <ul class="news-list">
-            <li><a href="#">📌 रक्तदान शिबिर यशस्विसंपन्न; १०० बाटल्या रक्त जमा.</a></li>
-            <li><a href="#">📌 दुर्मिळ 'O Negative' रक्तदात्यांची विशेष यादी प्रसिद्ध.</a></li>
-            <li><a href="#">📌 कॉलेज तरुणांचा रक्तदान मोहिमेत उत्स्फूर्त सहभाग.</a></li>
-            <li><a href="#">📌 Raktdata.in वर तुमची रक्तदान कथा कशी प्रसिद्ध करावी?</a></li>
+            <li><a href="#">रक्तदान शिबिर यशस्विसंपन्न; १०० बाटल्या रक्त जमा.</a></li>
+            <li><a href="#">दुर्मिळ 'O Negative' रक्तदात्यांची विशेष यादी प्रसिद्ध.</a></li>
+            <li><a href="#">कॉलेज तरुणांचा रक्तदान मोहिमेत उत्स्फूर्त सहभाग.</a></li>
+            <li><a href="#">Raktdata.in वर तुमची रक्तदान कथा कशी प्रसिद्ध करावी?</a></li>
           </ul>
         </div>
 
@@ -473,44 +528,32 @@
           <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 13px;">अधिक माहिती ➔</a>
         </div>
 
-        <!-- विचार / आजचा संदेश -->
-        <div class="sidebar-widget">
-          <h3 class="widget-title">आजचा प्रेरणादायी संदेश</h3>
-          <blockquote style="margin: 0; font-style: italic; color: var(--rd-muted); border-left: 3px solid var(--rd-red); padding-left: 10px;">
-            "तुमचे एक युनिट रक्तदान कोणाचे तरी पूर्ण आयुष्य वाचवू शकते."
-          </blockquote>
-        </div>
-
       </aside>
 
     </div>
 
-    <!-- EDITORIAL CARDS SECTION (रक्तवीर + संस्था) -->
-    <div class="news-sections">
+    <!-- EDITORIAL CARDS SECTION -->
+    <div class="editorial-grid">
       
-      <div class="editorial-grid">
-        
-        <!-- ❤️ आजचे रक्तवीर -->
-        <div class="editorial-card" id="heroes">
-          <span class="story-tag">गौरव गाथा</span>
-          <h3>❤️ आजचे रक्तवीर</h3>
-          <p>वयाच्या ५० व्या वर्षी ५० व्यांदा रक्तदान करणारे महेश जोशी यांची प्रेरणादायी गोष्ट. त्यांच्या या सातत्यामुळे शेकडो रुग्णांना वेळेत मदत मिळाली आहे.</p>
-          <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 13px;">रक्तवीर कथा वाचा ➔</a>
-        </div>
+      <!-- ❤️ आजचे रक्तवीर -->
+      <div class="editorial-card" id="heroes">
+        <span class="story-tag">गौरव गाथा</span>
+        <h3>❤️ आजचे रक्तवीर</h3>
+        <p>वयाच्या ५० व्या वर्षी ५० व्यांदा रक्तदान करणारे महेश जोशी यांची प्रेरणादायी गोष्ट. त्यांच्या या सातत्यामुळे शेकडो रुग्णांना वेळेत मदत मिळाली आहे.</p>
+        <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 13px;">रक्तवीर कथा वाचा ➔</a>
+      </div>
 
-        <!-- 🏢 आजची प्रेरणादायी संस्था -->
-        <div class="editorial-card" id="orgs">
-          <span class="story-tag">संस्था परिचय</span>
-          <h3>🏢 आजची प्रेरणादायी संस्था</h3>
-          <p>'सेवाभावी रक्तदाता समूह' गेली १० वर्षे अविरतपणे रक्तदान शिबिरांचे आयोजन करत आहे. त्यांच्या कार्याचा संक्षिप्त परिचय आणि यशोगाथा.</p>
-          <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 13px;">संस्थेविषयी वाचा ➔</a>
-        </div>
-
+      <!-- 🏢 आजची प्रेरणादायी संस्था -->
+      <div class="editorial-card" id="orgs">
+        <span class="story-tag">संस्था परिचय</span>
+        <h3>🏢 आजची प्रेरणादायी संस्था</h3>
+        <p>'सेवाभावी रक्तदाता समूह' गेली १० वर्षे अविरतपणे रक्तदान शिबिरांचे आयोजन करत आहे. त्यांच्या कार्याचा संक्षिप्त परिचय आणि यशोगाथा.</p>
+        <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 13px;">संस्थेविषयी वाचा ➔</a>
       </div>
 
     </div>
 
-    <!-- 📩 शेवटी तुमची कथा / बातमी पाठवा (CTA BANNER) -->
+    <!-- 📩 शेवटी तुमची कथा / बातमी पाठवा -->
     <section class="cta-banner" id="submit">
       <h2>📩 तुमची कथा / बातमी पाठवा</h2>
       <p style="margin: 0; opacity: 0.9;">तुम्ही किंवा तुमची संस्था रक्तदान क्षेत्रात कार्य करत असाल, तर तुमची बातमी किंवा अनुभव आमच्यापर्यंत पोहोचवा.</p>
@@ -526,8 +569,8 @@
     </div>
   </footer>
 
+  <!-- JAVASCRIPT FOR DYNAMIC DATE -->
   <script>
-    // आजची तारीख दाखवण्यासाठी JavaScript
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('currentDate').innerText = new Date().toLocaleDateString('mr-IN', options);
   </script>
