@@ -20,6 +20,7 @@
       --rd-text: #1e293b;
       --rd-muted: #64748b;
       --rd-border: #e2e8f0;
+      --rd-gold: #d97706;
     }
 
     * { box-sizing: border-box; }
@@ -30,7 +31,7 @@
       background-color: var(--rd-bg);
       color: var(--rd-text);
       line-height: 1.6;
-      top: 0 !important; /* Fix for Google Translate bar space */
+      top: 0 !important;
     }
 
     a { text-decoration: none; color: inherit; }
@@ -40,7 +41,7 @@
       margin-inline: auto;
     }
 
-    /* 1. TOP BAR WITH LANGUAGE SWITCHER */
+    /* TOP BAR WITH LANGUAGE SWITCHER */
     .news-topbar {
       background: var(--rd-navy);
       color: #fff;
@@ -82,17 +83,10 @@
       outline: none;
     }
 
-    .lang-switcher select option {
-      background: #0f172a;
-      color: #fff;
-    }
+    .lang-switcher select option { background: #0f172a; color: #fff; }
+    .goog-te-banner-frame, .skiptranslate { display: none !important; }
 
-    /* Hide Google Translate attribution banner */
-    .goog-te-banner-frame, .skiptranslate {
-      display: none !important;
-    }
-
-    /* 2. BREAKING NEWS TICKER (LIVE) */
+    /* BREAKING NEWS TICKER */
     .breaking-bar {
       background: #fff;
       border-bottom: 2px solid var(--rd-red);
@@ -100,11 +94,7 @@
       overflow: hidden;
     }
 
-    .breaking-flex {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+    .breaking-flex { display: flex; align-items: center; gap: 15px; }
 
     .breaking-badge {
       background: var(--rd-red);
@@ -114,9 +104,6 @@
       font-size: 12px;
       border-radius: 4px;
       white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 6px;
       box-shadow: 0 2px 6px rgba(200, 0, 0, 0.3);
     }
 
@@ -125,10 +112,9 @@
       font-weight: 700;
       font-size: 14px;
       width: 100%;
-      cursor: pointer;
     }
 
-    /* 3. MASTHEAD / HEADER */
+    /* MASTHEAD / HEADER */
     .news-header {
       background: #fff;
       border-bottom: 1px solid var(--rd-border);
@@ -146,7 +132,6 @@
       font-size: clamp(32px, 5vw, 52px);
       font-weight: 900;
       color: var(--rd-red);
-      letter-spacing: -1px;
     }
 
     .masthead p {
@@ -177,7 +162,7 @@
       border-bottom: 2px solid var(--rd-red);
     }
 
-    /* 4. MAIN GRID LAYOUT */
+    /* MAIN GRID LAYOUT */
     .news-grid-layout {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -197,7 +182,7 @@
       gap: 8px;
     }
 
-    /* FEATURED STORY */
+    /* MAIN STORY */
     .main-story {
       background: #fff;
       border: 1px solid var(--rd-border);
@@ -211,23 +196,11 @@
       height: 350px;
       overflow: hidden;
       background: #e2e8f0;
-      position: relative;
     }
 
-    .main-story-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
+    .main-story-img img { width: 100%; height: 100%; object-fit: cover; }
 
-    .main-story:hover .main-story-img img {
-      transform: scale(1.03);
-    }
-
-    .main-story-content {
-      padding: 20px;
-    }
+    .main-story-content { padding: 20px; }
 
     .story-tag {
       background: #fee2e2;
@@ -243,22 +216,12 @@
     .main-story h2 {
       margin: 0 0 10px;
       font-size: 26px;
-      line-height: 1.35;
       color: var(--rd-navy);
-      cursor: pointer;
     }
 
-    .main-story h2:hover {
-      color: var(--rd-red);
-    }
+    .main-story p { color: var(--rd-muted); margin: 0 0 15px; font-size: 15px; }
 
-    .main-story p {
-      color: var(--rd-muted);
-      margin: 0 0 15px;
-      font-size: 15px;
-    }
-
-    /* SUB STORIES GRID */
+    /* SUB STORIES */
     .sub-stories {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -272,18 +235,8 @@
       padding: 15px;
     }
 
-    .sub-story-card h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-      color: var(--rd-navy);
-      line-height: 1.4;
-    }
-
-    .sub-story-card p {
-      margin: 0;
-      font-size: 13px;
-      color: var(--rd-muted);
-    }
+    .sub-story-card h3 { margin: 0 0 8px; font-size: 16px; color: var(--rd-navy); }
+    .sub-story-card p { margin: 0; font-size: 13px; color: var(--rd-muted); }
 
     /* EDITORIAL CARDS */
     .editorial-grid {
@@ -301,19 +254,10 @@
       border-top: 4px solid var(--rd-red);
     }
 
-    .editorial-card h3 {
-      margin: 10px 0 8px;
-      color: var(--rd-navy);
-      font-size: 18px;
-    }
+    .editorial-card h3 { margin: 10px 0 8px; color: var(--rd-navy); font-size: 18px; }
+    .editorial-card p { font-size: 14px; color: var(--rd-muted); margin: 0 0 15px; }
 
-    .editorial-card p {
-      font-size: 14px;
-      color: var(--rd-muted);
-      margin: 0 0 15px;
-    }
-
-    /* SIDEBAR & YOUTUBE PLAYER */
+    /* SIDEBAR & WIDGETS */
     .sidebar-widget {
       background: #fff;
       border: 1px solid var(--rd-border);
@@ -331,7 +275,6 @@
       border-bottom: 2px solid var(--rd-red);
     }
 
-    /* YouTube Responsive Wrapper */
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
@@ -343,46 +286,80 @@
 
     .video-container iframe {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
+      top: 0; left: 0; width: 100%; height: 100%; border: 0;
     }
 
-    .news-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
+    .news-list { list-style: none; padding: 0; margin: 0; }
     .news-list li {
-      position: relative;
-      padding-left: 20px;
-      padding-top: 8px;
-      padding-bottom: 8px;
+      padding: 8px 0 8px 18px;
       border-bottom: 1px dashed var(--rd-border);
       font-size: 14px;
       font-weight: 600;
+      position: relative;
     }
-
     .news-list li::before {
-      content: "•";
-      color: var(--rd-red);
-      font-weight: bold;
-      font-size: 20px;
-      position: absolute;
-      left: 0;
-      top: 2px;
+      content: "•"; color: var(--rd-red); font-weight: bold; font-size: 18px; position: absolute; left: 0; top: 4px;
     }
 
-    .news-list li:last-child {
-      border-bottom: none;
+    /* 📚 BOOK SECTION (SPECIAL WIDGET) */
+    .book-widget {
+      background: #fff;
+      border: 2px solid var(--rd-gold);
+      border-radius: 8px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .news-list a:hover {
-      color: var(--rd-red);
+    .book-badge {
+      background: var(--rd-gold);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 10px;
     }
+
+    .book-flex {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .book-cover {
+      width: 90px;
+      height: 120px;
+      background: #fee2e2;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--rd-red);
+      font-size: 12px;
+      text-align: center;
+      border: 1px solid #fca5a5;
+      flex-shrink: 0;
+    }
+
+    .book-details h4 { margin: 0 0 5px; font-size: 16px; color: var(--rd-navy); }
+    .book-price { font-size: 18px; font-weight: 900; color: var(--rd-red); margin-bottom: 8px; }
+
+    .btn-buy {
+      display: inline-block;
+      background: var(--rd-gold);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 13px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .btn-buy:hover { background: #b45309; }
 
     /* CTA BANNER */
     .cta-banner {
@@ -393,11 +370,6 @@
       text-align: center;
       margin: 40px 0;
       border-left: 6px solid var(--rd-red);
-    }
-
-    .cta-banner h2 {
-      margin: 0 0 10px;
-      font-size: 28px;
     }
 
     .btn-news {
@@ -411,11 +383,6 @@
       margin-top: 15px;
     }
 
-    .btn-news:hover {
-      background: var(--rd-red-dark);
-    }
-
-    /* FOOTER */
     .news-footer {
       background: var(--rd-navy);
       color: #94a3b8;
@@ -425,34 +392,20 @@
       text-align: center;
     }
 
-    /* RESPONSIVE DESIGN */
     @media (max-width: 900px) {
-      .news-grid-layout {
-        grid-template-columns: 1fr;
-      }
-      .sub-stories {
-        grid-template-columns: 1fr;
-      }
-      .main-story-img {
-        height: 240px;
-      }
-      .cta-banner {
-        padding: 25px;
-      }
+      .news-grid-layout, .sub-stories { grid-template-columns: 1fr; }
+      .main-story-img { height: 240px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- TOP BAR WITH MULTI-LANGUAGE SWITCHER -->
+  <!-- TOP BAR -->
   <div class="news-topbar">
     <div class="rd-container news-topbar-inner">
       <div>🗓️ आजची तारीख: <span id="currentDate"></span></div>
-      
       <div class="topbar-right">
         <span>Raktdata.in - भारताचे पहिले रक्तदान न्यूज पोर्टल</span>
-        
-        <!-- Language Switcher -->
         <div class="lang-switcher">
           <label for="langSelect">🌐</label>
           <select id="langSelect" onchange="changeLanguage(this.value)">
@@ -465,17 +418,17 @@
     </div>
   </div>
 
-  <!-- BREAKING NEWS TICKER (LIVE SCROLLING) -->
+  <!-- BREAKING NEWS TICKER -->
   <div class="breaking-bar">
     <div class="rd-container breaking-flex">
       <span class="breaking-badge">🔴 महत्त्वाच्या बातम्या</span>
       <marquee class="breaking-text" behavior="scroll" direction="left" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">
-        🩸 पुणे शहरात भव्य रक्तदान शिबिराचे आयोजन... &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; 🩸 ५० पेक्षा जास्त वेळा रक्तदान करणाऱ्या रक्तवीरांचा राज्यस्तरीय सन्मान... &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; 🩸 तातडीची गरज: O Negative रक्तगटाच्या दात्यांनी त्वरित संपर्क साधवा...
+        🩸 पुणे शहरात भव्य रक्तदान शिबिराचे आयोजन... &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; 🩸 ५० पेक्षा जास्त वेळा रक्तदान करणाऱ्या रक्तवीरांचा राज्यस्तरीय सन्मान... &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; 🩸 तातडीची गरज: O Negative रक्तगटाच्या दात्यांनी त्वरित संपर्क साधावा...
       </marquee>
     </div>
   </div>
 
-  <!-- MASTHEAD / HEADER -->
+  <!-- HEADER -->
   <header class="news-header">
     <div class="rd-container">
       <div class="masthead">
@@ -488,42 +441,37 @@
         <a href="#heroes">रक्तवीर</a>
         <a href="#orgs">संस्था</a>
         <a href="#news">ताज्या कथा</a>
-        <a href="#awareness">पुस्तक/जनजागृती</a>
         <a href="#honour">सन्मान</a>
-        <a href="#submit">कथा पाठवा</a>
+        <a href="#book-section">📚 पुस्तक खरेदी (BOOK)</a>
+        <a href="#submit">कथा पाठवा (ACT)</a>
       </nav>
     </div>
   </header>
 
-  <!-- MAIN NEWS CONTENT LAYOUT -->
+  <!-- MAIN CONTENT -->
   <main class="rd-container">
     
     <div class="news-grid-layout">
       
-      <!-- LEFT COLUMN: MAIN FEATURED STORY & SUB STORIES -->
+      <!-- LEFT COLUMN -->
       <div>
-        
-        <!-- 📰 आजची प्रमुख कथा -->
+        <!-- आजची प्रमुख कथा -->
         <h2 class="section-title">📰 आजची प्रमुख कथा</h2>
         <article class="main-story">
           <div class="main-story-img">
-            <img src="images/featured-news.jpg" alt="रक्तदान प्रमुख बातमी" onerror="this.src='https://via.placeholder.com/800x400/c80000/ffffff?text=Raktdata.in+News+Photo'">
+            <img src="https://via.placeholder.com/800x400/c80000/ffffff?text=Raktdata.in+News+Photo" alt="रक्तदान प्रमुख बातमी">
           </div>
           <div class="main-story-content">
             <span class="story-tag">विशेष वृत्त</span>
             <h2>रक्तदानातून मानवतेची सेवा: राज्यभरात १ हजारहून अधिक रक्तवीरांचा विशेष सन्मान</h2>
-            <p>
-              Raktdata.in कडून सामाजिक बांधिलकी जपत सातत्याने रक्तदान करणाऱ्या रक्तदात्यांची दखल घेतली जात आहे. 
-              रक्तदान चळवळीला गती देण्यासाठी आणि नवीन तरुणांना प्रेरित करण्यासाठी हे विशेष व्यासपीठ काम करत आहे...
-            </p>
+            <p>Raktdata.in कडून सामाजिक बांधिलकी जपत सातत्याने रक्तदान करणाऱ्या रक्तदात्यांची दखल घेतली जात आहे. रक्तदान चळवळीला गती देण्यासाठी हे विशेष व्यासपीठ काम करत आहे...</p>
             <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 14px;">संपूर्ण बातमी वाचा ➔</a>
           </div>
         </article>
 
-        <!-- 📰 ताज्या कथा आणि बातम्या -->
+        <!-- ताज्या कथा आणि बातम्या -->
         <h2 class="section-title" id="news">📰 ताज्या कथा आणि बातम्या</h2>
         <div class="sub-stories">
-          
           <article class="sub-story-card">
             <span class="story-tag">जनजागृती</span>
             <h3>रक्तदान करण्यापूर्वी आणि नंतर काय काळजी घ्यावी?</h3>
@@ -535,78 +483,71 @@
             <h3>स्थानिक तरुणांनी उभारले आपत्कालीन रक्तदाते नेटवर्क</h3>
             <p>ग्रामीण भागातील रुग्णांना तातडीने रक्त उपलब्ध व्हावे यासाठी विशेष मोहीम...</p>
           </article>
-
         </div>
-
       </div>
 
-      <!-- RIGHT COLUMN: SIDEBAR (LIVE TV + UPDATES) -->
+      <!-- RIGHT SIDEBAR -->
       <aside>
         
-        <!-- 📺 YOUTUBE LIVE / RAKTDATA TV WIDGET -->
+        <!-- YOUTUBE LIVE TV -->
         <div class="sidebar-widget">
-          <h3 class="widget-title">🔴 Raktdata TV (थेट प्रक्षेपण)</h3>
+          <h3 class="widget-title">🔴 Raktdata TV (CONNECT)</h3>
           <div class="video-container">
-            <iframe 
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-              title="Raktdata Live News Stream" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Raktdata Live Stream" allowfullscreen></iframe>
           </div>
-          <p style="font-size: 13px; color: var(--rd-muted); margin: 10px 0 0;">
-            📹 रक्तदान जनजागृती आणि मुलाखतींचे विशेष व्हिडिओ थेट पाहा.
-          </p>
+          <p style="font-size: 13px; color: var(--rd-muted); margin: 10px 0 0;">📹 रक्तदान जनजागृती आणि मुलाखतींचे विशेष व्हिडिओ थेट पाहा.</p>
         </div>
 
-        <!-- 🏆 विशेष सन्मान व अपडेट्स -->
-        <div class="sidebar-widget" id="honour">
+        <!-- 📚 7. BOOK SECTION (विशेष पुस्तक खरेदी बॉक्स) -->
+        <div class="book-widget" id="book-section">
+          <span class="book-badge">📚 विशेष पुस्तक (BOOK)</span>
+          <div class="book-flex">
+            <div class="book-cover">
+              रक्तदान:<br>जीवनदान<br>📘
+            </div>
+            <div class="book-details">
+              <h4>'रक्तदान: वास्तव आणि गैरसमज'</h4>
+              <p style="font-size:12px; color:var(--rd-muted); margin: 0 0 5px;">लेखक: Raktdata Editorial Board</p>
+              <div class="book-price">₹१९९ <span style="font-size: 12px; color: var(--rd-muted); text-decoration: line-through;">₹२९९</span></div>
+              <a href="javascript:void(0)" onclick="buyBookAlert()" class="btn-buy">🛒 पुस्तक खरेदी करा</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🏆 RECOGNIZE SECTION -->
+        <div class="sidebar-widget" id="honour" style="margin-top:25px;">
           <h3 class="widget-title">🏆 विशेष सन्मान व अपडेट्स</h3>
           <ul class="news-list">
             <li><a href="#">रक्तदान शिबिर यशस्विसंपन्न; १०० बाटल्या रक्त जमा.</a></li>
             <li><a href="#">दुर्मिळ 'O Negative' रक्तदात्यांची विशेष यादी प्रसिद्ध.</a></li>
             <li><a href="#">कॉलेज तरुणांचा रक्तदान मोहिमेत उत्स्फूर्त सहभाग.</a></li>
-            <li><a href="#">Raktdata.in वर तुमची रक्तदान कथा कशी प्रसिद्ध करावी?</a></li>
           </ul>
-        </div>
-
-        <!-- 📖 पुस्तक / जनजागृती -->
-        <div class="sidebar-widget" id="awareness">
-          <h3 class="widget-title">📖 पुस्तक / जनजागृती</h3>
-          <p style="font-size: 14px; color: var(--rd-muted);">
-            रक्तदानाविषयीचे गैरसमज दूर करणारे विशेष ई-पुस्तक आणि जनजागृती साहित्य आता उपलब्ध.
-          </p>
-          <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 13px;">अधिक माहिती ➔</a>
         </div>
 
       </aside>
 
     </div>
 
-    <!-- EDITORIAL CARDS SECTION -->
+    <!-- EDITORIAL CARDS (INSPIRE & SHOW) -->
     <div class="editorial-grid">
-      
-      <!-- ❤️ आजचे रक्तवीर -->
       <div class="editorial-card" id="heroes">
-        <span class="story-tag">गौरव गाथा</span>
+        <span class="story-tag">गौरव गाथा (INSPIRE)</span>
         <h3>❤️ आजचे रक्तवीर</h3>
-        <p>वयाच्या ५० व्या वर्षी ५० व्यांदा रक्तदान करणारे महेश जोशी यांची प्रेरणादायी गोष्ट. त्यांच्या या सातत्यामुळे शेकडो रुग्णांना वेळेत मदत मिळाली आहे.</p>
+        <p>वयाच्या ५० व्या वर्षी ५० व्यांदा रक्तदान करणारे महेश जोशी यांची प्रेरणादायी गोष्ट.</p>
         <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 13px;">रक्तवीर कथा वाचा ➔</a>
       </div>
 
-      <!-- 🏢 आजची प्रेरणादायी संस्था -->
       <div class="editorial-card" id="orgs">
-        <span class="story-tag">संस्था परिचय</span>
+        <span class="story-tag">संस्था परिचय (SHOW)</span>
         <h3>🏢 आजची प्रेरणादायी संस्था</h3>
-        <p>'सेवाभावी रक्तदाता समूह' गेली १० वर्षे अविरतपणे रक्तदान शिबिरांचे आयोजन करत आहे. त्यांच्या कार्याचा संक्षिप्त परिचय आणि यशोगाथा.</p>
+        <p>'सेवाभावी रक्तदाता समूह' गेली १० वर्षे अविरतपणे रक्तदान शिबिरांचे आयोजन करत आहे.</p>
         <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 13px;">संस्थेविषयी वाचा ➔</a>
       </div>
-
     </div>
 
-    <!-- 📩 शेवटी तुमची कथा / बातमी पाठवा -->
+    <!-- 📩 8. ACT (CALL TO ACTION) -->
     <section class="cta-banner" id="submit">
-      <h2>📩 तुमची कथा / बातमी पाठवा</h2>
+      <h2>📩 तुमची कथा / बातमी पाठवा (ACT)</h2>
       <p style="margin: 0; opacity: 0.9;">तुम्ही किंवा तुमची संस्था रक्तदान क्षेत्रात कार्य करत असाल, तर तुमची बातमी किंवा अनुभव आमच्यापर्यंत पोहोचवा.</p>
       <a href="#" class="btn-news">बातमी / कथा सबमिट करा</a>
     </section>
@@ -616,26 +557,27 @@
   <!-- FOOTER -->
   <footer class="news-footer">
     <div class="rd-container">
-      <p>© Raktdata.in | सर्व हक्क सुरक्षित. भारतातील पहिले रक्तदान जनजागृती आणि सन्मान व्यासपीठ.</p>
+      <p>© Raktdata.in | सर्व हक्क सुरक्षित. भारतातील पहिले रक्तदान न्यूज पोर्टल.</p>
     </div>
   </footer>
 
-  <!-- HIDDEN GOOGLE TRANSLATE ELEMENT -->
   <div id="google_translate_element" style="display:none;"></div>
 
-  <!-- JAVASCRIPT FOR DYNAMIC DATE & TRANSLATION -->
   <script>
-    // Set Current Date
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('currentDate').innerText = new Date().toLocaleDateString('mr-IN', options);
 
-    // Change Language Function using Google Translate Widget
     function changeLanguage(lang) {
       var selectField = document.querySelector('.goog-te-combo');
       if (selectField) {
         selectField.value = lang;
         selectField.dispatchEvent(new Event('change'));
       }
+    }
+
+    // Book Buy Action Demo
+    function buyBookAlert() {
+      alert("पुस्तक ऑर्डर करण्यासाठी नोंदणी फॉर्म लवकरच उघडत आहे! (येथे तुम्ही Razorpay / Google Form ची लिंक जोडू शकता)");
     }
   </script>
 
