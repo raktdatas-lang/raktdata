@@ -1,174 +1,442 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="mr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Raktdata.in | रक्तदान जनजागृती • रक्तवीरांचा सन्मान</title>
-<meta name="description" content="Raktdata.in — रक्तदान जनजागृती, रक्तवीरांच्या कथा, सामाजिक कार्याची प्रसिद्धी आणि सन्मानासाठीचे स्वतंत्र व्यासपीठ.">
-<link rel="stylesheet" href="css/style.css">
-<style>
-.home-hero{background:linear-gradient(135deg,#102746 0%,#172f52 65%,#3b1123 100%);color:#fff;padding:60px 0}
-.home-hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:34px;align-items:center}
-.home-hero h1{font-size:clamp(40px,5.3vw,72px);line-height:1.05;margin:14px 0}
-.home-hero h1 span{color:#ff4b58}.home-hero p{font-size:18px;line-height:1.8;color:#dce5f2;max-width:760px}
-.news-panel{background:#fff;color:#102746;border-radius:22px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.22)}
-.news-panel-top{padding:18px 22px;border-bottom:1px solid #e7eaf0;display:flex;justify-content:space-between}.news-panel-body{padding:24px}
-.news-panel-body h2{font-size:30px;line-height:1.25;margin:10px 0}.news-panel-body p{color:#5d6877;line-height:1.7}
-.breaking{background:#fff;border-bottom:1px solid #e8ebf0;padding:12px 0}.breaking .container{display:flex;gap:14px;align-items:center}.breaking b{color:#b91c2b;white-space:nowrap}.breaking span{color:#5d6877;font-size:14px}
-.editorial{display:grid;grid-template-columns:1.45fr .75fr;gap:30px;align-items:start}
-.main-story{border-radius:22px;overflow:hidden;background:#fff;border:1px solid #e8ebf0;box-shadow:0 10px 30px rgba(16,39,70,.06)}
-.story-img{height:300px;background:linear-gradient(145deg,#122946,#2a4162);display:grid;place-items:center;font-size:100px}
-.story-copy{padding:26px}.story-copy h2{font-size:34px;line-height:1.2;margin:10px 0}.story-copy p{color:#5d6877;line-height:1.75}
-.side-news{display:grid;gap:14px}.mini-story{display:grid;grid-template-columns:95px 1fr;gap:14px;padding:12px;border-bottom:1px solid #e7eaf0}.mini-img{height:85px;border-radius:12px;background:#eef2f7;display:grid;place-items:center;font-size:34px}.mini-story h3{font-size:17px;line-height:1.35;margin:3px 0}.mini-story p{font-size:13px;color:#6b7280;margin:0;line-height:1.5}
-.kicker{font-size:12px;letter-spacing:.08em;font-weight:800;color:#b91c2b}.section-title{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}.section-title h2{margin:6px 0 0;font-size:32px}.section-title a{white-space:nowrap}
-.hero-list{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.hero-card{background:#fff;border:1px solid #e8ebf0;border-radius:18px;overflow:hidden}.hero-card .photo{height:150px;background:#edf1f6;display:grid;place-items:center;font-size:60px}.hero-card .body{padding:18px}.hero-card h3{margin:8px 0;font-size:20px}.hero-card p{color:#626d7c;font-size:14px;line-height:1.6}.tag{display:inline-flex;background:#fff1f2;color:#b91c2b;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:800}
-.org-strip{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;background:#102746;color:#fff;border-radius:24px;padding:32px}.org-strip p{color:#dbe4ef;line-height:1.7}.org-box{background:#1e385c;border-radius:18px;padding:22px}.org-box h3{margin:5px 0 8px}.org-box p{font-size:14px;margin:0}
-.book-news{display:grid;grid-template-columns:.75fr 1.25fr;gap:28px;align-items:center}.book-cover{min-height:310px;border-radius:20px;background:linear-gradient(145deg,#102746,#b91c2b);display:grid;place-items:center;color:#fff;text-align:center;padding:25px}.book-cover strong{font-size:30px}.quote{border-left:4px solid #b91c2b;padding-left:20px;font-size:20px;line-height:1.65;color:#24344a}
-.cta-news{background:#f7f9fb;border-radius:22px;padding:34px;display:flex;justify-content:space-between;align-items:center;gap:25px}
-@media(max-width:900px){.home-hero-grid,.editorial,.org-strip,.book-news{grid-template-columns:1fr}.hero-list{grid-template-columns:1fr}.story-img{height:240px}.news-panel{max-width:620px}.cta-news{display:block}}
-@media(max-width:560px){.home-hero{padding:44px 0}.home-hero h1{font-size:42px}.story-copy{padding:20px}.story-copy h2{font-size:27px}.section-title{display:block}.section-title a{display:inline-block;margin-top:10px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raktdata.in | रक्तदान बातम्या व जनजागृती पोर्टल</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --rd-red: #c80000;
+      --rd-red-dark: #8b0000;
+      --rd-navy: #0f172a;
+      --rd-bg: #f8fafc;
+      --rd-card: #ffffff;
+      --rd-text: #1e293b;
+      --rd-muted: #64748b;
+      --rd-border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans Devanagari", sans-serif;
+      background-color: var(--rd-bg);
+      color: var(--rd-text);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .rd-container {
+      width: min(1200px, calc(100% - 30px));
+      margin-inline: auto;
+    }
+
+    /* TOP BAR & BREAKING NEWS */
+    .news-topbar {
+      background: var(--rd-navy);
+      color: #fff;
+      font-size: 13px;
+      padding: 6px 0;
+    }
+
+    .news-topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .breaking-bar {
+      background: #fff;
+      border-bottom: 2px solid var(--rd-red);
+      padding: 8px 0;
+      font-size: 14px;
+    }
+
+    .breaking-flex {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .breaking-badge {
+      background: var(--rd-red);
+      color: #fff;
+      padding: 2px 10px;
+      font-weight: 800;
+      font-size: 12px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .breaking-text {
+      color: var(--rd-navy);
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* NEWS HEADER / MASTHEAD */
+    .news-header {
+      background: #fff;
+      border-bottom: 1px solid var(--rd-border);
+      padding: 20px 0 0;
+    }
+
+    .masthead {
+      text-align: center;
+      padding-bottom: 15px;
+      border-bottom: 3px double var(--rd-navy);
+    }
+
+    .masthead h1 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      color: var(--rd-red);
+      letter-spacing: -1px;
+    }
+
+    .masthead p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      color: var(--rd-muted);
+      font-weight: 600;
+    }
+
+    .news-nav {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .news-nav a {
+      padding: 6px 16px;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--rd-navy);
+      white-space: nowrap;
+    }
+
+    .news-nav a:hover, .news-nav a.active {
+      color: var(--rd-red);
+      border-bottom: 2px solid var(--rd-red);
+    }
+
+    /* MAIN NEWS GRID LAYOUT */
+    .news-grid-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+      margin: 25px 0 50px;
+    }
+
+    /* FEATURED / MAIN NEWS */
+    .main-story {
+      background: #fff;
+      border: 1px solid var(--rd-border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    .main-story-img {
+      width: 100%;
+      height: 320px;
+      background: linear-gradient(135deg, #1e293b, #c80000);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 60px;
+    }
+
+    .main-story-content {
+      padding: 20px;
+    }
+
+    .story-tag {
+      background: #fee2e2;
+      color: var(--rd-red);
+      font-size: 12px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .main-story h2 {
+      margin: 0 0 10px;
+      font-size: 26px;
+      line-weight: 1.3;
+      color: var(--rd-navy);
+    }
+
+    .main-story p {
+      color: var(--rd-muted);
+      margin: 0 0 15px;
+      font-size: 15px;
+    }
+
+    /* SUB STORIES GRID */
+    .sub-stories {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .sub-story-card {
+      background: #fff;
+      border: 1px solid var(--rd-border);
+      border-radius: 8px;
+      padding: 15px;
+    }
+
+    .sub-story-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--rd-navy);
+      line-height: 1.4;
+    }
+
+    .sub-story-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--rd-muted);
+    }
+
+    /* SIDEBAR */
+    .sidebar-widget {
+      background: #fff;
+      border: 1px solid var(--rd-border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .widget-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--rd-navy);
+      margin: 0 0 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--rd-red);
+    }
+
+    .news-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .news-list li {
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--rd-border);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .news-list li:last-child {
+      border-bottom: none;
+    }
+
+    .news-list a:hover {
+      color: var(--rd-red);
+    }
+
+    /* HEROES BANNER / SPECIAL SECTION */
+    .hero-banner-widget {
+      background: var(--rd-navy);
+      color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .hero-banner-widget h3 {
+      color: #fff;
+      margin: 0 0 10px;
+    }
+
+    .btn-news {
+      display: inline-block;
+      background: var(--rd-red);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    /* FOOTER */
+    .news-footer {
+      background: var(--rd-navy);
+      color: #94a3b8;
+      padding: 30px 0 15px;
+      font-size: 13px;
+      border-top: 4px solid var(--rd-red);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .news-grid-layout {
+        grid-template-columns: 1fr;
+      }
+      .sub-stories {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="topbar"><div class="container">
-<span>🩸 रक्तदान जनजागृती • रक्तवीरांचा सन्मान • सामाजिक कार्याची प्रसिद्धी</span>
-<span class="right">बातमी पाठवा &nbsp; कथा पाठवा &nbsp; नामांकन करा</span>
-</div></div>
+  <!-- TOP BAR -->
+  <div class="news-topbar">
+    <div class="rd-container news-topbar-inner">
+      <div>🗓️ आजची तारीख: <span id="currentDate"></span></div>
+      <div>Raktdata.in - महाराष्ट्राचे पहिले रक्तदान न्यूज पोर्टल</div>
+    </div>
+  </div>
 
-<header class="header"><div class="container nav">
-<a class="logo" href="index.html"><span class="logo-mark">🩸</span>Raktdata<span style="color:#b91c2b">.in</span></a>
-<nav class="navlinks">
-<a class="active" href="index.html">Home</a><a href="blood-heroes.html">रक्तवीर</a><a href="organizations.html">संस्था</a><a href="news.html">News</a><a href="book.html">पुस्तक</a><a href="honour.html">सन्मान</a><a href="awareness.html">जनजागृती</a><a href="submit.html">सहभाग</a>
-</nav>
-<div class="nav-cta"><a class="btn btn-primary" href="submit.html">कथा पाठवा</a><button class="menu-btn" aria-label="Menu">☰</button></div>
-</div></header>
+  <!-- BREAKING NEWS TICKER -->
+  <div class="breaking-bar">
+    <div class="rd-container breaking-flex">
+      <span class="breaking-badge">महत्त्वाच्या बातम्या</span>
+      <div class="breaking-text">
+        🩸 पुणे शहरात भव्य रक्तदान शिबिराचे आयोजन... 
+        • ५० पेक्षा जास्त वेळा रक्तदान करणाऱ्या रक्तवीरांचा राज्यस्तरीय सन्मान...
+      </div>
+    </div>
+  </div>
 
-<section class="home-hero">
-<div class="container home-hero-grid">
-<div>
-<span class="kicker" style="color:#ffb7bf">🩸 RAKTDATA.IN • BLOOD DONATION RECOGNITION & AWARENESS</span>
-<h1>रक्तदान करा.<br><span>मानवतेची ओळख बना.</span></h1>
-<p>रक्तदान करणाऱ्या व्यक्तींच्या कथा, सामाजिक कार्य आणि प्रेरणा लोकांपर्यंत पोहोचवणारे Raktdata.in — एक स्वतंत्र Recognition & Awareness Ecosystem.</p>
-<div class="hero-actions"><a class="btn btn-primary" href="blood-heroes.html">❤️ रक्तवीरांच्या कथा</a><a class="btn btn-outline" style="color:#fff;border-color:#fff" href="news.html">📰 Raktdata News</a></div>
-</div>
-<div class="news-panel">
-<div class="news-panel-top"><strong>आजचे Raktdata</strong><span>विशेष</span></div>
-<div class="news-panel-body">
-<span class="tag">एक थेंब • एक प्रेरणा</span>
-<h2>रक्तदानाची एक कथा अनेकांना प्रेरणा देऊ शकते.</h2>
-<p>रक्तवीर, संस्था, बातम्या, सन्मान आणि जनजागृती — हे सर्व एकमेकांशी जोडून सकारात्मक सामाजिक चळवळ उभी करण्याचा प्रयत्न.</p>
-<a class="btn btn-primary" href="blood-heroes.html">रक्तवीर पहा →</a>
-</div>
-</div>
-</div>
-</section>
+  <!-- NEWS HEADER / MASTHEAD -->
+  <header class="news-header">
+    <div class="rd-container">
+      <div class="masthead">
+        <h1>Raktdata.in</h1>
+        <p>रक्तदान जनजागृती • रक्तदात्यांचा सन्मान • विशेष बातम्या</p>
+      </div>
 
-<div class="breaking"><div class="container"><b>RAKTDATA UPDATE</b><span>रक्तवीरांची कथा • सामाजिक कार्य • जनजागृती • सन्मान — तुमचे योगदानही आम्हाला पाठवा.</span></div></div>
+      <nav class="news-nav">
+        <a class="active" href="#">मुख्य बातमी</a>
+        <a href="#">रक्तवीर विशेष</a>
+        <a href="#">संस्था व उपक्रम</a>
+        <a href="#">आरोग्य माहिती</a>
+        <a href="#">गौरव गाथा</a>
+        <a href="#">बातमी पाठवा</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="section">
-<div class="container">
-<div class="section-title"><div><span class="kicker">EDITOR'S PICK</span><h2>आजची प्रमुख कथा</h2></div><a href="news.html">सर्व News →</a></div>
-<div class="editorial">
-<article class="main-story">
-<div class="story-img">❤️</div>
-<div class="story-copy">
-<span class="tag">रक्तवीर विशेष</span>
-<h2>रक्तदानापासून प्रेरणेपर्यंत — एका रक्तवीराची कथा</h2>
-<div class="bh-meta">📍 महाराष्ट्र &nbsp; • &nbsp; Raktdata Special</div>
-<p>रक्तदान करणाऱ्या व्यक्तीचा प्रवास केवळ एका रक्तदानापुरता मर्यादित नसतो. त्यातून निर्माण होणारी प्रेरणा कुटुंब, मित्र आणि समाजापर्यंत पोहोचू शकते.</p>
-<a class="btn btn-primary" href="blood-heroes.html">पूर्ण कथा पहा</a>
-</div>
-</article>
-<div class="side-news">
-<article class="mini-story"><div class="mini-img">🩸</div><div><span class="kicker">जनजागृती</span><h3>रक्तदानाविषयी योग्य माहिती का महत्त्वाची?</h3><p>Awareness Centre मध्ये माहिती वाचूया →</p></div></article>
-<article class="mini-story"><div class="mini-img">🏢</div><div><span class="kicker">संस्था</span><h3>रक्तदान शिबिरांमागची सामाजिक शक्ती</h3><p>उल्लेखनीय संस्थांची ओळख →</p></div></article>
-<article class="mini-story"><div class="mini-img">🏆</div><div><span class="kicker">सन्मान</span><h3>चांगल्या कार्याला ओळख आणि व्यासपीठ</h3><p>Raktdata Honour पहा →</p></div></article>
-</div>
-</div>
-</div>
-</section>
+  <!-- MAIN NEWS CONTENT LAYOUT -->
+  <main class="rd-container">
+    <div class="news-grid-layout">
+      
+      <!-- LEFT COLUMN: MAIN NEWS -->
+      <div>
+        
+        <!-- TOP FEATURED STORY -->
+        <article class="main-story">
+          <div class="main-story-img">🩸</div>
+          <div class="main-story-content">
+            <span class="story-tag">विशेष बातमी</span>
+            <h2>रक्तदानातून मानवतेची सेवा: राज्यभरात १ हजारहून अधिक रक्तवीरांचा विशेष सन्मान</h2>
+            <p>
+              Raktdata.in कडून सामाजिक बांधिलकी जपत सातत्याने रक्तदान करणाऱ्या रक्तदात्यांची दखल घेतली जात आहे. 
+              रक्तदान चळवळीला गती देण्यासाठी आणि नवीन तरुणांना प्रेरित करण्यासाठी हे व्यासपीठ कटिबद्ध आहे...
+            </p>
+            <a href="#" style="color: var(--rd-red); font-weight: bold; font-size: 14px;">पुढे वाचा ➔</a>
+          </div>
+        </article>
 
-<section class="section alt">
-<div class="container">
-<div class="section-title"><div><span class="kicker">BLOOD HEROES</span><h2>आजचे रक्तवीर</h2></div><a href="blood-heroes.html">सर्व रक्तवीर →</a></div>
-<div class="hero-list">
-<article class="hero-card"><div class="photo">🧑</div><div class="body"><span class="tag">18 रक्तदान</span><h3>अमोल देशमुख</h3><p>📍 पुणे<br>सातत्यपूर्ण रक्तदानातून समाजासाठी योगदान देणारा प्रेरणादायी प्रवास.</p><a href="blood-heroes.html">कथा वाचा →</a></div></article>
-<article class="hero-card"><div class="photo">👩</div><div class="body"><span class="tag">12 रक्तदान</span><h3>स्नेहा पाटील</h3><p>📍 नाशिक<br>रक्तदानाची जनजागृती वाढवणारी आणि इतरांना प्रेरणा देणारी कथा.</p><a href="blood-heroes.html">कथा वाचा →</a></div></article>
-<article class="hero-card"><div class="photo">🧑‍🦱</div><div class="body"><span class="tag">25 रक्तदान</span><h3>प्रशांत जाधव</h3><p>📍 मुंबई<br>रक्तदानासोबत सामाजिक उपक्रमांमध्ये सहभागी होणारा रक्तवीर.</p><a href="blood-heroes.html">कथा वाचा →</a></div></article>
-</div>
-</div>
-</section>
+        <!-- SUB STORIES GRID -->
+        <div class="sub-stories">
+          
+          <article class="sub-story-card">
+            <span class="story-tag">जनजागृती</span>
+            <h3>रक्तदान करण्यापूर्वी आणि नंतर काय काळजी घ्यावी? जाणून घ्या सविस्तर</h3>
+            <p>योग्य आहार आणि पुरेशी झोप रक्तदान करण्यापूर्वी अत्यंत महत्त्वाची असते...</p>
+          </article>
 
-<section class="section">
-<div class="container">
-<div class="section-title"><div><span class="kicker">FEATURED ORGANIZATION</span><h2>आजची प्रेरणादायी संस्था</h2></div><a href="organizations.html">सर्व संस्था →</a></div>
-<div class="org-strip">
-<div><span class="kicker" style="color:#ffb7bf">SOCIAL IMPACT</span><h2>एक संस्था — अनेक रक्तवीर</h2><p>रक्तदान शिबिरे, जनजागृती आणि सामाजिक उपक्रम करणाऱ्या संस्थांच्या कार्याला Raktdata.in वर योग्य ओळख आणि व्यासपीठ देण्याचा प्रयत्न.</p><a class="btn btn-primary" href="organizations.html">संस्थांची माहिती</a></div>
-<div class="org-box"><span class="tag">Featured</span><h3>रक्तदान जनजागृतीसाठी कार्यरत संस्था</h3><p>संस्थेची माहिती, उपक्रम, फोटो/बातम्या आणि उल्लेखनीय सामाजिक कार्य एकाच profile मध्ये मांडता येईल.</p></div>
-</div>
-</div>
-</section>
+          <article class="sub-story-card">
+            <span class="story-tag">सामाजिक उपक्रम</span>
+            <h3>स्थानिक तरुणांनी एकत्र येत उभारले आपत्कालीन रक्तदाते नेटवर्क</h3>
+            <p>ग्रामीण भागातील रुग्णांना तातडीने रक्त उपलब्ध व्हावे यासाठी विशेष मोहीम...</p>
+          </article>
 
-<section class="section alt">
-<div class="container">
-<div class="section-title"><div><span class="kicker">RAKTDATA NEWS</span><h2>ताज्या कथा आणि बातम्या</h2></div><a href="news.html">News Centre →</a></div>
-<div class="editorial">
-<div class="main-story">
-<div class="story-copy">
-<span class="tag">विशेष लेख</span><h2>रक्तदान, कथा आणि सन्मान — चांगल्या कार्याला पुढे नेणारे व्यासपीठ</h2>
-<p>Raktdata News मध्ये रक्तवीर, सामाजिक संस्था, जनजागृती उपक्रम आणि उल्लेखनीय कार्याच्या कथा मांडल्या जातील.</p>
-<a class="btn btn-primary" href="news.html">सर्व बातम्या वाचा</a>
-</div>
-</div>
-<div class="side-news">
-<article class="mini-story"><div class="mini-img">❤️</div><div><span class="kicker">Blood Hero</span><h3>रक्तवीरांची प्रेरणादायी कथा</h3><p>कथा आणि अनुभव वाचा →</p></div></article>
-<article class="mini-story"><div class="mini-img">📰</div><div><span class="kicker">Community</span><h3>सामाजिक कार्याची प्रसिद्धी</h3><p>उपक्रम जाणून घ्या →</p></div></article>
-</div>
-</div>
-</div>
-</section>
+          <article class="sub-story-card">
+            <span class="story-tag">रक्तवीर कथा</span>
+            <h3>वयाच्या ५० व्या वर्षी ५० व्यांदा रक्तदान; महेश जोशी यांची प्रेरणादायी गोष्ट</h3>
+            <p>गेल्या २५ वर्षांपासून सतत रक्तदान करून त्यांनी शेकडो रुग्णांचे प्राण वाचवले आहेत...</p>
+          </article>
 
-<section class="section">
-<div class="container">
-<div class="book-news">
-<div class="book-cover"><div><div style="font-size:60px">📖</div><strong>रक्तदाता :<br>मानवतेचा संदेश</strong><p>ज्ञान • प्रेरणा • जनजागृती</p></div></div>
-<div>
-<span class="kicker">BOOK • जनजागृती</span><h2>पुस्तकातून ज्ञान. ज्ञानातून प्रेरणा.</h2>
-<p class="quote">“रक्तदान समजून घ्या • प्रेरणा घ्या • पुढे या”</p>
-<p>रक्तदानाचे महत्त्व, माहिती आणि अनुभव लोकांपर्यंत पोहोचवण्यासाठी प्रकाशित केलेले पुस्तक. Raktdata ecosystem मध्ये पुस्तक हे जनजागृतीचे महत्त्वाचे माध्यम आहे.</p>
-<a class="btn btn-primary" href="book.html">पुस्तकाबद्दल जाणून घ्या</a>
-</div>
-</div>
-</div>
-</section>
+          <article class="sub-story-card">
+            <span class="story-tag">विशेष मुलाखत</span>
+            <h3>"रक्तदान हेच सर्वोत्कृष्ट दान" - तज्ज्ञ डॉक्टरांचा मोलाचा सल्ला</h3>
+            <p>रक्तदानाबद्दल असलेले गैरसमज दूर करण्यासाठी डॉक्टरांनी मांडले स्पष्ट विचार...</p>
+          </article>
 
-<section class="section dark-section">
-<div class="container">
-<div class="section-title light"><div><span class="kicker" style="color:#ffb7bf">THE RAKTDATA CYCLE</span><h2>एक कथा → एक प्रेरणा → नवीन रक्तवीर</h2></div></div>
-<div class="grid-3">
-<div class="card dark-card"><strong>01</strong><h3>जनजागृती</h3><p>योग्य माहिती समाजापर्यंत पोहोचते.</p></div>
-<div class="card dark-card"><strong>02</strong><h3>रक्तदान</h3><p>प्रेरणेतून नवीन रक्तवीर पुढे येतो.</p></div>
-<div class="card dark-card"><strong>03</strong><h3>कथा • सन्मान • प्रेरणा</h3><p>कथा ओळख मिळवते आणि पुन्हा पुढील रक्तवीराला प्रेरणा देते.</p></div>
-</div>
-</div>
-</section>
+        </div>
 
-<section class="section">
-<div class="container">
-<div class="cta-news">
-<div><span class="kicker">YOUR STORY MATTERS</span><h2>तुम्ही केलेल्या चांगल्या कार्याला ओळख मिळू द्या.</h2><p>रक्तदानाची कथा, बातमी, संस्था किंवा सन्मानासाठी नामांकन आम्हाला पाठवा.</p></div>
-<div class="hero-actions"><a class="btn btn-primary" href="submit.html">कथा / बातमी पाठवा</a><a class="btn btn-outline" href="honour.html">🏆 नामांकन करा</a></div>
-</div>
-</div>
-</section>
+      </div>
 
-<footer class="footer"><div class="container footer-grid">
-<div><div class="logo" style="color:#fff"><span class="logo-mark">🩸</span>Raktdata.in</div><p>रक्तदान जनजागृती, रक्तवीरांचा सन्मान आणि सामाजिक कार्याची प्रसिद्धी यासाठीचे स्वतंत्र व्यासपीठ.</p></div>
-<div><h3>Explore</h3><a href="blood-heroes.html">रक्तवीर</a><a href="organizations.html">संस्था</a><a href="news.html">News</a><a href="honour.html">सन्मान</a></div>
-<div><h3>Learn</h3><a href="awareness.html">जनजागृती</a><a href="book.html">पुस्तक</a><a href="submit.html">कथा / बातमी पाठवा</a></div>
-<div><h3>Connect</h3><a href="submit.html">सहभाग / Collaborate</a></div>
-</div><div class="container footer-bottom">© 2026 Raktdata.in</div></footer>
-<div class="sticky-mobile"><a class="btn btn-primary" href="submit.html">🩸 रक्तवीर बना</a><a class="btn btn-dark" href="book.html">📖 पुस्तक घ्या</a></div>
-<script src="js/main.js"></script>
-</body></html>
+      <!-- RIGHT COLUMN: SIDEBAR -->
+      <aside>
+        
+        <!-- WIDGET 1: LATEST HEADLINES -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">ताजी अपडेट्स</h3>
+          <ul class="news-list">
+            <li><a href="#">📌 रक्तदान शिबिर यशस्विसंपन्न; १०० बाटल्या रक्त जमा.</a></li>
+            <li><a href="#">📌 दुर्मिळ 'O Negative' रक्तदात्यांची विशेष यादी प्रसिद्ध.</a></li>
+            <li><a href="#">📌 कॉलेज तरुणांचा रक्तदान मोहिमेत उत्स्फूर्त सहभाग.</a></li>
+            <li><a href="#">📌 Raktdata.in वर तुमची रक्तदान कथा कशी प्रसिद्ध करावी?</a></li>
+          </ul>
+        </div>
+
+        <!-- WIDGET 2: HERO CTA -->
+        <div class="hero-banner-widget">
+          <h3>तुम्हीसुद्धा रक्तवीर आहात का?</h3>
+          <p style="font-size: 13px; color: #cbd5e1;">तुमच्या कार्याची माहिती आणि फोटो Raktdata.in वर प्रसिद्ध करा.</p>
+          <a href="#" class="btn-news">तुमची बातमी पाठवा</a>
+        </div>
+
+        <!-- WIDGET 3: AWARENESS QUOTE -->
+        <div class="sidebar-widget" style="margin-top: 25px;">
+          <h3 class="widget-title">आजचा संदेश</h3>
+          <blockquote style="margin: 0; font-style: italic; color: var(--rd-muted); border-left: 3px solid var(--rd-red); padding-left: 10px;">
+            "तुमचे एक युनिट रक्तदान कोणाचे तरी पूर्ण आयुष्य वाचवू शकते."
+          </blockquote>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="news-footer">
+    <div class="rd-container" style="text-align: center;">
+      <p>© Raktdata.in | सर्व हक्क सुरक्षित. रक्तदान जनजागृती आणि सन्मान व्यासपीठ.</p>
+    </div>
+  </footer>
+
+  <script>
+    // आजची तारीख दाखवण्यासाठी JavaScript
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('currentDate').innerText = new Date().toLocaleDateString('mr-IN', options);
+  </script>
+
+</body>
+</html>
