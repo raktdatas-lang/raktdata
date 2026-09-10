@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raktdata.in | रक्तदान बातम्या व जनजागृती न्यूज पोर्टल</title>
+  <title>Raktdata.in | भारताचे पहिले रक्तदान न्यूज पोर्टल</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +30,7 @@
       background-color: var(--rd-bg);
       color: var(--rd-text);
       line-height: 1.6;
+      top: 0 !important; /* Fix for Google Translate bar space */
     }
 
     a { text-decoration: none; color: inherit; }
@@ -39,7 +40,7 @@
       margin-inline: auto;
     }
 
-    /* 1. TOP BAR */
+    /* 1. TOP BAR WITH LANGUAGE SWITCHER */
     .news-topbar {
       background: var(--rd-navy);
       color: #fff;
@@ -51,6 +52,44 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .lang-switcher select {
+      background: transparent;
+      color: #fff;
+      border: none;
+      font-size: 13px;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .lang-switcher select option {
+      background: #0f172a;
+      color: #fff;
+    }
+
+    /* Hide Google Translate attribution banner */
+    .goog-te-banner-frame, .skiptranslate {
+      display: none !important;
     }
 
     /* 2. BREAKING NEWS TICKER (LIVE) */
@@ -405,11 +444,24 @@
 </head>
 <body>
 
-  <!-- TOP BAR -->
+  <!-- TOP BAR WITH MULTI-LANGUAGE SWITCHER -->
   <div class="news-topbar">
     <div class="rd-container news-topbar-inner">
       <div>🗓️ आजची तारीख: <span id="currentDate"></span></div>
-      <div>Raktdata.in - महाराष्ट्राचे पहिले रक्तदान न्यूज पोर्टल</div>
+      
+      <div class="topbar-right">
+        <span>Raktdata.in - भारताचे पहिले रक्तदान न्यूज पोर्टल</span>
+        
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+          <label for="langSelect">🌐</label>
+          <select id="langSelect" onchange="changeLanguage(this.value)">
+            <option value="mr" selected>मराठी</option>
+            <option value="hi">हिन्दी</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -495,7 +547,6 @@
         <div class="sidebar-widget">
           <h3 class="widget-title">🔴 Raktdata TV (थेट प्रक्षेपण)</h3>
           <div class="video-container">
-            <!-- युट्यूब व्हिडिओ किंवा लाईव्ह स्ट्रीमसाठी खालील src मधील VIDEO_ID बदला -->
             <iframe 
               src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
               title="Raktdata Live News Stream" 
@@ -565,14 +616,38 @@
   <!-- FOOTER -->
   <footer class="news-footer">
     <div class="rd-container">
-      <p>© Raktdata.in | सर्व हक्क सुरक्षित. रक्तदान जनजागृती आणि सन्मान व्यासपीठ.</p>
+      <p>© Raktdata.in | सर्व हक्क सुरक्षित. भारतातील पहिले रक्तदान जनजागृती आणि सन्मान व्यासपीठ.</p>
     </div>
   </footer>
 
-  <!-- JAVASCRIPT FOR DYNAMIC DATE -->
+  <!-- HIDDEN GOOGLE TRANSLATE ELEMENT -->
+  <div id="google_translate_element" style="display:none;"></div>
+
+  <!-- JAVASCRIPT FOR DYNAMIC DATE & TRANSLATION -->
   <script>
+    // Set Current Date
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('currentDate').innerText = new Date().toLocaleDateString('mr-IN', options);
+
+    // Change Language Function using Google Translate Widget
+    function changeLanguage(lang) {
+      var selectField = document.querySelector('.goog-te-combo');
+      if (selectField) {
+        selectField.value = lang;
+        selectField.dispatchEvent(new Event('change'));
+      }
+    }
+  </script>
+
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'mr',
+        includedLanguages: 'mr,hi,en',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
   </script>
 
 </body>
