@@ -330,19 +330,22 @@
     }
 
     .book-cover {
-      width: 90px;
-      height: 120px;
-      background: #fee2e2;
+      width: 100px;
+      height: 140px;
+      background: #fff;
       border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      color: var(--rd-red);
-      font-size: 12px;
-      text-align: center;
-      border: 1px solid #fca5a5;
+      border: 1px solid var(--rd-red);
       flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .book-details h4 { margin: 0 0 5px; font-size: 16px; color: var(--rd-navy); }
@@ -441,7 +444,7 @@
         <a href="#heroes">रक्तवीर</a>
         <a href="#orgs">संस्था</a>
         <a href="#news">ताज्या कथा</a>
-        <a href="#honour">सन्मान</a>
+        <a href="#blessings">शुभेच्छा संदेश</a>
         <a href="#book-section">📚 पुस्तक खरेदी (BOOK)</a>
         <a href="#submit">कथा पाठवा (ACT)</a>
       </nav>
@@ -498,16 +501,19 @@
           <p style="font-size: 13px; color: var(--rd-muted); margin: 10px 0 0;">📹 रक्तदान जनजागृती आणि मुलाखतींचे विशेष व्हिडिओ थेट पाहा.</p>
         </div>
 
-        <!-- 📚 7. BOOK SECTION (विशेष पुस्तक खरेदी बॉक्स) -->
+        <!-- 📚 BOOK SECTION (SPECIAL WIDGET) -->
         <div class="book-widget" id="book-section">
           <span class="book-badge">📚 विशेष पुस्तक (BOOK)</span>
           <div class="book-flex">
             <div class="book-cover">
-              रक्तदान:<br>जीवनदान<br>📘
+              <img src="समोरचा पेज आहे.jpg" alt="रक्तदाता : मानवतेचा संदेश">
             </div>
             <div class="book-details">
-              <h4>'रक्तदान: वास्तव आणि गैरसमज'</h4>
-              <p style="font-size:12px; color:var(--rd-muted); margin: 0 0 5px;">लेखक: Raktdata Editorial Board</p>
+              <h4>रक्तदाता : मानवतेचा संदेश</h4>
+              <p style="font-size:12px; color:var(--rd-muted); margin: 0 0 5px;"><strong>लेखक:</strong> डि. एम. गायकवाड</p>
+              <p style="font-size:11px; color:#16a34a; font-weight: bold; margin: 0 0 8px;">
+                ✨ मा. उपमुख्यमंत्री कार्यालयाकडून विशेष शुभेच्छा संदेश प्राप्त!
+              </p>
               <div class="book-price">₹१९९ <span style="font-size: 12px; color: var(--rd-muted); text-decoration: line-through;">₹२९९</span></div>
               <a href="javascript:void(0)" onclick="buyBookAlert()" class="btn-buy">🛒 पुस्तक खरेदी करा</a>
             </div>
@@ -528,6 +534,18 @@
 
     </div>
 
+    <!-- शासकीय शुभेच्छा संदेश कार्ड -->
+    <div class="editorial-card" id="blessings" style="margin-bottom: 30px; border-top-color: #d97706; background: #fffcf5;">
+      <span class="story-tag" style="background: #fef3c7; color: #b45309;">📜 शासकीय शुभेच्छा संदेश</span>
+      <h3>"रक्तदाता : मानवतेचा संदेश" पुस्तकास उपमुख्यमंत्र्यांच्या कार्यालयाकडून हार्दिक शुभेच्छा!</h3>
+      <p style="font-style: italic; color: #334155; font-size: 15px;">
+        "रक्तदान ही केवळ एका व्यक्तीची गरज भागविणारी वैद्यकीय प्रक्रिया नसून, माणुसकी जपणारी आणि समाजाला संवेदनशील बनविणारी एक महान सेवा आहे... 'रक्तदाता : मानवतेचा संदेश' या पुस्तकाच्या माध्यमातून रक्तदानविषयक शास्त्रीय माहिती व गैरसमज दूर करण्याचा स्तुत्य प्रयत्न करण्यात आला आहे."
+      </p>
+      <p style="margin: 0; font-weight: bold; color: var(--rd-navy); font-size: 14px;">
+        — मंगेश नरसिंह चिवटे (विशेष कार्य अधिकारी, मा. उपमुख्यमंत्री कार्यालय, मंत्रालय, मुंबई)
+      </p>
+    </div>
+
     <!-- EDITORIAL CARDS (INSPIRE & SHOW) -->
     <div class="editorial-grid">
       <div class="editorial-card" id="heroes">
@@ -545,7 +563,7 @@
       </div>
     </div>
 
-    <!-- 📩 8. ACT (CALL TO ACTION) -->
+    <!-- 📩 ACT (CALL TO ACTION) -->
     <section class="cta-banner" id="submit">
       <h2>📩 तुमची कथा / बातमी पाठवा (ACT)</h2>
       <p style="margin: 0; opacity: 0.9;">तुम्ही किंवा तुमची संस्था रक्तदान क्षेत्रात कार्य करत असाल, तर तुमची बातमी किंवा अनुभव आमच्यापर्यंत पोहोचवा.</p>
@@ -575,9 +593,8 @@
       }
     }
 
-    // Book Buy Action Demo
     function buyBookAlert() {
-      alert("पुस्तक ऑर्डर करण्यासाठी नोंदणी फॉर्म लवकरच उघडत आहे! (येथे तुम्ही Razorpay / Google Form ची लिंक जोडू शकता)");
+      alert(" 'रक्तदाता : मानवतेचा संदेश' (लेखक: डि. एम. गायकवाड) या पुस्तकाची ऑर्डर नोंदवण्यासाठी संपर्क करा किंवा लिंकवर जा.");
     }
   </script>
 
