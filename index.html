@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raktdata - मुख्य पान</title>
+    <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Header Section -->
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <span><i class="fas fa-heartbeat"></i> रक्तदान हेच श्रेष्ठ दान | मानवतेचा संदेश</span>
+            <div class="top-contact">
+                <a href="contact.html"><i class="fas fa-envelope"></i> संपर्क साधा</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
     <header class="main-header">
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/images/logo.png" alt="Raktdata Logo">
+                    <img src="assets/images/logo.png" alt="Raktdata Logo" id="site-logo">
                 </a>
             </div>
             <nav class="navbar">
@@ -39,90 +50,98 @@
         <div class="container">
             <div class="hero-content">
                 <h1>रक्तदान : मानवतेचा संदेश आणि सामाजिक कर्तव्य</h1>
-                <p>रक्तदानाविषयी समाजात योग्य माहिती पसरवणे, जनजागृती करणे आणि रक्तदात्यांचा गौरव करणे हाच आमचा मुख्य उद्देश आहे.</p>
+                <p>रक्तदानाविषयी समाजात योग्य माहिती पसरवणे, जनजागृती करणे आणि सर्वोत्कृष्ट रक्तदात्यांचा गौरव करणे हाच आमचा मुख्य उद्देश आहे.</p>
                 <div class="hero-buttons">
-                    <a href="book.html" class="btn btn-primary"><i class="fas fa-book"></i> पुस्तक खरेदी करा (₹300)</a>
-                    <a href="awareness.html" class="btn btn-secondary"><i class="fas fa-heart"></i> जनजागृती उपक्रम</a>
+                    <a href="book.html" class="btn btn-gold"><i class="fas fa-book"></i> पुस्तक खरेदी करा (₹300)</a>
+                    <a href="awareness.html" class="btn btn-outline"><i class="fas fa-lightbulb"></i> जनजागृती उपक्रम</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Key Focus Areas (5 Objectives) -->
+    <!-- 4 Main Objectives / Features Section -->
     <section class="features-section">
         <div class="container">
-            <h2 class="section-title">आमचे मुख्य उपक्रम व उद्दिष्टे</h2>
+            <div class="section-header">
+                <h2>आमचे मुख्य उपक्रम व उद्दिष्टे</h2>
+                <div class="title-underline"></div>
+            </div>
+            
             <div class="grid-container">
-                
                 <!-- Feature 1 -->
                 <div class="card">
-                    <div class="icon"><i class="fas fa-newspaper"></i></div>
+                    <div class="icon-box"><i class="fas fa-newspaper"></i></div>
                     <h3>बातम्या व उपक्रम</h3>
-                    <p>रक्तदानाशी संबंधित ताज्या बातम्या, आयोजित होणारी शिबिरे आणि सामाजिक घडामोडींची माहिती.</p>
-                    <a href="news.html" class="read-more">अधिक वाचा &rarr;</a>
+                    <p>रक्तदानाशी संबंधित ताज्या बातम्या, आयोजित होणारी शिबिरे आणि सामाजिक घडामोडींची माहिती एकाच ठिकाणी.</p>
+                    <a href="news.html" class="read-more">अधिक माहिती <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Feature 2 -->
                 <div class="card">
-                    <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="icon-box"><i class="fas fa-lightbulb"></i></div>
                     <h3>जनजागृती केंद्र</h3>
-                    <p>रक्तदानाविषयीचे गैरसमज दूर करून समाजात सकारात्मक संदेश पसरवण्याचे कार्य.</p>
-                    <a href="awareness.html" class="read-more">अधिक वाचा &rarr;</a>
+                    <p>रक्तदानाविषयीचे गैरसमज दूर करून तरुणांमध्ये आणि समाजात सकारात्मक संदेश पसरवण्याचे कार्य.</p>
+                    <a href="awareness.html" class="read-more">अधिक माहिती <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Feature 3 -->
                 <div class="card">
-                    <div class="icon"><i class="fas fa-book-open"></i></div>
+                    <div class="icon-box"><i class="fas fa-book-open"></i></div>
                     <h3>रक्तदाता : मानवतेचा संदेश</h3>
-                    <p>रक्तदानाचे महत्त्व पटवून देणारे प्रेरणादायी पुस्तक. आजच तुमची प्रत मागवा.</p>
-                    <a href="book.html" class="read-more">पुस्तक मिळवा &rarr;</a>
+                    <p>रक्तदानाचे महत्त्व पटवून देणारे आणि प्रेरणा देणारे विशेष पुस्तक. आजच तुमची प्रत ऑर्डर करा.</p>
+                    <a href="book.html" class="read-more">पुस्तक मागवा <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Feature 4 -->
                 <div class="card">
-                    <div class="icon"><i class="fas fa-award"></i></div>
+                    <div class="icon-box"><i class="fas fa-award"></i></div>
                     <h3>रक्तदाता सन्मान सोहळा</h3>
-                    <p>सातत्याने रक्तदान करणाऱ्या दात्यांचा आणि सामाजिक संस्थांचा गौरव करणारा विशेष उपक्रम.</p>
-                    <a href="awards.html" class="read-more">माहिती घ्या &rarr;</a>
+                    <p>सातत्याने रक्तदान करणाऱ्या दात्यांचा आणि सामाजिक संस्थांचा गौरव करणारा आगामी विशेष उपक्रम.</p>
+                    <a href="awards.html" class="read-more">माहिती घ्या <i class="fas fa-arrow-right"></i></a>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Book Promo Banner -->
+    <!-- Book Highlight Banner -->
     <section class="book-banner">
         <div class="container">
-            <div class="banner-box">
+            <div class="banner-card">
                 <div class="banner-text">
+                    <span class="badge">विशेष पुस्तक</span>
                     <h2>"रक्तदाता : मानवतेचा संदेश"</h2>
-                    <p>हे पुस्तक केवळ वाचण्यासाठी नाही, तर एका महान सामाजिक चळवळीचा भाग होण्यासाठी आहे. आजच आपली प्रत बुक करा.</p>
-                    <h3>किंमत: ₹३००/- (मोफत होम डिलिव्हरी)</h3>
+                    <p>हे पुस्तक केवळ वाचण्यासाठी नाही, तर एका महान सामाजिक चळवळीचा भाग होण्यासाठी आहे. आजच आपली प्रत ऑनलाईन ऑर्डर करा.</p>
+                    <div class="price-tag">किंमत: <strong>₹३००/-</strong> <span>(घरपोच डिलिव्हरी)</span></div>
                 </div>
-                <div class="banner-btn">
-                    <a href="book.html" class="btn btn-gold">आत्ताच ऑर्डर करा</a>
+                <div class="banner-action">
+                    <a href="book.html" class="btn btn-gold btn-large"><i class="fas fa-shopping-cart"></i> आत्ताच खरेदी करा</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Recent News Preview Section -->
-    <section class="news-preview">
+    <!-- News & Updates Preview -->
+    <section class="news-preview-section">
         <div class="container">
-            <h2 class="section-title">ताजी अपडेट्स आणि बातम्या</h2>
-            <div class="grid-container">
-                <div class="news-card">
-                    <span class="date">१० सप्टेंबर २०२६</span>
-                    <h3>राज्यस्तरीय रक्तदान जनजागृती मोहीम सुरू</h3>
-                    <p>तरुणांमध्ये रक्तदानाविषयी उत्सुकता वाढवण्यासाठी विशेष कॅम्पस उपक्रमाचे आयोजन...</p>
-                    <a href="news.html">वाचा &rarr;</a>
-                </div>
-                <div class="news-card">
-                    <span class="date">०५ सप्टेंबर २०२६</span>
-                    <h3>आगामी रक्तदाता सन्मान सोहळा २०२६</h3>
-                    <p>सर्वोत्कृष्ट रक्तदाते आणि सामाजिक संस्थांच्या नामांकनाची प्रक्रिया सुरू झाली आहे...</p>
-                    <a href="awards.html">वाचा &rarr;</a>
-                </div>
+            <div class="section-header">
+                <h2>ताजी अपडेट्स आणि घडामोडी</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-date"><i class="far fa-calendar-alt"></i> २५ सप्टेंबर २०२६</div>
+                    <h3>राज्यस्तरीय रक्तदान जनजागृती मोहिमेचा शुभारंभ</h3>
+                    <p>तरुणांमध्ये आणि महाविद्यालयांमध्ये रक्तदानाविषयी उत्सुकता वाढवण्यासाठी विशेष उपक्रम सुरू करण्यात आला आहे...</p>
+                    <a href="news.html" class="news-link">पूर्ण बातमी वाचा &rarr;</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-date"><i class="far fa-calendar-alt"></i> १५ सप्टेंबर २०२६</div>
+                    <h3>आगामी 'रक्तदाता सन्मान सोहळा' नामांकने सुरू</h3>
+                    <p>सर्वोत्कृष्ट काम करणाऱ्या रक्तदात्यांच्या आणि संस्थांच्या सन्मानासाठी ऑनलाईन अर्ज स्वीकारणे सुरू झाले आहे...</p>
+                    <a href="awards.html" class="news-link">नामांकन अर्ज भरा &rarr;</a>
+                </article>
             </div>
         </div>
     </section>
@@ -130,28 +149,44 @@
     <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="assets/images/logo.png" alt="Raktdata Logo">
-                    <p>रक्तदान हेच श्रेष्ठ दान. मानवतेच्या सेवेसाठी समर्पित व्यासपीठ.</p>
+            <div class="footer-grid">
+                <div class="footer-col about-col">
+                    <img src="assets/images/logo.png" alt="Raktdata Logo" class="footer-logo">
+                    <p>रक्तदान हेच श्रेष्ठ दान. सामाजिक बांधिलकी जपत मानवी मूल्यांची जपणूक करणारा उपक्रम.</p>
                 </div>
-                <div class="footer-links">
-                    <h4>महत्त्वाच्या लिंक्स</h4>
+                
+                <div class="footer-col links-col">
+                    <h4>महत्त्वाचे दुवे</h4>
                     <ul>
                         <li><a href="about.html">आमच्याबद्दल</a></li>
-                        <li><a href="book.html">पुस्तक खरेदी</a></li>
+                        <li><a href="news.html">बातम्या व उपक्रम</a></li>
                         <li><a href="awareness.html">जनजागृती</a></li>
+                        <li><a href="book.html">पुस्तक खरेदी</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col links-col">
+                    <h4>इतर विभाग</h4>
+                    <ul>
+                        <li><a href="awards.html">सन्मान सोहळा</a></li>
+                        <li><a href="donors.html">रक्तदाता</a></li>
+                        <li><a href="organizations.html">संस्था</a></li>
                         <li><a href="contact.html">संपर्क</a></li>
                     </ul>
                 </div>
-                <div class="footer-social">
-                    <h4>आमच्याशी जोडा</h4>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+
+                <div class="footer-col social-col">
+                    <h4>सोशल मीडिया</h4>
+                    <p>आमच्याशी सोशल मीडियावर जोडा:</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
                 <p>&copy; 2026 Raktdata. सर्व हक्क सुरक्षित.</p>
             </div>
