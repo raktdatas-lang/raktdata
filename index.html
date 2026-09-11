@@ -4,14 +4,434 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raktdata - मुख्य पान</title>
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Design Code (एकत्रित) -->
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        :root {
+            --primary-color: #c0392b;
+            --primary-dark: #962d22;
+            --accent-gold: #f39c12;
+            --text-dark: #2c3e50;
+            --text-light: #666666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.88rem;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Main Header */
+        .main-header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .logo img {
+            max-height: 55px;
+            display: block;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--white);
+            background-color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(192, 57, 43, 0.95), rgba(150, 45, 34, 0.92));
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.3rem;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: var(--white);
+        }
+
+        .btn-gold:hover {
+            background-color: #d35400;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Section Titles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 1.9rem;
+            color: var(--primary-dark);
+        }
+
+        .title-underline {
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: 60px 0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .icon-box {
+            font-size: 2.3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* Book Banner */
+        .book-banner {
+            padding: 40px 0;
+        }
+
+        .banner-card {
+            background: linear-gradient(135deg, #2c3e50, #1a252f);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .badge {
+            background-color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .banner-text h2 {
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+
+        .banner-text p {
+            color: #bdc3c7;
+            margin-bottom: 15px;
+        }
+
+        .price-tag {
+            font-size: 1.1rem;
+        }
+
+        .price-tag strong {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+        }
+
+        /* News Section */
+        .news-preview-section {
+            padding: 60px 0;
+            background-color: #ffffff;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .news-card {
+            background-color: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .news-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .news-card p {
+            color: var(--text-light);
+            font-size: 0.92rem;
+            margin-bottom: 15px;
+        }
+
+        .news-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: #1b1f23;
+            color: #a0a0a0;
+            padding: 50px 0 20px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            max-height: 50px;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col a {
+            color: #a0a0a0;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background-color: #2d3238;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2d3238;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        /* Responsive UI */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar {
+                display: none;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            .navbar.active {
+                display: block;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .navbar a {
+                display: block;
+                padding: 10px;
+            }
+
+            .main-header .container {
+                flex-wrap: wrap;
+            }
+
+            .banner-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
+    <!-- Top Info Bar -->
     <div class="top-bar">
         <div class="container">
             <span><i class="fas fa-heartbeat"></i> रक्तदान हेच श्रेष्ठ दान | मानवतेचा संदेश</span>
@@ -29,7 +449,12 @@
                     <img src="assets/images/logo.png" alt="Raktdata Logo" id="site-logo">
                 </a>
             </div>
-            <nav class="navbar">
+            
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="navbar" id="navbar">
                 <ul>
                     <li><a href="index.html" class="active">मुख्य पान</a></li>
                     <li><a href="about.html">आमच्याबद्दल</a></li>
@@ -59,7 +484,7 @@
         </div>
     </section>
 
-    <!-- 4 Main Objectives / Features Section -->
+    <!-- 4 Main Objectives Section -->
     <section class="features-section">
         <div class="container">
             <div class="section-header">
@@ -68,7 +493,6 @@
             </div>
             
             <div class="grid-container">
-                <!-- Feature 1 -->
                 <div class="card">
                     <div class="icon-box"><i class="fas fa-newspaper"></i></div>
                     <h3>बातम्या व उपक्रम</h3>
@@ -76,7 +500,6 @@
                     <a href="news.html" class="read-more">अधिक माहिती <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Feature 2 -->
                 <div class="card">
                     <div class="icon-box"><i class="fas fa-lightbulb"></i></div>
                     <h3>जनजागृती केंद्र</h3>
@@ -84,7 +507,6 @@
                     <a href="awareness.html" class="read-more">अधिक माहिती <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Feature 3 -->
                 <div class="card">
                     <div class="icon-box"><i class="fas fa-book-open"></i></div>
                     <h3>रक्तदाता : मानवतेचा संदेश</h3>
@@ -92,7 +514,6 @@
                     <a href="book.html" class="read-more">पुस्तक मागवा <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Feature 4 -->
                 <div class="card">
                     <div class="icon-box"><i class="fas fa-award"></i></div>
                     <h3>रक्तदाता सन्मान सोहळा</h3>
@@ -114,13 +535,13 @@
                     <div class="price-tag">किंमत: <strong>₹३००/-</strong> <span>(घरपोच डिलिव्हरी)</span></div>
                 </div>
                 <div class="banner-action">
-                    <a href="book.html" class="btn btn-gold btn-large"><i class="fas fa-shopping-cart"></i> आत्ताच खरेदी करा</a>
+                    <a href="book.html" class="btn btn-gold"><i class="fas fa-shopping-cart"></i> आत्ताच खरेदी करा</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- News & Updates Preview -->
+    <!-- News Preview Section -->
     <section class="news-preview-section">
         <div class="container">
             <div class="section-header">
@@ -193,6 +614,41 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- JavaScript Code (एकत्रित) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle System
+            const menuToggle = document.getElementById('menu-toggle');
+            const navbar = document.getElementById('navbar');
+
+            if (menuToggle && navbar) {
+                menuToggle.addEventListener('click', function () {
+                    navbar.classList.toggle('active');
+                    
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        if (navbar.classList.contains('active')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+
+            // Fallback Logo Handling
+            const logoImg = document.getElementById('site-logo');
+            if (logoImg) {
+                logoImg.addEventListener('error', function () {
+                    const logoContainer = this.parentElement;
+                    if (logoContainer) {
+                        logoContainer.innerHTML = '<h2 style="color:#c0392b; font-weight:bold;">RAKTDATA</h2>';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
