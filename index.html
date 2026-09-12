@@ -38,7 +38,7 @@
             margin: 0 auto;
         }
 
-        /* Top Header Area */
+        /* Top Bar & Header */
         .site-header {
             background-color: var(--white);
             padding: 12px 0;
@@ -59,7 +59,7 @@
         }
 
         .logo-area img {
-            height: 48px;
+            height: 50px;
             width: auto;
         }
 
@@ -67,7 +67,6 @@
             color: var(--primary-red);
             font-size: 1.8rem;
             font-weight: 900;
-            letter-spacing: 0.5px;
             line-height: 1;
         }
 
@@ -95,7 +94,7 @@
             font-weight: 600;
         }
 
-        /* Dark Navy Navigation Menu */
+        /* Navigation Menu */
         .main-navbar {
             background-color: var(--navy-dark);
             position: sticky;
@@ -141,18 +140,17 @@
             cursor: pointer;
         }
 
-        /* Hero Banner (Navy Blue Background) */
+        /* Hero Banner */
         .hero-banner {
             background: linear-gradient(135deg, var(--navy-dark), var(--navy-header));
             color: var(--white);
-            padding: 45px 0 55px 0;
-            position: relative;
+            padding: 35px 0 50px 0;
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 30px;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 25px;
             align-items: center;
         }
 
@@ -160,19 +158,18 @@
             font-size: 2.2rem;
             font-weight: 800;
             color: var(--accent-gold);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .hero-text p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #d1d5db;
-            margin-bottom: 25px;
-            max-width: 600px;
+            margin-bottom: 20px;
         }
 
         .hero-actions {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
@@ -180,37 +177,25 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 18px;
+            padding: 10px 16px;
             border-radius: 4px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             transition: transform 0.2s;
         }
 
-        .btn-action:hover {
-            transform: translateY(-2px);
-        }
-
+        .btn-action:hover { transform: translateY(-2px); }
         .btn-red { background-color: var(--primary-red); color: var(--white); }
         .btn-blue { background-color: #1976d2; color: var(--white); }
         .btn-gold { background-color: var(--accent-gold); color: #000; }
 
-        .banner-placeholder {
-            border: 2px dashed rgba(255,255,255,0.3);
-            border-radius: 8px;
-            padding: 30px;
-            text-align: center;
-            color: var(--accent-gold);
-            font-weight: bold;
-        }
-
-        /* Statistics Bar Section */
+        /* Stats Bar */
         .stats-section {
-            margin-top: -30px;
+            margin-top: -25px;
             position: relative;
             z-index: 10;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         .stats-grid {
@@ -221,36 +206,19 @@
 
         .stat-card {
             background: var(--white);
-            padding: 20px 15px;
+            padding: 18px 12px;
             border-radius: 6px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             border-bottom: 3px solid var(--primary-red);
         }
 
-        .stat-icon {
-            font-size: 1.8rem;
-            color: var(--primary-red);
-            margin-bottom: 5px;
-        }
+        .stat-icon { font-size: 1.6rem; color: var(--primary-red); margin-bottom: 5px; }
+        .stat-number { font-size: 1.5rem; font-weight: 800; color: var(--navy-dark); }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
 
-        .stat-number {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--navy-dark);
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
-        /* News & Book Content Layout */
-        .content-section {
-            padding-bottom: 40px;
-        }
-
+        /* Main Content Layout */
+        .content-section { padding-bottom: 40px; }
         .main-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -268,77 +236,120 @@
             gap: 8px;
         }
 
-        .news-card-featured {
-            background: var(--white);
-            border-radius: 6px;
+        /* YouTube TV Section */
+        .video-box {
+            background: #000;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            margin-bottom: 20px;
-        }
-
-        .news-img-box {
-            height: 220px;
-            background-color: #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-        }
-
-        .news-body {
-            padding: 18px;
-        }
-
-        .news-body h3 {
-            font-size: 1.3rem;
-            color: var(--navy-dark);
-            margin-bottom: 8px;
-        }
-
-        .news-meta-info {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
-        /* Book Box Widget */
-        .book-sale-box {
-            background: linear-gradient(135deg, var(--navy-dark), #102a43);
-            color: var(--white);
-            padding: 22px;
-            border-radius: 6px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             margin-bottom: 25px;
         }
 
-        .book-sale-box h4 {
-            color: var(--accent-gold);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
         }
 
-        .price-badge-tag {
-            background-color: var(--primary-red);
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-caption {
+            background: var(--navy-dark);
             color: var(--white);
-            font-weight: bold;
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin: 8px 0;
-            font-size: 0.9rem;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* Awards Widget */
-        .awards-info-box {
+        /* News Cards Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .news-card {
             background: var(--white);
-            padding: 20px;
+            padding: 15px;
             border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            border-left: 4px solid var(--accent-gold);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border-left: 3px solid var(--primary-red);
         }
 
-        /* Footer (Dark Navy) */
+        .news-card h4 { font-size: 1rem; color: var(--navy-dark); margin-bottom: 6px; }
+        .news-card p { font-size: 0.82rem; color: #666; }
+
+        /* Book Display Card (Sidebar) */
+        .book-display-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 25px;
+        }
+
+        .book-img-wrapper {
+            width: 100%;
+            max-width: 210px;
+            margin: 0 auto 12px auto;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .book-img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .book-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            margin-bottom: 2px;
+        }
+
+        .book-subtitle {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+            margin-bottom: 6px;
+        }
+
+        .book-author {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .price-tag {
+            background-color: var(--navy-dark);
+            color: var(--accent-gold);
+            font-weight: 800;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        /* Footer */
         .site-footer {
             background-color: var(--navy-dark);
             color: #bcccdc;
@@ -361,23 +372,10 @@
             padding-left: 8px;
         }
 
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 6px;
-        }
-
-        .footer-column a {
-            color: #bcccdc;
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-
-        .footer-column a:hover {
-            color: var(--white);
-        }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 6px; }
+        .footer-column a { color: #bcccdc; text-decoration: none; font-size: 0.85rem; }
+        .footer-column a:hover { color: var(--white); }
 
         .footer-copyright {
             text-align: center;
@@ -386,29 +384,13 @@
             font-size: 0.8rem;
         }
 
-        /* Responsive Settings */
+        /* Mobile Responsive */
         @media (max-width: 900px) {
-            .hero-grid, .main-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-toggle-btn {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links a {
-                border-bottom: 1px solid rgba(255,255,255,0.05);
-            }
+            .hero-grid, .main-grid, .news-grid { grid-template-columns: 1fr; }
+            .nav-toggle-btn { display: block; }
+            .nav-links { display: none; flex-direction: column; width: 100%; }
+            .nav-links.active { display: flex; }
+            .nav-links a { border-bottom: 1px solid rgba(255,255,255,0.05); }
         }
     </style>
 </head>
@@ -431,22 +413,22 @@
         </div>
     </header>
 
-    <!-- 2. Dark Navy Navigation Bar (12 Pages) -->
+    <!-- 2. Dark Navy Navigation Bar (12 Pages Included) -->
     <nav class="main-navbar">
         <div class="container nav-container">
             <button class="nav-toggle-btn" id="nav-toggle"><i class="fas fa-bars"></i></button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="donors.html">Blood Donors</a></li>
-                <li><a href="organizations.html">Organizations</a></li>
                 <li><a href="news.html">News & Events</a></li>
                 <li><a href="awareness.html">Knowledge / Awareness</a></li>
-                <li><a href="awards.html">Awards</a></li>
-                <li><a href="campus.html">Campus</a></li>
                 <li><a href="book.html">Book Store</a></li>
+                <li><a href="awards.html">Awards</a></li>
+                <li><a href="donors.html">Blood Donors</a></li>
+                <li><a href="organizations.html">Organizations</a></li>
+                <li><a href="campus.html">Campus</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="videos.html">Videos</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
@@ -464,11 +446,8 @@
                     <a href="awards.html" class="btn-action btn-gold"><i class="fas fa-certificate"></i> ३. नियुक्ती पत्र डाउनलोड</a>
                 </div>
             </div>
-            <div class="hero-banner-right">
-                <div class="banner-placeholder">
-                    <i class="fas fa-bullhorn fa-2x"></i><br><br>
-                    Raktdata Banner Box
-                </div>
+            <div class="hero-banner-right" style="text-align:center;">
+                <img src="assets/images/logo.png.jpg" alt="Raktdata Banner" style="max-height:160px; filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.4));">
             </div>
         </div>
     </section>
@@ -499,42 +478,61 @@
         </div>
     </div>
 
-    <!-- 5. Main Content Area (News + Book Sales + Awards) -->
+    <!-- 5. Main Content Area -->
     <main class="content-section">
         <div class="container main-grid">
             
-            <!-- Left Side: News & Awareness -->
+            <!-- Left Side: YouTube TV Section & News -->
             <div>
-                <h2 class="section-header-title"><i class="fas fa-newspaper" style="color:var(--primary-red);"></i> ताज्या बातम्या व घडामोडी</h2>
-                
-                <article class="news-card-featured">
-                    <div class="news-img-box">
-                        <i class="fas fa-newspaper fa-3x"></i>
+                <!-- YouTube TV Live/Awareness Video Section -->
+                <h2 class="section-header-title"><i class="fab fa-youtube" style="color:red;"></i> Raktdata TV - विशेष व्हिडिओ</h2>
+                <div class="video-box">
+                    <div class="video-container">
+                        <!-- YouTube Embed Link (Replace YOUR_YOUTUBE_VIDEO_ID with your video ID) -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Raktdata Blood Donation Awareness" allowfullscreen></iframe>
                     </div>
-                    <div class="news-body">
-                        <h3>राज्यभरात 'रक्तदाता जनजागृती' मोहिमेला सुरुवात</h3>
-                        <div class="news-meta-info"><i class="far fa-calendar-alt"></i> १२ सप्टेंबर २०२६ | <i class="fas fa-tag"></i> बातम्या</div>
-                        <p>रक्तदानाचे महत्त्व सांगण्यासाठी आणि रुग्णांना वेळेत रक्त उपलब्ध करून देण्यासाठी नवीन राज्यस्तरीय उपक्रम सुरू करण्यात आला आहे...</p>
-                        <a href="news.html" style="color:var(--primary-red); font-weight:bold; text-decoration:none; display:inline-block; margin-top:10px;">अधिक वाचा &rarr;</a>
+                    <div class="video-caption">
+                        <span><i class="fas fa-play-circle" style="color:var(--accent-gold);"></i> रक्तदान जनजागृती विशेष माहितीपट</span>
+                        <a href="videos.html" style="color:var(--accent-gold); font-size:0.85rem; text-decoration:none;">अधिक व्हिडिओ पहा &rarr;</a>
                     </div>
-                </article>
-            </div>
-
-            <!-- Right Side Sidebar: Book Sales & Awards -->
-            <aside>
-                <!-- Book Promotion Widget -->
-                <div class="book-sale-box">
-                    <h4>📖 विशेष पुस्तक खरेदी करा</h4>
-                    <p style="font-size:0.9rem;">"रक्तदाता : मानवतेचा संदेश"</p>
-                    <div class="price-badge-tag">किंमत: ₹३००/-</div>
-                    <p style="font-size:0.8rem; color:#d1d5db; margin-bottom:12px;">रक्तदानाविषयी महत्त्वपूर्ण माहिती व प्रेरणादायी कथांचा संग्रह.</p>
-                    <a href="book.html" class="btn-action btn-gold" style="width:100%; justify-content:center;"><i class="fas fa-shopping-cart"></i> आत्ताच खरेदी करा</a>
                 </div>
 
-                <!-- Awards Event Widget -->
-                <div class="awards-info-box">
+                <!-- News Grid Section -->
+                <h2 class="section-header-title" style="margin-top:30px;"><i class="fas fa-newspaper" style="color:var(--primary-red);"></i> ताज्या बातम्या व उपक्रम</h2>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <h4>राज्यभरात 'रक्तदाता जनजागृती' मोहिमेला उत्स्फूर्त प्रतिसाद</h4>
+                        <p>तरुणांमध्ये रक्तदानाविषयी जनजागृती निर्माण करण्यासाठी राज्यव्यापी विशेष मोहीम सुरू...</p>
+                        <a href="news.html" style="color:var(--primary-red); font-size:0.8rem; font-weight:bold; text-decoration:none; display:inline-block; margin-top:6px;">पूर्ण बातमी वाचा &rarr;</a>
+                    </article>
+                    <article class="news-card">
+                        <h4>महाविद्यालयांमध्ये 'रक्तदाता कॅम्पस' क्लबची स्थापना</h4>
+                        <p>युवा पिढीला सामाजिक कार्यात जोडण्यासाठी कॉलेज कॅम्पस स्तरावर नवीन उपक्रम...</p>
+                        <a href="campus.html" style="color:var(--primary-red); font-size:0.8rem; font-weight:bold; text-decoration:none; display:inline-block; margin-top:6px;">अधिक माहिती &rarr;</a>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Right Side Sidebar: Book Cover Showcase & Awards -->
+            <aside>
+                <!-- Book Cover Showcase Card -->
+                <div class="book-display-card">
+                    <div class="book-img-wrapper">
+                        <!-- Path to your uploaded Book Cover Image -->
+                        <img src="assets/images/book-cover.jpg" alt="रक्तदाता : मानवतेचा संदेश" id="book-cover-img">
+                    </div>
+                    <div class="book-title">रक्तदाता</div>
+                    <div class="book-subtitle">मानवतेचा संदेश</div>
+                    <div class="book-author">लेखक : डि. एम. गायकवाड</div>
+                    <p style="font-size:0.8rem; color:#555; margin-bottom:10px;">प्रेरणा, माहिती आणि समाजसेवा या तिन्हींचं सुंदर मिश्रण.</p>
+                    <div class="price-tag">विशेष सवलत किंमत: ₹३००/-</div>
+                    <a href="book.html" class="btn-action btn-gold" style="width:100%; justify-content:center;"><i class="fas fa-shopping-cart"></i> पुस्तक खरेदी करा</a>
+                </div>
+
+                <!-- Awards Section -->
+                <div style="background:var(--white); padding:18px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); border-left:4px solid var(--accent-gold);">
                     <h4 style="color:var(--navy-dark); font-size:1.05rem; margin-bottom:6px;"><i class="fas fa-award" style="color:var(--accent-gold);"></i> रक्तदाता सन्मान सोहळा</h4>
-                    <p style="font-size:0.85rem; color:#555;">सर्वोत्कृष्ट रक्तदाते आणि संस्थांचा गौरव करणारा विशेष आगामी कार्यक्रम.</p>
+                    <p style="font-size:0.83rem; color:#555;">सातत्याने रक्तदान करणाऱ्या दात्यांचा गौरव करणारा विशेष आगामी सोहळा.</p>
                     <a href="awards.html" style="color:var(--primary-red); font-weight:bold; font-size:0.85rem; text-decoration:none; display:inline-block; margin-top:8px;">नामांकन भरा &rarr;</a>
                 </div>
             </aside>
@@ -570,7 +568,7 @@
                 </div>
                 <div class="footer-column">
                     <h5>Social Media</h5>
-                    <div style="display:flex; gap:10px; margin-top:10px;">
+                    <div style="display:flex; gap:12px; margin-top:10px;">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
@@ -587,6 +585,7 @@
     <!-- 7. JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation Menu Toggle
             const navToggle = document.getElementById('nav-toggle');
             const navLinks = document.getElementById('nav-links');
 
@@ -596,6 +595,7 @@
                 });
             }
 
+            // Fallback for site logo if missing
             const siteLogo = document.getElementById('site-logo');
             if (siteLogo) {
                 siteLogo.addEventListener('error', function() {
