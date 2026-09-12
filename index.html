@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raktdata - मुख्य पान</title>
+    <title>Raktdata News Portal - मुख्य पान</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- CSS Design Code (एकत्रित) -->
     <style>
-        /* Global Reset */
         * {
             margin: 0;
             padding: 0;
@@ -18,332 +16,388 @@
         }
 
         :root {
-            --primary-color: #c0392b;
-            --primary-dark: #962d22;
-            --accent-gold: #f39c12;
-            --text-dark: #2c3e50;
-            --text-light: #666666;
-            --bg-light: #f8f9fa;
+            --primary-red: #d32f2f;
+            --dark-red: #9a0007;
+            --news-dark: #121212;
+            --news-gray: #f4f4f4;
+            --accent-gold: #ffb300;
+            --text-dark: #222222;
+            --text-muted: #666666;
             --white: #ffffff;
         }
 
         body {
-            background-color: var(--bg-light);
+            background-color: var(--news-gray);
             color: var(--text-dark);
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .container {
-            width: 90%;
-            max-width: 1200px;
+            width: 92%;
+            max-width: 1240px;
             margin: 0 auto;
         }
 
-        /* Top Bar */
-        .top-bar {
-            background-color: var(--primary-dark);
+        /* Top Header Bar */
+        .top-header {
+            background-color: var(--news-dark);
             color: var(--white);
-            padding: 8px 0;
-            font-size: 0.88rem;
+            padding: 6px 0;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--primary-red);
         }
 
-        .top-bar .container {
+        .top-header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .top-bar a {
-            color: var(--white);
+        .date-display {
+            color: #bbb;
+        }
+
+        .top-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        /* Main News Portal Branding Header */
+        .branding-header {
+            background-color: var(--white);
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .branding-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             text-decoration: none;
         }
 
-        /* Main Header */
-        .main-header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        .logo-box img {
+            height: 65px;
+            width: auto;
+        }
+
+        .brand-text h1 {
+            color: var(--primary-red);
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+
+        .brand-text p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .header-banner-ad {
+            background: linear-gradient(45deg, var(--dark-red), var(--primary-red));
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .header-banner-ad i {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+        }
+
+        /* Ticker / Breaking News */
+        .news-ticker {
+            background-color: var(--primary-red);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            font-weight: 600;
+        }
+
+        .ticker-title {
+            background-color: var(--dark-red);
+            padding: 8px 15px;
+            white-space: nowrap;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ticker-content {
+            white-space: nowrap;
+            overflow: hidden;
+            padding-left: 10px;
+        }
+
+        .ticker-content span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        /* News Navigation Bar */
+        .main-nav {
+            background-color: var(--news-dark);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        .main-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-        }
-
-        .logo img {
-            max-height: 55px;
-            display: block;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--primary-color);
-            cursor: pointer;
-        }
-
-        .navbar ul {
+        .main-nav ul {
             display: flex;
             list-style: none;
-            gap: 15px;
-        }
-
-        .navbar a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 6px 12px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .navbar a:hover,
-        .navbar a.active {
-            color: var(--white);
-            background-color: var(--primary-color);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, rgba(192, 57, 43, 0.95), rgba(150, 45, 34, 0.92));
-            color: var(--white);
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .hero-content h1 {
-            font-size: 2.3rem;
-            margin-bottom: 18px;
-            font-weight: 700;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto 30px auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
             flex-wrap: wrap;
         }
 
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 6px;
+        .main-nav a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--white);
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
         }
 
-        .btn-gold {
-            background-color: var(--accent-gold);
+        .main-nav a:hover,
+        .main-nav a.active {
+            background-color: #222;
+            border-bottom-color: var(--primary-red);
+            color: var(--accent-gold);
+        }
+
+        /* Mobile Menu Button */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
             color: var(--white);
+            font-size: 1.4rem;
+            padding: 10px 15px;
+            cursor: pointer;
         }
 
-        .btn-gold:hover {
-            background-color: #d35400;
+        /* News Portal Main Layout */
+        .portal-body {
+            padding: 25px 0;
         }
 
-        .btn-outline {
-            border: 2px solid var(--white);
-            color: var(--white);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--white);
-            color: var(--primary-color);
-        }
-
-        /* Section Titles */
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-header h2 {
-            font-size: 1.9rem;
-            color: var(--primary-dark);
-        }
-
-        .title-underline {
-            width: 70px;
-            height: 4px;
-            background-color: var(--primary-color);
-            margin: 8px auto 0 auto;
-            border-radius: 2px;
-        }
-
-        /* Features Grid */
-        .features-section {
-            padding: 60px 0;
-        }
-
-        .grid-container {
+        .portal-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: 2fr 1fr;
             gap: 25px;
         }
 
-        .card {
+        /* Featured News Section */
+        .lead-news-card {
             background: var(--white);
-            padding: 30px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s ease;
-            border-top: 4px solid var(--primary-color);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
         }
 
-        .card:hover {
-            transform: translateY(-6px);
+        .lead-news-img {
+            width: 100%;
+            height: 320px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
-        .icon-box {
-            font-size: 2.3rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
+        .lead-news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .card h3 {
-            font-size: 1.25rem;
+        .news-category-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 3px;
+        }
+
+        .lead-news-content {
+            padding: 20px;
+        }
+
+        .lead-news-content h2 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .news-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
             margin-bottom: 12px;
         }
 
-        .card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 18px;
-        }
-
-        .read-more {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        /* Book Banner */
-        .book-banner {
-            padding: 40px 0;
-        }
-
-        .banner-card {
-            background: linear-gradient(135deg, #2c3e50, #1a252f);
-            color: var(--white);
-            padding: 40px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .badge {
-            background-color: var(--primary-color);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .banner-text h2 {
-            font-size: 1.8rem;
-            margin: 10px 0;
-        }
-
-        .banner-text p {
-            color: #bdc3c7;
-            margin-bottom: 15px;
-        }
-
-        .price-tag {
-            font-size: 1.1rem;
-        }
-
-        .price-tag strong {
-            color: var(--accent-gold);
-            font-size: 1.4rem;
-        }
-
-        /* News Section */
-        .news-preview-section {
-            padding: 60px 0;
-            background-color: #ffffff;
-        }
-
-        .news-grid {
+        /* Sub News Grid */
+        .sub-news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
 
-        .news-card {
-            background-color: var(--bg-light);
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-gold);
+        .news-card-small {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-red);
         }
 
-        .news-date {
-            font-size: 0.85rem;
-            color: var(--text-light);
+        .news-card-small h4 {
+            font-size: 1.05rem;
             margin-bottom: 8px;
         }
 
-        .news-card h3 {
+        /* Sidebar Widgets */
+        .sidebar-widget {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .widget-title {
             font-size: 1.15rem;
+            color: var(--news-dark);
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Book Sales Widget */
+        .book-widget {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .book-widget h3 {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
             margin-bottom: 10px;
         }
 
-        .news-card p {
-            color: var(--text-light);
-            font-size: 0.92rem;
-            margin-bottom: 15px;
+        .price-badge {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: var(--white);
+            font-weight: bold;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 10px 0;
         }
 
-        .news-link {
-            color: var(--primary-color);
+        .btn-order {
+            display: block;
+            width: 100%;
+            background-color: var(--accent-gold);
+            color: #000;
+            padding: 10px;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-top: 10px;
         }
 
-        /* Footer */
-        .main-footer {
-            background-color: #1b1f23;
-            color: #a0a0a0;
-            padding: 50px 0 20px 0;
+        /* Awards Widget */
+        .awards-widget {
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        /* Awareness Campaign Grid */
+        .awareness-section {
+            background-color: var(--white);
+            padding: 30px 0;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--dark-red);
+        }
+
+        .awareness-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .awareness-box {
+            background: var(--news-gray);
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .awareness-box i {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+        }
+
+        /* News Footer */
+        .news-footer {
+            background-color: var(--news-dark);
+            color: #aaa;
+            padding: 40px 0 20px 0;
+            margin-top: 40px;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 25px;
+            margin-bottom: 30px;
         }
 
-        .footer-logo {
-            max-height: 50px;
-            margin-bottom: 15px;
-            filter: brightness(0) invert(1);
-        }
-
-        .footer-col h4 {
+        .footer-col h5 {
             color: var(--white);
-            font-size: 1.1rem;
-            margin-bottom: 18px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--primary-red);
+            padding-left: 8px;
         }
 
         .footer-col ul {
@@ -355,300 +409,286 @@
         }
 
         .footer-col a {
-            color: #a0a0a0;
+            color: #aaa;
             text-decoration: none;
+            font-size: 0.9rem;
         }
 
         .footer-col a:hover {
             color: var(--white);
         }
 
-        .social-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .social-links a {
-            width: 36px;
-            height: 36px;
-            background-color: #2d3238;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary-color);
-        }
-
         .footer-bottom {
-            border-top: 1px solid #2d3238;
-            padding-top: 20px;
             text-align: center;
-            font-size: 0.88rem;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            font-size: 0.85rem;
         }
 
         /* Responsive UI */
         @media (max-width: 900px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .navbar {
-                display: none;
-                width: 100%;
-                margin-top: 15px;
-            }
-
-            .navbar.active {
-                display: block;
-            }
-
-            .navbar ul {
+            .branding-header .container {
                 flex-direction: column;
-                gap: 10px;
-            }
-
-            .navbar a {
-                display: block;
-                padding: 10px;
-            }
-
-            .main-header .container {
-                flex-wrap: wrap;
-            }
-
-            .banner-card {
-                flex-direction: column;
+                gap: 15px;
                 text-align: center;
+            }
+
+            .portal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sub-news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .main-nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .main-nav ul.active {
+                display: flex;
+            }
+
+            .main-nav a {
+                border-bottom: 1px solid #333;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Info Bar -->
-    <div class="top-bar">
+    <!-- 1. Top Bar -->
+    <div class="top-header">
         <div class="container">
-            <span><i class="fas fa-heartbeat"></i> रक्तदान हेच श्रेष्ठ दान | मानवतेचा संदेश</span>
-            <div class="top-contact">
-                <a href="contact.html"><i class="fas fa-envelope"></i> संपर्क साधा</a>
+            <div class="date-display" id="current-date"><i class="far fa-calendar-alt"></i> शनिवार, १२ सप्टेंबर २०२६</div>
+            <div class="top-links">
+                <a href="campus.html"><i class="fas fa-graduation-cap"></i> Raktdata Campus</a>
+                <a href="gallery.html"><i class="fas fa-images"></i> फोटो</a>
+                <a href="videos.html"><i class="fas fa-video"></i> व्हिडिओ</a>
             </div>
         </div>
     </div>
 
-    <!-- Main Header -->
-    <header class="main-header">
+    <!-- 2. Main News Portal Header (Logo + Ad Banner) -->
+    <header class="branding-header">
         <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/images/logo.png" alt="Raktdata Logo" id="site-logo">
-                </a>
-            </div>
-            
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+            <a href="index.html" class="logo-box">
+                <img src="assets/images/logo.png.jpg" alt="Raktdata Logo" id="site-logo">
+                <div class="brand-text">
+                    <h1>रक्तदाता न्यूज</h1>
+                    <p>मानवतेचा संदेश आणि सामाजिक क्रांती</p>
+                </div>
+            </a>
 
-            <nav class="navbar" id="navbar">
-                <ul>
-                    <li><a href="index.html" class="active">मुख्य पान</a></li>
-                    <li><a href="about.html">आमच्याबद्दल</a></li>
-                    <li><a href="news.html">बातम्या व उपक्रम</a></li>
-                    <li><a href="awareness.html">जनजागृती</a></li>
-                    <li><a href="book.html">पुस्तक खरेदी</a></li>
-                    <li><a href="awards.html">सन्मान सोहळा</a></li>
-                    <li><a href="donors.html">रक्तदाता</a></li>
-                    <li><a href="organizations.html">संस्था</a></li>
-                    <li><a href="contact.html">संपर्क</a></li>
-                </ul>
-            </nav>
+            <!-- Objective: Book Sales Promotion -->
+            <a href="book.html" class="header-banner-ad">
+                <i class="fas fa-book"></i>
+                <div>
+                    <strong style="display:block; font-size:0.9rem;">विशेष पुस्तक उपलब्ध!</strong>
+                    <span style="font-size:0.8rem;">"रक्तदाता : मानवतेचा संदेश" - रु. ३००</span>
+                </div>
+            </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <h1>रक्तदान : मानवतेचा संदेश आणि सामाजिक कर्तव्य</h1>
-                <p>रक्तदानाविषयी समाजात योग्य माहिती पसरवणे, जनजागृती करणे आणि सर्वोत्कृष्ट रक्तदात्यांचा गौरव करणे हाच आमचा मुख्य उद्देश आहे.</p>
-                <div class="hero-buttons">
-                    <a href="book.html" class="btn btn-gold"><i class="fas fa-book"></i> पुस्तक खरेदी करा (₹300)</a>
-                    <a href="awareness.html" class="btn btn-outline"><i class="fas fa-lightbulb"></i> जनजागृती उपक्रम</a>
-                </div>
-            </div>
+    <!-- 3. Breaking News Ticker -->
+    <div class="news-ticker">
+        <div class="ticker-title"><i class="fas fa-bolt"></i> अपडेट्स:</div>
+        <div class="ticker-content">
+            <span>राज्यस्तरीय रक्तदान शिबिराचे आयोजन... आगामी 'रक्तदाता सन्मान सोहळा' ऑनलाईन नामांकने सुरू... आजच रक्तदान करा आणि जीवन वाचवा!</span>
         </div>
-    </section>
+    </div>
 
-    <!-- 4 Main Objectives Section -->
-    <section class="features-section">
+    <!-- 4. Navigation Menu (Includes links to all 12 pages) -->
+    <nav class="main-nav">
         <div class="container">
-            <div class="section-header">
-                <h2>आमचे मुख्य उपक्रम व उद्दिष्टे</h2>
-                <div class="title-underline"></div>
-            </div>
+            <button class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i> मेनू</button>
+            <ul id="nav-menu">
+                <li><a href="index.html" class="active">मुख्य पान</a></li>
+                <li><a href="news.html">बातम्या</a></li>
+                <li><a href="awareness.html">जनजागृती</a></li>
+                <li><a href="book.html">पुस्तक खरेदी</a></li>
+                <li><a href="awards.html">सन्मान सोहळा</a></li>
+                <li><a href="donors.html">रक्तदाता</a></li>
+                <li><a href="organizations.html">संस्था</a></li>
+                <li><a href="campus.html">Campus</a></li>
+                <li><a href="gallery.html">फोटो</a></li>
+                <li><a href="videos.html">व्हिडिओ</a></li>
+                <li><a href="about.html">आमच्याबद्दल</a></li>
+                <li><a href="contact.html">संपर्क</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 5. Main Content Layout -->
+    <div class="portal-body">
+        <div class="container portal-grid">
             
-            <div class="grid-container">
-                <div class="card">
-                    <div class="icon-box"><i class="fas fa-newspaper"></i></div>
-                    <h3>बातम्या व उपक्रम</h3>
-                    <p>रक्तदानाशी संबंधित ताज्या बातम्या, आयोजित होणारी शिबिरे आणि सामाजिक घडामोडींची माहिती एकाच ठिकाणी.</p>
-                    <a href="news.html" class="read-more">अधिक माहिती <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="card">
-                    <div class="icon-box"><i class="fas fa-lightbulb"></i></div>
-                    <h3>जनजागृती केंद्र</h3>
-                    <p>रक्तदानाविषयीचे गैरसमज दूर करून तरुणांमध्ये आणि समाजात सकारात्मक संदेश पसरवण्याचे कार्य.</p>
-                    <a href="awareness.html" class="read-more">अधिक माहिती <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="card">
-                    <div class="icon-box"><i class="fas fa-book-open"></i></div>
-                    <h3>रक्तदाता : मानवतेचा संदेश</h3>
-                    <p>रक्तदानाचे महत्त्व पटवून देणारे आणि प्रेरणा देणारे विशेष पुस्तक. आजच तुमची प्रत ऑर्डर करा.</p>
-                    <a href="book.html" class="read-more">पुस्तक मागवा <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="card">
-                    <div class="icon-box"><i class="fas fa-award"></i></div>
-                    <h3>रक्तदाता सन्मान सोहळा</h3>
-                    <p>सातत्याने रक्तदान करणाऱ्या दात्यांचा आणि सामाजिक संस्थांचा गौरव करणारा आगामी विशेष उपक्रम.</p>
-                    <a href="awards.html" class="read-more">माहिती घ्या <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Book Highlight Banner -->
-    <section class="book-banner">
-        <div class="container">
-            <div class="banner-card">
-                <div class="banner-text">
-                    <span class="badge">विशेष पुस्तक</span>
-                    <h2>"रक्तदाता : मानवतेचा संदेश"</h2>
-                    <p>हे पुस्तक केवळ वाचण्यासाठी नाही, तर एका महान सामाजिक चळवळीचा भाग होण्यासाठी आहे. आजच आपली प्रत ऑनलाईन ऑर्डर करा.</p>
-                    <div class="price-tag">किंमत: <strong>₹३००/-</strong> <span>(घरपोच डिलिव्हरी)</span></div>
-                </div>
-                <div class="banner-action">
-                    <a href="book.html" class="btn btn-gold"><i class="fas fa-shopping-cart"></i> आत्ताच खरेदी करा</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- News Preview Section -->
-    <section class="news-preview-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>ताजी अपडेट्स आणि घडामोडी</h2>
-                <div class="title-underline"></div>
-            </div>
-
-            <div class="news-grid">
-                <article class="news-card">
-                    <div class="news-date"><i class="far fa-calendar-alt"></i> २५ सप्टेंबर २०२६</div>
-                    <h3>राज्यस्तरीय रक्तदान जनजागृती मोहिमेचा शुभारंभ</h3>
-                    <p>तरुणांमध्ये आणि महाविद्यालयांमध्ये रक्तदानाविषयी उत्सुकता वाढवण्यासाठी विशेष उपक्रम सुरू करण्यात आला आहे...</p>
-                    <a href="news.html" class="news-link">पूर्ण बातमी वाचा &rarr;</a>
+            <!-- Left Column: News Highlights & Awareness -->
+            <main class="main-content">
+                
+                <!-- Main Featured News (Objective: News & Activities) -->
+                <article class="lead-news-card">
+                    <div class="lead-news-img">
+                        <span class="news-category-tag">प्रमुख बातमी</span>
+                        <i class="fas fa-newspaper fa-4x" style="color: #bbb;"></i>
+                    </div>
+                    <div class="lead-news-content">
+                        <h2>महाराष्ट्रभरात 'रक्तदाता जनजागृती' मोहिमेला उत्स्फूर्त प्रतिसाद</h2>
+                        <div class="news-meta"><i class="far fa-clock"></i> १२ सप्टेंबर २०२६ | <i class="far fa-user"></i> विशेष प्रतिनिधी</div>
+                        <p>तरुणांमध्ये रक्तदानाविषयी जनजागृती निर्माण करण्यासाठी आणि भ्रामक गैरसमज दूर करण्यासाठी राज्यव्यापी मोहीम सुरू झाली आहे...</p>
+                        <a href="news.html" style="color:var(--primary-red); font-weight:bold; text-decoration:none; display:inline-block; margin-top:8px;">पूर्ण बातमी वाचा &rarr;</a>
+                    </div>
                 </article>
 
-                <article class="news-card">
-                    <div class="news-date"><i class="far fa-calendar-alt"></i> १५ सप्टेंबर २०२६</div>
-                    <h3>आगामी 'रक्तदाता सन्मान सोहळा' नामांकने सुरू</h3>
-                    <p>सर्वोत्कृष्ट काम करणाऱ्या रक्तदात्यांच्या आणि संस्थांच्या सन्मानासाठी ऑनलाईन अर्ज स्वीकारणे सुरू झाले आहे...</p>
-                    <a href="awards.html" class="news-link">नामांकन अर्ज भरा &rarr;</a>
-                </article>
+                <!-- Sub News Articles Grid -->
+                <div class="sub-news-grid">
+                    <article class="news-card-small">
+                        <span style="color:var(--primary-red); font-size:0.75rem; font-weight:bold;">उपक्रम</span>
+                        <h4>महाविद्यालयांमध्ये 'रक्तदाता कॅम्पस' क्लबची स्थापना</h4>
+                        <p style="font-size:0.85rem; color:#666;">युवा पिढीला सामाजिक कार्यात जोडण्यासाठी नवीन पुढाकार...</p>
+                        <a href="campus.html" style="font-size:0.8rem; color:var(--dark-red); font-weight:bold;">अधिक वाचा</a>
+                    </article>
+
+                    <article class="news-card-small">
+                        <span style="color:var(--primary-red); font-size:0.75rem; font-weight:bold;">माहिती</span>
+                        <h4>रक्तदानामुळे शरीरावर होणारे ५ सकारात्मक फायदे</h4>
+                        <p style="font-size:0.85rem; color:#666;">आरोग्य तज्ज्ञांनी दिलेली महत्त्वपूर्ण शास्त्रीय माहिती...</p>
+                        <a href="awareness.html" style="font-size:0.8rem; color:var(--dark-red); font-weight:bold;">अधिक वाचा</a>
+                    </article>
+                </div>
+
+            </main>
+
+            <!-- Right Column: Widgets (Book Sale & Awards Event) -->
+            <aside class="sidebar">
+
+                <!-- Objective: Book Promotion Widget -->
+                <div class="sidebar-widget book-widget">
+                    <h3>📖 विशेष पुस्तक</h3>
+                    <p style="font-size:0.9rem;">"रक्तदाता : मानवतेचा संदेश"</p>
+                    <div class="price-badge">किंमत: ₹३००/-</div>
+                    <p style="font-size:0.8rem; color:#ccc;">रक्तदानाचे महत्त्व आणि प्रेरणादायी गोष्टींचा संग्रह. आजच आपली प्रत मागवा.</p>
+                    <a href="book.html" class="btn-order"><i class="fas fa-shopping-cart"></i> पुस्तक ऑर्डर करा</a>
+                </div>
+
+                <!-- Objective: Blood Donor Awards Event Widget -->
+                <div class="sidebar-widget awards-widget">
+                    <div class="widget-title">
+                        <span>🏆 सन्मान सोहळा</span>
+                        <i class="fas fa-award" style="color:var(--accent-gold);"></i>
+                    </div>
+                    <p style="font-size:0.88rem; color:#444;">सातत्याने रक्तदान करणाऱ्या दात्यांचा आणि सामाजिक संस्थांचा गौरव करणारा आगामी विशेष कार्यक्रम.</p>
+                    <a href="awards.html" style="display:block; margin-top:12px; text-align:center; background:var(--news-dark); color:#fff; padding:8px; border-radius:4px; text-decoration:none; font-size:0.85rem;">नामांकन अर्ज भरा &rarr;</a>
+                </div>
+
+                <!-- Donor Search Callout -->
+                <div class="sidebar-widget">
+                    <div class="widget-title">
+                        <span>❤️ रक्तदाता शोध</span>
+                    </div>
+                    <p style="font-size:0.85rem; color:#555; margin-bottom:10px;">आपल्या परिसरातील नोंदणीकृत रक्तदात्यांची यादी पहा.</p>
+                    <a href="donors.html" style="color:var(--primary-red); font-weight:bold; font-size:0.9rem; text-decoration:none;">रक्तदात्यांची यादी पहा &rarr;</a>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- 6. Objective: Awareness Campaign Section -->
+    <section class="awareness-section">
+        <div class="container">
+            <h3 class="section-heading">रक्तदान जनजागृती केंद्र</h3>
+            <div class="awareness-grid">
+                <div class="awareness-box">
+                    <i class="fas fa-heartbeat"></i>
+                    <h4>जीव वाचवा</h4>
+                    <p style="font-size:0.85rem; color:#666; margin-top:5px;">एकदा केलेले रक्तदान तीन रुग्णांचे प्राण वाचवू शकते.</p>
+                </div>
+                <div class="awareness-box">
+                    <i class="fas fa-users"></i>
+                    <h4>समस्या दूर करा</h4>
+                    <p style="font-size:0.85rem; color:#666; margin-top:5px;">रक्तदानाबद्दलचे समाजात पसरलेले गैरसमज दूर करणे.</p>
+                </div>
+                <div class="awareness-box">
+                    <i class="fas fa-hands-helping"></i>
+                    <h4>सहभाग नोंदवा</h4>
+                    <p style="font-size:0.85rem; color:#666; margin-top:5px;">स्थानिक संस्था आणि शिबिरांमध्ये सक्रिय सहभाग घ्या.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="main-footer">
+    <!-- 7. Footer Layout -->
+    <footer class="news-footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col about-col">
-                    <img src="assets/images/logo.png" alt="Raktdata Logo" class="footer-logo">
-                    <p>रक्तदान हेच श्रेष्ठ दान. सामाजिक बांधिलकी जपत मानवी मूल्यांची जपणूक करणारा उपक्रम.</p>
+                <div class="footer-col">
+                    <h5>रक्तदाता न्यूज</h5>
+                    <p style="font-size:0.85rem;">रक्तदान हेच श्रेष्ठ दान. मानवी मूल्यांची जपणूक करणारा व जनजागृती पसरवणारा न्यूज मंच.</p>
                 </div>
-                
-                <div class="footer-col links-col">
-                    <h4>महत्त्वाचे दुवे</h4>
+                <div class="footer-col">
+                    <h5>मुख्य दुवे</h5>
                     <ul>
-                        <li><a href="about.html">आमच्याबद्दल</a></li>
-                        <li><a href="news.html">बातम्या व उपक्रम</a></li>
+                        <li><a href="index.html">मुख्य पान</a></li>
+                        <li><a href="news.html">बातम्या</a></li>
                         <li><a href="awareness.html">जनजागृती</a></li>
-                        <li><a href="book.html">पुस्तक खरेदी</a></li>
+                        <li><a href="book.html">पुस्तक खरेदी (₹३००)</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-col links-col">
-                    <h4>इतर विभाग</h4>
+                <div class="footer-col">
+                    <h5>इतर विभाग</h5>
                     <ul>
                         <li><a href="awards.html">सन्मान सोहळा</a></li>
                         <li><a href="donors.html">रक्तदाता</a></li>
                         <li><a href="organizations.html">संस्था</a></li>
-                        <li><a href="contact.html">संपर्क</a></li>
+                        <li><a href="campus.html">Campus</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-col social-col">
-                    <h4>सोशल मीडिया</h4>
-                    <p>आमच्याशी सोशल मीडियावर जोडा:</p>
-                    <div class="social-links">
-                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
+                <div class="footer-col">
+                    <h5>संपर्क आणि फोटो</h5>
+                    <ul>
+                        <li><a href="gallery.html">फोटो गॅलरी</a></li>
+                        <li><a href="videos.html">व्हिडिओ गॅलरी</a></li>
+                        <li><a href="about.html">आमच्याबद्दल</a></li>
+                        <li><a href="contact.html">संपर्क साधा</a></li>
+                    </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2026 Raktdata. सर्व हक्क सुरक्षित.</p>
+                <p>&copy; 2026 Raktdata.in. सर्व हक्क सुरक्षित.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript Code (एकत्रित) -->
+    <!-- 8. Embedded JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mobile Menu Toggle System
-            const menuToggle = document.getElementById('menu-toggle');
-            const navbar = document.getElementById('navbar');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle Logic
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
 
-            if (menuToggle && navbar) {
-                menuToggle.addEventListener('click', function () {
-                    navbar.classList.toggle('active');
-                    
-                    const icon = menuToggle.querySelector('i');
-                    if (icon) {
-                        if (navbar.classList.contains('active')) {
-                            icon.classList.remove('fa-bars');
-                            icon.classList.add('fa-times');
-                        } else {
-                            icon.classList.remove('fa-times');
-                            icon.classList.add('fa-bars');
-                        }
-                    }
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
                 });
             }
 
-            // Fallback Logo Handling
-            const logoImg = document.getElementById('site-logo');
-            if (logoImg) {
-                logoImg.addEventListener('error', function () {
-                    const logoContainer = this.parentElement;
-                    if (logoContainer) {
-                        logoContainer.innerHTML = '<h2 style="color:#c0392b; font-weight:bold;">RAKTDATA</h2>';
-                    }
+            // Fallback Logo Error Handler
+            const siteLogo = document.getElementById('site-logo');
+            if (siteLogo) {
+                siteLogo.addEventListener('error', function() {
+                    this.style.display = 'none';
                 });
             }
         });
     </script>
+
 </body>
 </html>
