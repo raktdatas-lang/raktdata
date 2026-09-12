@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAKTDATA.IN - National Blood Donation Movement</title>
+    <title>RAKTDATA.IN - National Blood Donation Movement & News Portal</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -19,6 +19,7 @@
             --navy-dark: #071e3d;
             --navy-header: #0b2545;
             --primary-red: #d32f2f;
+            --dark-red: #9a0007;
             --accent-gold: #ffc107;
             --light-bg: #f4f7f6;
             --text-dark: #222222;
@@ -38,7 +39,7 @@
             margin: 0 auto;
         }
 
-        /* Top Bar & Header */
+        /* 1. Header Layout */
         .site-header {
             background-color: var(--white);
             padding: 12px 0;
@@ -59,7 +60,7 @@
         }
 
         .logo-area img {
-            height: 50px;
+            height: 52px;
             width: auto;
         }
 
@@ -94,7 +95,45 @@
             font-weight: 600;
         }
 
-        /* Navigation Menu */
+        /* 2. Breaking News Ticker */
+        .news-ticker {
+            background-color: var(--primary-red);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            font-weight: 600;
+        }
+
+        .ticker-title {
+            background-color: var(--dark-red);
+            padding: 8px 15px;
+            white-space: nowrap;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ticker-content {
+            white-space: nowrap;
+            overflow: hidden;
+            padding-left: 10px;
+        }
+
+        .ticker-content span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        /* 3. Dark Navy Navigation Bar (Links to all 12 Pages) */
         .main-navbar {
             background-color: var(--navy-dark);
             position: sticky;
@@ -140,11 +179,11 @@
             cursor: pointer;
         }
 
-        /* Hero Banner */
+        /* 4. Navy Blue Hero Banner */
         .hero-banner {
             background: linear-gradient(135deg, var(--navy-dark), var(--navy-header));
             color: var(--white);
-            padding: 35px 0 50px 0;
+            padding: 35px 0 55px 0;
         }
 
         .hero-grid {
@@ -190,9 +229,9 @@
         .btn-blue { background-color: #1976d2; color: var(--white); }
         .btn-gold { background-color: var(--accent-gold); color: #000; }
 
-        /* Stats Bar */
+        /* 5. Statistics Counter Bar */
         .stats-section {
-            margin-top: -25px;
+            margin-top: -30px;
             position: relative;
             z-index: 10;
             margin-bottom: 35px;
@@ -217,7 +256,7 @@
         .stat-number { font-size: 1.5rem; font-weight: 800; color: var(--navy-dark); }
         .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
 
-        /* Main Content Layout */
+        /* 6. Main Content Area */
         .content-section { padding-bottom: 40px; }
         .main-grid {
             display: grid;
@@ -236,7 +275,7 @@
             gap: 8px;
         }
 
-        /* YouTube TV Section */
+        /* YouTube TV Component */
         .video-box {
             background: #000;
             border-radius: 8px;
@@ -277,7 +316,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin-top: 15px;
         }
 
         .news-card {
@@ -291,11 +329,11 @@
         .news-card h4 { font-size: 1rem; color: var(--navy-dark); margin-bottom: 6px; }
         .news-card p { font-size: 0.82rem; color: #666; }
 
-        /* Book Display Card (Sidebar) */
+        /* Book Display Showcase Widget */
         .book-display-card {
             background: var(--white);
             border-radius: 8px;
-            padding: 18px;
+            padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             text-align: center;
             border: 1px solid #e2e8f0;
@@ -306,7 +344,7 @@
             width: 100%;
             max-width: 210px;
             margin: 0 auto 12px auto;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
             border-radius: 4px;
             overflow: hidden;
         }
@@ -318,7 +356,7 @@
         }
 
         .book-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--primary-red);
             margin-bottom: 2px;
@@ -349,7 +387,16 @@
             margin-bottom: 12px;
         }
 
-        /* Footer */
+        /* Awards Widget */
+        .awards-widget-box {
+            background: var(--white);
+            padding: 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        /* 7. Dark Navy Footer */
         .site-footer {
             background-color: var(--navy-dark);
             color: #bcccdc;
@@ -384,7 +431,7 @@
             font-size: 0.8rem;
         }
 
-        /* Mobile Responsive */
+        /* Responsive Breakpoints */
         @media (max-width: 900px) {
             .hero-grid, .main-grid, .news-grid { grid-template-columns: 1fr; }
             .nav-toggle-btn { display: block; }
@@ -396,7 +443,7 @@
 </head>
 <body>
 
-    <!-- 1. Header with Logo -->
+    <!-- 1. Top Header -->
     <header class="site-header">
         <div class="container header-container">
             <a href="index.html" class="logo-area">
@@ -413,28 +460,36 @@
         </div>
     </header>
 
-    <!-- 2. Dark Navy Navigation Bar (12 Pages Included) -->
+    <!-- 2. Breaking News Ticker (उद्देश १: बातम्या व उपक्रम) -->
+    <div class="news-ticker">
+        <div class="ticker-title"><i class="fas fa-bolt"></i> ताज्या घडामोडी:</div>
+        <div class="ticker-content">
+            <span>राज्यस्तरीय रक्तदान शिबिराचे आयोजन... आगामी 'रक्तदाता सन्मान सोहळा' ऑनलाईन नामांकने सुरू... 'रक्तदाता: मानवतेचा संदेश' पुस्तक आता सवलतीमध्ये उपलब्ध!</span>
+        </div>
+    </div>
+
+    <!-- 3. Dark Navy Navbar (Links to All 12 Pages) -->
     <nav class="main-navbar">
         <div class="container nav-container">
             <button class="nav-toggle-btn" id="nav-toggle"><i class="fas fa-bars"></i></button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="news.html">News & Events</a></li>
-                <li><a href="awareness.html">Knowledge / Awareness</a></li>
-                <li><a href="book.html">Book Store</a></li>
-                <li><a href="awards.html">Awards</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="donors.html">Blood Donors</a></li>
                 <li><a href="organizations.html">Organizations</a></li>
+                <li><a href="news.html">News & Events</a></li>
+                <li><a href="awareness.html">Knowledge / Awareness</a></li>
+                <li><a href="awards.html">Awards</a></li>
                 <li><a href="campus.html">Campus</a></li>
+                <li><a href="book.html">Book Store</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="videos.html">Videos</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- 3. Navy Blue Hero Section -->
+    <!-- 4. Hero Banner (Red Call-To-Action Buttons) -->
     <section class="hero-banner">
         <div class="container hero-grid">
             <div class="hero-text">
@@ -447,12 +502,12 @@
                 </div>
             </div>
             <div class="hero-banner-right" style="text-align:center;">
-                <img src="assets/images/logo.png.jpg" alt="Raktdata Banner" style="max-height:160px; filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.4));">
+                <img src="assets/images/logo.png.jpg" alt="Raktdata Banner" style="max-height:165px; filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.4));">
             </div>
         </div>
     </section>
 
-    <!-- 4. Statistics Counter Bar -->
+    <!-- 5. Live Counter Box Section -->
     <div class="stats-section">
         <div class="container stats-grid">
             <div class="stat-card">
@@ -478,17 +533,17 @@
         </div>
     </div>
 
-    <!-- 5. Main Content Area -->
+    <!-- 6. Main Content Area -->
     <main class="content-section">
         <div class="container main-grid">
             
-            <!-- Left Side: YouTube TV Section & News -->
+            <!-- Left Side: YouTube TV Section & News Grid -->
             <div>
-                <!-- YouTube TV Live/Awareness Video Section -->
+                <!-- YouTube TV Live/Awareness Section (उद्देश २: जनजागृती) -->
                 <h2 class="section-header-title"><i class="fab fa-youtube" style="color:red;"></i> Raktdata TV - विशेष व्हिडिओ</h2>
                 <div class="video-box">
                     <div class="video-container">
-                        <!-- YouTube Embed Link (Replace YOUR_YOUTUBE_VIDEO_ID with your video ID) -->
+                        <!-- Replace src with your YouTube video embed URL -->
                         <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Raktdata Blood Donation Awareness" allowfullscreen></iframe>
                     </div>
                     <div class="video-caption">
@@ -497,7 +552,7 @@
                     </div>
                 </div>
 
-                <!-- News Grid Section -->
+                <!-- News Grid (उद्देश १: बातम्या व उपक्रम) -->
                 <h2 class="section-header-title" style="margin-top:30px;"><i class="fas fa-newspaper" style="color:var(--primary-red);"></i> ताज्या बातम्या व उपक्रम</h2>
                 <div class="news-grid">
                     <article class="news-card">
@@ -513,12 +568,12 @@
                 </div>
             </div>
 
-            <!-- Right Side Sidebar: Book Cover Showcase & Awards -->
+            <!-- Right Sidebar: Book Cover Showcase & Awards -->
             <aside>
-                <!-- Book Cover Showcase Card -->
+                <!-- Book Display Showcase Card (उद्देश ३: पुस्तकाची विक्री) -->
                 <div class="book-display-card">
                     <div class="book-img-wrapper">
-                        <!-- Path to your uploaded Book Cover Image -->
+                        <!-- Save your cover image inside assets/images/book-cover.jpg -->
                         <img src="assets/images/book-cover.jpg" alt="रक्तदाता : मानवतेचा संदेश" id="book-cover-img">
                     </div>
                     <div class="book-title">रक्तदाता</div>
@@ -526,21 +581,21 @@
                     <div class="book-author">लेखक : डि. एम. गायकवाड</div>
                     <p style="font-size:0.8rem; color:#555; margin-bottom:10px;">प्रेरणा, माहिती आणि समाजसेवा या तिन्हींचं सुंदर मिश्रण.</p>
                     <div class="price-tag">विशेष सवलत किंमत: ₹३००/-</div>
-                    <a href="book.html" class="btn-action btn-gold" style="width:100%; justify-content:center;"><i class="fas fa-shopping-cart"></i> पुस्तक खरेदी करा</a>
+                    <a href="book.html" class="btn-action btn-red" style="width:100%; justify-content:center;"><i class="fas fa-shopping-cart"></i> पुस्तक खरेदी करा</a>
                 </div>
 
-                <!-- Awards Section -->
-                <div style="background:var(--white); padding:18px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); border-left:4px solid var(--accent-gold);">
+                <!-- Awards Section (उद्देश ४: सन्मान सोहळा) -->
+                <div class="awards-widget-box">
                     <h4 style="color:var(--navy-dark); font-size:1.05rem; margin-bottom:6px;"><i class="fas fa-award" style="color:var(--accent-gold);"></i> रक्तदाता सन्मान सोहळा</h4>
-                    <p style="font-size:0.83rem; color:#555;">सातत्याने रक्तदान करणाऱ्या दात्यांचा गौरव करणारा विशेष आगामी सोहळा.</p>
-                    <a href="awards.html" style="color:var(--primary-red); font-weight:bold; font-size:0.85rem; text-decoration:none; display:inline-block; margin-top:8px;">नामांकन भरा &rarr;</a>
+                    <p style="font-size:0.83rem; color:#555;">सातत्याने रक्तदान करणाऱ्या दात्यांचा व संस्थांचा गौरव करणारा आगामी विशेष सोहळा.</p>
+                    <a href="awards.html" style="color:var(--primary-red); font-weight:bold; font-size:0.85rem; text-decoration:none; display:inline-block; margin-top:8px;">नामांकन अर्ज भरा &rarr;</a>
                 </div>
             </aside>
 
         </div>
     </main>
 
-    <!-- 6. Dark Navy Footer -->
+    <!-- 7. Dark Navy Footer -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-grid-layout">
@@ -582,10 +637,10 @@
         </div>
     </footer>
 
-    <!-- 7. JavaScript -->
+    <!-- 8. JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Navigation Menu Toggle
+            // Mobile Menu Toggle
             const navToggle = document.getElementById('nav-toggle');
             const navLinks = document.getElementById('nav-links');
 
@@ -595,7 +650,7 @@
                 });
             }
 
-            // Fallback for site logo if missing
+            // Image Error Handling Fallbacks
             const siteLogo = document.getElementById('site-logo');
             if (siteLogo) {
                 siteLogo.addEventListener('error', function() {
