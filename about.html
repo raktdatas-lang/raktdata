@@ -17,69 +17,68 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; width: 100%; overflow-x: hidden; }
 
         /* Top Bar */
-        .top-bar { background: var(--dark-blue); color: #fff; padding: 8px 8%; display: flex; justify-content: space-between; font-size: 13px; flex-wrap: wrap; gap: 5px; border-bottom: 2px solid var(--accent-yellow); }
-        .top-bar a { color: var(--accent-yellow); text-decoration: none; font-weight: bold; }
+        .top-bar { background: var(--dark-blue); color: #fff; padding: 8px 5%; display: flex; justify-content: space-between; font-size: 13px; flex-wrap: wrap; gap: 8px; border-bottom: 2px solid var(--accent-yellow); }
+        .top-bar a { color: var(--accent-yellow); text-decoration: none; font-weight: bold; word-break: break-all; }
 
         /* Header */
-        header { background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary-red); flex-wrap: wrap; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo { display: flex; align-items: center; gap: 12px; }
-        .logo img { height: 50px; width: auto; object-fit: contain; }
-        .logo-text h2 { color: var(--primary-red); font-size: 26px; font-weight: bold; line-height: 1; letter-spacing: 0.5px; }
-        .logo-text p { font-size: 11px; color: var(--primary-blue); font-weight: bold; letter-spacing: 1px; }
+        header { background: #fff; padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary-red); flex-wrap: wrap; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 45px; width: auto; object-fit: contain; }
+        .logo-text h2 { color: var(--primary-red); font-size: 22px; font-weight: bold; line-height: 1; }
+        .logo-text p { font-size: 10px; color: var(--primary-blue); font-weight: bold; letter-spacing: 0.5px; }
 
         /* Navigation Links */
-        .nav-links { display: flex; list-style: none; gap: 12px; flex-wrap: wrap; }
-        .nav-links a { text-decoration: none; color: var(--primary-blue); font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 4px; transition: 0.3s; }
+        .nav-links { display: flex; list-style: none; gap: 8px; flex-wrap: wrap; width: 100%; justify-content: center; }
+        .nav-links a { text-decoration: none; color: var(--primary-blue); font-weight: 700; font-size: 13px; padding: 6px 10px; border-radius: 4px; transition: 0.3s; display: inline-block; }
         .nav-links a.active, .nav-links a:hover { background: var(--primary-red); color: #fff; }
 
         /* Page Banner */
-        .page-banner { background: var(--dark-blue); color: #fff; padding: 35px 8%; text-align: center; border-bottom: 3px solid var(--accent-yellow); }
-        .page-banner h1 { font-size: 30px; color: var(--accent-yellow); margin-bottom: 8px; }
-        .page-banner p { font-size: 15px; color: #e0e6ed; }
+        .page-banner { background: var(--dark-blue); color: #fff; padding: 30px 5%; text-align: center; border-bottom: 3px solid var(--accent-yellow); }
+        .page-banner h1 { font-size: 26px; color: var(--accent-yellow); margin-bottom: 5px; }
+        .page-banner p { font-size: 14px; color: #e0e6ed; }
 
-        /* Content Section */
-        .about-container { padding: 45px 8%; }
-        .about-intro { background: #fff; padding: 30px; border-radius: 8px; border-left: 5px solid var(--primary-red); box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 40px; }
-        .about-intro h2 { color: var(--primary-blue); font-size: 24px; margin-bottom: 12px; }
-        .about-intro p { font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 15px; }
+        /* Main Container */
+        .about-container { padding: 30px 5%; max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
 
-        /* Vision & Mission Cards */
-        .vision-mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 45px; }
-        .vm-card { background: #fff; padding: 25px; border-radius: 8px; border-top: 4px solid var(--primary-blue); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .vm-card i { font-size: 32px; color: var(--primary-red); margin-bottom: 12px; }
-        .vm-card h3 { font-size: 18px; color: var(--dark-blue); margin-bottom: 10px; }
-        .vm-card p { font-size: 14px; color: #555; line-height: 1.7; }
+        /* Mission Hero Box */
+        .mission-box { background: linear-gradient(135deg, var(--primary-red), #b71c1c); color: #fff; padding: 30px 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(211, 47, 47, 0.2); border-bottom: 4px solid var(--accent-yellow); }
+        .mission-box .tag { background: var(--accent-yellow); color: var(--dark-blue); font-size: 12px; font-weight: bold; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 12px; }
+        .mission-box h2 { font-size: 24px; color: #fff; margin-bottom: 15px; line-height: 1.4; }
+        .mission-box p { font-size: 15px; color: #fff; max-width: 800px; margin: 0 auto; line-height: 1.7; opacity: 0.95; }
 
-        /* Founder Profile Section */
-        .founder-section { background: var(--light-blue); padding: 35px; border-radius: 8px; border: 1px solid #d0e1f9; margin-bottom: 45px; display: flex; flex-wrap: wrap; gap: 25px; align-items: center; }
-        .founder-info { flex: 2; min-width: 280px; }
-        .founder-info h2 { font-size: 24px; color: var(--primary-blue); margin-bottom: 5px; }
-        .founder-info .role { color: var(--primary-red); font-weight: bold; font-size: 15px; margin-bottom: 15px; }
-        .founder-info p { font-size: 14.5px; color: #444; line-height: 1.7; margin-bottom: 15px; }
+        /* About Details Section */
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; }
+        .about-card { background: #fff; padding: 22px; border-radius: 8px; border-top: 4px solid var(--primary-blue); box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .about-card i { font-size: 32px; color: var(--primary-red); margin-bottom: 12px; }
+        .about-card h3 { font-size: 18px; color: var(--dark-blue); margin-bottom: 10px; }
+        .about-card p { font-size: 14px; color: #555; line-height: 1.6; }
 
         /* Featured Book Section */
-        .featured-book { padding: 40px 8%; background: #fff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
-        .book-content { flex: 1; min-width: 280px; }
-        .book-content h2 { font-size: 26px; color: var(--primary-blue); margin: 10px 0; }
-        .book-content .author { color: var(--primary-red); font-weight: bold; font-size: 15px; margin-bottom: 15px; }
-        .book-content p { color: #444; font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
-        .btn-red { background: var(--primary-red); color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; font-size: 14px; }
+        .featured-book { padding: 30px 5%; background: var(--light-blue); margin-top: 10px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; border-radius: 12px; border: 1px solid #d0e1f9; }
+        .book-content { width: 100%; }
+        .book-content h2 { font-size: 22px; color: var(--primary-blue); margin: 8px 0; }
+        .book-content .author { color: var(--primary-red); font-weight: bold; font-size: 14px; margin-bottom: 10px; }
+        .book-content p { color: #444; font-size: 14px; margin-bottom: 15px; line-height: 1.6; }
 
-        .book-cover-card { width: 100%; max-width: 200px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid var(--accent-yellow); margin: 0 auto; text-align: center; }
-        .book-cover-card img { width: 100%; height: auto; max-height: 300px; object-fit: contain; border-radius: 4px; display: block; }
+        /* Book Cover Box */
+        .book-cover-card { width: 100%; max-width: 180px; background: #fff; padding: 8px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid var(--accent-yellow); margin: 0 auto; }
+        .book-cover-card img { width: 100%; height: auto; max-height: 260px; object-fit: contain; border-radius: 4px; display: block; }
+
+        .btn-red { background: var(--primary-red); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; display: inline-block; text-align: center; text-decoration: none; }
+        .btn-red:hover { background: #b71c1c; }
 
         /* Footer */
-        footer { background: var(--dark-blue); color: #fff; text-align: center; padding: 20px 8%; font-size: 13px; border-top: 4px solid var(--accent-yellow); margin-top: 40px; }
+        footer { background: var(--dark-blue); color: #fff; text-align: center; padding: 15px 5%; font-size: 12px; border-top: 4px solid var(--accent-yellow); margin-top: 30px; }
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            header { flex-direction: column; text-align: center; }
-            .nav-links { justify-content: center; }
-            .founder-section { text-align: center; }
-            .featured-book { text-align: center; justify-content: center; }
+        /* Desktop Media Query */
+        @media (min-width: 769px) {
+            .nav-links { width: auto; }
+            .mission-box h2 { font-size: 28px; }
+            .featured-book { flex-direction: row; text-align: left; }
+            .book-content { flex: 1; }
         }
     </style>
 </head>
@@ -87,7 +86,7 @@
 
     <!-- Top Bar -->
     <div class="top-bar">
-        <span>🇮🇳 RAKTDATA INDIA — रक्तदान • जनजागृती • माणुसकी</span>
+        <span>🇮🇳 RAKTDATA INDIA — रक्तदान • जनजागृती</span>
         <span><i class="fa-solid fa-envelope"></i> <a href="mailto:raktdatas@gmail.com">raktdatas@gmail.com</a></span>
     </div>
 
@@ -114,57 +113,54 @@
 
     <!-- Page Banner -->
     <div class="page-banner">
-        <h1>Raktdata India बद्दल</h1>
-        <p>मानवतेच्या सेवेसाठी आणि रक्तदान जनजागृतीसाठी समर्पित एक डिजिटल व्यासपीठ</p>
+        <h1>RAKTDATA.IN बद्दल</h1>
+        <p>राष्ट्रीय रक्तदान चळवळ आणि जनजागृती उपक्रम</p>
     </div>
 
-    <!-- Main Content Section -->
+    <!-- Main Content -->
     <main class="about-container">
-        
-        <!-- About Intro -->
-        <div class="about-intro">
-            <h2>आमचा परिचय</h2>
-            <p><strong>RAKTDATA.IN</strong> हे महाराष्ट्रातील आणि भारतातील रक्तदान चळवळीला प्रोत्साहन देणारे एक अग्रणी व्यासपीठ आहे. रक्ताच्या अभावामुळे कोणत्याही रुग्णाचा जीव जाऊ नये, या उद्देशाने आम्ही रक्तदान जनजागृती, शिबिरांचे आयोजन, आणि दात्यांना एकत्र आणण्याचे कार्य करत आहोत.</p>
-            <p>डिजिटल माध्यम आणि सामाजिक उपक्रमांच्या माध्यमातून समाजातील प्रत्येक घटकामध्ये रक्तदानाविषयी असलेली भीती दूर करणे आणि ऐच्छिक रक्तदात्यांची संख्या वाढवणे हे आमचे मुख्य ध्येय आहे.</p>
-        </div>
 
-        <!-- Vision & Mission -->
-        <div class="vision-mission-grid">
-            <div class="vm-card">
-                <i class="fa-solid fa-eye"></i>
-                <h3>आमची दृष्टी (Vision)</h3>
-                <p>भारतातील असा एकही रुग्ण राहू नये ज्याला वेळेवर रक्त न मिळाल्यामुळे त्रासाला सामोरे जावे लागेल. शंभर टक्के ऐच्छिक रक्तदान असणारा समाज निर्माण करणे.</p>
-            </div>
-            <div class="vm-card">
-                <i class="fa-solid fa-bullseye"></i>
-                <h3>आमचे ध्येय (Mission)</h3>
-                <p>रक्तदानाबद्दलची अचूक माहिती, मार्गदर्शन आणि प्रेरणादायी साहित्य समाजात पोहोचवणे. शाळा, महाविद्यालये व संस्थांमध्ये जनजागृती मोहिमा राबवणे.</p>
-            </div>
-        </div>
+        <!-- Mission Highlight Box -->
+        <section class="mission-box">
+            <span class="tag">OUR MISSION</span>
+            <h2>“शून्य रक्ताभावी मृत्यूचा संकल्प” ही दिशा</h2>
+            <p>रक्तदानाबद्दल योग्य माहिती अधिकाधिक लोकांपर्यंत पोहोचवणे, रक्तदात्यांना प्रेरणा देणे आणि रक्तदानाशी संबंधित सामाजिक कार्याला डिजिटल व्यासपीठ देणे हा आमचा मुख्य उद्देश आहे.</p>
+        </section>
 
-        <!-- Founder Profile -->
-        <div class="founder-section">
-            <div class="founder-info">
-                <h2>लेखक व संस्थापक परिचय</h2>
-                <div class="role">डि. एम. गायकवाड (संस्थापक व लेखक)</div>
-                <p>डि. एम. गायकवाड यांनी सामाजिक बांधिलकी जपत रक्तदान चळवळीत मोलाचे योगदान दिले आहे. त्यांनी लिहिलेले “रक्तदाता : मानवतेचा संदेश” हे पुस्तक समाजात रक्तदानाची नवी चेतना निर्माण करत आहे.</p>
-                <p>त्यांचे विचार आणि मार्गदर्शन हजारो तरुणांना नियमित रक्तदान करण्यासाठी प्रेरित करत आहे.</p>
+        <!-- About Objectives Grid -->
+        <section class="about-grid">
+            <div class="about-card">
+                <i class="fa-solid fa-bullhorn"></i>
+                <h3>जनजागृती अभियान</h3>
+                <p>समाजात रक्तदानाविषयी असणारे गैरसमज दूर करून अधिकाधिक तरुणांना नियमित रक्तदान करण्यासाठी प्रोत्साहित करणे.</p>
             </div>
-        </div>
+
+            <div class="about-card" style="border-top-color: var(--primary-red);">
+                <i class="fa-solid fa-hand-holding-hand"></i>
+                <h3>रक्तदात्यांचे व्यासपीठ</h3>
+                <p>गरजू रुग्ण आणि रक्तदाते यांच्यात दुवा साधून वेळेवर रक्त उपलब्ध होण्यासाठी डिजिटल चळवळ उभी करणे.</p>
+            </div>
+
+            <div class="about-card">
+                <i class="fa-solid fa-book-open-reader"></i>
+                <h3>साहित्य व प्रबोधन</h3>
+                <p>पुस्तके, लेख, बातम्या आणि व्हिडिओंच्या माध्यमातून रक्तदान चळवळीचा प्रसार महाराष्ट्रभर आणि देशभरात करणे.</p>
+            </div>
+        </section>
 
         <!-- Featured Book Section -->
         <section class="featured-book">
             <div class="book-content">
-                <span style="color: var(--primary-red); font-weight: bold; font-size: 12px;">विशेष प्रकाशन</span>
+                <span style="color: var(--primary-red); font-weight: bold; font-size: 12px;">विशेष पुस्तक प्रकाशन</span>
                 <h2>रक्तदाता : मानवतेचा संदेश</h2>
                 <div class="author">लेखक : डि. एम. गायकवाड</div>
-                <p>प्रेरणा, माहिती आणि समाजसेवा या तिन्हींचं सुंदर मिश्रण! हे पुस्तक रक्तदान जनजागृती व मानवी मूल्यांची रुजवण करण्यासाठी अत्यंत उपयुक्त आहे.</p>
-                <a href="book.html" class="btn-red"><i class="fa-solid fa-cart-shopping"></i> पुस्तक खरेदी करा</a>
+                <p>रक्तदानाची गरज, महत्त्व आणि सामाजिक मूल्यांची जाणीव करून देणारे एक प्रेरणादायी पुस्तक! समाजोपयोगी उपक्रमांसाठी हे पुस्तक नक्की वाचा.</p>
+                <a href="book.html" class="btn-red"><i class="fa-solid fa-book-open"></i> पुस्तकाविषयी अधिक माहिती</a>
             </div>
             
             <!-- Book Cover Image -->
             <div class="book-cover-card">
-                <img src="bookcover.png" alt="रक्तदाता पुस्तक कव्हर" onerror="this.src='bookcover.png.jpg'; this.onerror=null;">
+                <img src="bookcover.png" alt="रक्तदाता पुस्तक कव्हर" onerror="this.src='assets/images/bookcover.png'; this.onerror=null;">
             </div>
         </section>
 
@@ -172,7 +168,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 RAKTDATA.IN | सर्व हक्क सुरक्षित</p>
+        <p>© 2026 RAKTDATA.IN | राष्ट्रीय रक्तदान चळवळ, मुंबई | सर्व हक्क सुरक्षित</p>
     </footer>
 
 </body>
