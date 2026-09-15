@@ -3,76 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>रक्तदान बातम्या — RAKTDATA INDIA</title>
+    <title>बातम्या व उपक्रम — RAKTDATA INDIA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #d32f2f;
-            --primary-dark: #9a0007;
-            --bg-light: #fdf8f8;
-            --text-dark: #2c3e50;
+            --primary-red: #d32f2f;
+            --primary-blue: #003366;
+            --dark-blue: #0d233a;
+            --light-blue: #eef5fc;
+            --accent-yellow: #ffcc00;
+            --text-dark: #1a252f;
+            --bg-light: #f8fafc;
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #fff; color: var(--text-dark); line-height: 1.6; }
-        
-        /* Topbar & Header */
-        .top-bar { background: #111; color: #fff; padding: 8px 8%; display: flex; justify-content: space-between; font-size: 13px; }
-        header { background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+
+        /* Top Bar */
+        .top-bar { background: var(--dark-blue); color: #fff; padding: 8px 8%; display: flex; justify-content: space-between; font-size: 13px; flex-wrap: wrap; gap: 5px; border-bottom: 2px solid var(--accent-yellow); }
+        .top-bar a { color: var(--accent-yellow); text-decoration: none; font-weight: bold; }
+
+        /* Header */
+        header { background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary-red); flex-wrap: wrap; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { display: flex; align-items: center; gap: 12px; }
-        .logo img { height: 45px; width: auto; object-fit: contain; }
-        .logo-text h2 { color: var(--primary); font-size: 22px; font-weight: bold; line-height: 1; }
-        .logo-text p { font-size: 10px; color: #666; letter-spacing: 1px; }
-        .nav-links { display: flex; list-style: none; gap: 18px; }
-        .nav-links a { text-decoration: none; color: #333; font-weight: 600; font-size: 14px; }
-        .nav-links a.active, .nav-links a:hover { color: var(--primary); }
+        .logo img { height: 50px; width: auto; object-fit: contain; }
+        .logo-text h2 { color: var(--primary-red); font-size: 26px; font-weight: bold; line-height: 1; letter-spacing: 0.5px; }
+        .logo-text p { font-size: 11px; color: var(--primary-blue); font-weight: bold; letter-spacing: 1px; }
+
+        /* Navigation Links */
+        .nav-links { display: flex; list-style: none; gap: 12px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: var(--primary-blue); font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 4px; transition: 0.3s; }
+        .nav-links a.active, .nav-links a:hover { background: var(--primary-red); color: #fff; }
 
         /* Page Banner */
-        .page-banner { background: #18191a; color: #fff; padding: 40px 8%; text-align: center; }
-        .page-banner h1 { font-size: 32px; color: #fff; margin-bottom: 10px; }
-        .page-banner p { color: #ccc; font-size: 15px; }
+        .page-banner { background: var(--dark-blue); color: #fff; padding: 30px 8%; text-align: center; border-bottom: 3px solid var(--accent-yellow); }
+        .page-banner h1 { font-size: 28px; color: var(--accent-yellow); margin-bottom: 5px; }
+        .page-banner p { font-size: 14px; color: #e0e6ed; }
 
-        /* News Section */
-        .news-container { padding: 40px 8%; background: var(--bg-light); }
-        
-        /* Search & Filter Bar */
-        .filter-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; }
-        .search-box { display: flex; background: #fff; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; max-width: 350px; width: 100%; }
-        .search-box input { border: none; padding: 10px 15px; outline: none; width: 100%; font-size: 14px; }
-        .search-box button { background: var(--primary); color: #fff; border: none; padding: 10px 18px; cursor: pointer; }
-        
-        .categories { display: flex; gap: 10px; flex-wrap: wrap; }
-        .cat-btn { padding: 8px 16px; background: #fff; border: 1px solid #ddd; border-radius: 20px; font-size: 13px; font-weight: 600; color: #555; cursor: pointer; text-decoration: none; }
-        .cat-btn.active, .cat-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+        /* Search and Filter Section */
+        .filter-section { padding: 20px 8%; background: #fff; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .search-box { display: flex; gap: 5px; flex: 1; max-width: 400px; }
+        .search-box input { width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; outline: none; }
+        .search-box button { background: var(--primary-red); color: #fff; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+        .category-filter { display: flex; gap: 10px; flex-wrap: wrap; }
+        .filter-btn { padding: 6px 14px; border: 1px solid var(--primary-blue); background: none; color: var(--primary-blue); border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary-blue); color: #fff; }
 
-        /* News Grid */
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .news-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
-        .news-card:hover { transform: translateY(-5px); }
-        .news-img { height: 180px; width: 100%; background: #eee; display: flex; align-items: center; justify-content: center; }
+        /* News Section Layout */
+        .news-section { padding: 40px 8%; }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .news-card { background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: 0.3s; }
+        .news-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .news-img { height: 190px; background: var(--light-blue); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
         .news-img img { width: 100%; height: 100%; object-fit: cover; }
-        .news-content { padding: 20px; }
-        .news-date { font-size: 12px; color: #888; margin-bottom: 8px; display: flex; gap: 10px; }
-        .news-title { font-size: 18px; color: #111; margin-bottom: 10px; font-weight: bold; line-height: 1.4; }
-        .news-desc { font-size: 13px; color: #666; margin-bottom: 15px; line-height: 1.6; }
-        .read-more { color: var(--primary); font-weight: bold; text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; gap: 5px; }
+        .news-category { position: absolute; top: 12px; left: 12px; background: var(--primary-blue); color: #fff; font-size: 11px; font-weight: bold; padding: 4px 10px; border-radius: 4px; }
+        .news-body { padding: 20px; }
+        .news-date { font-size: 12px; color: #777; margin-bottom: 8px; }
+        .news-title { font-size: 18px; color: var(--dark-blue); font-weight: bold; margin-bottom: 10px; line-height: 1.4; }
+        .news-desc { font-size: 13.5px; color: #555; margin-bottom: 15px; line-height: 1.6; }
 
-        /* Footer / Scroll Top */
-        footer { background: #111; color: #aaa; text-align: center; padding: 20px 8%; font-size: 13px; margin-top: 40px; }
-        .scroll-top { position: fixed; bottom: 25px; right: 25px; background: var(--primary); color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        /* Featured Book Card (Sidebar / Footer Promo) */
+        .book-promo { background: var(--light-blue); border-top: 2px solid var(--accent-yellow); padding: 40px 8%; margin-top: 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        .book-promo-text { flex: 1; min-width: 280px; }
+        .book-promo-text h3 { color: var(--primary-blue); font-size: 22px; margin-bottom: 8px; }
+        .book-promo-text p { font-size: 14px; color: #444; margin-bottom: 15px; }
+        .btn-red { background: var(--primary-red); color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; font-size: 14px; }
+        
+        .book-cover-card { width: 100%; max-width: 180px; background: #fff; padding: 8px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid var(--accent-yellow); margin: 0 auto; }
+        .book-cover-card img { width: 100%; height: auto; max-height: 250px; object-fit: contain; border-radius: 4px; display: block; }
+
+        /* Footer */
+        footer { background: var(--dark-blue); color: #fff; text-align: center; padding: 20px 8%; font-size: 13px; border-top: 4px solid var(--accent-yellow); }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; }
+            .nav-links { justify-content: center; }
+            .filter-section { flex-direction: column; align-items: stretch; }
+            .search-box { max-width: 100%; }
+            .book-promo { text-align: center; justify-content: center; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Topbar -->
+    <!-- Top Bar -->
     <div class="top-bar">
         <span>🇮🇳 RAKTDATA INDIA — रक्तदान • जनजागृती • माणुसकी</span>
-        <span><i class="fa-solid fa-envelope"></i> raktdatas@gmail.com</span>
+        <span><i class="fa-solid fa-envelope"></i> <a href="mailto:raktdatas@gmail.com">raktdatas@gmail.com</a></span>
     </div>
 
-    <!-- Header / Navbar -->
+    <!-- Header & Navigation -->
     <header>
         <div class="logo">
-            <img src="assets/images/logo.png" alt="Logo" onerror="this.src='logo.png'; this.onerror=null;">
+            <img src="logo.png" alt="Raktdata Logo" onerror="this.src='assets/images/logo.png'; this.onerror=null;">
             <div class="logo-text">
                 <h2>RAKTDATA.IN</h2>
                 <p>INDIA BLOOD DONATION NEWS</p>
@@ -90,80 +114,98 @@
         </ul>
     </header>
 
-    <!-- Page Title Banner -->
-    <section class="page-banner">
-        <h1>रक्तदान व सामाजिक बातम्या</h1>
-        <p>रक्तदान शिबिरे, प्रेरणादायी कथा आणि जनजागृतीपर अपडेट्स एकाच ठिकाणी.</p>
-    </section>
+    <!-- Page Banner -->
+    <div class="page-banner">
+        <h1>ताजी बातमी आणि सामाजिक उपक्रम</h1>
+        <p>रक्तदान शिबिरे, आरोग्य अपडेट्स आणि प्रेरणादायी सामाजिक बातम्या</p>
+    </div>
 
-    <!-- News Content Section -->
-    <section class="news-container">
-        
-        <!-- Filter and Search -->
-        <div class="filter-bar">
-            <div class="categories">
-                <a href="#" class="cat-btn active">सर्व बातम्या</a>
-                <a href="#" class="cat-btn">रक्तदान शिबिर</a>
-                <a href="#" class="cat-btn">जनजागृती</a>
-                <a href="#" class="cat-btn">प्रेरणादायी कथा</a>
-            </div>
-            <div class="search-box">
-                <input type="text" placeholder="बातमी शोधा...">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
+    <!-- Search & Filter Bar -->
+    <div class="filter-section">
+        <div class="search-box">
+            <input type="text" placeholder="बातमी शोधा...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
+        <div class="category-filter">
+            <button class="filter-btn active">सर्व</button>
+            <button class="filter-btn">रक्तदान शिबिर</button>
+            <button class="filter-btn">जनजागृती</button>
+            <button class="filter-btn">पुरस्कार/गौरव</button>
+        </div>
+    </div>
 
-        <!-- News Cards Grid -->
+    <!-- News Grid Section -->
+    <main class="news-section">
         <div class="news-grid">
             
-            <!-- Card 1 -->
-            <div class="news-card">
+            <!-- News Card 1 -->
+            <article class="news-card">
                 <div class="news-img">
-                    <img src="assets/images/logo.png" alt="News Image" onerror="this.src='logo.png'; this.onerror=null;">
+                    <span class="news-category">शिबिर</span>
+                    <img src="logo.png" alt="News Image" onerror="this.src='assets/images/logo.png'; this.onerror=null;">
                 </div>
-                <div class="news-content">
-                    <div class="news-date">
-                        <span><i class="fa-regular fa-calendar"></i> १५ सप्टेंबर २०२६</span>
-                        <span><i class="fa-regular fa-folder"></i> रक्तदान शिबिर</span>
-                    </div>
-                    <h3 class="news-title">भव्य मोफत रक्तदान शिबिराचे आयोजन</h3>
-                    <p class="news-desc">स्थानिक सामाजिक संस्थेतर्फे भव्य रक्तदान शिबिर आयोजित करण्यात आले असून १०० हून अधिक रक्तदात्यांनी सहभाग घेतला.</p>
-                    <a href="#" class="read-more">पूर्ण बातमी वाचा <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="news-body">
+                    <div class="news-date"><i class="fa-regular fa-calendar"></i> १५ सप्टेंबर २०२६</div>
+                    <h2 class="news-title">राज्यभरात भव्य रक्तदान जनजागृती मोहिमेचा यशस्वी शुभारंभ</h2>
+                    <p class="news-desc">रक्ताची भासणारी टंचाई दूर करण्यासाठी आणि युवकांमध्ये जागृती निर्माण करण्यासाठी विशेष शिबिरांचे राज्यभरात आयोजन करण्यात आले आहे.</p>
+                    <a href="#" style="color: var(--primary-red); font-weight: bold; text-decoration: none; font-size: 13px;">सविस्तर वाचा →</a>
                 </div>
-            </div>
+            </article>
 
-            <!-- Card 2 -->
-            <div class="news-card">
+            <!-- News Card 2 -->
+            <article class="news-card">
                 <div class="news-img">
-                    <img src="assets/images/logo.png" alt="News Image" onerror="this.src='logo.png'; this.onerror=null;">
+                    <span class="news-category" style="background: var(--primary-red);">जनजागृती</span>
+                    <img src="logo.png" alt="News Image" onerror="this.src='assets/images/logo.png'; this.onerror=null;">
                 </div>
-                <div class="news-content">
-                    <div class="news-date">
-                        <span><i class="fa-regular fa-calendar"></i> १० सप्टेंबर २०२६</span>
-                        <span><i class="fa-regular fa-folder"></i> जनजागृती</span>
-                    </div>
-                    <h3 class="news-title">युवकांमध्ये रक्तदान जनजागृती मोहीम</h3>
-                    <p class="news-desc">महाविद्यालयांमध्ये विद्यार्थ्यांसाठी विशेष रक्तदान जनजागृती व्याख्यान आयोजित करण्यात आले. तरुण रक्तदात्यांचा उत्स्फूर्त प्रतिसाद.</p>
-                    <a href="#" class="read-more">पूर्ण बातमी वाचा <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="news-body">
+                    <div class="news-date"><i class="fa-regular fa-calendar"></i> १० सप्टेंबर २०२६</div>
+                    <h2 class="news-title">युवकांमध्ये रक्तदानाबाबत जनजागृतीसाठी विशेष व्याख्यान मालिका</h2>
+                    <p class="news-desc">विविध महाविद्यालयांमध्ये नवीन आणि तरुण रक्तदात्यांना प्रेरित करण्यासाठी जनजागृती सत्रांचे यशस्वी आयोजन करण्यात येत आहे.</p>
+                    <a href="#" style="color: var(--primary-red); font-weight: bold; text-decoration: none; font-size: 13px;">सविस्तर वाचा →</a>
                 </div>
-            </div>
+            </article>
 
-            <!-- Card 3 -->
-            <div class="news-card">
+            <!-- News Card 3 -->
+            <article class="news-card">
                 <div class="news-img">
-                    <img src="assets/images/logo.png" alt="News Image" onerror="this.src='logo.png'; this.onerror=null;">
+                    <span class="news-category" style="background: #2e7d32;">गौरव</span>
+                    <img src="logo.png" alt="News Image" onerror="this.src='assets/images/logo.png'; this.onerror=null;">
                 </div>
-                <div class="news-content">
-                    <div class="news-date">
-                        <span><i class="fa-regular fa-calendar"></i> ०५ सप्टेंबर २०२६</span>
-                        <span><i class="fa-regular fa-folder"></i> प्रेरणादायी कथा</span>
-                    </div>
-                    <h3 class="news-title">५० वेळा रक्तदान करणाऱ्या रक्तदात्याचा सन्मान</h3>
-                    <p class="news-desc">नियमित रक्तदान करून शेकडो रुग्णांचे प्राण वाचवणाऱ्या ज्येष्ठ रक्तदात्याला विशेष पुरस्काराने गौरविण्यात आले.</p>
-                    <a href="#" class="read-more">पूर्ण बातमी वाचा <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="news-body">
+                    <div class="news-date"><i class="fa-regular fa-calendar"></i> ०५ सप्टेंबर २०२६</div>
+                    <h2 class="news-title">५० पेक्षा जास्त वेळा रक्तदान करणाऱ्या रक्तदात्यांचा राज्यस्तरीय सत्कार</h2>
+                    <p class="news-desc">नियमित रक्तदान करून शेकडो रुग्णांचे प्राण वाचवणाऱ्या ज्येष्ठ सामाजिक कार्यकर्त्यांना विशेष जीवनगौरव पुरस्काराने सन्मानित करण्यात आले.</p>
+                    <a href="#" style="color: var(--primary-red); font-weight: bold; text-decoration: none; font-size: 13px;">सविस्तर वाचा →</a>
                 </div>
-            </div>
+            </article>
 
+            <!-- News Card 4 -->
+            <article class="news-card">
+                <div class="news-img">
+                    <span class="news-category">आरोग्य</span>
+                    <img src="logo.png" alt="News Image" onerror="this.src='assets/images/logo.png'; this.onerror=null;">
+                </div>
+                <div class="news-body">
+                    <div class="news-date"><i class="fa-regular fa-calendar"></i> ०१ सप्टेंबर २०२६</div>
+                    <h2 class="news-title">रक्तदानापूर्वी आणि नंतर कोणती काळजी घ्यावी? डॉक्टरांचा विशेष सल्ला</h2>
+                    <p class="news-desc">रक्तदान करण्यापूर्वी योग्य आहार, भरपूर पाणी पिणे आणि पुरेशी झोप घेणे अत्यंत आवश्यक आहे. सविस्तर माहितीसाठी वाचा.</p>
+                    <a href="#" style="color: var(--primary-red); font-weight: bold; text-decoration: none; font-size: 13px;">सविस्तर वाचा →</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Featured Book Banner Promo -->
+    <section class="book-promo">
+        <div class="book-promo-text">
+            <h3>“रक्तदाता : मानवतेचा संदेश” हे पुस्तक वाचले का?</h3>
+            <p>लेखक डि. एम. गायकवाड लिखित रक्तदान जनजागृती आणि सामाजिक संदेश देणारे विशेष पुस्तक.</p>
+            <a href="book.html" class="btn-red"><i class="fa-solid fa-book-open"></i> पुस्तकाबद्दल अधिक माहिती</a>
+        </div>
+        <div class="book-cover-card">
+            <img src="bookcover.png" alt="रक्तदाता पुस्तक कव्हर" onerror="this.src='assets/images/bookcover.png'; this.onerror=null;">
         </div>
     </section>
 
@@ -171,9 +213,6 @@
     <footer>
         <p>© 2026 RAKTDATA.IN | सर्व हक्क सुरक्षित</p>
     </footer>
-
-    <!-- Scroll Top Button -->
-    <a href="#" class="scroll-top"><i class="fa-solid fa-arrow-up"></i></a>
 
 </body>
 </html>
