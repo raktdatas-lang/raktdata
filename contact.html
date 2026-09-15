@@ -1,312 +1,205 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>संपर्क करा | RAKTDATA.IN</title>
-  
-  <!-- Font Awesome Icons & Fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>संपर्क साधा — RAKTDATA INDIA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d32f2f;
+            --primary-blue: #003366;
+            --dark-blue: #0d233a;
+            --light-blue: #eef5fc;
+            --accent-yellow: #ffcc00;
+            --text-dark: #1a252f;
+            --bg-light: #f8fafc;
+        }
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
-    }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
 
-    body {
-      background-color: #f4f6f9;
-      color: #1F2937;
-    }
+        /* Top Bar */
+        .top-bar { background: var(--dark-blue); color: #fff; padding: 8px 8%; display: flex; justify-content: space-between; font-size: 13px; flex-wrap: wrap; gap: 5px; border-bottom: 2px solid var(--accent-yellow); }
+        .top-bar a { color: var(--accent-yellow); text-decoration: none; font-weight: bold; }
 
-    /* Header Styling */
-    .header-container {
-      background-color: #ffffff;
-      padding: 12px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #e5e7eb;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
+        /* Header */
+        header { background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary-red); flex-wrap: wrap; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo img { height: 50px; width: auto; object-fit: contain; }
+        .logo-text h2 { color: var(--primary-red); font-size: 26px; font-weight: bold; line-height: 1; letter-spacing: 0.5px; }
+        .logo-text p { font-size: 11px; color: var(--primary-blue); font-weight: bold; letter-spacing: 1px; }
 
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
+        /* Navigation Links */
+        .nav-links { display: flex; list-style: none; gap: 12px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: var(--primary-blue); font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 4px; transition: 0.3s; }
+        .nav-links a.active, .nav-links a:hover { background: var(--primary-red); color: #fff; }
 
-    .brand-logo img {
-      height: 48px;
-      width: auto;
-    }
+        /* Page Banner */
+        .page-banner { background: var(--dark-blue); color: #fff; padding: 35px 8%; text-align: center; border-bottom: 3px solid var(--accent-yellow); }
+        .page-banner h1 { font-size: 30px; color: var(--accent-yellow); margin-bottom: 8px; }
+        .page-banner p { font-size: 15px; color: #e0e6ed; }
 
-    .brand-text h1 {
-      font-size: 24px;
-      font-weight: 800;
-      line-height: 1;
-    }
+        /* Main Container */
+        .contact-container { padding: 45px 8%; display: flex; flex-wrap: wrap; gap: 30px; }
 
-    .text-red { color: #C00000; }
-    .text-blue { color: #0A2A66; }
+        /* Contact Details Cards Grid */
+        .contact-info-grid { flex: 1; min-width: 300px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .info-card { background: #fff; padding: 22px; border-radius: 8px; border-top: 4px solid var(--primary-blue); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .info-card i { font-size: 32px; color: var(--primary-red); margin-bottom: 12px; }
+        .info-card h3 { font-size: 17px; color: var(--dark-blue); margin-bottom: 8px; }
+        .info-card p, .info-card a { font-size: 14px; color: #555; text-decoration: none; }
+        .info-card a.whatsapp-btn { display: inline-block; margin-top: 8px; background: #25D366; color: #fff; padding: 6px 14px; border-radius: 4px; font-weight: bold; font-size: 13px; }
 
-    .brand-text p {
-      color: #0A2A66;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-top: 3px;
-    }
+        /* Message Form */
+        .contact-form-box { flex: 1; min-width: 300px; background: #fff; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .contact-form-box h2 { font-size: 22px; color: var(--primary-blue); margin-bottom: 20px; border-bottom: 2px solid var(--light-blue); padding-bottom: 8px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13.5px; font-weight: bold; color: var(--dark-blue); margin-bottom: 5px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; outline: none; }
+        .btn-red { background: var(--primary-red); color: #fff; border: none; padding: 12px 25px; border-radius: 5px; font-size: 15px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; }
+        .btn-red:hover { background: #b71c1c; }
 
-    /* Navigation Bar */
-    .nav-bar {
-      background-color: #0A2A66;
-      padding: 12px 5%;
-      display: flex;
-      gap: 20px;
-    }
+        /* Featured Book Section */
+        .featured-book { padding: 40px 8%; background: var(--light-blue); margin-top: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; border-top: 1px solid #d0e1f9; }
+        .book-content { flex: 1; min-width: 280px; }
+        .book-content h2 { font-size: 26px; color: var(--primary-blue); margin: 10px 0; }
+        .book-content .author { color: var(--primary-red); font-weight: bold; font-size: 15px; margin-bottom: 15px; }
+        .book-content p { color: #444; font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
 
-    .nav-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+        .book-cover-card { width: 100%; max-width: 200px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid var(--accent-yellow); margin: 0 auto; text-align: center; }
+        .book-cover-card img { width: 100%; height: auto; max-height: 300px; object-fit: contain; border-radius: 4px; display: block; }
 
-    /* Main Contact Container */
-    .contact-container {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 30px;
-    }
+        /* Footer */
+        footer { background: var(--dark-blue); color: #fff; text-align: center; padding: 20px 8%; font-size: 13px; border-top: 4px solid var(--accent-yellow); }
 
-    /* Left Side: Contact Info */
-    .contact-info {
-      background: #0A2A66;
-      color: #ffffff;
-      padding: 35px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .contact-info h2 {
-      font-size: 24px;
-      margin-bottom: 15px;
-      color: #FFD700;
-    }
-
-    .contact-info p {
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      color: #e5e7eb;
-    }
-
-    .info-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .info-item i {
-      font-size: 20px;
-      color: #FFD700;
-      margin-top: 3px;
-    }
-
-    .info-item h4 {
-      font-size: 15px;
-      margin-bottom: 3px;
-    }
-
-    .info-item p, .info-item a {
-      font-size: 14px;
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    /* Right Side: Contact Form */
-    .contact-form {
-      background: #ffffff;
-      padding: 35px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      border: 1px solid #e5e7eb;
-    }
-
-    .contact-form h3 {
-      font-size: 22px;
-      color: #0A2A66;
-      margin-bottom: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: #374151;
-      margin-bottom: 6px;
-    }
-
-    .form-group input, 
-    .form-group textarea {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-
-    .form-group input:focus, 
-    .form-group textarea:focus {
-      border-color: #0A2A66;
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: #C00000;
-      color: #ffffff;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .btn-submit:hover {
-      background: #a00000;
-    }
-
-    /* Footer */
-    footer {
-      background-color: #05183d;
-      color: #ffffff;
-      text-align: center;
-      padding: 20px;
-      font-size: 13px;
-      margin-top: 50px;
-    }
-
-    @media (max-width: 768px) {
-      .contact-container {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; }
+            .nav-links { justify-content: center; }
+            .contact-container { flex-direction: column; }
+            .featured-book { text-align: center; justify-content: center; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header-container">
-    <a href="index.html" class="brand-logo">
-      <img src="logo.png" alt="RAKTDATA Logo">
-      <div class="brand-text">
-        <h1><span class="text-red">RAKTDATA</span><span class="text-blue">.IN</span></h1>
-        <p>NATIONAL BLOOD DONATION MOVEMENT</p>
-      </div>
-    </a>
-  </header>
-
-  <!-- Navigation Bar -->
-  <nav class="nav-bar">
-    <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a>
-    <a href="contact.html" class="nav-link" style="color: #FFD700;"><i class="fa-solid fa-envelope"></i> संपर्क करा</a>
-  </nav>
-
-  <!-- Contact Section -->
-  <div class="contact-container">
-    
-    <!-- डावी बाजू: संपर्काची माहिती -->
-    <div class="contact-info">
-      <h2>आमच्याशी संपर्क साधा</h2>
-      <p>राष्ट्रीय रक्तदान चळवळीत सहभागी होण्यासाठी किंवा काही अडचण असल्यास आमच्याशी थेट संपर्क साधा.</p>
-
-      <div class="info-item">
-        <i class="fa-solid fa-phone"></i>
-        <div>
-          <h4>फोन नंबर / हेल्पलाईन</h4>
-          <p>+91 9321430535</p>
-        </div>
-      </div>
-
-      <div class="info-item">
-        <i class="fa-brands fa-whatsapp"></i>
-        <div>
-          <h4>व्हॉट्सॲप (WhatsApp)</h4>
-          <p><a href="https://wa.me/919321430535" target="_blank">+91 9321430535 (चॅट करा)</a></p>
-        </div>
-      </div>
-
-      <div class="info-item">
-        <i class="fa-solid fa-envelope"></i>
-        <div>
-          <h4>ईमेल आयडी</h4>
-          <p>raktdatas@gmail.com</p>
-        </div>
-      </div>
-
-      <div class="info-item">
-        <i class="fa-solid fa-location-dot"></i>
-        <div>
-          <h4>कार्यालय</h4>
-          <p>RAKTDATA.IN, राष्ट्रीय रक्तदान चळवळ, मुंबई, महाराष्ट्र, भारत.</p>
-        </div>
-      </div>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <span>🇮🇳 RAKTDATA INDIA — रक्तदान • जनजागृती • माणुसकी</span>
+        <span><i class="fa-solid fa-envelope"></i> <a href="mailto:raktdatas@gmail.com">raktdatas@gmail.com</a></span>
     </div>
 
-    <!-- उजवी बाजू: संपर्क फॉर्म -->
-    <div class="contact-form">
-      <h3>संदेश पाठवा</h3>
-      <form action="#" method="POST">
-        <div class="form-group">
-          <label for="name">पूर्ण नाव *</label>
-          <input type="text" id="name" name="name" placeholder="तुमचे नाव लिहा" required>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Raktdata Logo" onerror="this.src='assets/images/logo.png'; this.onerror=null;">
+            <div class="logo-text">
+                <h2>RAKTDATA.IN</h2>
+                <p>INDIA BLOOD DONATION NEWS</p>
+            </div>
         </div>
+        <ul class="nav-links">
+            <li><a href="index.html">मुख्यपृष्ठ</a></li>
+            <li><a href="news.html">बातम्या</a></li>
+            <li><a href="youtube.html">YouTube</a></li>
+            <li><a href="donors.html">रक्तदाता</a></li>
+            <li><a href="awareness.html">जनजागृती</a></li>
+            <li><a href="book.html">पुस्तक</a></li>
+            <li><a href="about.html">Raktdata बद्दल</a></li>
+            <li><a href="contact.html" class="active">संपर्क</a></li>
+        </ul>
+    </header>
 
-        <div class="form-group">
-          <label for="mobile">मोबाईल नंबर *</label>
-          <input type="tel" id="mobile" name="mobile" placeholder="१० अंकी मोबाईल नंबर" required>
-        </div>
-
-        <div class="form-group">
-          <label for="email">ईमेल आयडी</label>
-          <input type="email" id="email" name="email" placeholder="तुमचा ईमेल लिहा">
-        </div>
-
-        <div class="form-group">
-          <label for="message">तुमचा संदेश / प्रश्न *</label>
-          <textarea id="message" name="message" rows="4" placeholder="इथे तुमचा संदेश टाईप करा..." required></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> संदेश पाठवा</button>
-      </form>
+    <!-- Page Banner -->
+    <div class="page-banner">
+        <h1>आमच्याशी संपर्क साधा</h1>
+        <p>रक्तदान मदत, शिबिर आयोजन किंवा पुस्तकाबाबत चौकशीसाठी संपर्क करा</p>
     </div>
 
-  </div>
+    <!-- Main Content -->
+    <main class="contact-container">
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2026 RAKTDATA.IN | National Blood Donation Movement. All Rights Reserved.
-  </footer>
+        <!-- Left Side: Contact Information -->
+        <div class="contact-info-grid">
+            
+            <!-- Phone Card -->
+            <div class="info-card">
+                <i class="fa-solid fa-phone-volume"></i>
+                <h3>फोन नंबर / हेल्पलाईन</h3>
+                <p><a href="tel:+919321430535"><strong>+91 9321430535</strong></a></p>
+            </div>
+
+            <!-- WhatsApp Card -->
+            <div class="info-card" style="border-top-color: #25D366;">
+                <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
+                <h3>व्हॉट्सॲप (WhatsApp)</h3>
+                <p><strong>+91 9321430535</strong></p>
+                <a href="https://wa.me/919321430535" target="_blank" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i> चॅट करा</a>
+            </div>
+
+            <!-- Email Card -->
+            <div class="info-card">
+                <i class="fa-solid fa-envelope"></i>
+                <h3>ईमेल आयडी</h3>
+                <p><a href="mailto:raktdatas@gmail.com"><strong>raktdatas@gmail.com</strong></a></p>
+            </div>
+
+            <!-- Office Address Card -->
+            <div class="info-card">
+                <i class="fa-solid fa-location-dot"></i>
+                <h3>कार्यालय</h3>
+                <p><strong>RAKTDATA.IN</strong><br>राष्ट्रीय रक्तदान चळवळ, मुंबई, महाराष्ट्र, भारत.</p>
+            </div>
+
+        </div>
+
+        <!-- Right Side: Contact Form -->
+        <div class="contact-form-box">
+            <h2><i class="fa-solid fa-paper-plane"></i> संदेश पाठवा</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">तुमचे पूर्ण नाव</label>
+                    <input type="text" id="name" placeholder="नाव टाका" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">मोबाईल नंबर</label>
+                    <input type="tel" id="phone" placeholder="१० अंकी मोबाईल नंबर" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">विषय</label>
+                    <input type="text" id="subject" placeholder="उदा. रक्तदान शिबिर / पुस्तक चौकशी">
+                </div>
+                <div class="form-group">
+                    <label for="message">तुमचा संदेश</label>
+                    <textarea id="message" rows="4" placeholder="येथे संदेश लिहा..." required></textarea>
+                </div>
+                <button type="submit" class="btn-red"><i class="fa-solid fa-paper-plane"></i> संदेश पाठवा</button>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- Featured Book Section -->
+    <section class="featured-book">
+        <div class="book-content">
+            <span style="color: var(--primary-red); font-weight: bold; font-size: 13px;">विशेष प्रकाशन</span>
+            <h2>रक्तदाता : मानवतेचा संदेश</h2>
+            <div class="author">लेखक : डि. एम. गायकवाड</div>
+            <p>प्रेरणा, माहिती आणि समाजसेवा या तिन्हींचं सुंदर मिश्रण! हे पुस्तक रक्तदान जनजागृती व मानवी मूल्यांची रुजवण करण्यासाठी अत्यंत उपयुक्त आहे.</p>
+            <a href="book.html" class="btn-red" style="width: fit-content;"><i class="fa-solid fa-cart-shopping"></i> पुस्तक खरेदी करा</a>
+        </div>
+        
+        <!-- Book Cover Image -->
+        <div class="book-cover-card">
+            <img src="bookcover.png" alt="रक्तदाता पुस्तक कव्हर" onerror="this.src='bookcover.png.jpg'; this.onerror=null;">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 RAKTDATA.IN | सर्व हक्क सुरक्षित</p>
+    </footer>
 
 </body>
 </html>
