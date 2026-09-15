@@ -340,22 +340,186 @@
 
 </div>
 
-                <!-- Slide 2 -->
-                <div class="slide">
-                    <img src="wish2.jpg" alt="शुभेच्छा २" onerror="this.src='bookcover.png';">
-                    <div class="slide-text">"प्रत्येक तरुण आणि सामाजिक कार्यकर्त्याच्या संग्रही असावे असे पुस्तक."</div>
-                </div>
+            <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-                <!-- Slide 3 -->
-                <div class="slide">
-                    <img src="wish3.jpg" alt="शुभेच्छा ३" onerror="this.src='bookcover.png';">
-                    <div class="slide-text">"उत्कृष्ट लेखन आणि मानवी मूल्यांची जाणीव करून देणारे कार्य."</div>
-                </div>
+<style>
+  .wishes-section {
+    background-color: #0c1e38;
+    padding: 40px 20px;
+    border-radius: 12px;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+  }
+  .wishes-title {
+    color: #ffc107;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  .swiper {
+    width: 100%;
+    padding-bottom: 45px !important;
+  }
+  .swiper-slide {
+    height: auto;
+  }
+  .wish-card {
+    background: #162a45;
+    border: 1px solid #2c4870;
+    border-radius: 10px;
+    padding: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  .wish-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  .author-name {
+    color: #ffc107;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 4px 0;
+  }
+  .author-title {
+    color: #a0a0a0;
+    font-size: 13px;
+    margin: 0;
+  }
+  .swiper-pagination-bullet {
+    background: #ffffff;
+    opacity: 0.5;
+  }
+  .swiper-pagination-bullet-active {
+    background: #ffc107;
+    opacity: 1;
+  }
+  .swiper-button-next, .swiper-button-prev {
+    color: #ffc107;
+  }
+</style>
 
-            </div>
-        </section>
+<div class="wishes-section">
+  <div class="wishes-title">💛 पुस्तकासाठी मिळालेल्या शुभेच्छा व अभिप्राय</div>
 
-    </main>
+  <div class="swiper wishesSwiper">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1: मंगेश नरसिंह चिवटे -->
+      <div class="swiper-slide">
+        <div class="wish-card">
+          <p class="wish-text">"रक्तदान ही केवळ एका व्यक्तीची गरज भागविणारी वैद्यकीय प्रक्रिया नसून, माणुसकी जपणारी आणि समाजाला संवेदनशील बनविणारी एक महान सेवा आहे. रक्ताचा प्रत्येक थेंब एखाद्या गरजू व्यक्तीला नवजीवन देऊ शकतो, ही जाणीव समाजातील प्रत्येक घटकापर्यंत पोहोचणे आवश्यक आहे. 'रक्तदाता : मानवतेचा संदेश' या पुस्तकाच्या माध्यमातून रक्तदान चळवळीतील विविध पैलू मांडण्याचा स्तुत्य प्रयत्न करण्यात आला आहे."</p>
+          <div>
+            <p class="author-name">मंगेश नरसिंह चिवटे</p>
+            <p class="author-title">विशेष कार्य अधिकारी, मा. उपमुख्यमंत्री यांचे कार्यालय, मंत्रालय, मुंबई</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: डॉ. विराज एम. जाधव -->
+      <div class="swiper-slide">
+        <div class="wish-card">
+          <p class="wish-text">"रक्तदान ही केवळ वैद्यकीय गरज नसून ती समाजाच्या संवेदनशीलतेची ओळख आहे. 'रक्तदाता : मानवतेचा संदेश' हे पुस्तक या पवित्र कार्याचे महत्त्व प्रभावीपणे अधोरेखित करते. रक्तदानाविषयी जागृती निर्माण करून समाजाला सकारात्मक कृतीकडे प्रवृत्त करणारे हे लेखन निश्चितच प्रेरणादायी ठरेल."</p>[cite: 1]
+          <div>
+            <p class="author-name">डॉ. विराज एम. जाधव</p>[cite: 1]
+            <p class="author-title">MBBS, MD (Medicine)</p>[cite: 1]
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: डॉ. हेमंत महादेव वानखडे -->
+      <div class="swiper-slide">
+        <div class="wish-card">
+          <p class="wish-text">"रक्तदान हे सुरक्षित, शास्त्रीय आणि अत्यावश्यक वैद्यकीय कार्य आहे. योग्य माहितीच्या अभावामुळे अनेकदा रक्तदानाबाबत गैरसमज पसरलेले दिसतात. हे पुस्तक रक्तदानाविषयीचे शास्त्रीय सत्य, प्रक्रिया आणि सामाजिक गरज सोप्या भाषेत मांडते, ही याची मोठी जमेची बाजू आहे."</p>[cite: 1]
+          <div>
+            <p class="author-name">डॉ. हेमंत महादेव वानखडे</p>[cite: 1]
+            <p class="author-title">MD (Hom) CCMP</p>[cite: 1]
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: सतिश आर. ठाकरे -->
+      <div class="swiper-slide">
+        <div class="wish-card">
+          <p class="wish-text">"समाज परिवर्तनाची खरी ताकद ही केवळ शब्दांत नसून प्रत्यक्ष कृतीत असते. रक्तदान ही अशीच एक निस्वार्थी कृती आहे, जी जात-धर्म-पंथाच्या भिंती ओलांडून थेट मानवी जीवन वाचवते. तरुण पिढीला सामाजिक बांधिलकीची जाणीव करून देण्यासाठी हे पुस्तक एक 'दिशादर्शक दीपस्तंभ' ठरले."</p>[cite: 1]
+          <div>
+            <p class="author-name">सतिश आर. ठाकरे</p>[cite: 1]
+            <p class="author-title">सामाजिक कार्यकर्ते</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: डॉ. त्र्यंबक दूनबळे -->
+      <div class="swiper-slide">
+        <div class="wish-card">
+          <p class="wish-text">"रक्तदानाच्या पवित्र माध्यमातून मानवता जिवंत ठेवण्याचा हा प्रामाणिक प्रयत्न खरोखरच प्रशंसनीय आहे. मानवी शरीरात वाहणारा रक्ताचा प्रत्येक थेंब हा संकटात सापडलेल्या एखाद्या जीवासाठी प्रत्यक्ष 'अमृतकुंभ' असतो. लेखकाने रक्ताचे हेच अलौकिक मूल्य समाजासमोर मांडले आहे."</p>[cite: 1]
+          <div>
+            <p class="author-name">डॉ. त्र्यंबक दूनबळे</p>[cite: 1]
+            <p class="author-title">M.G., Ph.D.</p>[cite: 1]
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: श्री. संजय गांगुर्डे -->
+      <div class="swiper-slide">
+        <div class="wish-card">
+          <p class="wish-text">"रक्तदान ही केवळ वैद्यकीय प्रक्रिया नसून, समाजाला जोडणारी एक मानवी साखळी आहे. श्री. डी. एम. गायकवाड यांनी या पुस्तकातून रक्तदानाची शास्त्रीय माहिती आणि प्रेरणादायी अनुभव प्रभावीपणे मांडले आहेत. हे पुस्तक घराघरात पोहोचून नवीन रक्तदाते निर्माण करो, हीच सदिच्छा."</p>[cite: 1]
+          <div>
+            <p class="author-name">श्री. संजय गांगुर्डे</p>[cite: 1]
+            <p class="author-title">कोकण विभाग प्रमुख – रक्तदाता समिती, महाराष्ट्र</p>[cite: 1]
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Dots and Arrows -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  var swiper = new Swiper(".wishesSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 25,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+    },
+  });
+</script>
 
     <!-- Footer -->
     <footer>
