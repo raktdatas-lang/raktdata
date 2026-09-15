@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube व्हिडिओ व मुलाखती — RAKTDATA INDIA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d32f2f;
+            --primary-blue: #003366;
+            --dark-blue: #0d233a;
+            --light-blue: #eef5fc;
+            --accent-yellow: #ffcc00;
+            --text-dark: #1a252f;
+            --bg-light: #f8fafc;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+
+        /* Top Bar */
+        .top-bar { background: var(--dark-blue); color: #fff; padding: 8px 8%; display: flex; justify-content: space-between; font-size: 13px; flex-wrap: wrap; gap: 5px; border-bottom: 2px solid var(--accent-yellow); }
+        .top-bar a { color: var(--accent-yellow); text-decoration: none; font-weight: bold; }
+
+        /* Header */
+        header { background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary-red); flex-wrap: wrap; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo img { height: 50px; width: auto; object-fit: contain; }
+        .logo-text h2 { color: var(--primary-red); font-size: 26px; font-weight: bold; line-height: 1; letter-spacing: 0.5px; }
+        .logo-text p { font-size: 11px; color: var(--primary-blue); font-weight: bold; letter-spacing: 1px; }
+
+        /* Navigation Links */
+        .nav-links { display: flex; list-style: none; gap: 12px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: var(--primary-blue); font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 4px; transition: 0.3s; }
+        .nav-links a.active, .nav-links a:hover { background: var(--primary-red); color: #fff; }
+
+        /* Page Banner */
+        .page-banner { background: var(--dark-blue); color: #fff; padding: 30px 8%; text-align: center; border-bottom: 3px solid var(--accent-yellow); }
+        .page-banner h1 { font-size: 28px; color: var(--accent-yellow); margin-bottom: 5px; }
+        .page-banner p { font-size: 14px; color: #e0e6ed; }
+
+        /* Featured Video Section */
+        .featured-video-section { padding: 40px 8% 20px 8%; }
+        .featured-video-card { background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: flex; flex-wrap: wrap; }
+        .video-embed-container { flex: 2; min-width: 300px; position: relative; padding-bottom: 35%; height: 0; background: #000; }
+        .video-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .featured-video-info { flex: 1; min-width: 280px; padding: 25px; background: var(--light-blue); display: flex; flex-direction: column; justify-content: center; }
+        .badge-red { background: var(--primary-red); color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; width: fit-content; margin-bottom: 10px; }
+        .featured-video-info h2 { font-size: 22px; color: var(--primary-blue); margin-bottom: 10px; line-height: 1.4; }
+        .featured-video-info p { font-size: 14px; color: #555; margin-bottom: 20px; }
+
+        /* YouTube Channel Banner */
+        .yt-banner { background: var(--primary-red); color: #fff; padding: 20px 8%; margin: 30px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .yt-banner h3 { font-size: 20px; }
+        .btn-yt { background: #fff; color: var(--primary-red); padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
+
+        /* Video Grid Section */
+        .video-grid-section { padding: 20px 8% 50px 8%; }
+        .section-header { text-align: left; margin-bottom: 25px; border-bottom: 2px solid var(--light-blue); padding-bottom: 10px; }
+        .section-header h2 { font-size: 24px; color: var(--primary-blue); border-left: 5px solid var(--primary-red); padding-left: 12px; }
+
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .video-card { background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: 0.3s; }
+        .video-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .video-card-thumb { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
+        .video-card-thumb iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-card-body { padding: 18px; }
+        .video-card-title { font-size: 16px; color: var(--dark-blue); font-weight: bold; margin-bottom: 8px; line-height: 1.4; }
+        .video-card-desc { font-size: 13px; color: #666; }
+
+        /* Featured Book Section */
+        .featured-book { padding: 40px 8%; background: var(--light-blue); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; border-top: 1px solid #d0e1f9; }
+        .book-content { flex: 1; min-width: 280px; }
+        .book-content h2 { font-size: 26px; color: var(--primary-blue); margin: 10px 0; }
+        .book-content .author { color: var(--primary-red); font-weight: bold; font-size: 15px; margin-bottom: 15px; }
+        .book-content p { color: #444; font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
+
+        .book-cover-card { width: 100%; max-width: 220px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid var(--accent-yellow); margin: 0 auto; text-align: center; }
+        .book-cover-card img { width: 100%; height: auto; max-height: 320px; object-fit: contain; border-radius: 4px; display: block; }
+        .btn-red { background: var(--primary-red); color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; font-size: 14px; }
+
+        /* Footer */
+        footer { background: var(--dark-blue); color: #fff; text-align: center; padding: 20px 8%; font-size: 13px; border-top: 4px solid var(--accent-yellow); }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; }
+            .nav-links { justify-content: center; }
+            .video-embed-container { padding-bottom: 56.25%; }
+            .yt-banner { text-align: center; justify-content: center; }
+            .featured-book { text-align: center; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <span>🇮🇳 RAKTDATA INDIA — रक्तदान • जनजागृती • माणुसकी</span>
+        <span><i class="fa-solid fa-envelope"></i> <a href="mailto:raktdatas@gmail.com">raktdatas@gmail.com</a></span>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Raktdata Logo" onerror="this.src='assets/images/logo.png'; this.onerror=null;">
+            <div class="logo-text">
+                <h2>RAKTDATA.IN</h2>
+                <p>INDIA BLOOD DONATION NEWS</p>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">मुख्यपृष्ठ</a></li>
+            <li><a href="news.html">बातम्या</a></li>
+            <li><a href="youtube.html" class="active">YouTube</a></li>
+            <li><a href="donors.html">रक्तदाता</a></li>
+            <li><a href="awareness.html">जनजागृती</a></li>
+            <li><a href="book.html">पुस्तक</a></li>
+            <li><a href="about.html">Raktdata बद्दल</a></li>
+            <li><a href="contact.html">संपर्क</a></li>
+        </ul>
+    </header>
+
+    <!-- Page Banner -->
+    <div class="page-banner">
+        <h1>YouTube व्हिडिओ व जनजागृती मुलाखती</h1>
+        <p>रक्तदान उपक्रम, तज्ज्ञांचे मार्गदर्शन आणि प्रेरणादायी व्हिडिओ पाहा</p>
+    </div>
+
+    <!-- Featured Video Section -->
+    <section class="featured-video-section">
+        <div class="featured-video-card">
+            <div class="video-embed-container">
+                <!-- व्हिडिओ बदलण्यासाठी खालील src मधील YouTube Embed Link बदला -->
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Featured Video" allowfullscreen></iframe>
+            </div>
+            <div class="featured-video-info">
+                <span class="badge-red"><i class="fa-solid fa-star"></i> खास व्हिडिओ</span>
+                <h2>रक्तदानाचे महत्त्व आणि गैरसमज: तज्ज्ञ डॉक्टरांचे मार्गदर्शन</h2>
+                <p>रक्तदान केल्याने शरीरावर काय परिणाम होतो? रक्तदान कोण करू शकते? या सर्व प्रश्नांची सविस्तर उत्तरे या व्हिडिओमध्ये पाहा.</p>
+                <a href="https://www.youtube.com/@raktdataindia" target="_blank" class="btn-red" style="width: fit-content;"><i class="fa-brands fa-youtube"></i> यूट्यूबवर पाहा</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Channel Banner -->
+    <div class="yt-banner">
+        <h3><i class="fa-brands fa-youtube"></i> आमच्या YouTube चॅनेलला सबस्क्राईब करा</h3>
+        <a href="https://www.youtube.com/@raktdataindia" target="_blank" class="btn-yt"><i class="fa-solid fa-bell"></i> Subscribe Now</a>
+    </div>
+
+    <!-- Video Grid Section -->
+    <section class="video-grid-section">
+        <div class="section-header">
+            <h2>इतर महत्त्वपूर्ण व्हिडिओ</h2>
+        </div>
+
+        <div class="video-grid">
+            
+            <!-- Video Card 1 -->
+            <div class="video-card">
+                <div class="video-card-thumb">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 1" allowfullscreen></iframe>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-card-title">रक्तदान शिबिर आयोजन कसे करावे?</div>
+                    <div class="video-card-desc">सामाजिक संस्था आणि मंडळांसाठी रक्तदान शिबीर आयोजनाची सविस्तर माहिती.</div>
+                </div>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="video-card">
+                <div class="video-card-thumb">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 2" allowfullscreen></iframe>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-card-title">५० वेळा रक्तदान करणाऱ्या दात्याची मुलाखत</div>
+                    <div class="video-card-desc">नियमित रक्तदान करण्याचा प्रवास आणि त्यांचा प्रेरणादायी संदेश.</div>
+                </div>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="video-card">
+                <div class="video-card-thumb">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 3" allowfullscreen></iframe>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-card-title">महिला आणि रक्तदान: गैरसमज व वास्तव</div>
+                    <div class="video-card-desc">महिलांनी रक्तदान का करावे आणि त्यासंबंधीची आरोग्यदायी माहिती.</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Featured Book Section -->
+    <section class="featured-book">
+        <div class="book-content">
+            <h2>रक्तदाता : मानवतेचा संदेश</h2>
+            <div class="author">लेखक : डि. एम. गायकवाड</div>
+            <p>प्रेरणा, माहिती आणि समाजसेवा या तिन्हींचं सुंदर मिश्रण! हे पुस्तक रक्तदान जनजागृती व मानवी मूल्यांची रुजवण करण्यासाठी अत्यंत उपयुक्त आहे.</p>
+            <a href="book.html" class="btn-red"><i class="fa-solid fa-cart-shopping"></i> पुस्तक खरेदी करा</a>
+        </div>
+        
+        <!-- Book Cover Image -->
+        <div class="book-cover-card">
+            <img src="bookcover.png" alt="रक्तदाता पुस्तक कव्हर" onerror="this.src='bookcover.png.jpg'; this.onerror=null;">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 RAKTDATA.IN | सर्व हक्क सुरक्षित</p>
+    </footer>
+
+</body>
+</html>
