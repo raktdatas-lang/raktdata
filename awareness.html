@@ -3,170 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>रक्तदान जनजागृती | Raktdata.in</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    <title>रक्तदान जनजागृती — RAKTDATA INDIA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --primary-red: #D32F2F;
-            --dark-red: #9A0007;
-            --bg-light: #F8F9FA;
-            --text-dark: #1E293B;
+            --primary-red: #d32f2f;
+            --primary-blue: #003366;
+            --dark-blue: #0d233a;
+            --light-blue: #eef5fc;
+            --accent-yellow: #ffcc00;
+            --text-dark: #1a252f;
+            --bg-light: #f8fafc;
         }
 
-        body {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
 
-        .faq-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 1px solid #E2E8F0;
-        }
+        /* Top Bar */
+        .top-bar { background: var(--dark-blue); color: #fff; padding: 8px 8%; display: flex; justify-content: space-between; font-size: 13px; flex-wrap: wrap; gap: 5px; border-bottom: 2px solid var(--accent-yellow); }
+        .top-bar a { color: var(--accent-yellow); text-decoration: none; font-weight: bold; }
 
-        .icon-box-red {
-            width: 60px;
-            height: 60px;
-            background: #FFE3E3;
-            color: var(--primary-red);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 15px;
+        /* Header */
+        header { background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary-red); flex-wrap: wrap; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo img { height: 50px; width: auto; object-fit: contain; }
+        .logo-text h2 { color: var(--primary-red); font-size: 26px; font-weight: bold; line-height: 1; letter-spacing: 0.5px; }
+        .logo-text p { font-size: 11px; color: var(--primary-blue); font-weight: bold; letter-spacing: 1px; }
+
+        /* Navigation Links */
+        .nav-links { display: flex; list-style: none; gap: 12px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: var(--primary-blue); font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 4px; transition: 0.3s; }
+        .nav-links a.active, .nav-links a:hover { background: var(--primary-red); color: #fff; }
+
+        /* Page Banner */
+        .page-banner { background: var(--dark-blue); color: #fff; padding: 35px 8%; text-align: center; border-bottom: 3px solid var(--accent-yellow); }
+        .page-banner h1 { font-size: 30px; color: var(--accent-yellow); margin-bottom: 8px; }
+        .page-banner p { font-size: 15px; color: #e0e6ed; }
+
+        /* Section Container */
+        .section-container { padding: 45px 8%; }
+        .section-title { font-size: 24px; color: var(--primary-blue); border-left: 5px solid var(--primary-red); padding-left: 12px; margin-bottom: 25px; }
+
+        /* Eligibility Grid */
+        .eligibility-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 50px; }
+        .elig-card { background: #fff; padding: 22px; border-radius: 8px; border-top: 4px solid var(--primary-blue); box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; }
+        .elig-card i { font-size: 35px; color: var(--primary-red); margin-bottom: 12px; }
+        .elig-card h3 { font-size: 17px; color: var(--dark-blue); margin-bottom: 8px; }
+        .elig-card p { font-size: 13.5px; color: #555; }
+
+        /* Myths vs Facts */
+        .myths-section { background: var(--light-blue); padding: 45px 8%; border-top: 1px solid #d0e1f9; border-bottom: 1px solid #d0e1f9; }
+        .myth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .myth-card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border-left: 5px solid var(--primary-red); }
+        .myth-title { color: var(--primary-red); font-weight: bold; font-size: 15px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .fact-title { color: #2e7d32; font-weight: bold; font-size: 15px; margin-top: 10px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .myth-card p { font-size: 13.5px; color: #444; }
+
+        /* Steps Section */
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 25px; }
+        .step-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .step-number { position: absolute; top: 15px; right: 15px; background: var(--accent-yellow); color: var(--dark-blue); font-weight: bold; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .step-card h3 { font-size: 16px; color: var(--primary-blue); margin-bottom: 10px; }
+        .step-card p { font-size: 13px; color: #555; }
+
+        /* Featured Book Section */
+        .featured-book { padding: 45px 8%; background: var(--light-blue); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; border-top: 1px solid #d0e1f9; }
+        .book-content { flex: 1; min-width: 280px; }
+        .book-content h2 { font-size: 28px; color: var(--primary-blue); margin: 10px 0; }
+        .book-content .author { color: var(--primary-red); font-weight: bold; font-size: 16px; margin-bottom: 15px; }
+        .book-content p { color: #444; font-size: 14.5px; margin-bottom: 22px; line-height: 1.7; }
+        .btn-red { background: var(--primary-red); color: #fff; padding: 11px 22px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; font-size: 14px; }
+
+        .book-cover-card { width: 100%; max-width: 220px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid var(--accent-yellow); margin: 0 auto; text-align: center; }
+        .book-cover-card img { width: 100%; height: auto; max-height: 320px; object-fit: contain; border-radius: 4px; display: block; }
+
+        /* Footer */
+        footer { background: var(--dark-blue); color: #fff; text-align: center; padding: 20px 8%; font-size: 13px; border-top: 4px solid var(--accent-yellow); }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; }
+            .nav-links { justify-content: center; }
+            .featured-book { text-align: center; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 🌐 Navigation Bar -->
-    <nav class="navbar navbar-expand-xl navbar-light bg-white sticky-top shadow-sm">
-        <div class="container-fluid px-lg-4">
-            <a class="navbar-brand text-danger fw-bold fs-4 d-flex align-items-center" href="index.html">
-                <i class="fa-solid fa-droplet fs-3 me-2 text-danger"></i>
-                <span>Raktdata<span class="text-dark">.in</span></span>
-            </a>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <span>🇮🇳 RAKTDATA INDIA — रक्तदान • जनजागृती • माणुसकी</span>
+        <span><i class="fa-solid fa-envelope"></i> <a href="mailto:raktdatas@gmail.com">raktdatas@gmail.com</a></span>
+    </div>
 
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#raktdataNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="raktdataNavbar">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold ms-xl-3">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-house me-1"></i> मुख्यपृष्ठ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="heroes.html"><i class="fa-solid fa-user-ninja text-danger me-1"></i> रक्तवीर</a></li>
-                    <li class="nav-item"><a class="nav-link" href="orgs.html"><i class="fa-solid fa-building-flag text-danger me-1"></i> संस्था</a></li>
-                    <li class="nav-item"><a class="nav-link" href="news.html"><i class="fa-solid fa-newspaper text-danger me-1"></i> बातम्या</a></li>
-                    <li class="nav-item"><a class="nav-link" href="book.html"><i class="fa-solid fa-book-bookmark text-danger me-1"></i> पुस्तक</a></li>
-                    <li class="nav-item"><a class="nav-link" href="sanman.html"><i class="fa-solid fa-trophy text-warning me-1"></i> Raktdata सन्मान</a></li>
-                    <li class="nav-item"><a class="nav-link active text-danger" href="awareness.html"><i class="fa-solid fa-lightbulb text-danger me-1"></i> जनजागृती</a></li>
-                </ul>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Raktdata Logo" onerror="this.src='assets/images/logo.png'; this.onerror=null;">
+            <div class="logo-text">
+                <h2>RAKTDATA.IN</h2>
+                <p>INDIA BLOOD DONATION NEWS</p>
             </div>
         </div>
-    </nav>
+        <ul class="nav-links">
+            <li><a href="index.html">मुख्यपृष्ठ</a></li>
+            <li><a href="news.html">बातम्या</a></li>
+            <li><a href="youtube.html">YouTube</a></li>
+            <li><a href="donors.html">रक्तदाता</a></li>
+            <li><a href="awareness.html" class="active">जनजागृती</a></li>
+            <li><a href="book.html">पुस्तक</a></li>
+            <li><a href="about.html">Raktdata बद्दल</a></li>
+            <li><a href="contact.html">संपर्क</a></li>
+        </ul>
+    </header>
 
-    <!-- 💡 Header Section -->
-    <section class="bg-danger text-white py-5 text-center">
-        <div class="container">
-            <h1 class="fw-bold"><i class="fa-solid fa-lightbulb me-2"></i>रक्तदान जनजागृती (Awareness & FAQs)</h1>
-            <p class="lead opacity-90 mb-0">रक्तदानाविषयीचे गैरसमज दूर करा आणि योग्य माहिती जाणून घ्या</p>
+    <!-- Page Banner -->
+    <div class="page-banner">
+        <h1>रक्तदान जनजागृती केंद्र</h1>
+        <p>रक्तदानाविषयी योग्य माहिती, नियम आणि गैरसमज दूर करणारी विशेष माहिती</p>
+    </div>
+
+    <!-- Eligibility Section -->
+    <section class="section-container">
+        <h2 class="section-title">रक्तदानासाठी आवश्यक पात्रता</h2>
+        <div class="eligibility-grid">
+            <div class="elig-card">
+                <i class="fa-solid fa-user-check"></i>
+                <h3>वयोमर्यादा</h3>
+                <p>१८ ते ६५ वर्षे वयोगटातील कोणतीही निरोगी व्यक्ती रक्तदान करू शकते.</p>
+            </div>
+            <div class="elig-card">
+                <i class="fa-solid fa-weight-scale"></i>
+                <h3>किमान वजन</h3>
+                <p>रक्तदात्याचे वजन कमीत कमी ४५ ते ५० किलो असणे आवश्यक आहे.</p>
+            </div>
+            <div class="elig-card">
+                <i class="fa-solid fa-droplet"></i>
+                <h3>हिमोग्लोबिनची पातळी</h3>
+                <p>शरीरात हिमोग्लोबिनचे प्रमाण किमान १२.५ g/dL किंवा त्यापेक्षा जास्त असावे.</p>
+            </div>
+            <div class="elig-card">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <h3>रक्तदानाची वेळ</h3>
+                <p>पुरुष दर ३ महिन्यांनी आणि महिला दर ४ महिन्यांनी रक्तदान करू शकतात.</p>
+            </div>
         </div>
-    </section>
 
-    <!-- 💡 Benefits Section -->
-    <section class="container py-5">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">रक्तदानाचे फायदे (Benefits of Donating Blood)</h2>
-            <p class="text-muted">रक्तदान केल्याने केवळ दुसऱ्याचे प्राण वाचत नाहीत, तर तुमच्या आरोग्यालाही फायदे होतात</p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="faq-card p-4 text-center h-100">
-                    <div class="icon-box-red mx-auto"><i class="fa-solid fa-heart-pulse"></i></div>
-                    <h5 class="fw-bold">हृदयाचे आरोग्य सुधारते</h5>
-                    <p class="text-muted small">नियमित रक्तदान केल्याने शरीरातील अतिरिक्त आयर्नचे (Iron) प्रमाण नियंत्रित राहून हृदयाचे आरोग्य उत्तम राहते.</p>
-                </div>
+        <h2 class="section-title">रक्तदानाची सोपी प्रक्रिया</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">१</div>
+                <h3>नोंदणी आणि अर्ज</h3>
+                <p>रक्तदान केंद्रावर नाव, पत्ता आणि आरोग्यविषयक माहितीचा अर्ज भरणे.</p>
             </div>
-
-            <div class="col-md-4">
-                <div class="faq-card p-4 text-center h-100">
-                    <div class="icon-box-red mx-auto"><i class="fa-solid fa-arrows-rotate"></i></div>
-                    <h5 class="fw-bold">नवीन पेशींची निर्मिती</h5>
-                    <p class="text-muted small">रक्तदानानंतर शरीर लगेच नवीन लाल रक्तपेशी (RBCs) तयार करण्याचे काम वेगाने सुरू करते.</p>
-                </div>
+            <div class="step-card">
+                <div class="step-number">२</div>
+                <h3>आरोग्य तपासणी</h3>
+                <p>वजन, रक्तदाब (BP) आणि हिमोग्लोबिनची जलद तपासणी केली जाते.</p>
             </div>
-
-            <div class="col-md-4">
-                <div class="faq-card p-4 text-center h-100">
-                    <div class="icon-box-red mx-auto"><i class="fa-solid fa-stethoscope"></i></div>
-                    <h5 class="fw-bold">मोफत आरोग्य तपासणी</h5>
-                    <p class="text-muted small">रक्तदानापूर्वी हिमोग्लोबिन, ब्लड प्रेशर आणि रक्तातील घटकांची मोफत तपासणी होते.</p>
-                </div>
+            <div class="step-card">
+                <div class="step-number">३</div>
+                <h3>सुरक्षित रक्तदान</h3>
+                <p>केवळ १० ते १५ मिनिटांत नवीन निर्जंतुक सुईने रक्तदान पूर्ण होते.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- ❓ FAQ Section -->
-    <section class="bg-white py-5 shadow-sm">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">सतत विचारले जाणारे प्रश्न (FAQs)</h2>
-            </div>
-
-            <div class="accordion accordion-flush col-lg-8 mx-auto" id="awarenessAccordion">
-                <div class="accordion-item border rounded-3 mb-3">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                            रक्तदान कोण करू शकते?
-                        </button>
-                    </h2>
-                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#awarenessAccordion">
-                        <div class="accordion-body text-muted">
-                            १८ ते ६५ वयोगटातील कोणतीही निरोगी व्यक्ती ज्यांचे वजन किमान ४५ किलो आहे आणि हिमोग्लोबिन १२.५ पेक्षा जास्त आहे, ती व्यक्ती रक्तदान करू शकते.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item border rounded-3 mb-3">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                            किती दिवसांनंतर पुन्हा रक्तदान करता येते?
-                        </button>
-                    </h2>
-                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#awarenessAccordion">
-                        <div class="accordion-body text-muted">
-                            पुरुष दर ३ महिन्यांनी आणि महिला दर ४ महिन्यांनी नियमित रक्तदान करू शकतात.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item border rounded-3 mb-3">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                            रक्तदान केल्याने अशक्तपणा येतो का?
-                        </button>
-                    </h2>
-                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#awarenessAccordion">
-                        <div class="accordion-body text-muted">
-                            नाही, हा केवळ एक गैरसमज आहे. शरीरातील रक्ताचे प्रमाण २४ ते ४८ तासांत पुन्हा पूर्ववत होते.
-                        </div>
-                    </div>
-                </div>
+            <div class="step-card">
+                <div class="step-number">४</div>
+                <h3>अल्पोपहार व विश्रांती</h3>
+                <p>रक्तदानानंतर १० मिनिटे विश्रांती देऊन अल्पोपहार व प्रमाणपत्र दिले जाते.</p>
             </div>
         </div>
     </section>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Myths vs Facts Section -->
+    <section class="myths-section">
+        <h2 class="section-title" style="margin-bottom: 30px;">रक्तदानाबाबत गैरसमज आणि वास्तव</h2>
+        <div class="myth-grid">
+            <div class="myth-card">
+                <div class="myth-title"><i class="fa-solid fa-xmark-circle"></i> गैरसमज:</div>
+                <p>रक्तदान केल्याने शरीरात अशक्तपणा किंवा आजारपण येते.</p>
+                <div class="fact-title"><i class="fa-solid fa-check-circle"></i> सत्य:</div>
+                <p>रक्तदानानंतर शरीर २४ ते ४८ तासांत नवीन रक्त तयार करण्यास सुरुवात करते. यामुळे शरीराला कोणताही त्रास होत नाही.</p>
+            </div>
+
+            <div class="myth-card">
+                <div class="myth-title"><i class="fa-solid fa-xmark-circle"></i> गैरसमज:</div>
+                <p>रक्तदानाने संसर्ग किंवा आजार पसरण्याची भीती असते.</p>
+                <div class="fact-title"><i class="fa-solid fa-check-circle"></i> सत्य:</div>
+                <p>रक्तदानासाठी प्रत्येक वेळी पूर्णपणे नवीन आणि डिस्पोजेबल सुई वापरली जाते, त्यामुळे संसर्गाचा प्रश्नच उद्भवत नाही.</p>
+            </div>
+
+            <div class="myth-card">
+                <div class="myth-title"><i class="fa-solid fa-xmark-circle"></i> गैरसमज:</div>
+                <p>महिलांनी कधीही रक्तदान करू नये.</p>
+                <div class="fact-title"><i class="fa-solid fa-check-circle"></i> सत्य:</div>
+                <p>हिमोग्लोबिन आणि वजन योग्य असल्यास निरोगी महिला सुरक्षितपणे रक्तदान करू शकतात.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Book Section -->
+    <section class="featured-book">
+        <div class="book-content">
+            <span style="color: var(--primary-red); font-weight: bold; font-size: 13px; text-transform: uppercase;">विशेष जनजागृती पुस्तक</span>
+            <h2>रक्तदाता : मानवतेचा संदेश</h2>
+            <div class="author">लेखक : डि. एम. गायकवाड</div>
+            <p>प्रेरणा, माहिती आणि समाजसेवा या तिन्हींचं सुंदर मिश्रण! हे पुस्तक रक्तदान जनजागृती व मानवी मूल्यांची रुजवण करण्यासाठी अत्यंत उपयुक्त आहे.</p>
+            <a href="book.html" class="btn-red"><i class="fa-solid fa-cart-shopping"></i> पुस्तक खरेदी करा</a>
+        </div>
+        
+        <!-- Book Cover Image -->
+        <div class="book-cover-card">
+            <img src="bookcover.png" alt="रक्तदाता पुस्तक कव्हर" onerror="this.src='bookcover.png.jpg'; this.onerror=null;">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 RAKTDATA.IN | सर्व हक्क सुरक्षित</p>
+    </footer>
+
 </body>
 </html>
