@@ -15,57 +15,82 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #fff; color: var(--text-dark); line-height: 1.6; }
         
-        /* Header & Topbar */
-        .top-bar { background: #111; color: #fff; padding: 8px 8%; display: flex; justify-content: space-between; font-size: 13px; }
-        header { background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+        /* Topbar & Header */
+        .top-bar { background: #111; color: #fff; padding: 8px 8%; display: flex; justify-content: space-between; font-size: 13px; flex-wrap: wrap; gap: 5px; }
+        header { background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; flex-wrap: wrap; gap: 15px; }
         .logo { display: flex; align-items: center; gap: 12px; }
         .logo img { height: 45px; width: auto; object-fit: contain; }
         .logo-text h2 { color: var(--primary); font-size: 22px; font-weight: bold; line-height: 1; }
         .logo-text p { font-size: 10px; color: #666; letter-spacing: 1px; }
-        .nav-links { display: flex; list-style: none; gap: 18px; }
+        
+        /* Nav Links */
+        .nav-links { display: flex; list-style: none; gap: 18px; flex-wrap: wrap; }
         .nav-links a { text-decoration: none; color: #333; font-weight: 600; font-size: 14px; }
         .nav-links a.active, .nav-links a:hover { color: var(--primary); }
 
         /* What We Cover Cards */
-        .features { padding: 50px 8%; text-align: center; background: var(--bg-light); }
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 25px; }
+        .features { padding: 40px 8%; text-align: center; background: var(--bg-light); }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 20px; }
         .card { background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: left; }
-        .card p { font-size: 13px; color: #666; margin: 10px 0; }
+        .card p { font-size: 14px; color: #666; margin: 10px 0; }
         .card a { color: var(--primary); font-weight: bold; text-decoration: none; font-size: 14px; }
 
         /* Mission Section - Dark Theme */
-        .mission { background: #18191a; color: #fff; padding: 70px 8%; display: flex; align-items: center; justify-content: space-between; }
-        .mission-content { max-width: 55%; }
+        .mission { background: #18191a; color: #fff; padding: 50px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+        .mission-content { flex: 1; min-width: 280px; }
         .section-tag { color: var(--primary); font-weight: bold; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
-        .mission h2 { font-size: 36px; margin: 15px 0; color: #fff; }
+        .mission h2 { font-size: 32px; margin: 15px 0; color: #fff; }
         .mission h2 span { color: var(--primary); }
-        .mission p { font-size: 15px; color: #ccc; margin-bottom: 30px; line-height: 1.8; }
-        .mission-buttons { display: flex; gap: 15px; }
-        .btn { padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-block; }
+        .mission p { font-size: 15px; color: #ccc; margin-bottom: 25px; line-height: 1.8; }
+        .mission-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn { padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-block; text-align: center; }
         .btn-red { background: var(--primary); color: #fff; border: none; }
         .btn-white { background: #fff; color: #111; border: none; }
         
-        .mission-image { background: #fff; padding: 15px; border-radius: 12px; display: flex; justify-content: center; align-items: center; width: 280px; height: 280px; }
+        .mission-image { background: #fff; padding: 15px; border-radius: 12px; display: flex; justify-content: center; align-items: center; width: 260px; height: 260px; margin: 0 auto; }
         .mission-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
+        /* YouTube Section */
+        .youtube-section { padding: 50px 8%; text-align: center; background: #fff; }
+        .youtube-section h2 { font-size: 28px; color: #111; margin-bottom: 10px; }
+        .youtube-section p { color: #666; margin-bottom: 25px; font-size: 14px; }
+        .video-box { max-width: 700px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); background: #000; position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
         /* Featured Book Section */
-        .featured-book { padding: 60px 8%; background: var(--bg-light); display: flex; justify-content: space-between; align-items: center; }
-        .book-content { max-width: 60%; }
+        .featured-book { padding: 50px 8%; background: var(--bg-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .book-content { flex: 1; min-width: 280px; }
         .book-content h2 { font-size: 28px; color: #111; margin: 10px 0; }
         .book-content p { color: #666; font-size: 14px; margin-bottom: 20px; }
-        .book-icon { font-size: 80px; color: #3f51b5; }
+        .book-icon { font-size: 70px; color: #3f51b5; margin: 0 auto; }
+
+        /* Footer */
+        footer { background: #111; color: #aaa; text-align: center; padding: 20px 8%; font-size: 13px; }
 
         /* Scroll Top Button */
         .scroll-top { position: fixed; bottom: 25px; right: 25px; background: var(--primary); color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+        /* Mobile Specific Styling */
+        @media (max-width: 768px) {
+            .top-bar { justify-content: center; text-align: center; }
+            header { flex-direction: column; text-align: center; padding: 15px 5%; }
+            .nav-links { justify-content: center; gap: 12px; font-size: 13px; }
+            .mission h2 { font-size: 26px; }
+            .mission-content { text-align: center; }
+            .mission-buttons { justify-content: center; }
+            .featured-book { text-align: center; justify-content: center; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Top Bar -->
     <div class="top-bar">
         <span>🇮🇳 RAKTDATA INDIA — रक्तदान • जनजागृती • माणुसकी</span>
         <span><i class="fa-solid fa-envelope"></i> raktdatas@gmail.com</span>
     </div>
 
+    <!-- Header / Nav -->
     <header>
         <div class="logo">
             <img src="assets/images/logo.png" alt="Logo" onerror="this.src='logo.png'; this.onerror=null;">
@@ -124,6 +149,22 @@
         </div>
     </section>
 
+    <!-- YouTube Section -->
+    <section class="youtube-section">
+        <span class="section-tag">YOUTUBE VIDEOS</span>
+        <h2>आमचे विशेष व्हिडिओ</h2>
+        <p>रक्तदान जनजागृती आणि सामाजिक कार्यांचे व्हिडिओ पाहण्यासाठी खालील व्हिडिओ पाहा किंवा चॅनेलला भेट द्या.</p>
+        
+        <div class="video-box">
+            <!-- युट्यूब व्हिडिओ एम्बेड करण्यासाठी src मधील लिंक बदला -->
+            <iframe src="https://www.youtube.com/embed/" title="Raktdata YouTube Video" allowfullscreen></iframe>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a href="youtube.html" class="btn btn-red"><i class="fa-brands fa-youtube"></i> अधिक व्हिडिओ पाहा</a>
+        </div>
+    </section>
+
     <!-- Featured Book Section -->
     <section class="featured-book">
         <div class="book-content">
@@ -136,6 +177,11 @@
             📘
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 RAKTDATA.IN | सर्व हक्क सुरक्षित</p>
+    </footer>
 
     <!-- Floating Scroll to Top Button -->
     <a href="#" class="scroll-top"><i class="fa-solid fa-arrow-up"></i></a>
