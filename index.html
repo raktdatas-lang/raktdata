@@ -35,7 +35,7 @@
         .nav-links a { text-decoration: none; color: var(--primary-blue); font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 4px; transition: 0.3s; }
         .nav-links a.active, .nav-links a:hover { background: var(--primary-red); color: #fff; }
 
-        /* News Ticker Bar */
+        /* News Ticker */
         .news-ticker { background: var(--accent-yellow); color: var(--dark-blue); padding: 10px 8%; font-weight: bold; font-size: 14px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #e6b800; }
         .ticker-badge { background: var(--primary-red); color: #fff; padding: 3px 10px; border-radius: 3px; font-size: 12px; text-transform: uppercase; white-space: nowrap; }
 
@@ -63,7 +63,7 @@
         .mission-image { background: #fff; padding: 15px; border-radius: 12px; display: flex; justify-content: center; align-items: center; width: 220px; height: 220px; margin: 0 auto; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
         .mission-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        /* News Section Layout (Replacing YouTube) */
+        /* News Section Layout */
         .news-section { padding: 50px 8%; background: #fff; }
         .section-header { text-align: left; margin-bottom: 30px; border-bottom: 2px solid var(--light-blue); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 10px; }
         .section-header h2 { font-size: 26px; color: var(--primary-blue); border-left: 5px solid var(--primary-red); padding-left: 12px; }
@@ -80,16 +80,33 @@
         .news-title { font-size: 18px; color: var(--dark-blue); font-weight: bold; margin-bottom: 10px; line-height: 1.4; }
         .news-desc { font-size: 13px; color: #555; margin-bottom: 15px; }
 
-        /* Featured Book Section with Image */
+        /* Featured Book Section Fix (इमेजसाठी विशेष दुरुस्ती) */
         .featured-book { padding: 50px 8%; background: var(--light-blue); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; border-top: 1px solid #d0e1f9; }
         .book-content { flex: 1; min-width: 280px; }
         .book-content h2 { font-size: 30px; color: var(--primary-blue); margin: 10px 0; }
         .book-content .author { color: var(--primary-red); font-weight: bold; font-size: 16px; margin-bottom: 15px; }
         .book-content p { color: #444; font-size: 15px; margin-bottom: 25px; line-height: 1.7; }
 
-        /* Book Cover Container */
-        .book-cover-card { width: 230px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); border: 2px solid var(--accent-yellow); margin: 0 auto; text-align: center; }
-        .book-cover-card img { width: 100%; height: auto; border-radius: 4px; display: block; }
+        /* Book Cover Container - Fixed Width for Mobile & Desktop */
+        .book-cover-card { 
+            width: 100%; 
+            max-width: 260px; 
+            background: #fff; 
+            padding: 10px; 
+            border-radius: 8px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12); 
+            border: 2px solid var(--accent-yellow); 
+            margin: 0 auto; 
+            text-align: center; 
+        }
+        .book-cover-card img { 
+            width: 100%; 
+            height: auto; 
+            max-height: 380px; 
+            object-fit: contain; 
+            border-radius: 4px; 
+            display: block; 
+        }
 
         /* Footer */
         footer { background: var(--dark-blue); color: #fff; text-align: center; padding: 25px 8%; font-size: 13px; border-top: 4px solid var(--accent-yellow); }
@@ -105,7 +122,8 @@
             .mission h2 { font-size: 26px; }
             .mission-content { text-align: center; }
             .mission-buttons { justify-content: center; }
-            .featured-book { text-align: center; }
+            .featured-book { text-align: center; justify-content: center; }
+            .book-cover-card { max-width: 220px; }
         }
     </style>
 </head>
@@ -184,7 +202,7 @@
         </div>
     </section>
 
-    <!-- News Section (Replacing YouTube) -->
+    <!-- News Section -->
     <section class="news-section">
         <div class="section-header">
             <h2>ताजी बातमी आणि उपक्रम</h2>
@@ -246,8 +264,8 @@
             <a href="book.html" class="btn btn-red"><i class="fa-solid fa-cart-shopping"></i> पुस्तक खरेदी करा</a>
         </div>
         
-        <!-- Book Cover Image Display -->
-        <div class="bookcover.png">
+        <!-- Fixed Book Cover Image Display -->
+        <div class="book-cover-card">
             <img src="assets/images/bookcover.png" alt="रक्तदाता पुस्तक कव्हर" onerror="this.src='bookcover.png.jpg'; this.onerror=null;">
         </div>
     </section>
